@@ -137,14 +137,15 @@ button:focus-visible {
 .project
 {
   align-content: center;
-  justify-content: center;
-  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
   width:100%;
+  display:flex;
   margin-bottom: 20px;
-  gap: 100%;
+  gap: 10%;
 }
 
-#project-list {
+.project-list {
   margin-top: 5rem;
   width: 100%;
   min-width: 300px;
@@ -159,4 +160,28 @@ button:focus-visible {
 .languages {
   width: 50%;
   margin:auto;
+}
+
+.display {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.info {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 2rem;
+}
+
+.tech {
+  transform: scale(0.8);
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

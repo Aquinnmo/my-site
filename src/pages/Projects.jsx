@@ -3,45 +3,55 @@ import React from "react";
 function Projects()
 {
     return (
-        <div id="project-list">
+        <div class="project-list">
             <div class="project">
                 <div class="display">
-                    <h2>Tic-Tac-Toe</h2>
-                    <h3>Used Technologies:</h3>
-                    <img src="/java_logo.svg" className="tech logo fire" alt="Java" />
-                    <p>Grade 11 Course Final Project</p>
+                    <h1>Poker Chip Project</h1>
+                    <h3>Built With:</h3>
+                    <div class="grid">
+                        <img src="/django_logo.svg" className="tech logo django" alt="Django" />
+                        <img src="/python_logo.svg" className="tech logo python" alt="Python" />
+                        <img src="/git_logo.svg" className="tech logo django" alt="Git" />
+                        <img src="/github_logo.svg" className="tech logo vanilla" alt="Github" />
+                    </div>
+                    <p>Currently In Development</p>
                 </div>
                 <div class="info">
                     <h2>Description</h2>
                     <p>I will describe it here</p>
-                    <p>Then link it to the github repo</p>
+                    <a href="https://en.wikipedia.org/wiki/Music_(Playboi_Carti_album)" target="_blank">I will update it this link to show the repo, once released.</a>
                 </div>
             </div>
             <div class="project">
                 <div class="display">
-                    <h2>Brick Breaker</h2>
-                    <h3>Used Technologies:</h3>
-                    <img src="/java_logo.svg" className="tech logo fire" alt="Java" />
+                    <h1>Brick Breaker</h1>
+                    <h3>Built With:</h3>
+                    <div class="grid">
+                        <img src="/java_logo.svg" className="tech logo fire" alt="Java" />
+                        <img src="/git_logo.svg" className="tech logo django" alt="Git" />
+                        <img src="/github_logo.svg" className="tech logo vanilla" alt="Github" />
+                    </div>
                     <p>Grade 12 Course Final Project</p>
                 </div>
                 <div class="info">
                     <h2>Description</h2>
                     <p>I will describe it here</p>
-                    <p>Then link it to the github repo</p>
+                    <a href="https://github.com/Aquinnmo/BrickBreaker" target="_blank">Check it out!</a>
                 </div>
             </div>
             <div class="project">
                 <div class="display">
-                    <h2>Poker Chip Project</h2>
-                    <h3>Used Technologies:</h3>
-                    <img src="/django_logo.svg" className="tech logo" id="django" alt="Django" />
-                    <img src="/python_logo.svg" className="tech logo" id="python" alt="Python" />
+                    <h1>Tic-Tac-Toe</h1>
+                    <h3>Built With:</h3>
+                    <div class="grid">
+                        <img src="/java_logo.svg" className="tech logo fire" alt="Java" />
+                    </div>
                     <p>Grade 11 Course Final Project</p>
                 </div>
                 <div class="info">
                     <h2>Description</h2>
                     <p>I will describe it here</p>
-                    <p>Then link it to the github repo</p>
+                    <a href="https://osmows.com/menu/daily-specials/" target="_blank">I'm working on uploading the project to a repo as we speak!</a>
                 </div>
             </div>
         </div>
