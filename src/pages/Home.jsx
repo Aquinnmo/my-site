@@ -56,6 +56,7 @@ function Home() {
             <img src="/css_logo.svg" className="logo vite" alt="CSS" />
         </div>
         <p className="read-the-docs">This site was made using React</p>
+        <p className="read-the-docs">.svg images generously provided by SVG Repo</p>
       </div>
     );
   }

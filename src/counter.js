@@ -10,12 +10,12 @@ export function setupCounter(element) {
     }
     if (counter == 0)
     {
-      element.innerHTML = `Click to View Expanded Description`
+      element.innerHTML = `View Expanded Description`
       displayDescripton(document.querySelector('#description'), counter)
     }
     else
     {
-      element.innerHTML = `Click to View Short Description`
+      element.innerHTML = `View Concise Description`
       displayDescripton(document.querySelector('#description'), counter)
     }
   }

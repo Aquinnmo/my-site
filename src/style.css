@@ -28,10 +28,10 @@ nav {
 }
 
 .navbar {
-  width:100%;
+  width: 100%;
   left: 0;
   display: flex;
-  height: 5rem;
+  height: 6rem;
   gap: 2rem;
   position: fixed;
   padding-top: 0;
@@ -39,9 +39,15 @@ nav {
   margin: auto;
   text-align: center;
   justify-content: center;
-  background-color: #480007;
-  z-index:1000;
+  background: linear-gradient(
+    to bottom,
+    #480007 0rem,
+    #480007 4rem,
+    transparent 6rem
+  );
+  z-index: 1000;
 }
+
 .navbar h2 {
   color: #5553d6;
 }
@@ -144,7 +150,7 @@ button:focus-visible {
   width:100%;
   display:flex;
   margin-bottom: 20px;
-  gap: 10%;
+  gap: 0;
 }
 
 .project-list {
@@ -173,9 +179,11 @@ button:focus-visible {
 }
 
 .info {
-  width: 50%;
+  width: 30%;
   box-sizing: border-box;
   padding: 2rem;
+  justify-content: center;
+  margin: auto;
 }
 
 .tech {
@@ -187,7 +195,17 @@ button:focus-visible {
 }
 
 .grid {
-  display: flex;
   align-items: center;
   justify-content: center;
+  margin: auto;
+}
+
+.info p {
+  text-align: left;
+}
+
+.home p {
+  width: 60%;
+  margin: auto;
+  text-align: center;
 }
