@@ -72,9 +72,11 @@ h1 {
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
+  transition: transform 0.3s ease;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #0077B5);
+  transform: scale(1.2);
 }
 .logo.vanilla:hover {
   filter: drop-shadow(0 0 2em #ffffff);
@@ -178,6 +180,10 @@ button:focus-visible {
 
 .tech {
   transform: scale(0.8);
+}
+
+.logo.tech:hover {
+  transform: scale(1);
 }
 
 .grid {
