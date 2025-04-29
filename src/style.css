@@ -6,7 +6,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #480007;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -31,13 +31,19 @@ nav {
   width:100%;
   left: 0;
   display: flex;
-  gap: 1rem;
+  height: 5rem;
+  gap: 2rem;
   position: fixed;
   padding-top: 0;
-  top: 1rem;
+  top: 0;
   margin: auto;
   text-align: center;
   justify-content: center;
+  background-color: #480007;
+  z-index:1000;
+}
+.navbar h2 {
+  color: #5553d6;
 }
 
 body {
@@ -72,6 +78,20 @@ h1 {
 }
 .logo.vanilla:hover {
   filter: drop-shadow(0 0 2em #ffffff);
+}
+.logo.fire:hover {
+  filter: drop-shadow(0 0 2em #db380e);
+}
+.logo.python:hover {
+  filter: drop-shadow(0 0 2em #ffd040);
+}
+
+.logo.django:hover {
+  filter: drop-shadow(0 0 2em #509202);
+}
+
+.logo.vite.hover {
+  filter: drop-shadow(0 0 2em #9c5cfd);
 }
 
 .card {
@@ -112,4 +132,31 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.project
+{
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  width:100%;
+  margin-bottom: 20px;
+  gap: 100%;
+}
+
+#project-list {
+  margin-top: 5rem;
+  width: 100%;
+  min-width: 300px;
+}
+
+.home {
+  margin-top: 8rem;
+  width: 100%;
+  min-width: 300px;
+}
+
+.languages {
+  width: 50%;
+  margin:auto;
 }

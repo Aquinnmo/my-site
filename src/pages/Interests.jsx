@@ -1,6 +1,6 @@
 import React from "react";
 
-function Contact()
+function Interests()
 {
     return (
         <div>
@@ -9,4 +9,4 @@ function Contact()
     );
 }
 
-export default Contact;
+export default Interests;

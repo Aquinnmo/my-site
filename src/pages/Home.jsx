@@ -12,7 +12,7 @@ function Home() {
     }, []);
   
     return (
-      <div>
+      <div class="home">
         <a href="mailto:aquinnmo@outlook.com">
           <img src={emailIcon} className="logo vanilla" alt="email" />
         </a>
@@ -38,6 +38,23 @@ function Home() {
         </div>
   
         <p id="description"></p>
+
+        <h2>Some languages and frameworks I know:</h2>
+        <div class="languages">
+            <img src="/java_logo.svg" className="tech logo fire" alt="Java" />
+            <img src="/python_logo.svg" className="tech logo python" alt="Python" />
+            <img src="/django_logo.svg" className="tech logo django" alt="Django" />
+            <img src="/html_logo.svg" className="tech logo fire" alt="HTML" />
+            <img src="/javascript_logo.svg" className="tech logo python" alt="JavaScript" />
+            <img src="/git_logo.svg" className="tech logo django" alt="Git" />
+            <img src="/vite.svg" className="tech logo vite" alt="Vite" />
+            <img src="/react_logo.svg" className="tech logo vite" alt="React" />
+            <img src="/linux_logo.svg" className="tech logo vanilla" alt="Linux" />
+            <img src="/github_logo.svg" className="tech logo vanilla" alt="Github" />
+            <img src="/gitlab_logo.svg" className="tech logo fire" alt="GitLab" />
+            <img src="/c_logo.svg" className="tech logo vite" alt="C" />
+            <img src="/css_logo.svg" className="tech logo vite" alt="CSS" />
+        </div>
         <p className="read-the-docs">This site was made using React</p>
       </div>
     );
