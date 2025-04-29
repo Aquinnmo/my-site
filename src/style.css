@@ -2,6 +2,7 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  text-align: center;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -22,10 +23,28 @@ a:hover {
   color: #535bf2;
 }
 
+nav {
+  padding: '1rem';
+}
+
+.navbar {
+  width:100%;
+  left: 0;
+  display: flex;
+  gap: 1rem;
+  position: fixed;
+  padding-top: 0;
+  top: 1rem;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+}
+
 body {
   margin: 0;
   display: flex;
   place-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
 }

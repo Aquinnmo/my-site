@@ -1,9 +1,25 @@
+import { displayDescripton } from "./description"
+
 export function setupCounter(element) {
   let counter = 0
   const setCounter = (count) => {
     counter = count
-    element.innerHTML = `count is ${counter}`
+    if (count % 2 == 0)
+    {
+      counter = 0
+    }
+    if (counter == 0)
+    {
+      element.innerHTML = `Click to View Expanded Description`
+      displayDescripton(document.querySelector('#description'), counter)
+    }
+    else
+    {
+      element.innerHTML = `Click to View Short Description`
+      displayDescripton(document.querySelector('#description'), counter)
+    }
   }
   element.addEventListener('click', () => setCounter(counter + 1))
+
   setCounter(0)
 }
