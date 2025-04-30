@@ -8,26 +8,32 @@ function Interests()
                 <div class="display">
                     <h1>Hockey</h1>
                     <p>Favourite Teams: use API to grab team logos</p>
-                    <p>Favourite Players: </p>
+                    <p>Or I show the rankings of the teams above and have input here for them to guess here</p>
                 </div>
                 <div class="info">
-                    <h2>My Acomplishments</h2>
-                    <p>I am aiming to solve the most common problem with playing poker, not having chips. 
-                    I am developing an online substitute for poker chips you can still play poker in-person with your friends if
-                    you forget or cannot afford chips. I makes the game more portable and more accessible to everyone.
+                    <p>I led my high school hockey team as the captain to a silver medal in the final year. I 
+                        since retired and have become a beer league legend.
                     </p>
-                    <a href="https://en.wikipedia.org/wiki/Music_(Playboi_Carti_album)" target="_blank">I will update it this link to show the repo, once released.</a>
+                    <a href="https://www.youtube.com/watch?v=4eBoTI6_1Q8" target="_blank">Watch some of my highlights...</a>
                 </div>
             </div>
             <div class="project">
                 <div class="display">
                     <h1>Music</h1>
-                    <h3>View My Spotify Profile:</h3>
-                    <p>embed my profile here</p>
+                    <a href="https://open.spotify.com/user/aquinnmo?si=dde9c65268ae4d36" target="_blank"><h3>View My Spotify Profile</h3></a>
+                    <a href="https://stats.fm/aquinnmo" target="_blank"><h3>View My Stats.Fm Page</h3></a>
+                    <p>Check out my favourite playlist on the right!</p>
                 </div>
                 <div class="info">
-                    <h2>Description</h2>
-                    <p style={{textAlign:'center'}}>Contact me if you have any music recommendations!</p>
+                <iframe
+                    style={{ borderRadius: "12px" }}
+                    src="https://open.spotify.com/embed/playlist/0BIwrKbc2J69rarG625XF3?utm_source=generator"
+                    width="100%"
+                    height="352"
+                    frameBorder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                ></iframe>
                 </div>
             </div>
         </div>

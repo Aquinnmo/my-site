@@ -36,7 +36,7 @@ function Projects()
                         <img src="/git_logo.svg" className="tech logo django" alt="Git" />
                         <img src="/github_logo.svg" className="tech logo vanilla" alt="Github" />
                     </div>
-                    <p>Maintained and Updated Since 2025</p>
+                    <p>Maintained and Updated Since April 2025</p>
                 </div>
                 <div class="info">
                     <p style={{textAlign:'center'}}>Well what do you think?</p>

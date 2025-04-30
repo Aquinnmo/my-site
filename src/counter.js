@@ -1,3 +1,5 @@
+//need to convert to a .jsx component
+
 import { displayDescripton } from "./description"
 
 export function setupCounter(element) {

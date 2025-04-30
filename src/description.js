@@ -1,9 +1,14 @@
+//need to convert this to a .jsx component
+
 export function displayDescripton(element, counter) {
     if (counter == 0)
     {
-        element.innerHTML = `Second year computer science co-op student @ the University of Guelph </br>
-        VP of External Affairs SOCIS </br>
-        Hockey Player/Fan </br>`
+        element.innerHTML = `
+        <ul>
+        <li>Second year computer science co-op student @ the University of Guelph </li>
+        <li>VP of External Affairs SOCIS</li>
+        <li>Hockey Player/Fan </li>
+        </ul>`
     }
     else
     {
