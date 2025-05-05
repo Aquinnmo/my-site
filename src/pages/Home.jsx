@@ -54,9 +54,16 @@ function Home() {
             <img src="/gitlab_logo.svg" className="logo fire" alt="GitLab" />
             <img src="/c_logo.svg" className="logo vite" alt="C" />
             <img src="/css_logo.svg" className="logo vite" alt="CSS" />
+            <img src="/mongodb_logo.svg" className="tech logo django" alt="MongoDB" />
+            <img src="/typescript_logo.svg" className="tech logo vite" alt="Typescript" />
+            <img src="/claude_logo.svg" className="tech logo fire" alt="Claude" />
+            <img src="/render_logo.svg" className="tech logo vanilla" alt="Render" />
+            <img src="/vercel_logo.svg" className="tech logo vanilla" alt="Vercel" />
+            <img src="/nodejs_logo.svg" className="tech logo django" alt="Node.js" />
+            <img src="/gemini_logo.svg" className="tech logo vite" alt="Gemini" />
         </div>
         <p className="read-the-docs">This site was made using React</p>
-        <p className="read-the-docs">.svg images generously provided by SVG Repo</p>
+        <br></br>
       </div>
     );
   }

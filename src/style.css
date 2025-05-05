@@ -218,3 +218,12 @@ ul{
 li {
   text-align: left;
 }
+
+.description-fade {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.description-fade.fade-out {
+  opacity: 0;
+}
