@@ -102,6 +102,32 @@ h1 {
   filter: drop-shadow(0 0 2em #9c5cfd);
 }
 
+.logo-container {
+  position: relative;
+  display: inline-block;
+}
+
+.logo-container::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  top: -18px;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.logo-container:hover::after {
+  opacity: 1;
+}
+
 .card {
   padding: 2em;
 }
@@ -217,13 +243,4 @@ ul{
 
 li {
   text-align: left;
-}
-
-.description-fade {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.description-fade.fade-out {
-  opacity: 0;
 }
