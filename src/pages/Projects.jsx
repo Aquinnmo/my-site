@@ -6,6 +6,38 @@ function Projects()
         <div class="project-list">
             <div class="project">
                 <div class="display">
+                    <h1>Am I Cooked?</h1>
+                    <h3>Built With:</h3>
+                    <div class="grid">
+                        <img src="/react_logo.svg" className="tech logo vite" alt="React" />
+                        <img src="/css_logo.svg" className="tech logo css" alt="CSS" />
+                        <img src="/html_logo.svg" className="tech logo fire" alt="HTML" />
+                        <img src="/mongodb_logo.svg" className="tech logo django" alt="MongoDB" />
+                        <img src="/typescript_logo.svg" className="tech logo vite" alt="Typescript" />
+                        <img src="/git_logo.svg" className="tech logo django" alt="Git" />
+                        <img src="/github_logo.svg" className="tech logo vanilla" alt="Github" />
+                        <img src="/claude_logo.svg" className="tech logo fire" alt="Claude" />
+                        <img src="/render_logo.svg" className="tech logo vanilla" alt="Render" />
+                        <img src="/vercel_logo.svg" className="tech logo vanilla" alt="Vercel" />
+                        <img src="/nodejs_logo.svg" className="tech logo django" alt="Node.js" />
+                        <img src="/vite.svg" className="tech logo vite" alt="Vite" />
+                        <img src="/gemini_logo.svg" className="tech logo vite" alt="Gemini" />
+                    </div>
+                    <p>First Developed and Deployed at GDSCHacks 2025! Currently maintained.</p>
+                </div>
+                <div class="info">
+                    <p>Through this project two fellow students and I aimed to help our peers evaluate
+                        how ready they were in this difficult job market. We created a website for us to measure
+                        how "cooked" you are if trying to find a job. You either take a quick survey or upload you resume
+                        and then you get back Google Gemini powered feedback to help with your job search.
+                    </p>
+                    <a href="https://am-i-cooked-zeta.vercel.app" target="_blank">Check it out</a>
+                    <br></br>
+                    <a href="https://github.com/nathan-probert/am-i-cooked" target="_blank">Check out our codebase</a>
+                </div>
+            </div>
+            <div class="project">
+                <div class="display">
                     <h1>Poker Chip Project</h1>
                     <h3>Built With:</h3>
                     <div class="grid">
