@@ -1,19 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import '../style.css';
 import githubLogo from '/github_logo.svg';
 import linkedInLogo from '/LinkedIn_icon.svg';
 import emailIcon from '/email_icon.svg';
 import Rotating_Description from "../components/Rotating_Description.jsx";
-import { setupCounter } from '../counter.js';
+import Counter from "../components/Counter";
 
 function Home() {
-    useEffect(() => {
-      // once the DOM is up, wire up your counter
-      setupCounter(document.getElementById('counter'));
-    }, []);
-  
     return (
-      <div class="home">
+      <div className="home">
         <a href="mailto:aquinnmo@outlook.com">
           <img src={emailIcon} className="logo vanilla" alt="email" />
         </a>
@@ -39,11 +34,9 @@ function Home() {
         </div>
   
         <div className="card">
-          <button id="counter" type="button"></button>
+          <Counter />
         </div>
   
-        <p id="description"></p>
-
         <h2>Some languages and frameworks I know:</h2>
         <div class="languages">
             <div className="logo-container" data-tooltip="Java">
