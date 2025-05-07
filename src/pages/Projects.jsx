@@ -6,22 +6,67 @@ function Projects()
         <div class="project-list">
             <div class="project">
                 <div class="display">
-                    <h1>Am I Cooked?</h1>
+                    <h1 className="no-select">
+                        <span className="trembling-letter">A</span>
+                        <span className="trembling-letter">m</span>
+                        <span className="trembling-letter">&nbsp;</span>
+                        <span className="trembling-letter">I</span>
+                        <span className="trembling-letter">&nbsp;</span>
+                        <span className="trembling-letter">C</span>
+                        <span className="trembling-letter">o</span>
+                        <span className="trembling-letter">o</span>
+                        <span className="trembling-letter">k</span>
+                        <span className="trembling-letter">e</span>
+                        <span className="trembling-letter">d</span>
+                        <span className="trembling-letter">?</span>
+                    </h1>
                     <h3>Built With:</h3>
                     <div class="grid">
-                        <img src="/react_logo.svg" className="tech logo vite" alt="React" />
-                        <img src="/css_logo.svg" className="tech logo css" alt="CSS" />
-                        <img src="/html_logo.svg" className="tech logo fire" alt="HTML" />
-                        <img src="/mongodb_logo.svg" className="tech logo django" alt="MongoDB" />
-                        <img src="/typescript_logo.svg" className="tech logo vite" alt="Typescript" />
-                        <img src="/git_logo.svg" className="tech logo django" alt="Git" />
-                        <img src="/github_logo.svg" className="tech logo vanilla" alt="Github" />
-                        <img src="/claude_logo.svg" className="tech logo fire" alt="Claude" />
-                        <img src="/render_logo.svg" className="tech logo vanilla" alt="Render" />
-                        <img src="/vercel_logo.svg" className="tech logo vanilla" alt="Vercel" />
-                        <img src="/nodejs_logo.svg" className="tech logo django" alt="Node.js" />
-                        <img src="/vite.svg" className="tech logo vite" alt="Vite" />
-                        <img src="/gemini_logo.svg" className="tech logo vite" alt="Gemini" />
+                        <div className="logo-container" data-tooltip="React">
+                            <img src="/react_logo.svg" className="tech logo vite" alt="React" />
+                        </div>
+                        <div className="logo-container" data-tooltip="CSS">
+                            <img src="/css_logo.svg" className="tech logo css" alt="CSS" />
+                        </div>
+                        <div className="logo-container" data-tooltip="HTML">
+                            <img src="/html_logo.svg" className="tech logo fire" alt="HTML" />
+                        </div>
+                        <div className="logo-container" data-tooltip="MongoDB">
+                            <img src="/mongodb_logo.svg" className="tech logo django" alt="MongoDB" />
+                        </div>
+                        <div className="logo-container" data-tooltip="TypeScript">
+                            <img src="/typescript_logo.svg" className="tech logo vite" alt="Typescript" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Git">
+                            <img src="/git_logo.svg" className="tech logo django" alt="Git" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Github">
+                            <img src="/github_logo.svg" className="tech logo vanilla" alt="Github" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Claude">
+                            <img src="/claude_logo.svg" className="tech logo fire" alt="Claude" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Render">
+                            <img src="/render_logo.svg" className="tech logo vanilla" alt="Render" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Vercel">
+                            <img src="/vercel_logo.svg" className="tech logo vanilla" alt="Vercel" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Node.js">
+                            <img src="/nodejs_logo.svg" className="tech logo django" alt="Node.js" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Vite">
+                            <img src="/vite.svg" className="tech logo vite" alt="Vite" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Gemini">
+                            <img src="/gemini_logo.svg" className="tech logo vite" alt="Gemini" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Microsoft Copilot">
+                        <img src="/copilot_logo.svg" className="tech logo vanilla" alt="Copilot" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Cursor">
+                        <img src="/cursor_logo.svg" className="tech logo vanilla" alt="Cursor" />
+                        </div>
                     </div>
                     <p>First Developed and Deployed at GDSCHacks 2025! Currently maintained.</p>
                 </div>
@@ -38,13 +83,40 @@ function Projects()
             </div>
             <div class="project">
                 <div class="display">
-                    <h1>Poker Chip Project</h1>
+                    <h1>
+                        <span className="poker-red">P</span>
+                        <span className="poker-black">o</span>
+                        <span className="poker-red">k</span>
+                        <span className="poker-black">e</span>
+                        <span className="poker-red">r</span>
+                        <span className="poker-red">&nbsp;</span>
+                        <span className="poker-black">C</span>
+                        <span className="poker-red">h</span>
+                        <span className="poker-black">i</span>
+                        <span className="poker-red">p</span>
+                        <span className="poker-red">&nbsp;</span>
+                        <span className="poker-black">P</span>
+                        <span className="poker-red">r</span>
+                        <span className="poker-black">o</span>
+                        <span className="poker-red">j</span>
+                        <span className="poker-black">e</span>
+                        <span className="poker-red">c</span>
+                        <span className="poker-black">t</span>
+                    </h1>
                     <h3>Built With:</h3>
                     <div class="grid">
-                        <img src="/django_logo.svg" className="tech logo django" alt="Django" />
-                        <img src="/python_logo.svg" className="tech logo python" alt="Python" />
-                        <img src="/git_logo.svg" className="tech logo django" alt="Git" />
-                        <img src="/github_logo.svg" className="tech logo vanilla" alt="Github" />
+                        <div className="logo-container" data-tooltip="Django">
+                            <img src="/django_logo.svg" className="tech logo django" alt="Django" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Python">
+                            <img src="/python_logo.svg" className="tech logo python" alt="Python" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Git">
+                            <img src="/git_logo.svg" className="tech logo django" alt="Git" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Github">
+                            <img src="/github_logo.svg" className="tech logo vanilla" alt="Github" />
+                        </div>
                     </div>
                     <p>Currently In Development</p>
                 </div>
@@ -56,17 +128,29 @@ function Projects()
                     <a href="https://en.wikipedia.org/wiki/Music_(Playboi_Carti_album)" target="_blank">I will update it this link to show the repo, once released.</a>
                 </div>
             </div>
-            <div class="project">
+            <div class="project" id="personal-site">
                 <div class="display">
-                    <h1>Personal Website</h1>
+                    <h1>adam-montgomery.ca</h1>
                     <h3>Built With:</h3>
                     <div class="grid">
-                        <img src="/react_logo.svg" className="tech logo vite" alt="React" />
-                        <img src="/css_logo.svg" className="tech logo vite" alt="CSS" />
-                        <img src="/javascript_logo.svg" className="tech logo python" alt="Javascript" />
-                        <img src="/html_logo.svg" className="tech logo fire" alt="HTML" />
-                        <img src="/git_logo.svg" className="tech logo django" alt="Git" />
-                        <img src="/github_logo.svg" className="tech logo vanilla" alt="Github" />
+                        <div className="logo-container" data-tooltip="React">
+                            <img src="/react_logo.svg" className="tech logo vite" alt="React" />
+                        </div>
+                        <div className="logo-container" data-tooltip="CSS">
+                            <img src="/css_logo.svg" className="tech logo vite" alt="CSS" />
+                        </div>
+                        <div className="logo-container" data-tooltip="JavaScript">
+                            <img src="/javascript_logo.svg" className="tech logo python" alt="Javascript" />
+                        </div>
+                        <div className="logo-container" data-tooltip="HTML">
+                            <img src="/html_logo.svg" className="tech logo fire" alt="HTML" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Git">
+                            <img src="/git_logo.svg" className="tech logo django" alt="Git" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Github">
+                            <img src="/github_logo.svg" className="tech logo vanilla" alt="Github" />
+                        </div>
                     </div>
                     <p>Maintained and Updated Since April 2025</p>
                 </div>
@@ -79,9 +163,15 @@ function Projects()
                     <h1>Brick Breaker</h1>
                     <h3>Built With:</h3>
                     <div class="grid">
-                        <img src="/java_logo.svg" className="tech logo fire" alt="Java" />
-                        <img src="/git_logo.svg" className="tech logo django" alt="Git" />
-                        <img src="/github_logo.svg" className="tech logo vanilla" alt="Github" />
+                        <div className="logo-container" data-tooltip="Java">
+                            <img src="/java_logo.svg" className="tech logo fire" alt="Java" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Git">
+                            <img src="/git_logo.svg" className="tech logo django" alt="Git" />
+                        </div>
+                        <div className="logo-container" data-tooltip="Github">
+                            <img src="/github_logo.svg" className="tech logo vanilla" alt="Github" />
+                        </div>
                     </div>
                     <p>Grade 12 Course Final Project, 2022</p>
                 </div>
@@ -99,7 +189,9 @@ function Projects()
                     <h1>Tic-Tac-Toe</h1>
                     <h3>Built With:</h3>
                     <div class="grid">
-                        <img src="/java_logo.svg" className="tech logo fire" alt="Java" />
+                        <div className="logo-container" data-tooltip="Java">
+                            <img src="/java_logo.svg" className="tech logo fire" alt="Java" />
+                        </div>
                     </div>
                     <p>Grade 11 Course Final Project, 2021</p>
                 </div>
