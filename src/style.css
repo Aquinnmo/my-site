@@ -393,3 +393,95 @@ li {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(100, 108, 255, 0.2);
 }
+
+@keyframes tremble {
+   0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(calc(var(--x-offset, -2px)), calc(var(--y-offset, 2px))) rotate(calc(var(--rotation, -1deg)));
+  }
+  50% {
+    transform: translate(calc(var(--x-offset, 2px) * -1), calc(var(--y-offset, -2px))) rotate(calc(var(--rotation, 1deg)));
+  }
+  75% {
+    transform: translate(calc(var(--x-offset, -1px)), calc(var(--y-offset, -1px))) rotate(calc(var(--rotation, -0.5deg)));
+  }
+}
+
+@keyframes tremble-letter {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(1px, 1px) rotate(1deg); }
+  50% { transform: translate(0, -1px) rotate(-1deg); }
+  75% { transform: translate(-1px, 0) rotate(0.5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.trembling-letter {
+  display: inline-block;
+  animation: tremble 0.5s ease-in-out infinite;
+  animation-delay: calc(var(--char-index, 0) * 0.1s);
+}
+
+.trembling-letter:nth-child(3n) {
+  --x-offset: -1.5px;
+  --y-offset: 0.5px;
+  --rotation: -1deg;
+  animation-duration: 0.5s;
+}
+
+.trembling-letter:nth-child(3n + 1) {
+  --x-offset: 1px;
+  --y-offset: -1px;
+  --rotation: 0.75deg;
+  animation-duration: 0.55s;
+}
+
+.trembling-letter:nth-child(3n + 2) {
+  --x-offset: -0.5px;
+  --y-offset: 1.5px;
+  --rotation: -0.5deg;
+  animation-duration: 0.45s;
+}
+
+/* Remove the old class style */
+.project h1:first-of-type {
+  animation: none;
+}
+
+.tremble-letter {
+  display: inline-block;
+  animation: tremble-letter 0.3s infinite;
+  animation-delay: calc(var(--letter-index, 0) * 0.1s);
+}
+
+.tremble-letter:nth-child(1) { --letter-index: 0; }
+.tremble-letter:nth-child(2) { --letter-index: 1; }
+.tremble-letter:nth-child(3) { --letter-index: 2; }
+.tremble-letter:nth-child(4) { --letter-index: 3; }
+.tremble-letter:nth-child(5) { --letter-index: 4; }
+.tremble-letter:nth-child(6) { --letter-index: 5; }
+.tremble-letter:nth-child(7) { --letter-index: 6; }
+.tremble-letter:nth-child(8) { --letter-index: 7; }
+.tremble-letter:nth-child(9) { --letter-index: 8; }
+.tremble-letter:nth-child(10) { --letter-index: 9; }
+.tremble-letter:nth-child(11) { --letter-index: 10; }
+.tremble-letter:nth-child(12) { --letter-index: 11; }
+
+.poker-red {
+    color: #ff0000;
+    display: inline-block;
+}
+
+.poker-black {
+    color: #000000;
+    display: inline-block;
+}
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  cursor: default;
+}

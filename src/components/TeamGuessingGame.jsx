@@ -81,7 +81,7 @@ function TeamGuessingGame() {
                     className="guess-button"
                     disabled={guessCount >= 5 || isRevealing}
                 >
-                    {guessCount >= 5 ? "Game Complete" : `Guess ${guessCount + 1}/5`}
+                    {guessCount >= 5 ? "Game Complete" : `Guess ${guessCount + 1} of 5`}
                 </button>
                 {guessResult && <p className="guess-result">{guessResult}</p>}
             </div>

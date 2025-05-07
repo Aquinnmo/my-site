@@ -7,7 +7,7 @@ const headers = [
     "I am a web developer 🌐",
     "I am a forward-thinker ⏩",
     "I am a team player 🤝",
-    "I am a life-long student 👨‍🎓"
+    "I am an engaged student 👨‍🎓"
 ];
 
 function Rotating_Description() {
@@ -27,7 +27,7 @@ function Rotating_Description() {
     }, []);
     
     return (
-        <h2 
+        <h2 className="no-select"
             style={{
                 opacity: opacity,
                 transition: "opacity 0.5s ease-in-out"

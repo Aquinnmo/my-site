@@ -6,7 +6,20 @@ function Projects()
         <div class="project-list">
             <div class="project">
                 <div class="display">
-                    <h1>Am I Cooked?</h1>
+                    <h1 className="no-select">
+                        <span className="trembling-letter">A</span>
+                        <span className="trembling-letter">m</span>
+                        <span className="trembling-letter">&nbsp;</span>
+                        <span className="trembling-letter">I</span>
+                        <span className="trembling-letter">&nbsp;</span>
+                        <span className="trembling-letter">C</span>
+                        <span className="trembling-letter">o</span>
+                        <span className="trembling-letter">o</span>
+                        <span className="trembling-letter">k</span>
+                        <span className="trembling-letter">e</span>
+                        <span className="trembling-letter">d</span>
+                        <span className="trembling-letter">?</span>
+                    </h1>
                     <h3>Built With:</h3>
                     <div class="grid">
                         <div className="logo-container" data-tooltip="React">
@@ -70,7 +83,26 @@ function Projects()
             </div>
             <div class="project">
                 <div class="display">
-                    <h1>Poker Chip Project</h1>
+                    <h1>
+                        <span className="poker-red">P</span>
+                        <span className="poker-black">o</span>
+                        <span className="poker-red">k</span>
+                        <span className="poker-black">e</span>
+                        <span className="poker-red">r</span>
+                        <span className="poker-red">&nbsp;</span>
+                        <span className="poker-black">C</span>
+                        <span className="poker-red">h</span>
+                        <span className="poker-black">i</span>
+                        <span className="poker-red">p</span>
+                        <span className="poker-red">&nbsp;</span>
+                        <span className="poker-black">P</span>
+                        <span className="poker-red">r</span>
+                        <span className="poker-black">o</span>
+                        <span className="poker-red">j</span>
+                        <span className="poker-black">e</span>
+                        <span className="poker-red">c</span>
+                        <span className="poker-black">t</span>
+                    </h1>
                     <h3>Built With:</h3>
                     <div class="grid">
                         <div className="logo-container" data-tooltip="Django">
@@ -98,7 +130,7 @@ function Projects()
             </div>
             <div class="project" id="personal-site">
                 <div class="display">
-                    <h1>Personal Website</h1>
+                    <h1>adam-montgomery.ca</h1>
                     <h3>Built With:</h3>
                     <div class="grid">
                         <div className="logo-container" data-tooltip="React">
