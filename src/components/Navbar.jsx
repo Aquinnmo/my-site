@@ -7,10 +7,10 @@ function Navbar ()
     return (
         <nav>
       <div className="navbar no-select">
-        <Link to="/"><h2>Home</h2></Link>
-        <Link to="/projects"><h2>Projects</h2></Link>
-        <Link to="/experience"><h2>Experience</h2></Link>
-        <Link to="/interests"><h2>Interests</h2></Link>
+        <Link to="/" className="nav-link">Home</Link>
+        <Link to="/projects" className="nav-link">Projects</Link>
+        <Link to="/experience" className="nav-link">Experience</Link>
+        <Link to="/interests" className="nav-link">Interests</Link>
       </div>
     </nav>
     )

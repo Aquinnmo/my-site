@@ -7,6 +7,7 @@ import Projects from './pages/Projects';
 import Navbar from './components/Navbar';
 import React from 'react';
 import ScrollToTop from './components/ScrollToTop'; // Import the new component
+import PageNotFound from './pages/404Page'; // Import the 404 page
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function AnimatedRoutes() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/interests" element={<Interests />} />
           <Route path="/experience" element={<Experience />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </motion.div>
     </AnimatePresence>
