@@ -123,7 +123,7 @@ function TeamGuessingGame() {
             <div className="guess-container">
                 <input 
                     type="text" 
-                    placeholder="Guess my two favourite hockey teams..." 
+                    placeholder="Guess my two favourite NHL teams..." 
                     value={teamGuess}
                     onChange={handleGuess}
                     onKeyPress={handleKeyPress}

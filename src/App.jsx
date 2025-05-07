@@ -6,6 +6,7 @@ import Experience from './pages/Experience';
 import Projects from './pages/Projects';
 import Navbar from './components/Navbar';
 import React from 'react';
+import ScrollToTop from './components/ScrollToTop'; // Import the new component
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function AnimatedRoutes() {
 function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* Add ScrollToTop here */}
       <Navbar />
       <main>
         <AnimatedRoutes />
