@@ -3,8 +3,8 @@ import TeamGuessingGame from "../components/TeamGuessingGame";
 
 function Interests() {
     return (
-        <div className="project-list">
-            <div className="project">
+        <div className="interest-list">
+            <div className="interest-item">
                 <div className="display">
                     <h1>Hockey</h1>
                     <h3>Check out my team guessing game! Guess my favourite NHL teams!</h3>
@@ -17,7 +17,7 @@ function Interests() {
                     <a href="https://www.youtube.com/watch?v=4eBoTI6_1Q8" target="_blank">Watch some of my highlights...</a>
                 </div>
             </div>
-            <div className="project">
+            <div className="interest-item">
                 <div className="display">
                     <h1>Music</h1>
                     <a href="https://open.spotify.com/user/aquinnmo?si=dde9c65268ae4d36" target="_blank"><h3>View My Spotify Profile</h3></a>

@@ -3,8 +3,8 @@ import React from "react";
 function Projects()
 {
     return (
-        <div class="project-list">
-            <div class="project">
+        <div class="interest-list">
+            <div class="interest-item">
                 <div class="display">
                     <h1 className="no-select">
                         <span className="trembling-letter">A</span>
@@ -81,7 +81,7 @@ function Projects()
                     <a href="https://github.com/nathan-probert/am-i-cooked" target="_blank">Check out our codebase</a>
                 </div>
             </div>
-            <div class="project">
+            <div class="interest-item">
                 <div class="display">
                     <h1>
                         <span className="poker-red">P</span>
@@ -128,7 +128,7 @@ function Projects()
                     <a href="https://en.wikipedia.org/wiki/Music_(Playboi_Carti_album)" target="_blank">I will update it this link to show the repo, once released.</a>
                 </div>
             </div>
-            <div class="project" id="personal-site">
+            <div class="interest-item" id="personal-site">
                 <div class="display">
                     <h1>adam-montgomery.ca</h1>
                     <h3>Built With:</h3>
@@ -158,7 +158,7 @@ function Projects()
                     <p style={{textAlign:'center'}}>Well what do you think?</p>
                 </div>
             </div>
-            <div class="project">
+            <div class="interest-item">
                 <div class="display">
                     <h1>Brick Breaker</h1>
                     <h3>Built With:</h3>
@@ -184,7 +184,7 @@ function Projects()
                     <a href="https://github.com/Aquinnmo/BrickBreaker" target="_blank">Check it out!</a>
                 </div>
             </div>
-            <div class="project">
+            <div class="interest-item">
                 <div class="display">
                     <h1>Tic-Tac-Toe</h1>
                     <h3>Built With:</h3>
