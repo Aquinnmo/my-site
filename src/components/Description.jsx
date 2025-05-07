@@ -14,20 +14,26 @@ const Description = ({ counter }) => {
       if (counter === 0) {
         setContent(
           <ul>
-            <li>Second year computer science co-op student @ the University of Guelph </li>
+            <li>Second year computer science co-op student at the University of Guelph</li>
             <li>VP of External Affairs SOCIS</li>
-            <li>Hockey Player/Fan </li>
+            <li>University of Guelph Events Staff</li>
+            <li>Contractor for DataAnnotation</li>
+            <li>Hockey Player/Fan</li>
           </ul>
         );
       } else {
         setContent(
           <p>
-            I am a second-year computer science enrolled at the University of Guelph.
-            I am currently the Vice-President of External Affairs for the Guelph School of Computer Science.
+            I am a second-year computer science enrolled at the University of Guelph
+            and also am the Vice-President of External Affairs for the Guelph School of Computer Science.
             I am also helping train AI Models as a contractor for DataAnnotation.
             Beyond what I do professionally, I am an avid hockey player and watcher. I am
             a competitor that wants to be the best at whatever I do, while engaging with 
             everyone I work with.
+            <br></br><br></br>
+            I am also a member of the University of Guelph Events Staff, where I help run events
+            for the university. I am an engaged student and citizen, that want to give back to
+            the school and community that has already given me so much.
           </p>
         );
       }

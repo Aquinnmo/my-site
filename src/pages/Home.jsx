@@ -37,7 +37,7 @@ function Home() {
           <Counter />
         </div>
   
-        <h2>Some languages, frameworks, and tools I know:</h2>
+        <h2>Some languages, frameworks, and tools I use:</h2>
         <div className="languages no-select">
             <div className="logo-container" data-tooltip="Java">
               <img src="/java_logo.svg" className="logo fire" alt="Java" />
