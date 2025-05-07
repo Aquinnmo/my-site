@@ -1,4 +1,4 @@
-Ben to run this you need node.js installed, find it online, shouldn't be too hard to install
+to run this you need node.js installed, find it online, shouldn't be too hard to install
 
 To run it:
 1. install node.js
