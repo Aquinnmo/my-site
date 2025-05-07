@@ -652,14 +652,15 @@ li {
   width: 100%;
   display: flex;
   margin-bottom: 20px;
-  gap: 0;
+  gap: 20px;
   padding: 0;
 }
 
 .interest-item .display {
-  width: 50%;
+  width: 60%; /* Reduced from 65% to 60% to push it more to the left */
   box-sizing: border-box;
-  padding: 2rem;
+  padding: 0;
+  padding-right: 1rem; /* Less padding on the right side */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -668,9 +669,10 @@ li {
 }
 
 .interest-item .info {
-  width: 30%;
+  width: 40%; /* Increased from 35% to 40% to fit more content */
   box-sizing: border-box;
   padding: 2rem;
+  padding-left: 1rem; /* Less padding on the left side */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -678,9 +680,21 @@ li {
   margin: auto;
 }
 
+/* Logo grid for the display section to fit 4 logos in a row */
+.interest-item .display .logo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns for logos */
+  grid-gap: 1rem;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
 /* Ensure iframe is centered */
 .interest-item .info iframe {
   margin: 0 auto;
+  width: 100%; /* Make iframe take full width of parent */
 }
 
 /* Center text inside interest paragraphs only */
@@ -695,6 +709,14 @@ li {
 
 .interest-list {
   margin-top: 5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 300px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 768px) {
@@ -789,6 +811,31 @@ li {
     margin: 0 0.75rem 8px 0.75rem; /* Increased horizontal and bottom margins */
     display: inline-block;
     line-height: 1;
+  }
+
+  /* Make interest items stack vertically on mobile */
+  .interest-item {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Put display above info on mobile */
+  .interest-item .display {
+    order: 1;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .interest-item .info {
+    order: 2;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .interest-list {
+    margin-top: 8rem; /* Adjust for navbar height */
+    padding: 1rem;
+    box-sizing: border-box;
   }
 }
 
