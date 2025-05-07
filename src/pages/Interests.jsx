@@ -7,6 +7,7 @@ function Interests() {
             <div className="project">
                 <div className="display">
                     <h1>Hockey</h1>
+                    <h3>Check out my team guessing game! Guess my favourite NHL teams!</h3>
                     <TeamGuessingGame />
                 </div>
                 <div className="info">
