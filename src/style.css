@@ -168,21 +168,31 @@ button:focus-visible {
   }
 }
 
-.project
-{
+.project {
   align-content: center;
   justify-content: space-between;
   align-items: stretch;
-  width:100%;
-  display:flex;
+  width: 100%;
+  display: flex;
   margin-bottom: 20px;
   gap: 0;
+  background-color: #6A1A1A; /* Card background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  border-left: 5px solid #FF8C69; /* Accent border */
 }
 
 .project-list {
   margin-top: 5rem;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-width: 300px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .home {
@@ -468,6 +478,44 @@ li {
 .tremble-letter:nth-child(11) { --letter-index: 10; }
 .tremble-letter:nth-child(12) { --letter-index: 11; }
 
+.sort-dropdown {
+  width: 220px; /* Fixed width instead of auto */
+  min-width: 220px;
+  height: 50px;
+  border: 2px solid #646cff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+  background: rgba(100, 108, 255, 0.1);
+  cursor: pointer;
+  margin: 1em auto;
+  padding: 0 1em;
+}
+
+.sort-dropdown:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(100, 108, 255, 0.2);
+  border-color: #535bf2;
+}
+
+/* The span that displays the current sort selection */
+.sort-dropdown-label-display {
+  color: rgba(255, 255, 255, 0.87);
+  font-size: 1rem; /* Match .team-name */
+  font-weight: 500; /* Match .team-name */
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.sort-dropdown:hover .sort-dropdown-label-display {
+    color: #ffffff; /* Text color on hover, similar to .custom-checkbox.checked .team-name */
+}
+
+/* Remove old .sort-dropdown label and select specific styles if they conflict */
+
 .poker-red {
     color: #ff0000;
     display: inline-block;
@@ -480,8 +528,169 @@ li {
 
 .no-select {
   user-select: none;
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  cursor: default;
 }
+
+.experience-container {
+  width: 80vw !important; /* Responsive width based on viewport */
+  max-width: 800px !important; /* Maximum width on larger screens */
+  min-width: 300px !important; /* Minimum width on smaller screens */
+  margin: 0 auto;
+  display: block;
+  position: relative;
+}
+
+.job-experience {
+  background-color: #6A1A1A;
+  border-left: 5px solid #FF8C69;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+  
+  /* Responsive width that matches container */
+  box-sizing: border-box;
+  width: 100% !important; /* Take full width of parent container */
+  margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  /* Removed the align-items: center that was affecting all cards */
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.job-title {
+  font-size: 1.5em;
+  color: #FFFFFF;
+  margin: 0;
+  flex: 1; /* Take available space */
+  text-align: left;
+  padding-right: 10px;
+}
+
+.job-dates {
+  font-size: 0.9em;
+  color: #F0F0F0;
+  font-style: italic;
+  white-space: nowrap; /* Prevent date wrapping */
+  text-align: right;
+}
+
+/* Keep company name size consistent */
+.company {
+  font-size: 1.2em;
+  color: #F5F5F5;
+  margin-top: 0;
+  margin-bottom: 15px;
+  width: 100%;
+  text-align: left;
+}
+
+.duties-text {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #EAEAEA;
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+/* New Experience-specific classes */
+.experience-container .company {
+  text-align: center; /* Center only the company names in experience page */
+}
+
+.experience-container .duties-text {
+  text-align: center; /* Center only the duties text in experience page */
+}
+
+.skills-heading {
+  text-align: center;
+  color: #F5F5F5;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap; /* Allow tags to wrap to the next line */
+  justify-content: center; /* Center the skill tags within the list */
+  width: 100%; /* Make the list take the full width of its container */
+}
+
+.skill-tag {
+  background-color: #007bff; /* Updated background for better harmony */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin-right: 8px;
+  margin-bottom: 8px; /* Space between rows of tags */
+  font-size: 0.9em;
+}
+
+.experience-separator {
+  border: 0;
+  height: 1px;
+  background-color: #5A0F13; /* Darker separator, closer to page bg */
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* New interests-specific styles */
+.interest-item {
+  align-content: center;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+  gap: 0;
+  padding: 0;
+}
+
+.interest-item .display {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.interest-item .info {
+  width: 30%;
+  box-sizing: border-box;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+/* Ensure iframe is centered */
+.interest-item .info iframe {
+  margin: 0 auto;
+}
+
+/* Center text inside interest paragraphs only */
+.interest-item .info p {
+  text-align: center;
+}
+
+/* Remove the duplicate classes that were added */
+.interest-item.display, .interest-item.info {
+  display: none;
+}
+
+.interest-list {
+  margin-top: 5rem;
+  }
