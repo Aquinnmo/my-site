@@ -31,7 +31,8 @@ nav {
   width: 100%;
   left: 0;
   display: flex;
-  height: 6rem;
+  height: auto; /* Auto height instead of fixed */
+  min-height: 4rem; /* Minimum height */
   gap: 2rem;
   position: fixed;
   padding-top: 0;
@@ -41,11 +42,12 @@ nav {
   justify-content: center;
   background: linear-gradient(
     to bottom,
-    #480007 0rem,
-    #480007 4rem,
-    transparent 6rem
+    #480007 0%,
+    #480007 75%,
+    transparent 100%
   );
   z-index: 1000;
+  box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 .navbar h2 {
@@ -693,4 +695,94 @@ li {
 
 .interest-list {
   margin-top: 5rem;
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
   }
+
+  .home {
+    margin-top: 8rem; /* Adjusted to account for multi-line navbar */
+    width: 100%;
+    min-width: 100%;
+    padding: 1rem; /* Add padding for better spacing */
+    box-sizing: border-box; /* Ensure padding is included in width */
+  }
+
+  .navbar {
+    flex-wrap: wrap; /* Allow navbar items to wrap to multiple lines */
+    height: auto; /* Adjust height to fit content */
+    padding: 0.25rem; /* Reduce padding for better spacing */
+    justify-content: center; /* Center items on smaller screens */
+    box-sizing: border-box; /* Prevent overflow due to padding */
+    gap: 0.5rem; /* Reduce spacing between items */
+    background: #480007; /* Solid background instead of gradient */
+    background: linear-gradient(
+      to bottom,
+      #480007 0%,
+      #480007 85%,
+      transparent 100%
+    );
+    position: fixed; /* Maintain fixed position on mobile */
+    top: 0; /* Keep at top of screen */
+    left: 0; /* Ensure full width alignment */
+    width: 100%; /* Take up full width */
+    /* Use solid background for better visibility */
+    background: #480007;
+    /* Add drop shadow for visual separation */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar a {
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar h2 {
+    flex-basis: 100%; /* Make headings take full width */
+    text-align: center; /* Center align headings */
+    margin-bottom: 0.5rem; /* Reduce spacing between lines */
+    margin: 0.25rem 0.5rem;
+    padding: 0;
+    font-size: 1.2rem; /* Smaller text */
+    line-height: 1.2;
+  }
+
+  .project-list {
+    margin-top: 8rem; /* Also adjust this to account for larger navbar */
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box; /* Prevent overflow due to padding */
+  }
+
+  .logo {
+    height: 4em; /* Scale down logo size */
+    padding: 0.5em; /* Adjust padding */
+  }
+
+  .project {
+    flex-direction: column; /* Stack project items vertically */
+    align-items: center; /* Center align items */
+    padding: 1rem; /* Adjust padding */
+    box-sizing: border-box; /* Prevent overflow due to padding */
+  }
+
+  .languages, .display, .info {
+    width: 100%; /* Make sections take full width */
+    padding: 1rem; /* Adjust padding */
+    box-sizing: border-box; /* Prevent overflow due to padding */
+  }
+
+  .team-guess-input {
+    width: 90%; /* Adjust input width */
+    font-size: 0.9rem; /* Adjust font size */
+    box-sizing: border-box; /* Prevent overflow due to padding */
+  }
+
+  .guess-button {
+    font-size: 0.9rem; /* Adjust button font size */
+    padding: 0.4rem 0.8rem; /* Adjust padding */
+    box-sizing: border-box; /* Prevent overflow due to padding */
+  }
+}

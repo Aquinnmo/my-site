@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TeamGuessingGame from "../components/TeamGuessingGame";
 
 function Interests() {
+    // Add state to track navbar height
+    const [navbarHeight, setNavbarHeight] = useState(0);
+    // Additional offset for gradient fade effect
+    const gradientOffset = 20;
+
+    // Effect to measure navbar height and update state
+    useEffect(() => {
+        const updateNavbarHeight = () => {
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                setNavbarHeight(navbar.offsetHeight);
+            }
+        };
+
+        // Initial measurement
+        updateNavbarHeight();
+
+        // Update on window resize
+        window.addEventListener('resize', updateNavbarHeight);
+        
+        // Cleanup listener
+        return () => window.removeEventListener('resize', updateNavbarHeight);
+    }, []);
+
     return (
-        <div className="interest-list">
+        <div className="interest-list" style={{ marginTop: `${navbarHeight + gradientOffset}px` }}>
             <div className="interest-item">
                 <div className="display">
                     <h1>Hockey</h1>

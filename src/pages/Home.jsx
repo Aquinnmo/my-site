@@ -1,14 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from 'react'; 
 import '../style.css';
 import githubLogo from '/github_logo.svg';
 import linkedInLogo from '/LinkedIn_icon.svg';
 import emailIcon from '/email_icon.svg';
 import Rotating_Description from "../components/Rotating_Description.jsx";
 import Counter from "../components/Counter";
+import { Link } from "react-router-dom";
 
 function Home() {
+    // Add state to track navbar height
+    const [navbarHeight, setNavbarHeight] = useState(0);
+    // Additional offset for gradient fade effect
+    const gradientOffset = 20;
+
+    // Effect to measure navbar height and update state
+    useEffect(() => {
+        const updateNavbarHeight = () => {
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                setNavbarHeight(navbar.offsetHeight);
+            }
+        };
+
+        // Initial measurement
+        updateNavbarHeight();
+
+        // Update on window resize
+        window.addEventListener('resize', updateNavbarHeight);
+        
+        // Cleanup listener
+        return () => window.removeEventListener('resize', updateNavbarHeight);
+    }, []);
+
     return (
-      <div className="home">
+      <div className="home" style={{ marginTop: `${navbarHeight + gradientOffset}px` }}>
         <a href="mailto:aquinnmo@outlook.com">
           <img src={emailIcon} className="logo vanilla" alt="email" />
         </a>
@@ -106,7 +131,7 @@ function Home() {
               <img src="/cursor_logo.svg" className="tech logo vanilla" alt="Cursor" />
             </div>
         </div>
-        <p className="read-the-docs">This site was made by me! <a href="/projects#personal-site">Take a look at what I used!</a></p>
+        <p className="read-the-docs">This site was made by me! <Link to="/projects">Take a look at what I used!</Link></p>
         <br></br>
       </div>
     );

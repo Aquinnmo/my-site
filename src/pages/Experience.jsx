@@ -103,6 +103,30 @@ function Experience()
         setSortIndex((prevIndex) => (prevIndex + 1) % sortOptions.length);
     };
 
+    // Add state to track navbar height
+    const [navbarHeight, setNavbarHeight] = useState(0);
+    // Additional offset for gradient fade effect
+    const gradientOffset = 20;
+
+    // Effect to measure navbar height and update state
+    useEffect(() => {
+        const updateNavbarHeight = () => {
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                setNavbarHeight(navbar.offsetHeight);
+            }
+        };
+
+        // Initial measurement
+        updateNavbarHeight();
+
+        // Update on window resize
+        window.addEventListener('resize', updateNavbarHeight);
+        
+        // Cleanup listener
+        return () => window.removeEventListener('resize', updateNavbarHeight);
+    }, []);
+
     return (
         <div>
             <div className="project-list">
@@ -116,7 +140,7 @@ function Experience()
                 </button>
                 <br />
                 {/* Added fixed-width container wrapping all cards to maintain consistent layout */}
-                <div className="experience-container">
+                <div className="experience-container" style={{ marginTop: `${navbarHeight + gradientOffset}px` }}>
                     {filteredExperiences.map((exp, index) => (
                         <div key={index} className="job-experience">
                             <div className="job-header">
