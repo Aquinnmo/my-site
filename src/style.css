@@ -1,3 +1,5 @@
+/* Follow the colour scheme found at: https://colorhunt.co/palette/040d12183d3d5c837493b1a6 */
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -6,7 +8,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #480007;
+  background-color: #5C8374;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -42,8 +44,8 @@ nav {
   justify-content: center;
   background: linear-gradient(
     to bottom,
-    #480007 0%,
-    #480007 75%,
+    #5C8374 0%,
+    #5C8374 75%,
     transparent 100%
   );
   z-index: 1000;
@@ -51,7 +53,7 @@ nav {
 }
 
 .navbar h2 {
-  color: #5553d6;
+  color: #950101;
 }
 
 body {
@@ -135,7 +137,7 @@ h1 {
 }
 
 .read-the-docs {
-  color: #888;
+  color: #183D3D;
 }
 
 button {
@@ -145,16 +147,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #93B1A6;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border-color: #183D3D;
 }
 
 @media (prefers-color-scheme: light) {
@@ -279,7 +277,7 @@ li {
   width: 80%;
   padding: 12px 20px;
   border-radius: 25px;
-  border: 1px solid #646cff;
+  border: 1px solid #183D3D;
   background-color: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.87);
   font-size: 16px;
@@ -288,8 +286,8 @@ li {
 
 .team-guess-input:focus {
   outline: none;
-  box-shadow: 0 0 8px #646cff;
-  border-color: #535bf2;
+  box-shadow: 0 0 8px #183D3D;
+  border-color: #183D3D;
 }
 
 .team-guess-input::placeholder {
@@ -331,7 +329,7 @@ li {
 
 .guess-button {
   padding: 0.5rem 1rem;
-  background-color: #4CAF50;
+  background-color: #183D3D;
   color: white;
   border: none;
   border-radius: 4px;
@@ -341,7 +339,7 @@ li {
 }
 
 .guess-button:hover {
-  background-color: #45a049;
+  background-color: #93B1A6;
 }
 
 .guess-result {
@@ -360,14 +358,14 @@ li {
 .custom-checkbox {
   width: 200px;
   height: 50px;
-  border: 2px solid #646cff;
+  border: 2px solid #183D3D;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   position: relative;
-  background: rgba(100, 108, 255, 0.1);
+  background: rgba(147, 177, 166, 0.1);
   cursor: default;
 }
 
@@ -484,14 +482,14 @@ li {
   width: 220px; /* Fixed width instead of auto */
   min-width: 220px;
   height: 50px;
-  border: 2px solid #646cff;
+  border: 2px solid #183D3D;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   position: relative;
-  background: rgba(100, 108, 255, 0.1);
+  background: rgba(147, 177, 166, 0.1);
   cursor: pointer;
   margin: 1em auto;
   padding: 0 1em;
@@ -499,8 +497,8 @@ li {
 
 .sort-dropdown:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(100, 108, 255, 0.2);
-  border-color: #535bf2;
+  box-shadow: 0 5px 15px rgba(147, 177, 166, 0.5);
+  border-color: rgb(147, 177, 166);
 }
 
 /* The span that displays the current sort selection */
@@ -542,8 +540,8 @@ li {
 }
 
 .job-experience {
-  background-color: #6A1A1A;
-  border-left: 5px solid #FF8C69;
+  background-color: #183D3D;
+  border-left: 5px solid #93B1A6;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
@@ -627,13 +625,19 @@ li {
 }
 
 .skill-tag {
-  background-color: #007bff; /* Updated background for better harmony */
+  background-color: #5C8374; /* Changed from #007bff to match site theme */
   color: white;
   padding: 5px 10px;
   border-radius: 15px;
   margin-right: 8px;
   margin-bottom: 8px; /* Space between rows of tags */
   font-size: 0.9em;
+}
+
+.skill-tag:hover {
+  background-color: #5C8374; /* Add hover effect with another theme color */
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
 }
 
 .experience-separator {
@@ -740,7 +744,7 @@ li {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: #480007;
+    background: #5C8374;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     justify-content: center;
     box-sizing: border-box;
@@ -813,6 +817,10 @@ li {
     line-height: 1;
   }
 
+  .nav-link:hover {
+    color: #93B1A6; /* Change text color on hover */
+  }
+
   /* Make interest items stack vertically on mobile */
   .interest-item {
     flex-direction: column;
@@ -840,9 +848,45 @@ li {
 }
 
 .nav-link {
-  color: #5553d6;
+  color: #183D3D;
   font-size: 1.5rem;
   font-weight: bold;
   margin: 0 1rem;
   padding: 0.5rem;
+}
+
+.nav-link:hover {
+  color: #93B1A6;
+}
+
+p {
+  color: #183D3D;
+}
+
+h2 {
+  color: #183D3D;
+}
+
+h1 {
+  color: #183D3D;
+}
+
+ul {
+  color: #183D3D;
+}
+
+button {
+  color: #183D3D;
+}
+
+h3 {
+  color: #183D3D;
+}
+
+h3.different-h3 {
+  color: #EEEEEE;
+}
+
+.need-help {
+  color: #EEEEEE;
 }
