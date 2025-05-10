@@ -148,7 +148,7 @@ function Experience()
                                 <p className="job-dates">{formatDate(exp.startDate)} - {formatDate(exp.endDate)}</p>
                             </div>
                             <h2 className="company">At {exp.company}</h2>
-                            <h3>Description of Duties:</h3>
+                            <h3 className="different-h3">Description of Duties:</h3>
                             <p className="duties-text">{exp.duties}</p>
                             <h3 className="skills-heading">Key Skills:</h3>
                             <ul className="skills-list">
@@ -159,7 +159,7 @@ function Experience()
                     ))}
                 </div>
             </div>
-            <p>Need someone with this experience? <a href="mailto:aquinnmo@outlook.com" target="_blank">Contact me!</a></p>
+            <p className="need-help">Need someone with this experience? <a href="mailto:aquinnmo@outlook.com" target="_blank">Contact me!</a></p>
         </div>
     );
 }
