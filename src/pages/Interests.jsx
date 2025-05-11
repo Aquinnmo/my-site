@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TeamGuessingGame from "../components/TeamGuessingGame";
 
 function Interests() {
-    // Add state to track navbar height
+// Add state to track navbar height
     const [navbarHeight, setNavbarHeight] = useState(0);
     // Additional offset for gradient fade effect
     const gradientOffset = 20;

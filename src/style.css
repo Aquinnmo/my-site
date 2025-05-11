@@ -731,30 +731,68 @@ li {
   body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
   }
-
   .home {
-    margin-top: 8rem; /* Adjusted to account for multi-line navbar */
+    margin-top: 5rem; /* Reduced to account for mobile navbar */
     width: 100%;
     min-width: 100%;
     padding: 1rem; /* Add padding for better spacing */
     box-sizing: border-box; /* Ensure padding is included in width */
-  }
-
-  .navbar {
+  }.navbar {
     flex-wrap: wrap;
-    padding: 4px 0 5px 0; /* Increased bottom padding to 5px */
+    padding: 8px 0; /* Consistent padding */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: #5C8374;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(
+      to bottom,
+      #5C8374 0%,
+      #5C8374 75%,
+      transparent 100%
+    );
     justify-content: center;
     box-sizing: border-box;
-    gap: 0.75rem; /* Increased gap between items */
     min-height: 0;
     height: auto;
+  }
+  .mobile-menu-button {
+    margin: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.1rem;
+    width: auto;
+    background-color: rgba(147, 177, 166, 0.2);
+    color: #040D12;
+    border: 2px solid #040D12;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+  }
+  
+  .mobile-menu-button:hover {
+    background-color: #183D3D;
+    color: #93B1A6;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .mobile-menu-close {
+    font-size: 1.2rem;
+    padding: 0;
+    line-height: 1;
+  }
+  
+  .mobile-menu-links .nav-link {
+    font-size: 1.3rem;
+    padding: 0.8rem 0;
+    margin: 0.4rem 0;
+    border-bottom: 1px solid rgba(4, 13, 18, 0.2);
+    width: 100%;
+    text-align: center;
+  }
+  
+  .mobile-menu-links .nav-link:last-child {
+    border-bottom: none;
   }
 
   .navbar a {
@@ -774,10 +812,8 @@ li {
 
   nav {
     padding: 0; /* Remove any padding from the nav container */
-  }
-
-  .project-list {
-    margin-top: 8rem; /* Also adjust this to account for larger navbar */
+  }  .project-list {
+    margin-top: 5rem; /* Consistent with other page content */
     width: 100%;
     padding: 1rem;
     box-sizing: border-box; /* Prevent overflow due to padding */
@@ -848,9 +884,8 @@ li {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 0.5rem;
   }
-
   .interest-list {
-    margin-top: 8rem; /* Adjust for navbar height */
+    margin-top: 5rem; /* Consistent with other content areas */
     padding: 1rem;
     box-sizing: border-box;
   }
@@ -866,6 +901,160 @@ li {
 
 .nav-link:hover {
   color: #93B1A6;
+}
+
+/* Mobile Menu Styles */
+.mobile-menu-button {
+  background-color: transparent;
+  color: #040D12;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: 2px solid #040D12;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-button:hover {
+  background-color: rgba(147, 177, 166, 0.2);
+  transform: translateY(-2px);
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #5C8374; /* Using the same background color as the site */
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Prevent body scrolling when menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Page content fade transition */
+.page-content {
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.page-content.fade-out {
+  opacity: 0;
+}
+
+.mobile-menu {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-menu.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: #93B1A6;
+  border: 1px solid #040D12;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #040D12;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-menu-close:hover {
+  background-color: #183D3D;
+  color: #93B1A6;
+  transform: rotate(90deg);
+}
+
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.mobile-menu-links .nav-link {
+  font-size: 2rem;
+  margin: 0;
+  padding: 0.7rem 1.5rem;
+  color: #040D12;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.mobile-menu-links .nav-link:hover {
+  background-color: rgba(147, 177, 166, 0.2);
+  transform: translateY(-2px);
+}
+
+.mobile-menu-links .nav-link.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu-links .nav-link:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.mobile-menu-links .nav-link:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.mobile-menu-links .nav-link:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.mobile-menu-links .nav-link:nth-child(4) {
+  transition-delay: 0.4s;
 }
 
 h3, button, ul, h1, h2, p {

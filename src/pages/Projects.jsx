@@ -23,10 +23,11 @@ function Projects() {
         
         // Cleanup listener
         return () => window.removeEventListener('resize', updateNavbarHeight);
-    }, []);
-
+    }, []);    // Use a smaller offset on small screens
+    const effectiveOffset = window.innerWidth <= 768 ? 2 : gradientOffset;
+    
     return (
-        <div className="project-list" style={{ marginTop: `${navbarHeight + gradientOffset}px` }}>
+        <div className="project-list" style={{ marginTop: `${navbarHeight + effectiveOffset}px` }}>
             <div class="interest-list">
                 <div class="interest-item">
                     <div class="display">

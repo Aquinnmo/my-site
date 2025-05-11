@@ -38,7 +38,7 @@ function App() {
     <Router>
       <ScrollToTop /> {/* Add ScrollToTop here */}
       <Navbar />
-      <main>
+      <main className="page-content">
         <AnimatedRoutes />
       </main>
     </Router>
