@@ -24,15 +24,15 @@ function Interests() {
         
         // Cleanup listener
         return () => window.removeEventListener('resize', updateNavbarHeight);
-    }, []);
-
-    return (
+    }, []);    return (
         <div className="interest-list" style={{ marginTop: `${navbarHeight + gradientOffset}px` }}>
             <div className="interest-item">
                 <div className="display">
                     <h1>Hockey</h1>
                     <h3>Check out my team guessing game! Guess my favourite NHL teams!</h3>
-                    <TeamGuessingGame />
+                    <div className="guessing-game-container" style={{ maxWidth: '100%', overflow: 'hidden' }}>
+                        <TeamGuessingGame />
+                    </div>
                 </div>
                 <div className="info">
                     <p>I led my high school hockey team as the captain to a silver medal in the final year. I 
@@ -40,8 +40,7 @@ function Interests() {
                     </p>
                     <a href="https://www.youtube.com/watch?v=4eBoTI6_1Q8" target="_blank">Watch some of my highlights...</a>
                 </div>
-            </div>
-            <div className="interest-item">
+            </div>            <div className="interest-item">
                 <div className="display">
                     <h1>Music</h1>
                     <a href="https://open.spotify.com/user/aquinnmo?si=dde9c65268ae4d36" target="_blank"><h3>View My Spotify Profile</h3></a>
@@ -49,15 +48,17 @@ function Interests() {
                     <p>Check out my favourite playlist on the right!</p>
                 </div>
                 <div className="info">
-                    <iframe
-                        style={{ borderRadius: "12px" }}
-                        src="https://open.spotify.com/embed/playlist/0BIwrKbc2J69rarG625XF3?utm_source=generator"
-                        width="100%"
-                        height="352"
-                        frameBorder="0"
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"
-                    ></iframe>
+                    <div style={{ width: '100%', maxWidth: '100%', overflow: 'hidden' }}>
+                        <iframe
+                            style={{ borderRadius: "12px", maxWidth: '100%' }}
+                            src="https://open.spotify.com/embed/playlist/0BIwrKbc2J69rarG625XF3?utm_source=generator"
+                            width="100%"
+                            height="352"
+                            frameBorder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
+                        ></iframe>
+                    </div>
                 </div>
             </div>
         </div>

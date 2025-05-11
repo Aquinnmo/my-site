@@ -1,30 +1,34 @@
 import React, { useState, useEffect } from 'react';
 
 function Projects() {
-    // Add state to track navbar height
+    // Add state to track navbar height and window width
     const [navbarHeight, setNavbarHeight] = useState(0);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     // Additional offset for gradient fade effect
     const gradientOffset = 20;
 
     // Effect to measure navbar height and update state
     useEffect(() => {
-        const updateNavbarHeight = () => {
+        const updateMeasurements = () => {
             const navbar = document.querySelector('.navbar');
             if (navbar) {
                 setNavbarHeight(navbar.offsetHeight);
             }
+            setWindowWidth(window.innerWidth);
         };
 
         // Initial measurement
-        updateNavbarHeight();
+        updateMeasurements();
 
         // Update on window resize
-        window.addEventListener('resize', updateNavbarHeight);
+        window.addEventListener('resize', updateMeasurements);
         
         // Cleanup listener
-        return () => window.removeEventListener('resize', updateNavbarHeight);
-    }, []);    // Use a smaller offset on small screens
-    const effectiveOffset = window.innerWidth <= 768 ? 2 : gradientOffset;
+        return () => window.removeEventListener('resize', updateMeasurements);
+    }, []);
+    
+    // Use a smaller offset on small screens
+    const effectiveOffset = windowWidth <= 768 ? 2 : gradientOffset;
     
     return (
         <div className="project-list" style={{ marginTop: `${navbarHeight + effectiveOffset}px` }}>

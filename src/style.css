@@ -14,6 +14,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Prevent horizontal scrolling */
+  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 a {
@@ -63,6 +68,9 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -83,6 +91,8 @@ h1 {
   will-change: filter;
   transition: filter 300ms;
   transition: transform 0.3s ease;
+  max-width: 100%;
+  object-fit: contain;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #0077B5);
@@ -282,6 +292,8 @@ li {
   color: rgba(255, 255, 255, 0.87);
   font-size: 16px;
   transition: all 0.3s ease;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .team-guess-input:focus {
@@ -350,9 +362,12 @@ li {
 
 .team-checkbox-container {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   justify-content: center;
   margin: 1rem 0;
+  flex-wrap: wrap;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .custom-checkbox {
@@ -651,52 +666,57 @@ li {
 /* New interests-specific styles */
 .interest-item {
   align-content: center;
-  justify-content: space-between;
-  align-items: stretch;
+  justify-content: center; /* Changed from space-between to center */
+  align-items: center; /* Changed from stretch to center */
   width: 100%;
   display: flex;
   margin-bottom: 20px;
   gap: 10px;
   padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .interest-item .display {
-  width: 70%; /* Reduced from 70% to 65% to move it more to the left */
+  width: 70%; 
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  padding-left: 0;
-  padding-right: 0; /* Less padding on the right side */
+  padding: 0 1rem; /* Add horizontal padding */
+  margin: 0 auto; /* Center with auto margins */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .interest-item .info {
-  width: 30%; /* Increased from 30% to 35% to fill the excess space */
+  width: 30%;
   box-sizing: border-box;
-  padding: 0;
-  padding-left: 1rem; /* Less padding on the left side */
+  padding: 0 1rem; /* Add horizontal padding */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0;
+  margin: 0 auto; /* Center with auto margins */
+  text-align: center;
 }
 
 /* Logo grid for the display section to fit 4 logos in a row */
 .interest-item .display .logo-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns for logos */
-  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Responsive grid layout */
+  grid-gap: 0.5rem;
   width: 100%;
   justify-items: center;
   align-items: center;
   margin: 1rem 0;
   max-width: 100%; /* Ensure grid doesn't exceed parent width */
   box-sizing: border-box; /* Include padding in width calculation */
+  overflow-x: hidden;
 }
 
 /* Ensure iframe is centered */
@@ -725,6 +745,9 @@ li {
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 @media (max-width: 768px) {
@@ -818,10 +841,11 @@ li {
     padding: 1rem;
     box-sizing: border-box; /* Prevent overflow due to padding */
   }
-
   .logo {
-    height: 4em; /* Scale down logo size */
-    padding: 0.5em; /* Adjust padding */
+    height: 3.5em; /* Scale down logo size further */
+    padding: 0.4em; /* Reduce padding */
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .project {
@@ -859,35 +883,77 @@ li {
 
   .nav-link:hover {
     color: #93B1A6; /* Change text color on hover */
-  }
-  /* Make interest items stack vertically on mobile */
+  }  /* Make interest items stack vertically on mobile */
   .interest-item {
     flex-direction: column;
     gap: 10px;
-  }
-
-  /* Put display above info on mobile */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding: 0 0.5rem;
+    overflow-x: hidden;
+  }  /* Put display above info on mobile */
   .interest-item .display {
     order: 1;
     width: 100%;
-    padding: 1rem;
-  }
-
-  .interest-item .info {
+    padding: 0.5rem;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto; /* Simplified margin centering */
+    max-width: 100%;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    word-break: break-word;
+  }  .interest-item .info {
     order: 2;
     width: 100%;
-    padding: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 100%;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
   }
-  
-  /* Adjust grid to 2 columns on mobile */
+    /* Adjust grid to 2 columns on mobile */
   .interest-item .display .logo-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 0.5rem;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .interest-list {
+    .interest-item .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-gap: 0.25rem;
+    justify-content: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }.interest-list {
     margin-top: 5rem; /* Consistent with other content areas */
     padding: 1rem;
     box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
