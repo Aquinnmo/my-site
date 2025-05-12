@@ -119,6 +119,9 @@ h1 {
 .logo-container {
   position: relative;
   display: inline-block;
+  justify-self: center; /* Center in grid cell */
+  align-self: center; /* Center vertically */
+  text-align: center; /* Center inner content */
 }
 
 .logo-container::after {
@@ -194,7 +197,7 @@ button:hover {
 }
 
 .project-list {
-  margin-top: 5rem;
+  margin-top: 2rem; /* Further reduced to be consistent with interest-list */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -234,6 +237,8 @@ button:hover {
 
 .tech {
   transform: scale(0.8);
+  display: block; /* Make logo a block element */
+  margin: 0 auto; /* Center horizontally */
 }
 
 .logo.tech:hover {
@@ -241,9 +246,14 @@ button:hover {
 }
 
 .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-gap: 0.8rem;
   align-items: center;
   justify-content: center;
+  justify-items: center;
   margin: auto;
+  width: 100%;
 }
 
 .info p {
@@ -709,11 +719,12 @@ li {
 .interest-item .display .logo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Responsive grid layout */
-  grid-gap: 0.5rem;
+  grid-gap: 0.8rem;
   width: 100%;
-  justify-items: center;
-  align-items: center;
-  margin: 1rem 0;
+  justify-content: center; /* Center the grid items horizontally */
+  justify-items: center; /* Center each item within its grid cell */
+  align-items: center; /* Align items vertically in the center */
+  margin: 1rem auto; /* Center the entire grid */
   max-width: 100%; /* Ensure grid doesn't exceed parent width */
   box-sizing: border-box; /* Include padding in width calculation */
   overflow-x: hidden;
@@ -736,7 +747,7 @@ li {
 }
 
 .interest-list {
-  margin-top: 5rem;
+  margin-top: 2rem; /* Further reduced to position content much closer to the navbar */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -753,35 +764,29 @@ li {
 @media (max-width: 768px) {
   body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
-  }
-  .home {
-    margin-top: 5rem; /* Reduced to account for mobile navbar */
+  }  .home {
+    margin-top: 1rem; /* Significantly reduced to align with other content areas */
     width: 100%;
     min-width: 100%;
     padding: 1rem; /* Add padding for better spacing */
     box-sizing: border-box; /* Ensure padding is included in width */
   }.navbar {
     flex-wrap: wrap;
-    padding: 8px 0; /* Consistent padding */
+    padding: 4px 0; /* Reduced padding to make navbar more compact */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: linear-gradient(
-      to bottom,
-      #5C8374 0%,
-      #5C8374 75%,
-      transparent 100%
-    );
+    background: #5C8374; /* Changed to solid background */
     justify-content: center;
     box-sizing: border-box;
     min-height: 0;
     height: auto;
-  }
-  .mobile-menu-button {
-    margin: 0.5rem;
-    padding: 0.5rem 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added drop shadow for smaller screens */
+  }  .mobile-menu-button {
+    margin: 0.3rem;
+    padding: 0.3rem 1.2rem;
     font-size: 1.1rem;
     width: auto;
     background-color: rgba(147, 177, 166, 0.2);
@@ -836,11 +841,11 @@ li {
   nav {
     padding: 0; /* Remove any padding from the nav container */
   }  .project-list {
-    margin-top: 5rem; /* Consistent with other page content */
+    margin-top: 1rem; /* Further reduced to match interest-list */
     width: 100%;
     padding: 1rem;
     box-sizing: border-box; /* Prevent overflow due to padding */
-  }  .logo {
+  }.logo {
     height: 4em; /* Scale down logo size */
     padding: 0.5em; /* Adjust padding */
   }
@@ -923,23 +928,25 @@ li {
     word-break: break-word;
     box-sizing: border-box;
   }
-    /* Adjust grid to 2 columns on mobile */
-  .interest-item .display .logo-grid {
+    /* Adjust grid to 2 columns on mobile */  .interest-item .display .logo-grid {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0.5rem;
+    grid-gap: 0.8rem;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-  }    .interest-item .grid {
+    justify-items: center;
+    align-items: center;
+    margin: 1rem auto;
+    width: 100%;
+  }.interest-item .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
     grid-gap: 0.5rem;
     justify-content: center;
+    justify-items: center;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
   }.interest-list {
-    margin-top: 5rem; /* Consistent with other content areas */
+    margin-top: 1rem; /* Further reduced top margin to bring content much closer to menu button */
     padding: 1rem;
     box-sizing: border-box;
     margin-left: auto;
