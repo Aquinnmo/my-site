@@ -840,12 +840,9 @@ li {
     width: 100%;
     padding: 1rem;
     box-sizing: border-box; /* Prevent overflow due to padding */
-  }
-  .logo {
-    height: 3.5em; /* Scale down logo size further */
-    padding: 0.4em; /* Reduce padding */
-    max-width: 100%;
-    box-sizing: border-box;
+  }  .logo {
+    height: 4em; /* Scale down logo size */
+    padding: 0.5em; /* Adjust padding */
   }
 
   .project {
@@ -933,18 +930,14 @@ li {
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-  }
-    .interest-item .grid {
+  }    .interest-item .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-    grid-gap: 0.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    grid-gap: 0.5rem;
     justify-content: center;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    max-width: 100%;
-    overflow-x: hidden;
-    box-sizing: border-box;
   }.interest-list {
     margin-top: 5rem; /* Consistent with other content areas */
     padding: 1rem;
