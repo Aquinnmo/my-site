@@ -125,12 +125,23 @@ function Experience()
         
         // Cleanup listener
         return () => window.removeEventListener('resize', updateNavbarHeight);
+    }, []);    // Use a smaller offset on small screens
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const effectiveOffset = windowWidth <= 768 ? 2 : gradientOffset;
+
+    // Update window width on resize
+    useEffect(() => {
+        const updateWindowWidth = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', updateWindowWidth);
+        return () => window.removeEventListener('resize', updateWindowWidth);
     }, []);
 
     return (
         <div>
-            <div className="project-list">
-                <br />
+            <div className="project-list" style={{ marginTop: `${navbarHeight + effectiveOffset}px` }}>
                 <button 
                     className="sort-dropdown" // Keep class for styling, but it's a button now
                     onClick={handleSortClick}
@@ -139,8 +150,8 @@ function Experience()
                     <span className="sort-dropdown-label-display">Sort by: {displayValue}</span>
                 </button>
                 <br />
-                {/* Added fixed-width container wrapping all cards to maintain consistent layout */}
-                <div className="experience-container" style={{ marginTop: `${navbarHeight + gradientOffset}px` }}>
+                {/* Fixed-width container wrapping all cards to maintain consistent layout */}
+                <div className="experience-container">
                     {filteredExperiences.map((exp, index) => (
                         <div key={index} className="job-experience">
                             <div className="job-header">
