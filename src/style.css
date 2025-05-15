@@ -822,12 +822,16 @@ li {
 
 /* PROJECTS PAGE LOGO GRID - DESKTOP */
 .projects-logo-grid {
-  width: 50%;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-gap: 0.8rem;
+  width: 100%; /* Fill the width of the parent .display */
+  max-width: 100%;
   justify-content: center;
-  gap: 0.5rem;
+  justify-items: center;
+  align-items: center;
+  margin: 1rem auto;
+  box-sizing: border-box;
 }
 
 /* Only affect logo grid on Projects page, not Home */
@@ -845,15 +849,17 @@ li {
   .projects-logo-grid {
     width: 100%;
     margin: auto;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.5rem;
     justify-content: center;
-    gap: 0.25rem;
+    justify-items: center;
+    align-items: center;
     padding: 0.5rem 0;
+    box-sizing: border-box;
   }
   .projects-logo-grid .logo-container {
     margin: 0.15rem 0.2rem;
-    /* Optionally adjust logo size for mobile */
   }
 }
 
