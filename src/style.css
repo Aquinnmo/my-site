@@ -14,6 +14,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Prevent horizontal scrolling */
+  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 a {
@@ -63,6 +68,9 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -83,6 +91,8 @@ h1 {
   will-change: filter;
   transition: filter 300ms;
   transition: transform 0.3s ease;
+  max-width: 100%;
+  object-fit: contain;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #0077B5);
@@ -109,6 +119,9 @@ h1 {
 .logo-container {
   position: relative;
   display: inline-block;
+  justify-self: center; /* Center in grid cell */
+  align-self: center; /* Center vertically */
+  text-align: center; /* Center inner content */
 }
 
 .logo-container::after {
@@ -184,7 +197,7 @@ button:hover {
 }
 
 .project-list {
-  margin-top: 5rem;
+  margin-top: 2rem; /* Further reduced to be consistent with interest-list */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -224,6 +237,8 @@ button:hover {
 
 .tech {
   transform: scale(0.8);
+  display: block; /* Make logo a block element */
+  margin: 0 auto; /* Center horizontally */
 }
 
 .logo.tech:hover {
@@ -231,9 +246,14 @@ button:hover {
 }
 
 .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-gap: 0.8rem;
   align-items: center;
   justify-content: center;
+  justify-items: center;
   margin: auto;
+  width: 100%;
 }
 
 .info p {
@@ -282,6 +302,8 @@ li {
   color: rgba(255, 255, 255, 0.87);
   font-size: 16px;
   transition: all 0.3s ease;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .team-guess-input:focus {
@@ -350,9 +372,12 @@ li {
 
 .team-checkbox-container {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   justify-content: center;
   margin: 1rem 0;
+  flex-wrap: wrap;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .custom-checkbox {
@@ -526,6 +551,56 @@ li {
     display: inline-block;
 }
 
+/* Ensure poker heading spans move as a group on small screens */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  /* Prevent h1 words from breaking across lines on small screens - apply more forceful styling */
+  .interest-item .display h1,
+  .display h1 {
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+    font-size: 2.5em; /* Slightly reduce font size on mobile */
+  }
+  
+  /* Special handling for h1s with multiple spans (like Poker Chip Project) */
+  .display h1 span {
+    display: inline-block;
+  }
+  
+  /* Make sure all spans in span-based headings move together */
+  .interest-item .display h1,
+  .display h1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Adjust spacing for better small screen appearance */
+  .display h1 span {
+    margin-right: -1px;
+  }
+  
+  .home {
+    margin-top: 1rem; /* Significantly reduced to align with other content areas */
+    width: 100%;
+    min-width: 100%;
+    padding: 1rem; /* Add padding for better spacing */
+    box-sizing: border-box; /* Ensure padding is included in width */
+  }
+  
+  /* Force "Poker" and "Chip" and "Project" to stay together */
+  h1 .poker-red:nth-child(6),   /* space after "Poker" */
+  h1 .poker-red:nth-child(11) { /* space after "Chip" */
+    display: inline-block;
+    white-space: pre-wrap;
+  }
+}
+
 .no-select {
   user-select: none;
 }
@@ -651,52 +726,67 @@ li {
 /* New interests-specific styles */
 .interest-item {
   align-content: center;
-  justify-content: space-between;
-  align-items: stretch;
+  justify-content: center; /* Changed from space-between to center */
+  align-items: center; /* Changed from stretch to center */
   width: 100%;
   display: flex;
   margin-bottom: 20px;
   gap: 10px;
   padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .interest-item .display {
-  width: 70%; /* Reduced from 70% to 65% to move it more to the left */
+  width: 70%; 
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  padding-left: 0;
-  padding-right: 0; /* Less padding on the right side */
+  padding: 0 1rem; /* Add horizontal padding */
+  margin: 0 auto; /* Center with auto margins */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Prevent words from breaking across lines in headings */
+.interest-item .display h1,
+.display h1 {
+  overflow-wrap: normal;
+  word-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
 }
 
 .interest-item .info {
-  width: 30%; /* Increased from 30% to 35% to fill the excess space */
+  width: 30%;
   box-sizing: border-box;
-  padding: 0;
-  padding-left: 1rem; /* Less padding on the left side */
+  padding: 0 1rem; /* Add horizontal padding */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0;
+  margin: 0 auto; /* Center with auto margins */
+  text-align: center;
 }
 
 /* Logo grid for the display section to fit 4 logos in a row */
 .interest-item .display .logo-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns for logos */
-  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Responsive grid layout */
+  grid-gap: 0.8rem;
   width: 100%;
-  justify-items: center;
-  align-items: center;
-  margin: 1rem 0;
+  justify-content: center; /* Center the grid items horizontally */
+  justify-items: center; /* Center each item within its grid cell */
+  align-items: center; /* Align items vertically in the center */
+  margin: 1rem auto; /* Center the entire grid */
   max-width: 100%; /* Ensure grid doesn't exceed parent width */
   box-sizing: border-box; /* Include padding in width calculation */
+  overflow-x: hidden;
 }
 
 /* Ensure iframe is centered */
@@ -716,7 +806,7 @@ li {
 }
 
 .interest-list {
-  margin-top: 5rem;
+  margin-top: 2rem; /* Further reduced to position content much closer to the navbar */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -725,36 +815,210 @@ li {
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
+
+/* PROJECTS PAGE LOGO GRID - DESKTOP */
+.projects-logo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%; /* Fill the width of the parent .display */
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+  box-sizing: border-box;
+  gap: 1rem;
+}
+
+/* Only affect logo grid on Projects page, not Home */
+.projects-logo-grid .logo-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0.5rem;
+}
+
+/* PROJECTS PAGE LOGO GRID - MOBILE */
+@media (max-width: 768px) {
+  .projects-logo-grid {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+    gap: 0.5rem;
+  }
+  .projects-logo-grid .logo-container {
+    margin: 0.25rem;
+  }
+}
+
+/* ...existing code... */
+.home-logo-grid {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.home-logo-grid .logo-container {
+  /* identical to .languages .logo-container */
+  position: relative;
+  display: inline-block;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .home-logo-grid {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+    gap: 0.5rem;
+  }
+  .home-logo-grid .logo-container {
+    margin: 0.25rem;
+  }
+}
+
+.home-logo-grid-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .home-logo-grid {
+    display: none;
+  }
+  .home-logo-grid-mobile {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+    gap: 0.5rem;
+  }
+  .home-logo-grid-mobile .logo-container {
+    margin: 0.25rem;
+    position: relative;
+    display: inline-block;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+  }
+}
+/* ...existing code... */
 
 @media (max-width: 768px) {
   body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
   }
-
+  
+  /* Prevent h1 words from breaking across lines on small screens - apply more forceful styling */
+  .interest-item .display h1,
+  .display h1 {
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+    font-size: 2.5em; /* Slightly reduce font size on mobile */
+  }
+  
+  /* Special handling for h1s with multiple spans (like Poker Chip Project) */
+  .display h1 span {
+    display: inline-block;
+  }
+  
+  /* Make sure all spans in span-based headings move together */
+  .interest-item .display h1,
+  .display h1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Adjust spacing for better small screen appearance */
+  .display h1 span {
+    margin-right: -1px;
+  }
+  
   .home {
-    margin-top: 8rem; /* Adjusted to account for multi-line navbar */
+    margin-top: 1rem; /* Significantly reduced to align with other content areas */
     width: 100%;
     min-width: 100%;
     padding: 1rem; /* Add padding for better spacing */
     box-sizing: border-box; /* Ensure padding is included in width */
   }
-
   .navbar {
     flex-wrap: wrap;
-    padding: 4px 0 5px 0; /* Increased bottom padding to 5px */
+    padding: 4px 0; /* Reduced padding to make navbar more compact */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: #5C8374;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background: #5C8374; /* Changed to solid background */
     justify-content: center;
     box-sizing: border-box;
-    gap: 0.75rem; /* Increased gap between items */
     min-height: 0;
     height: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added drop shadow for smaller screens */
+  }  .mobile-menu-button {
+    margin: 0.3rem;
+    padding: 0.3rem 1.2rem;
+    font-size: 1.1rem;
+    width: auto;
+    background-color: rgba(147, 177, 166, 0.2);
+    color: #040D12;
+    border: 2px solid #040D12;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+  }
+  
+  .mobile-menu-button:hover {
+    background-color: #183D3D;
+    color: #93B1A6;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .mobile-menu-close {
+    font-size: 1.2rem;
+    padding: 0;
+    line-height: 1;
+  }
+  
+  .mobile-menu-links .nav-link {
+    font-size: 1.3rem;
+    padding: 0.8rem 0;
+    margin: 0.4rem 0;
+    border-bottom: 1px solid rgba(4, 13, 18, 0.2);
+    width: 100%;
+    text-align: center;
+  }
+  
+  .mobile-menu-links .nav-link:last-child {
+    border-bottom: none;
   }
 
   .navbar a {
@@ -774,16 +1038,12 @@ li {
 
   nav {
     padding: 0; /* Remove any padding from the nav container */
-  }
-
-  .project-list {
-    margin-top: 8rem; /* Also adjust this to account for larger navbar */
+  }  .project-list {
+    margin-top: 1rem; /* Further reduced to match interest-list */
     width: 100%;
     padding: 1rem;
     box-sizing: border-box; /* Prevent overflow due to padding */
-  }
-
-  .logo {
+  }.logo {
     height: 4em; /* Scale down logo size */
     padding: 0.5em; /* Adjust padding */
   }
@@ -823,36 +1083,75 @@ li {
 
   .nav-link:hover {
     color: #93B1A6; /* Change text color on hover */
-  }
-  /* Make interest items stack vertically on mobile */
+  }  /* Make interest items stack vertically on mobile */
   .interest-item {
     flex-direction: column;
     gap: 10px;
-  }
-
-  /* Put display above info on mobile */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding: 0 0.5rem;
+    overflow-x: hidden;
+  }  /* Put display above info on mobile */
   .interest-item .display {
     order: 1;
     width: 100%;
-    padding: 1rem;
-  }
-
-  .interest-item .info {
+    padding: 0.5rem;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto; /* Simplified margin centering */
+    max-width: 100%;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    word-break: break-word;
+  }  .interest-item .info {
     order: 2;
     width: 100%;
-    padding: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 100%;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
   }
-  
-  /* Adjust grid to 2 columns on mobile */
-  .interest-item .display .logo-grid {
+    /* Adjust grid to 2 columns on mobile */  .interest-item .display .logo-grid {
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.8rem;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    margin: 1rem auto;
+    width: 100%;
+  }.interest-item .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
     grid-gap: 0.5rem;
-  }
-
-  .interest-list {
-    margin-top: 8rem; /* Adjust for navbar height */
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }.interest-list {
+    margin-top: 1rem; /* Further reduced top margin to bring content much closer to menu button */
     padding: 1rem;
     box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -866,6 +1165,159 @@ li {
 
 .nav-link:hover {
   color: #93B1A6;
+}
+
+/* Mobile Menu Styles */
+.mobile-menu-button {
+  background-color: transparent;
+  color: #040D12;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: 2px solid #040D12;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-button:hover {
+  background-color: rgba(147, 177, 166, 0.2);
+  transform: translateY(-2px);
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #5C8374; /* Using the same background color as the site */
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Prevent body scrolling when menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Page content fade transition */
+.page-content {
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.page-content.fade-out {
+  opacity: 0;
+}
+
+.mobile-menu {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-menu.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.mobile-menu-close {
+  position: relative;
+  margin: 0 auto 1rem auto;
+  background: #5C8374;
+  border: 2px solid #040D12;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #040D12;
+  cursor: pointer;
+  width: auto;
+  padding: 0.7rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-menu-close:hover {
+  background-color: rgba(147, 177, 166, 0.2);
+  color: #040D12;
+  transform: translateY(-2px);
+}
+
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.mobile-menu-links .nav-link {
+  font-size: 2rem;
+  margin: 0;
+  padding: 0.7rem 1.5rem;
+  color: #040D12;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.mobile-menu-links .nav-link:hover {
+  background-color: rgba(147, 177, 166, 0.2);
+  transform: translateY(-2px);
+}
+
+.mobile-menu-links .nav-link.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu-links .nav-link:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.mobile-menu-links .nav-link:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.mobile-menu-links .nav-link:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.mobile-menu-links .nav-link:nth-child(4) {
+  transition-delay: 0.4s;
 }
 
 h3, button, ul, h1, h2, p {
