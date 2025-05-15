@@ -861,6 +861,73 @@ li {
   }
 }
 
+/* ...existing code... */
+.home-logo-grid {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.home-logo-grid .logo-container {
+  /* identical to .languages .logo-container */
+  position: relative;
+  display: inline-block;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .home-logo-grid {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+    gap: 0.5rem;
+  }
+  .home-logo-grid .logo-container {
+    margin: 0.25rem;
+  }
+}
+
+.home-logo-grid-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .home-logo-grid {
+    display: none;
+  }
+  .home-logo-grid-mobile {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+    gap: 0.5rem;
+  }
+  .home-logo-grid-mobile .logo-container {
+    margin: 0.25rem;
+    position: relative;
+    display: inline-block;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+  }
+}
+/* ...existing code... */
+
 @media (max-width: 768px) {
   body {
     overflow-x: hidden; /* Prevent horizontal scrolling */

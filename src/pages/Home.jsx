@@ -60,10 +60,11 @@ function Home() {
   
         <div className="card">
           <Counter />
-        </div>        <h2>Some languages, frameworks, and tools I use:</h2>
-        
+        </div>
+  
+        <h2>Some languages, frameworks, and tools I use:</h2>
         {/* Desktop version of the logo grid */}
-        <div className="languages-desktop no-select">
+        <div className="home-logo-grid no-select">
             <div className="logo-container" data-tooltip="Java">
               <img src="/java_logo.svg" className="logo fire" alt="Java" />
             </div>
@@ -131,9 +132,8 @@ function Home() {
               <img src="/cursor_logo.svg" className="tech logo vanilla" alt="Cursor" />
             </div>
         </div>
-        
         {/* Mobile version of the logo grid - same content but with different styling */}
-        <div className="languages-mobile no-select">
+        <div className="home-logo-grid-mobile no-select">
             <div className="logo-container" data-tooltip="Java">
               <img src="/java_logo.svg" className="logo fire" alt="Java" />
             </div>
