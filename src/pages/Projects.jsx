@@ -49,7 +49,7 @@ function Projects() {
                             <span className="trembling-letter">d</span>
                             <span className="trembling-letter">?</span>
                         </h1>                        <h3>Built With:</h3>
-                        <div className="languages no-select">
+                        <div className="languages no-select projects-logo-grid">
                             <div className="logo-container" data-tooltip="React">
                                 <img src="/react_logo.svg" className="logo vite" alt="React" />
                             </div>
@@ -131,7 +131,7 @@ function Projects() {
                             <span className="poker-red">c</span>
                             <span className="poker-black">t</span>                        </h1>
                         <h3>Built With:</h3>
-                        <div className="languages no-select">
+                        <div className="languages no-select projects-logo-grid">
                             <div className="logo-container" data-tooltip="Django">
                                 <img src="/django_logo.svg" className="logo django" alt="Django" />
                             </div>                            <div className="logo-container" data-tooltip="Python">
@@ -156,7 +156,7 @@ function Projects() {
                 <div class="interest-item" id="personal-site">
                     <div class="display">                        <h1>adam-montgomery.ca</h1>
                         <h3>Built With:</h3>
-                        <div className="languages no-select">
+                        <div className="languages no-select projects-logo-grid">
                             <div className="logo-container" data-tooltip="React">
                                 <img src="/react_logo.svg" className="logo vite" alt="React" />
                             </div>                            <div className="logo-container" data-tooltip="CSS">
@@ -183,7 +183,7 @@ function Projects() {
                 <div class="interest-item">
                     <div class="display">                        <h1>Brick Breaker</h1>
                         <h3>Built With:</h3>
-                        <div className="languages no-select">
+                        <div className="languages no-select projects-logo-grid">
                             <div className="logo-container" data-tooltip="Java">
                                 <img src="/java_logo.svg" className="logo fire" alt="Java" />
                             </div>                            <div className="logo-container" data-tooltip="Git">
@@ -207,7 +207,7 @@ function Projects() {
                 <div class="interest-item">
                     <div class="display">                        <h1>Tic-Tac-Toe</h1>
                         <h3>Built With:</h3>
-                        <div className="languages no-select">
+                        <div className="languages no-select projects-logo-grid">
                             <div className="logo-container" data-tooltip="Java">
                                 <img src="/java_logo.svg" className="logo fire" alt="Java" />
                             </div>
