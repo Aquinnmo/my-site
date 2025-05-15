@@ -551,6 +551,56 @@ li {
     display: inline-block;
 }
 
+/* Ensure poker heading spans move as a group on small screens */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  /* Prevent h1 words from breaking across lines on small screens - apply more forceful styling */
+  .interest-item .display h1,
+  .display h1 {
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+    font-size: 2.5em; /* Slightly reduce font size on mobile */
+  }
+  
+  /* Special handling for h1s with multiple spans (like Poker Chip Project) */
+  .display h1 span {
+    display: inline-block;
+  }
+  
+  /* Make sure all spans in span-based headings move together */
+  .interest-item .display h1,
+  .display h1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Adjust spacing for better small screen appearance */
+  .display h1 span {
+    margin-right: -1px;
+  }
+  
+  .home {
+    margin-top: 1rem; /* Significantly reduced to align with other content areas */
+    width: 100%;
+    min-width: 100%;
+    padding: 1rem; /* Add padding for better spacing */
+    box-sizing: border-box; /* Ensure padding is included in width */
+  }
+  
+  /* Force "Poker" and "Chip" and "Project" to stay together */
+  h1 .poker-red:nth-child(6),   /* space after "Poker" */
+  h1 .poker-red:nth-child(11) { /* space after "Chip" */
+    display: inline-block;
+    white-space: pre-wrap;
+  }
+}
+
 .no-select {
   user-select: none;
 }
@@ -703,6 +753,15 @@ li {
   word-wrap: break-word;
 }
 
+/* Prevent words from breaking across lines in headings */
+.interest-item .display h1,
+.display h1 {
+  overflow-wrap: normal;
+  word-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
+}
+
 .interest-item .info {
   width: 30%;
   box-sizing: border-box;
@@ -764,13 +823,44 @@ li {
 @media (max-width: 768px) {
   body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
-  }  .home {
+  }
+  
+  /* Prevent h1 words from breaking across lines on small screens - apply more forceful styling */
+  .interest-item .display h1,
+  .display h1 {
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+    font-size: 2.5em; /* Slightly reduce font size on mobile */
+  }
+  
+  /* Special handling for h1s with multiple spans (like Poker Chip Project) */
+  .display h1 span {
+    display: inline-block;
+  }
+  
+  /* Make sure all spans in span-based headings move together */
+  .interest-item .display h1,
+  .display h1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Adjust spacing for better small screen appearance */
+  .display h1 span {
+    margin-right: -1px;
+  }
+  
+  .home {
     margin-top: 1rem; /* Significantly reduced to align with other content areas */
     width: 100%;
     min-width: 100%;
     padding: 1rem; /* Add padding for better spacing */
     box-sizing: border-box; /* Ensure padding is included in width */
-  }.navbar {
+  }
+  .navbar {
     flex-wrap: wrap;
     padding: 4px 0; /* Reduced padding to make navbar more compact */
     position: fixed;
