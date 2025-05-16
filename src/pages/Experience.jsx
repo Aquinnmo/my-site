@@ -15,7 +15,7 @@ const experiencesData = [
         company: "University of Guelph School of Computing and Information Science",
         duties: "I was elected to communicate with other clubs at the university next year. I will make sure that Computer Science events are organized and well run. I will lead the clubs to more effective collaboration to improve the overall student experience.",
         skills: ["Communication", "Organization Skills", "Time Management", "Leadership", "Collaboration"],
-        category: "citizenship",
+        category: "leadership",
         startDate: "2025-04-01",
         endDate: null
     },
@@ -24,7 +24,7 @@ const experiencesData = [
         company: "the University of Guelph",
         duties: "Next year, I will be entrusted with ensuring sports games are safe and engaging for all fans that attend. I will also be tasked with crowd control making sure everyone has a fun experience that doesn’t get out of control.",
         skills: ["Enthusiasm", "School Spirit", "Teamwork"],
-        category: "citizenship",
+        category: "customer service",
         startDate: "2025-04-01",
         endDate: null
     },
@@ -41,7 +41,7 @@ const experiencesData = [
         title: "Host",
         company: "Montana's Barrie",
         duties: `I proactively managed the flow of customers into the restaurant, reducing wait times and maximizing seating efficiency while ensuring no server’s section was overlooked. I checked in with servers frequently to help me reduce their stress by managing their workload to meet their expectations.`,
-        skills: ["Communication", "Attention to Detail"],
+        skills: ["Communication", "Attention to Detail", "Customer Service", "Fast-Paced Decision Making"],
         category: "customer service",
         startDate: "2023-03-01",
         endDate: "2024-05-30"
@@ -54,6 +54,33 @@ const experiencesData = [
         category: "customer service",
         startDate: "2023-06-01",
         endDate: "2024-08-30"
+    },
+    {
+        title: "Student Council - Social Rep",
+        company: "Country Day School",
+        duties: `I was elected to represent the student body on student council. I organized events and advocated for building school spirit.`,
+        skills: ["Communication", "Organization", "Approachability", "Leadership"],
+        category: "leadership",
+        startDate: "2023-06-01",
+        endDate: "2024-06-30"
+    },
+    {
+        title: "Varsity Hockey Team Captain",
+        company: "Country Day School",
+        duties: `I captained the hockey team to the divisional championship where we earned a silver medal. I managed personalities in the locker room, ensured everyone was performing at their best, and was a role model for many of our younger players.`,
+        skills: ["Leadership", "High Pressure Scenarios", "Leading By Example", "Teamwork", "Discipline"],
+        category: "leadership",
+        startDate: "2023-10-01",
+        endDate: "2024-03-30"
+    },
+    {
+        title: "Student Athletic Representative",
+        company: "Country Day School",
+        duties: `I worked with the school's athletic director to organize workshops for student athletes. This included lectures for older students and more unique experiences for students in elementary and middle school. I attended practices to show what it means to be a leader within the community.`,
+        skills: ["Leadership", "Communication", "Organization", "Planning", "Engagement"],
+        category: "leadership",
+        startDate: "2023-04-01",
+        endDate: "2024-06-30"
     }
 ];
 
@@ -71,7 +98,7 @@ const sortOptions = [
     { value: "all", label: "All" },
     { value: "programming", label: "Programming" },
     { value: "customer service", label: "Customer Service" },
-    { value: "citizenship", label: "Citizenship" }
+    { value: "leadership", label: "Leadership" }
 ];
 
 function Experience() 
@@ -170,7 +197,7 @@ function Experience()
                     ))}
                 </div>
             </div>
-            <p className="need-help">Need someone with this experience? <a href="mailto:aquinnmo@outlook.com" target="_blank">Contact me!</a></p>
+            <p className="need-help">Need someone with this experience? <a href="/adam_montgomery_resume.pdf" target="_blank" rel="noopener noreferrer">Contact me!</a></p>
         </div>
     );
 }

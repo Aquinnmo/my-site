@@ -178,6 +178,7 @@ function Projects() {
                     </div>
                     <div class="info">
                         <p style={{textAlign:'center'}}>Well what do you think?</p>
+                        <a href='/adam_montgomery_resume.pdf' target='_blank' rel='noopener noreferrer'>Contact me if you have a suggestion!</a>
                     </div>
                 </div>
                 <div class="interest-item">

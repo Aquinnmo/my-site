@@ -27,7 +27,7 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #183D3D;
+  color: #040D12;
 }
 
 nav {
@@ -1326,4 +1326,14 @@ h3, button, ul, h1, h2, p {
 
 h3.different-h3 {
   color: #EEEEEE;
+}
+
+.header-link {
+  font-weight: 500;
+  color: #93B1A6;
+  text-decoration: inherit;
+}
+
+.header-link:hover {
+  color: #040D12;
 }

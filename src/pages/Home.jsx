@@ -34,8 +34,8 @@ function Home() {
 
     return (
       <div className="home" style={{ marginTop: `${navbarHeight + gradientOffset}px` }}>
-        <a href="mailto:aquinnmo@outlook.com">
-          <img src={emailIcon} className="logo vanilla" alt="email" />
+        <a href='/adam_montgomery_resume.pdf' target='_blank' rel='noopener noreferrer'>
+          <img src="pdf_icon.svg" className="logo vanilla" alt="Resume" />
         </a>
         <a
           href="https://linkedin.com/in/adam-montgomery-05a936315"
