@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../style.css';
 import githubLogo from '/github_logo.svg';
 import linkedInLogo from '/LinkedIn_icon.svg';
-import emailIcon from '/email_icon.svg';
 import Rotating_Description from "../components/Rotating_Description.jsx";
-import Counter from "../components/Counter";
+import Button from "../components/Button.jsx";
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -59,7 +58,7 @@ function Home() {
         </div>
   
         <div className="card">
-          <Counter />
+          <Button />
         </div>
   
         <h2>Some languages, frameworks, and tools I use:</h2>

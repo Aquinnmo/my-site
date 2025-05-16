@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Description from './Description';
 
-const Counter = () => {
+const Button = () => {
   const [counter, setCounter] = useState(0);
   
   const handleClick = () => {
@@ -12,11 +12,11 @@ const Counter = () => {
   return (
     <div className="counter-container">
       <button onClick={handleClick}>
-        {counter === 0 ? 'View Expanded Description' : 'View Concise Description'}
+        {counter === 0 ? 'Click for Expanded Description' : 'Click for Concise Description'}
       </button>
       <Description counter={counter} />
     </div>
   );
 };
 
-export default Counter;
+export default Button;
