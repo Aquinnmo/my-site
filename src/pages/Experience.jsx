@@ -12,7 +12,7 @@ const experiencesData = [
     },
     {
         title: "Vice-President of External Affairs",
-        company: "University of Guelph School of Computing and Information Science",
+        company: "University of Guelph Society of Computing and Information Science",
         duties: "I was elected to communicate with other clubs at the university next year. I will make sure that Computer Science events are organized and well run. I will lead the clubs to more effective collaboration to improve the overall student experience.",
         skills: ["Communication", "Organization Skills", "Time Management", "Leadership", "Collaboration"],
         category: "leadership",
