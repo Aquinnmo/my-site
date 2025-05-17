@@ -859,6 +859,21 @@ li {
   .projects-logo-grid .logo-container {
     margin: 0.25rem;
   }
+
+  .sports-logo-grid {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+    gap: 0.5rem;
+  }
+  .sports-logo-grid .logo-container {
+    margin: 0.25rem;
+  }
 }
 
 /* ...existing code... */
@@ -1336,4 +1351,25 @@ h3.different-h3 {
 
 .header-link:hover {
   color: #040D12;
+}
+
+.sports-logo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%; /* Fill the width of the parent .display */
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+  box-sizing: border-box;
+  gap: 1rem;
+}
+
+.sports-logo-grid .logo-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0.5rem;
 }
