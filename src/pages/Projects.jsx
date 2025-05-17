@@ -33,6 +33,34 @@ function Projects() {
     return (
         <div className="project-list" style={{ marginTop: `${navbarHeight + effectiveOffset}px` }}>
             <div class="interest-list">
+                <div class="interest-item" id="personal-site">
+                    <div class="display">                        <h1>adam-montgomery.ca</h1>
+                        <h3>Built With:</h3>
+                        <div className="languages no-select projects-logo-grid">
+                            <div className="logo-container" data-tooltip="React">
+                                <img src="/react_logo.svg" className="logo vite" alt="React" />
+                            </div>                            <div className="logo-container" data-tooltip="CSS">
+                                <img src="/css_logo.svg" className="logo vite" alt="CSS" />
+                            </div><div className="logo-container" data-tooltip="JavaScript">
+                                <img src="/javascript_logo.svg" className="logo python" alt="Javascript" />
+                            </div>
+                            <div className="logo-container" data-tooltip="HTML">
+                                <img src="/html_logo.svg" className="logo fire" alt="HTML" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Git">
+                                <img src="/git_logo.svg" className="logo django" alt="Git" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Github">
+                                <img src="/github_logo.svg" className="logo vanilla" alt="Github" />
+                            </div>
+                        </div>
+                        <p>Maintained and Updated Since April 2025</p>
+                    </div>
+                    <div class="info">
+                        <p style={{textAlign:'center'}}>Well what do you think?</p>
+                        <a href='/adam_montgomery_resume.pdf' target='_blank' rel='noopener noreferrer'>Contact me if you have a suggestion!</a>
+                    </div>
+                </div>
                 <div class="interest-item">
                     <div class="display">
                         <h1 className="no-select">
@@ -104,7 +132,7 @@ function Projects() {
                             how "cooked" you are if trying to find a job. You either take a quick survey or upload you resume
                             and then you get back Google Gemini powered feedback to help with your job search.
                         </p>
-                        <a href="https://am-i-cooked-zeta.vercel.app" target="_blank">Check it out</a>
+                        <a href="https://am-i-cooked-zeta.vercel.app" target="_blank">Try it for yourself!</a>
                         <br></br>
                         <a href="https://github.com/nathan-probert/am-i-cooked" target="_blank">Check out our codebase</a>
                     </div>
@@ -151,33 +179,6 @@ function Projects() {
                         you forget or cannot afford chips. I makes the game more portable and more accessible to everyone.
                         </p>
                         <a href="https://en.wikipedia.org/wiki/Music_(Playboi_Carti_album)" target="_blank">I will update it this link to show the repo, once released.</a>
-                    </div>
-                </div>
-                <div class="interest-item" id="personal-site">
-                    <div class="display">                        <h1>adam-montgomery.ca</h1>
-                        <h3>Built With:</h3>
-                        <div className="languages no-select projects-logo-grid">
-                            <div className="logo-container" data-tooltip="React">
-                                <img src="/react_logo.svg" className="logo vite" alt="React" />
-                            </div>                            <div className="logo-container" data-tooltip="CSS">
-                                <img src="/css_logo.svg" className="logo vite" alt="CSS" />
-                            </div><div className="logo-container" data-tooltip="JavaScript">
-                                <img src="/javascript_logo.svg" className="logo python" alt="Javascript" />
-                            </div>
-                            <div className="logo-container" data-tooltip="HTML">
-                                <img src="/html_logo.svg" className="logo fire" alt="HTML" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Git">
-                                <img src="/git_logo.svg" className="logo django" alt="Git" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Github">
-                                <img src="/github_logo.svg" className="logo vanilla" alt="Github" />
-                            </div>
-                        </div>
-                        <p>Maintained and Updated Since April 2025</p>
-                    </div>
-                    <div class="info">
-                        <p style={{textAlign:'center'}}>Well what do you think?</p>
                     </div>
                 </div>
                 <div class="interest-item">

@@ -40,11 +40,12 @@ function Interests() {
                     </p>
                     <a href="https://www.youtube.com/watch?v=4eBoTI6_1Q8" target="_blank">Watch some of my highlights...</a>
                 </div>
-            </div>            <div className="interest-item">
+            </div>
+            <div className="interest-item">
                 <div className="display">
                     <h1>Music</h1>
-                    <a href="https://open.spotify.com/user/aquinnmo?si=dde9c65268ae4d36" target="_blank"><h3>View My Spotify Profile</h3></a>
-                    <a href="https://stats.fm/aquinnmo" target="_blank"><h3>View My Stats.Fm Page</h3></a>
+                    <a href="https://open.spotify.com/user/aquinnmo?si=dde9c65268ae4d36" target="_blank"><h3 className="header-link">View My Spotify Profile</h3></a>
+                    <a href="https://stats.fm/aquinnmo" target="_blank"><h3 className="header-link">View My Stats.Fm Page</h3></a>
                     <p>Check out my favourite playlist on the right!</p>
                 </div>
                 <div className="info">
@@ -59,6 +60,28 @@ function Interests() {
                             loading="lazy"
                         ></iframe>
                     </div>
+                </div>
+            </div>
+            <div className="interest-item">
+                <div className="display">
+                    <h1>Other Sports</h1>
+                    <h3>I enjoy baseball and football as well!</h3>
+                    <div className="languages no-select sports-logo-grid">
+                        <div className="logo-container" data-tooltip="Vladimir Guerrero Jr.">
+                            <img src="/vlad_27.png" alt="Vladimir Guerrero Jr." className="logo vanilla"/>
+                        </div>
+                        <div className="logo-container" data-tooltip="Josh Allen">
+                            <img src="/allen_17.png" alt="Josh Allen" className="logo vite"/>
+                        </div>
+                        <div className="logo-container" data-tooltip="Elly de la Cruz">
+                            <img src="/elly_44.png" alt="Elly de la Cruz" className="logo fire"/>
+                        </div>
+                    </div>
+                </div>
+                <div className="info">
+                    <p>I love watching sports as well as playing fantasy versions of them. I am proudly dedicated to each league I am in, and am the commissioner of multiple.
+                    </p>
+                    <a href="https://hockey.fantasysports.yahoo.com/hockey/7006" target="_blank" rel="noopener noreferrer">Check out my Yahoo Fantasy Profile</a>
                 </div>
             </div>
         </div>

@@ -15,10 +15,14 @@ const Description = ({ counter }) => {
         setContent(
           <ul>
             <li>Second year computer science co-op student at the University of Guelph</li>
-            <li>VP of External Affairs SOCIS</li>
+            <li>SOCIS VP of External Affairs</li>
             <li>University of Guelph Events Staff</li>
-            <li>Contractor for DataAnnotation</li>
-            <li>Hockey Player/Fan</li>
+            <li>AI Training Contractor for DataAnnotation</li>
+            <li>Efficient and effective communicator</li>
+            <li>Life-long team player</li>
+            <li>Natural leader that thrives in high-pressure scenarios</li>
+            <li>Loves listening to other's stories</li>
+            <li>Passionate about music</li>
           </ul>
         );
       } else {

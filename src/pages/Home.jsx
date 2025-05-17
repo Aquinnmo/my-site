@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../style.css';
 import githubLogo from '/github_logo.svg';
 import linkedInLogo from '/LinkedIn_icon.svg';
-import emailIcon from '/email_icon.svg';
 import Rotating_Description from "../components/Rotating_Description.jsx";
-import Counter from "../components/Counter";
+import Button from "../components/Button.jsx";
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -34,8 +33,8 @@ function Home() {
 
     return (
       <div className="home" style={{ marginTop: `${navbarHeight + gradientOffset}px` }}>
-        <a href="mailto:aquinnmo@outlook.com">
-          <img src={emailIcon} className="logo vanilla" alt="email" />
+        <a href='/adam_montgomery_resume.pdf' target='_blank' rel='noopener noreferrer'>
+          <img src="pdf_icon.svg" className="logo vanilla" alt="Resume" />
         </a>
         <a
           href="https://linkedin.com/in/adam-montgomery-05a936315"
@@ -59,7 +58,7 @@ function Home() {
         </div>
   
         <div className="card">
-          <Counter />
+          <Button />
         </div>
   
         <h2>Some languages, frameworks, and tools I use:</h2>
