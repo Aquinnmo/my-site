@@ -130,6 +130,9 @@ function Home() {
             <div className="logo-container" data-tooltip="Cursor">
               <img src="/cursor_logo.svg" className="tech logo vanilla" alt="Cursor" />
             </div>
+            <div className="logo-container" data-tooltip="Latex">
+              <img src="/latex_logo.svg" className="tech logo vanilla" alt="Latex" />
+            </div>
         </div>
         {/* Mobile version of the logo grid - same content but with different styling */}
         <div className="home-logo-grid-mobile no-select">
