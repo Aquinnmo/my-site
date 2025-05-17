@@ -51,18 +51,15 @@ This project uses the React Router for internal page management.
 ## License
 MIT
 
-## Next Improvements
- - Refactoring `src/style.css`
-   - break down into individual style sheets for each page for the unique components
-   - factor out reusable portions of styling to maintain consistency
- - embedding `stats.fm` profile stats
-   - either through an API pull or may need to webscrape it
-   - need to contact the `stats.fm` team about how to grab info
-   - OR find the iframe for it
- - make the mobile UI more robust
-   - even more refactoring of `style.css`
- - 404 Page
-   - Need to make it more fun
-   - make it interactive? -> adding a game?
- - Component structure
-   - update the pages to utilize a more reusable component structure
+<details>
+<summary>Next Improvements</summary>
+
+| Improvement | How |
+|-----:|-----------|
+| Refactoring `src/style.css` | - Break into individual style sheets per page/component  <br>- Factor out reusable styles for consistency |
+| Embedding stats.fm profile stats | - Pull data via API or web scraping  <br>- Contact stats.fm for API access/docs  <br>- Try embedding via iframe |
+| Make the mobile UI more robust | - Further modularize `style.css`  <br>- Improve mobile responsiveness |
+| 404 Page | - Redesign to be fun and interactive  <br>- Add a mini-game or engaging element |
+| Component structure | - Refactor pages to use reusable, modular components  <br>- Improve maintainability and scalability |
+
+</details>
