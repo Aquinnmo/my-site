@@ -174,7 +174,7 @@ function Experience()
                     onClick={handleSortClick}
                     aria-label={`Sort experiences by ${displayValue}`} // Accessibility
                 >
-                    <span className="sort-dropdown-label-display">Sort by: {displayValue}</span>
+                    <span className="sort-dropdown-label-display">Filter by: {displayValue}</span>
                 </button>
                 <br />
                 {/* Fixed-width container wrapping all cards to maintain consistent layout */}
