@@ -739,7 +739,7 @@ li {
 }
 
 .interest-item .display {
-  width: 70%; 
+  width: 80%; 
   box-sizing: border-box;
   padding: 0 1rem; /* Add horizontal padding */
   margin: 0 auto; /* Center with auto margins */
