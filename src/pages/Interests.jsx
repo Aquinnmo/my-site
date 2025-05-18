@@ -44,21 +44,22 @@ function Interests() {
             <div className="interest-item">
                 <div className="display">
                     <h1>Music</h1>
-                    <a href="https://open.spotify.com/user/aquinnmo?si=dde9c65268ae4d36" target="_blank"><h3 className="header-link">View My Spotify Profile</h3></a>
-                    <a href="https://stats.fm/aquinnmo" target="_blank"><h3 className="header-link">View My Stats.Fm Page</h3></a>
-                    <p>Check out my favourite playlist on the right!</p>
+                    <p>Check out my favourite playlist below!</p>
+                    <iframe
+                        style={{ borderRadius: "12px", maxWidth: '100%' }}
+                        src="https://open.spotify.com/embed/playlist/0BIwrKbc2J69rarG625XF3?utm_source=generator"
+                        width="100%"
+                        height="352"
+                        frameBorder="0"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                    ></iframe>
                 </div>
                 <div className="info">
                     <div style={{ width: '100%', maxWidth: '100%', overflow: 'hidden' }}>
-                        <iframe
-                            style={{ borderRadius: "12px", maxWidth: '100%' }}
-                            src="https://open.spotify.com/embed/playlist/0BIwrKbc2J69rarG625XF3?utm_source=generator"
-                            width="100%"
-                            height="352"
-                            frameBorder="0"
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                            loading="lazy"
-                        ></iframe>
+                        <a href="https://open.spotify.com/user/aquinnmo?si=dde9c65268ae4d36" target="_blank"><h3 className="header-link">View My Spotify Profile</h3></a>
+                        <a href="https://stats.fm/aquinnmo" target="_blank"><h3 className="header-link">View My Stats.Fm Page</h3></a>
+                        <p>Some of my favourite artists are: A$AP Rocky, Blu, and Pink Floyd.</p>
                     </div>
                 </div>
             </div>

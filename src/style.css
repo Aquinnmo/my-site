@@ -215,7 +215,6 @@ button:hover {
 }
 
 .languages {
-  width: 50%;
   margin:auto;
 }
 
@@ -584,6 +583,10 @@ li {
   .display h1 span {
     margin-right: -1px;
   }
+
+  .projects-logo-grid {
+    width: 100%;
+  }
   
   .home {
     margin-top: 1rem; /* Significantly reduced to align with other content areas */
@@ -739,7 +742,7 @@ li {
 }
 
 .interest-item .display {
-  width: 70%; 
+  width: 80%; 
   box-sizing: border-box;
   padding: 0 1rem; /* Add horizontal padding */
   margin: 0 auto; /* Center with auto margins */
@@ -857,7 +860,7 @@ li {
     gap: 0.5rem;
   }
   .projects-logo-grid .logo-container {
-    margin: 0.25rem;
+    padding: 0.25rem;
   }
 
   .sports-logo-grid {
