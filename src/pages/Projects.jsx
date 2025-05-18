@@ -132,7 +132,7 @@ function Projects() {
                             how "cooked" you are if trying to find a job. You either take a quick survey or upload you resume
                             and then you get back Google Gemini powered feedback to help with your job search.
                         </p>
-                        <a href="https://am-i-cooked-zeta.vercel.app" target="_blank">Try it for yourself!</a>
+                        <a href="https://cooked.adam-montgomery.ca" target="_blank">Try it for yourself!</a>
                         <br></br>
                         <a href="https://github.com/nathan-probert/am-i-cooked" target="_blank">Check out our codebase</a>
                     </div>
