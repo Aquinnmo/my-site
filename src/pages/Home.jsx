@@ -53,6 +53,8 @@ function Home() {
   
         <h1>Hello I'm Adam!</h1>
 
+        <img src='pfp.jpeg' className="pfp" alt="Profile Picture" />
+
         <div className="rotating-description">
           <Rotating_Description />
         </div>

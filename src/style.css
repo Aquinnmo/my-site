@@ -1373,3 +1373,10 @@ h3.different-h3 {
   text-align: center;
   margin: 0.5rem;
 }
+
+.pfp {
+  min-width: 250px;
+  width: 25%;
+  height: auto;
+  border-radius: 10%;
+}
