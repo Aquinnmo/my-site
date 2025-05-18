@@ -81,6 +81,15 @@ const experiencesData = [
         category: "leadership",
         startDate: "2023-04-01",
         endDate: "2024-06-30"
+    },
+    {
+        title: "Runner and Barback",
+        company: "Dirty Oar",
+        duties: `I am serving as a jack-of-all-trades at the Dirty Oar Public House. I am responsible for assisting servers, bartenders, and kitchen staff as I deem necessary. I converse with customers, deliver drink and food orders, and change kegs.`,
+        skills: ["Communication", "Organization", "Conversational Skills", "Positive Attitude", "Teamwork"],
+        category: "customer service",
+        startDate: "2023-05-18",
+        endDate: null
     }
 ];
 
