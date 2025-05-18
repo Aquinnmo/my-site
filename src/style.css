@@ -228,7 +228,7 @@ button:hover {
 }
 
 .info {
-  width: 30%;
+  width: 450; /* Adjusted width */
   box-sizing: border-box;
   padding: 2rem;
   justify-content: center;
@@ -763,7 +763,7 @@ li {
 }
 
 .interest-item .info {
-  width: 30%;
+  width: 40%; /* Adjusted width */
   box-sizing: border-box;
   padding: 0 1rem; /* Add horizontal padding */
   display: flex;
