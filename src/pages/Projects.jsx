@@ -140,24 +140,17 @@ function Projects() {
                 <div class="interest-item">
                     <div class="display">
                         <h1>
-                            <span className="poker-red">P</span>
-                            <span className="poker-black">o</span>
-                            <span className="poker-red">k</span>
-                            <span className="poker-black">e</span>
-                            <span className="poker-red">r</span>
+                            <span className="poker-red">C</span>
+                            <span className="poker-black">h</span>
+                            <span className="poker-red">i</span>
+                            <span className="poker-black">p</span>
                             <span className="poker-red">&nbsp;</span>
-                            <span className="poker-black">C</span>
-                            <span className="poker-red">h</span>
-                            <span className="poker-black">i</span>
+                            <span className="poker-red">C</span>
+                            <span className="poker-black">h</span>
+                            <span className="poker-red">a</span>
+                            <span className="poker-black">m</span>
                             <span className="poker-red">p</span>
-                            <span className="poker-red">&nbsp;</span>
-                            <span className="poker-black">P</span>
-                            <span className="poker-red">r</span>
-                            <span className="poker-black">o</span>
-                            <span className="poker-red">j</span>
-                            <span className="poker-black">e</span>
-                            <span className="poker-red">c</span>
-                            <span className="poker-black">t</span>                        </h1>
+                        </h1>
                         <h3>Built With:</h3>
                         <div className="languages no-select projects-logo-grid">
                             <div className="logo-container" data-tooltip="Django">
@@ -170,6 +163,33 @@ function Projects() {
                             <div className="logo-container" data-tooltip="Github">
                                 <img src="/github_logo.svg" className="logo vanilla" alt="Github" />
                             </div>
+                            <div className="logo-container" data-tooltip="React">
+                                <img src="/react_logo.svg" className="logo vite" alt="React" />
+                            </div>
+                            <div className="logo-container" data-tooltip="CSS">
+                                <img src="/css_logo.svg" className="logo css" alt="CSS" />
+                            </div>
+                            <div className="logo-container" data-tooltip="HTML">
+                                <img src="/html_logo.svg" className="logo fire" alt="HTML" />
+                            </div>
+                            <div className="logo-container" data-tooltip="TypeScript">
+                                <img src="/typescript_logo.svg" className="logo vite" alt="Typescript" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Claude">
+                                <img src="/claude_logo.svg" className="logo fire" alt="Claude" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Vercel">
+                                <img src="/vercel_logo.svg" className="logo vanilla" alt="Vercel" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Node.js">
+                                <img src="/nodejs_logo.svg" className="logo django" alt="Node.js" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Vite">
+                                <img src="/vite.svg" className="logo vite" alt="Vite" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Microsoft Copilot">
+                                <img src="/copilot_logo.svg" className="logo vanilla" alt="Copilot" />
+                            </div>
                         </div>
                         <p>Currently In Development</p>
                     </div>
@@ -178,7 +198,7 @@ function Projects() {
                         I am developing an online substitute for poker chips you can still play poker in-person with your friends if
                         you forget or cannot afford chips. I makes the game more portable and more accessible to everyone.
                         </p>
-                        <a href="https://en.wikipedia.org/wiki/Music_(Playboi_Carti_album)" target="_blank">I will update it this link to show the repo, once released.</a>
+                        <a href="https://chip-champ.adam-montgomery.ca" target="_blank" rel="noopener noreferrer">Link to the info page</a>
                     </div>
                 </div>
                 <div class="interest-item">
