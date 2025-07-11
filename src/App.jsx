@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Home from "./pages/Home";
 import Interests from './pages/Interests';
@@ -36,6 +37,7 @@ function AnimatedRoutes() {
 function App() {
   return (
     <Router>
+      <Analytics />
       <ScrollToTop /> {/* Add ScrollToTop here */}
       <Navbar />
       <main className="page-content">
