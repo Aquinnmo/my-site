@@ -2,6 +2,15 @@ import React, { useState, useEffect } from "react";
 
 const experiencesData = [
     {
+        title: "President, Owner, & Lead Developer",
+        company: "Montgomery Software Foundry Inc.",
+        duties: `I am running my own business to help deliver custom software solutions to small-business owners. We specialize in modernizing old systems to simplify your workflow and multiply your productivity.`,
+        skills: ["Leadership", "Full Stack Development", "Product Design", "Project Specifications"],
+        category: "programming",
+        startDate: "2025-08-20",
+        endDate: null // null for ongoing
+    },
+    {
         title: "AI Training Contractor",
         company: "DataAnnotation",
         duties: `I reviewed generated code and made efficiency, readability, and corrective improvements. I enhanced the functionality of 3 different in-development LLMs for code review. I also developed sophisticated, fine-grained, and actionable criteria to judge AI responses to complex prompts`,
@@ -88,8 +97,8 @@ const experiencesData = [
         duties: `I am serving as a jack-of-all-trades at the Dirty Oar Public House. I am responsible for assisting servers, bartenders, and kitchen staff as I deem necessary. I converse with customers, deliver drink and food orders, and change kegs.`,
         skills: ["Communication", "Organization", "Conversational Skills", "Positive Attitude", "Teamwork"],
         category: "customer service",
-        startDate: "2023-05-18",
-        endDate: null
+        startDate: "2025-05-18",
+        endDate: "2025-08-27"
     }
 ];
 

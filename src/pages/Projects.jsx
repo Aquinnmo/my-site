@@ -33,6 +33,41 @@ function Projects() {
     return (
         <div className="project-list" style={{ marginTop: `${navbarHeight + effectiveOffset}px` }}>
             <div class="interest-list">
+                    <div class="interest-item" id="databasing-system">
+                    <div class="display">                        <h1>Custom Enterprise-Level Databasing System</h1>
+                        <h3>Built With:</h3>
+                        <div className="languages no-select projects-logo-grid">
+                            <div className="logo-container" data-tooltip="Next.js">
+                                <img src="/nextjs_logo.svg" className="logo vanilla" alt="Next.js" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Supabase">
+                                <img src="/supabase_logo.svg" className="logo django" alt="Supabase" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Codex">
+                                <img src="/codex_logo.svg" className="logo vanilla" alt="Codex" />
+                            </div>
+                            <div className="logo-container" data-tooltip="TypeScript">
+                                <img src="/typescript_logo.svg" className="logo vite" alt="Typescript" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Vercel">
+                                <img src="/vercel_logo.svg" className="logo vanilla" alt="Vercel" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Microsoft Copilot">
+                                <img src="/copilot_logo.svg" className="logo vanilla" alt="Copilot" />
+                            </div>
+                        </div>
+                        <p>Started Development June 2025</p>
+                        <p>Deployment target: <span style={{ textDecoration: 'underline' }}>Early 2026</span></p>
+                    </div>
+                    <div class="info">
+                        <p style={{textAlign:'center'}}>I am currently building a databasing system for a busing company based out of York region to simplify
+                            their workflow. I am creating a full-stack web application to handle bus maintenance records, inventory and tracking of over 700 machines,
+                            and approximately 50 maintenance records daily. I have built to be secure and comply to the OWASP Top 10 as well as other common security vulnerabilities.
+                        </p>
+
+                        <a href='mailto:adammontcompany@gmail.com' rel='noopener noreferrer'>Contact me here if you need a custom software solution</a>
+                    </div>
+                </div>
                 <div class="interest-item" id="personal-site">
                     <div class="display">                        <h1>adam-montgomery.ca</h1>
                         <h3>Built With:</h3>
@@ -44,14 +79,14 @@ function Projects() {
                             </div><div className="logo-container" data-tooltip="JavaScript">
                                 <img src="/javascript_logo.svg" className="logo python" alt="Javascript" />
                             </div>
-                            <div className="logo-container" data-tooltip="HTML">
-                                <img src="/html_logo.svg" className="logo fire" alt="HTML" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Git">
-                                <img src="/git_logo.svg" className="logo django" alt="Git" />
+                            <div className="logo-container" data-tooltip="Vite">
+                                <img src="/vite.svg" className="logo vite" alt="Vite" />
                             </div>
                             <div className="logo-container" data-tooltip="Github">
                                 <img src="/github_logo.svg" className="logo vanilla" alt="Github" />
+                            </div>
+                            <div className="logo-container" data-tooltip="React Router">
+                                <img src="/react-router.svg" className="logo fire" alt="React Router" />
                             </div>
                         </div>
                         <p>Maintained and Updated Since April 2025</p>
