@@ -135,6 +135,15 @@ function Home() {
             <div className="logo-container" data-tooltip="Latex">
               <img src="/latex_logo.svg" className="tech logo vanilla" alt="Latex" />
             </div>
+            <div className="logo-container" data-tooltip="Next.js">
+                <img src="/nextjs_logo.svg" className="logo vanilla" alt="Next.js" />
+            </div>
+            <div className="logo-container" data-tooltip="Supabase">
+                <img src="/supabase_logo.svg" className="logo django" alt="Supabase" />
+            </div>
+            <div className="logo-container" data-tooltip="Codex">
+                <img src="/codex_logo.svg" className="logo vanilla" alt="Codex" />
+            </div>
         </div>
         {/* Mobile version of the logo grid - same content but with different styling */}
         <div className="home-logo-grid-mobile no-select">
@@ -204,8 +213,17 @@ function Home() {
             <div className="logo-container" data-tooltip="Cursor">
               <img src="/cursor_logo.svg" className="tech logo vanilla" alt="Cursor" />
             </div>
+            <div className="logo-container" data-tooltip="Next.js">
+                <img src="/nextjs_logo.svg" className="logo vanilla" alt="Next.js" />
+            </div>
+            <div className="logo-container" data-tooltip="Supabase">
+                <img src="/supabase_logo.svg" className="logo django" alt="Supabase" />
+            </div>
+            <div className="logo-container" data-tooltip="Codex">
+                <img src="/codex_logo.svg" className="logo vanilla" alt="Codex" />
+            </div>
         </div>
-        <p className="read-the-docs">This site was made by me! <Link to="/projects">Take a look at what I used!</Link></p>
+        <p className="read-the-docs">This site was made by me! <Link to="/projects">Take a look at my projects!</Link></p>
         <br></br>
       </div>
     );
