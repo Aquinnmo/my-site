@@ -223,7 +223,7 @@ function Home() {
                 <img src="/codex_logo.svg" className="logo vanilla" alt="Codex" />
             </div>
         </div>
-        <p className="read-the-docs">This site was made by me! <Link to="/projects">Take at my projects!</Link></p>
+        <p className="read-the-docs">This site was made by me! <Link to="/projects">Take a look at my projects!</Link></p>
         <br></br>
       </div>
     );
