@@ -104,16 +104,23 @@ function Navbar ()
                                     >
                                         Home
                                     </Link>
-                                    <Link 
-                                        to="/projects" 
-                                        className={`nav-link ${linksActive ? 'active' : ''}`} 
+                                    <Link
+                                        to="/projects"
+                                        className={`nav-link ${linksActive ? 'active' : ''}`}
                                         onClick={toggleMobileMenu}
                                     >
                                         Projects
                                     </Link>
-                                    <Link 
-                                        to="/experience" 
-                                        className={`nav-link ${linksActive ? 'active' : ''}`} 
+                                    <Link
+                                        to="/foundry"
+                                        className={`nav-link ${linksActive ? 'active' : ''}`}
+                                        onClick={toggleMobileMenu}
+                                    >
+                                        Foundry
+                                    </Link>
+                                    <Link
+                                        to="/experience"
+                                        className={`nav-link ${linksActive ? 'active' : ''}`}
                                         onClick={toggleMobileMenu}
                                     >
                                         Experience
@@ -133,6 +140,7 @@ function Navbar ()
                     <>
                         <Link to="/" className="nav-link">Home</Link>
                         <Link to="/projects" className="nav-link">Projects</Link>
+                        <Link to="/foundry" className="nav-link">Foundry</Link>
                         <Link to="/experience" className="nav-link">Experience</Link>
                         <Link to="/interests" className="nav-link">Interests</Link>
                     </>
