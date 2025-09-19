@@ -6,17 +6,17 @@ const services = [
   {
     title: 'Legacy System Modernization',
     description:
-      'Transform brittle, outdated tooling into fast, secure, and maintainable platforms tailored to your workflow.',
+      'Transform brittle, outdated systems into fast and secure platforms tailored to you.',
   },
   {
-    title: 'Process Automation',
+    title: 'Custom-Built Applications',
     description:
-      'Eliminate repetitive work by connecting the systems your team already trusts with bespoke integrations.',
+      'We specialize in crafting innovative, reliable, and tailored digital tools to meet your unique needs and help your business thrive.',
   },
   {
     title: 'Operational Dashboards',
     description:
-      'Surface the data that matters most with dashboards that highlight real-time insights and track success.',
+      'Create easy to understand dashboards to track important data and measure success.',
   },
 ];
 
@@ -24,15 +24,15 @@ const differentiators = [
   {
     title: 'Partnership Mindset',
     description:
-      'We embed with stakeholders to understand how you serve customers today and where software can amplify your impact tomorrow.',
+      'We work closely with you to deliver exactly what you need, the first time.',
   },
   {
-    title: 'Full-Stack Craftsmanship',
+    title: 'Full Stack Craftsmanship',
     description:
       'From infrastructure to polished interfaces, the Foundry handles every layer so you receive a unified, reliable solution.',
   },
   {
-    title: 'Security-First Delivery',
+    title: 'Security First Delivery',
     description:
       'Each engagement is grounded in secure coding practices, proactive reviews, and deployment pipelines that support confident releases.',
   },
@@ -50,9 +50,9 @@ const engagementSteps = [
       'Iterate quickly on interactive prototypes before forging production-ready software.',
   },
   {
-    title: 'Launch & Support',
+    title: 'Seamless Launch',
     description:
-      'Deploy with guardrails, knowledge transfer, and the long-term partnership your business deserves.',
+      'Launch with confidence and get ongoing support for your business.',
   },
 ];
 
@@ -92,11 +92,13 @@ function MontgomerySoftwareFoundry() {
         </p>
         <div className="foundry-cta-group">
           <a className="foundry-cta" href="mailto:adam@montgomeryfoundry.com">
-            Start a project
+            Get in touch
           </a>
+          {/* 
           <Link className="foundry-secondary-cta" to="/projects">
             Explore recent work
           </Link>
+          */}
         </div>
       </section>
 
@@ -139,9 +141,7 @@ function MontgomerySoftwareFoundry() {
       <section className="foundry-section foundry-highlight">
         <h2>Built by Adam Montgomery</h2>
         <p>
-          As founder and lead developer, Adam brings hands-on experience delivering dependable full-stack solutions and
-          partnering with stakeholders to modernize legacy operations. Montgomery Software Foundry Inc. is where that
-          experience becomes a dedicated service for organizations ready to scale with confidence.
+          As founder and lead developer, I established Montgomery Software Foundry Inc. in the summer of 2025. Driven by my passion for building software, I bring hands-on experience delivering dependable full-stack solutions and partnering with stakeholders to modernize legacy operations. Montgomery Software Foundry Inc. is where that excitement becomes a dedicated service for organizations ready to scale with confidence.
         </p>
       </section>
     </div>

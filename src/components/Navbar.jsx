@@ -105,25 +105,25 @@ function Navbar ()
                                         Home
                                     </Link>
                                     <Link
-                                        to="/projects"
+                                        to="/experience"
                                         className={`nav-link ${linksActive ? 'active' : ''}`}
                                         onClick={toggleMobileMenu}
                                     >
-                                        Projects
+                                        Experience
                                     </Link>
                                     <Link
                                         to="/foundry"
                                         className={`nav-link ${linksActive ? 'active' : ''}`}
                                         onClick={toggleMobileMenu}
                                     >
-                                        Foundry
+                                        The Foundry
                                     </Link>
                                     <Link
-                                        to="/experience"
+                                        to="/projects"
                                         className={`nav-link ${linksActive ? 'active' : ''}`}
                                         onClick={toggleMobileMenu}
                                     >
-                                        Experience
+                                        Projects
                                     </Link>
                                     <Link 
                                         to="/interests" 
@@ -139,9 +139,9 @@ function Navbar ()
                 ) : (
                     <>
                         <Link to="/" className="nav-link">Home</Link>
-                        <Link to="/projects" className="nav-link">Projects</Link>
-                        <Link to="/foundry" className="nav-link">Foundry</Link>
                         <Link to="/experience" className="nav-link">Experience</Link>
+                        <Link to="/foundry" className="nav-link">The Foundry</Link>
+                        <Link to="/projects" className="nav-link">Projects</Link>
                         <Link to="/interests" className="nav-link">Interests</Link>
                     </>
                 )}
