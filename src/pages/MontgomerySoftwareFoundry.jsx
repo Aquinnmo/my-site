@@ -29,12 +29,12 @@ const differentiators = [
   {
     title: 'Full Stack Craftsmanship',
     description:
-      'From infrastructure to polished interfaces, the Foundry handles every layer so you receive a unified, reliable solution.',
+      'From infrastructure to polished interfaces, the Foundry handles every layer so you receive a unified, dependable solution.',
   },
   {
     title: 'Security First Delivery',
     description:
-      'Each engagement is grounded in secure coding practices, proactive reviews, and deployment pipelines that support confident releases.',
+      'Each deployment is grounded in secure coding practices, proactive reviews, and deployment pipelines that support confident releases.',
   },
 ];
 
