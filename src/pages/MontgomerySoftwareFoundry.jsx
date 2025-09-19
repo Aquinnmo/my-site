@@ -11,12 +11,12 @@ const services = [
   {
     title: 'Custom-Built Applications',
     description:
-      'We specialize in crafting innovative, reliable, and tailored digital tools to meet your unique needs and help your business thrive.',
+      'We specialize in crafting reliable and easy to use digital tools to meet your unique needs and help your business thrive.',
   },
   {
     title: 'Operational Dashboards',
     description:
-      'Create easy to understand dashboards to track important data and measure success.',
+      'We help you create quickly scannable dashboards to track important data and measure your success.',
   },
 ];
 
