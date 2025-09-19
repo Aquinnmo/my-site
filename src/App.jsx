@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Interests from './pages/Interests';
 import Experience from './pages/Experience';
 import Projects from './pages/Projects';
+import MontgomerySoftwareFoundry from './pages/MontgomerySoftwareFoundry';
 import Navbar from './components/Navbar';
 import React from 'react';
 import ScrollToTop from './components/ScrollToTop'; // Import the new component
@@ -26,6 +27,7 @@ function AnimatedRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/interests" element={<Interests />} />
+          <Route path="/foundry" element={<MontgomerySoftwareFoundry />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

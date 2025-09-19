@@ -104,19 +104,26 @@ function Navbar ()
                                     >
                                         Home
                                     </Link>
-                                    <Link 
-                                        to="/projects" 
-                                        className={`nav-link ${linksActive ? 'active' : ''}`} 
-                                        onClick={toggleMobileMenu}
-                                    >
-                                        Projects
-                                    </Link>
-                                    <Link 
-                                        to="/experience" 
-                                        className={`nav-link ${linksActive ? 'active' : ''}`} 
+                                    <Link
+                                        to="/experience"
+                                        className={`nav-link ${linksActive ? 'active' : ''}`}
                                         onClick={toggleMobileMenu}
                                     >
                                         Experience
+                                    </Link>
+                                    <Link
+                                        to="/foundry"
+                                        className={`nav-link ${linksActive ? 'active' : ''}`}
+                                        onClick={toggleMobileMenu}
+                                    >
+                                        The Foundry
+                                    </Link>
+                                    <Link
+                                        to="/projects"
+                                        className={`nav-link ${linksActive ? 'active' : ''}`}
+                                        onClick={toggleMobileMenu}
+                                    >
+                                        Projects
                                     </Link>
                                     <Link 
                                         to="/interests" 
@@ -132,8 +139,9 @@ function Navbar ()
                 ) : (
                     <>
                         <Link to="/" className="nav-link">Home</Link>
-                        <Link to="/projects" className="nav-link">Projects</Link>
                         <Link to="/experience" className="nav-link">Experience</Link>
+                        <Link to="/foundry" className="nav-link">The Foundry</Link>
+                        <Link to="/projects" className="nav-link">Projects</Link>
                         <Link to="/interests" className="nav-link">Interests</Link>
                     </>
                 )}

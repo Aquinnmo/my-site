@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Projects() {
     // Add state to track navbar height and window width
@@ -66,6 +67,7 @@ function Projects() {
                         </p>
 
                         <a href='mailto:adammontcompany@gmail.com' rel='noopener noreferrer'>Contact me here if you need a custom software solution</a>
+                        <Link to="/foundry">Learn more about what my company does</Link>
                     </div>
                 </div>
                 <div class="interest-item" id="personal-site">

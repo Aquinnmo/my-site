@@ -7,6 +7,7 @@ This is a personal website built with React. It showcases projects, experience, 
 - Clean, functional mobile UI
 - Project portfolio
 - Experience and interests pages
+- Montgomery Software Foundry Inc. service overview
 - Team guessing game
 
 ## Getting Started
@@ -33,6 +34,26 @@ npm run dev
 ```
 
 The site will be available at `http://localhost:3000` by default.
+
+### Quality Checks
+
+Run the Node-based test suite:
+
+```sh
+npm test
+```
+
+Lint the source files for syntax and security red flags:
+
+```sh
+npm run lint
+```
+
+Before deploying, ensure the production build compiles successfully:
+
+```sh
+npm run build
+```
 
 ## Project Structure
 - `src/` - Source files
