@@ -1302,6 +1302,9 @@ body.menu-open {
   border-radius: 999px;
   font-weight: 600;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  /* Ensure buttons never overflow their container */
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 .foundry-cta {
@@ -1415,12 +1418,16 @@ body.menu-open {
 
   .foundry-cta-group {
     flex-direction: column;
+    width: 100%;
+    align-items: stretch; /* Let children stretch to full width */
   }
 
   .foundry-cta,
   .foundry-secondary-cta {
+    display: block; /* Block ensures width:100% respects padding with border-box */
     width: 100%;
     text-align: center;
+    box-sizing: border-box; /* Explicit on mobile */
   }
 }
 
