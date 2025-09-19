@@ -42,7 +42,7 @@ const engagementSteps = [
   {
     title: 'Discover',
     description:
-      'Map objectives, constraints, and existing tooling to define a shared blueprint for success.',
+      'Map objectives, constraints, and existing tools to define a shared blueprint for success.',
   },
   {
     title: 'Design & Build',
