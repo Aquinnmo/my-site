@@ -34,7 +34,7 @@ function Projects() {
     return (
         <div className="project-list" style={{ marginTop: `${navbarHeight + effectiveOffset}px` }}>
             <div class="interest-list">
-                    <div class="interest-item" id="databasing-system">
+                <div class="interest-item" id="databasing-system">
                     <div class="display">                        <h1>Custom Enterprise-Level Databasing System</h1>
                         <h3>Built With:</h3>
                         <div className="languages no-select projects-logo-grid">
@@ -68,6 +68,33 @@ function Projects() {
 
                         <a href='mailto:adammontcompany@gmail.com' rel='noopener noreferrer'>Contact me here if you need a custom software solution</a>
                         <Link to="/foundry">Learn more about what my company does</Link>
+                    </div>
+                </div>
+                <div class="interest-item" id="rps">
+                    <div class="display">                        <h1>YOU WILL LOSE: <em>Rock, Paper, Scissors</em></h1>
+                        <h3>Built With:</h3>
+                        <div className="languages no-select projects-logo-grid">
+                            <div className="logo-container" data-tooltip="Next.js">
+                                <img src="/nextjs_logo.svg" className="logo vanilla" alt="Next.js" />
+                            </div>
+                            <div className="logo-container" data-tooltip="TypeScript">
+                                <img src="/typescript_logo.svg" className="logo vite" alt="Typescript" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Vercel">
+                                <img src="/vercel_logo.svg" className="logo vanilla" alt="Vercel" />
+                            </div>
+                        </div>
+                        <p>Started Development October 2025</p>
+                    </div>
+                    <div class="info">
+                        <p style={{textAlign:'center'}}>Rock, Paper, Scissors is a great game that thousands (if not millions) of people enjoy every 
+                            day. I have played many times in my life and asked myself one day "How can I actually win this? How can I put in my 10,000
+                            hours?" That was when I knew I had to develop my own algorithms to win for me. This project is an exploration of how computers
+                            can dominate in a so-called game of "chance" so that I can as well.
+                        </p>
+
+                        <a href='https://rps.adam-montgomery.ca' rel='noopener noreferrer'>Check out the project</a>
+                        <a href="https://github.com/Aquinnmo/rps-web" rel="noopener noreferrer">Check out the codebase</a>
                     </div>
                 </div>
                 <div class="interest-item" id="personal-site">
