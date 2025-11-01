@@ -28,6 +28,19 @@ function Interests() {
         <div className="interest-list" style={{ marginTop: `${navbarHeight + gradientOffset}px` }}>
             <div className="interest-item">
                 <div className="display">
+                    <h1>Movember</h1>
+                    <h3>I have been a Mo-Bro since 2018 and have raised over $3,250 to fight testicular cancer, prostate cancer, and support men's mental health. </h3>
+                </div>
+                <div className="info">
+                    <p>Movember has been a part of my life since I was very small. It started with me wanting to grow a mustache and my 
+                        involvement has grown much more since. I have been a Mo-Bro for 8 years and counting, hoping to change the face of 
+                        men's health forever.
+                    </p>
+                    <a href="https://movember.com/m/adamm06?mc=1" target="_blank">View my Mo-Space</a>
+                </div>
+            </div>
+            <div className="interest-item">
+                <div className="display">
                     <h1>Hockey</h1>
                     <h3>Check out my team guessing game! Guess my favourite NHL teams!</h3>
                     <div className="guessing-game-container" style={{ maxWidth: '100%', overflow: 'hidden' }}>
