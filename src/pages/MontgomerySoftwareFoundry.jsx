@@ -91,7 +91,7 @@ function MontgomerySoftwareFoundry() {
           Custom software forged for small businesses that need modern, dependable tools.
         </p>
         <div className="foundry-cta-group">
-          <a className="foundry-cta" href="mailto:adam@montgomeryfoundry.com">
+          <a className="foundry-cta" href="mailto:adammontcompany@gmail.com">
             Get in touch
           </a>
           {/* 
