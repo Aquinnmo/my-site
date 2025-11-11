@@ -304,7 +304,7 @@ function Projects() {
                             the test. In this version of the classic game, you play on 6 boards simultaneously against a friend. You have 
                             to strategize to win the most boards as possible. Whoever wins the most boards at the end wins!
                         </p>
-                        <a href="https://osmows.com/menu/daily-specials/" target="_blank">I'm working on uploading the project to a repo as we speak!</a>
+                        <a href="https://github.com/Aquinnmo/multi-tic-tac-toe" target="_blank">I just recently uploaded this project to GitHub, check it out!</a>
                     </div>
                 </div>
             </div>
