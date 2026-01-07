@@ -44,17 +44,11 @@ function Projects() {
                             <div className="logo-container" data-tooltip="Supabase">
                                 <img src="/supabase_logo.svg" className="logo django" alt="Supabase" />
                             </div>
-                            <div className="logo-container" data-tooltip="Codex">
-                                <img src="/codex_logo.svg" className="logo vanilla" alt="Codex" />
-                            </div>
                             <div className="logo-container" data-tooltip="TypeScript">
                                 <img src="/typescript_logo.svg" className="logo vite" alt="Typescript" />
                             </div>
                             <div className="logo-container" data-tooltip="Vercel">
                                 <img src="/vercel_logo.svg" className="logo vanilla" alt="Vercel" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Microsoft Copilot">
-                                <img src="/copilot_logo.svg" className="logo vanilla" alt="Copilot" />
                             </div>
                         </div>
                         <p>Started Development June 2025</p>
@@ -68,6 +62,35 @@ function Projects() {
 
                         <a href='mailto:adammontcompany@gmail.com' rel='noopener noreferrer'>Contact me here if you need a custom software solution</a>
                         <Link to="/foundry">Learn more about what my company does</Link>
+                    </div>
+                </div>
+                <div class="interest-item" id="cherrypick">
+                    <div class="display">                        <h1>CherryPick</h1>
+                        <h3>Built With:</h3>
+                        <div className="languages no-select projects-logo-grid">
+                            <div className="logo-container" data-tooltip="Flutter">
+                                <img src="/flutter_logo.svg" className="logo vite" alt="Flutter" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Firebase">
+                                <img src="/firebase_logo.svg" className="logo fire" alt="Firebase" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Python">
+                                <img src="/python_logo.svg" className="logo python" alt="Python" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Docker">
+                                <img src="/docker_logo.svg" className="logo vite" alt="Docker" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Raspberry Pi">
+                                <img src="/raspberry_pi_logo.svg" className="logo fire" alt="Raspberry Pi" />
+                            </div>
+                        </div>
+                        <p>Started Development December 2025</p>
+                        <p>Deployment target: <span style={{ textDecoration: 'underline' }}>Mid 2026</span></p>
+                    </div>
+                    <div class="info">
+                        <p style={{textAlign:'center'}}>I am currently building a cross-platform mobile application with one of my roommates that is an NHL Pick 'Em fantasy game. The backend will run on 
+                            a personal server hosted on a Raspberry Pi.
+                        </p>
                     </div>
                 </div>
                 <div class="interest-item" id="rps">
@@ -111,9 +134,6 @@ function Projects() {
                             <div className="logo-container" data-tooltip="Vite">
                                 <img src="/vite.svg" className="logo vite" alt="Vite" />
                             </div>
-                            <div className="logo-container" data-tooltip="Github">
-                                <img src="/github_logo.svg" className="logo vanilla" alt="Github" />
-                            </div>
                             <div className="logo-container" data-tooltip="React Router">
                                 <img src="/react-router.svg" className="logo fire" alt="React Router" />
                             </div>
@@ -148,23 +168,11 @@ function Projects() {
                             <div className="logo-container" data-tooltip="CSS">
                                 <img src="/css_logo.svg" className="logo css" alt="CSS" />
                             </div>
-                            <div className="logo-container" data-tooltip="HTML">
-                                <img src="/html_logo.svg" className="logo fire" alt="HTML" />
-                            </div>
                             <div className="logo-container" data-tooltip="MongoDB">
                                 <img src="/mongodb_logo.svg" className="logo django" alt="MongoDB" />
                             </div>
                             <div className="logo-container" data-tooltip="TypeScript">
                                 <img src="/typescript_logo.svg" className="logo vite" alt="Typescript" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Git">
-                                <img src="/git_logo.svg" className="logo django" alt="Git" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Github">
-                                <img src="/github_logo.svg" className="logo vanilla" alt="Github" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Claude">
-                                <img src="/claude_logo.svg" className="logo fire" alt="Claude" />
                             </div>
                             <div className="logo-container" data-tooltip="Render">
                                 <img src="/render_logo.svg" className="logo vanilla" alt="Render" />
@@ -177,15 +185,6 @@ function Projects() {
                             </div>
                             <div className="logo-container" data-tooltip="Vite">
                                 <img src="/vite.svg" className="logo vite" alt="Vite" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Gemini">
-                                <img src="/gemini_logo.svg" className="logo vite" alt="Gemini" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Microsoft Copilot">
-                                <img src="/copilot_logo.svg" className="logo vanilla" alt="Copilot" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Cursor">
-                                <img src="/cursor_logo.svg" className="logo vanilla" alt="Cursor" />
                             </div>
                         </div>
                         <p>First Developed and Deployed at GDSCHacks 2025! Currently maintained.</p>
@@ -219,40 +218,9 @@ function Projects() {
                         <div className="languages no-select projects-logo-grid">
                             <div className="logo-container" data-tooltip="Django">
                                 <img src="/django_logo.svg" className="logo django" alt="Django" />
-                            </div>                            <div className="logo-container" data-tooltip="Python">
-                                <img src="/python_logo.svg" className="logo python" alt="Python" />
-                            </div>                            <div className="logo-container" data-tooltip="Git">
+                            </div>
+                            <div className="logo-container" data-tooltip="Git">
                                 <img src="/git_logo.svg" className="logo django" alt="Git" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Github">
-                                <img src="/github_logo.svg" className="logo vanilla" alt="Github" />
-                            </div>
-                            <div className="logo-container" data-tooltip="React">
-                                <img src="/react_logo.svg" className="logo vite" alt="React" />
-                            </div>
-                            <div className="logo-container" data-tooltip="CSS">
-                                <img src="/css_logo.svg" className="logo css" alt="CSS" />
-                            </div>
-                            <div className="logo-container" data-tooltip="HTML">
-                                <img src="/html_logo.svg" className="logo fire" alt="HTML" />
-                            </div>
-                            <div className="logo-container" data-tooltip="TypeScript">
-                                <img src="/typescript_logo.svg" className="logo vite" alt="Typescript" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Claude">
-                                <img src="/claude_logo.svg" className="logo fire" alt="Claude" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Vercel">
-                                <img src="/vercel_logo.svg" className="logo vanilla" alt="Vercel" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Node.js">
-                                <img src="/nodejs_logo.svg" className="logo django" alt="Node.js" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Vite">
-                                <img src="/vite.svg" className="logo vite" alt="Vite" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Microsoft Copilot">
-                                <img src="/copilot_logo.svg" className="logo vanilla" alt="Copilot" />
                             </div>
                         </div>
                         <p>Currently In Development</p>
@@ -304,7 +272,7 @@ function Projects() {
                             the test. In this version of the classic game, you play on 6 boards simultaneously against a friend. You have 
                             to strategize to win the most boards as possible. Whoever wins the most boards at the end wins!
                         </p>
-                        <a href="https://github.com/Aquinnmo/multi-tic-tac-toe" target="_blank">I just recently uploaded this project to GitHub, check it out!</a>
+                        <a href="https://github.com/Aquinnmo/multi-tic-tac-toe" target="_blank">Check it out!</a>
                     </div>
                 </div>
             </div>
