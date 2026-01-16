@@ -64,35 +64,6 @@ function Projects() {
                         <Link to="/foundry">Learn more about what my company does</Link>
                     </div>
                 </div>
-                <div class="interest-item" id="cherrypick">
-                    <div class="display">                        <h1>CherryPick</h1>
-                        <h3>Built With:</h3>
-                        <div className="languages no-select projects-logo-grid">
-                            <div className="logo-container" data-tooltip="Flutter">
-                                <img src="/flutter_logo.svg" className="logo vite" alt="Flutter" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Firebase">
-                                <img src="/firebase_logo.svg" className="logo fire" alt="Firebase" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Python">
-                                <img src="/python_logo.svg" className="logo python" alt="Python" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Docker">
-                                <img src="/docker_logo.svg" className="logo vite" alt="Docker" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Raspberry Pi">
-                                <img src="/raspberry_pi_logo.svg" className="logo fire" alt="Raspberry Pi" />
-                            </div>
-                        </div>
-                        <p>Started Development December 2025</p>
-                        <p>Deployment target: <span style={{ textDecoration: 'underline' }}>Mid 2026</span></p>
-                    </div>
-                    <div class="info">
-                        <p style={{textAlign:'center'}}>I am currently building a cross-platform mobile application with one of my roommates that is an NHL Pick 'Em fantasy game. The backend will run on 
-                            a personal server hosted on a Raspberry Pi.
-                        </p>
-                    </div>
-                </div>
                 <div class="interest-item" id="rps">
                     <div class="display">                        <h1>YOU WILL LOSE: <em>Rock, Paper, Scissors</em></h1>
                         <h3>Built With:</h3>
@@ -118,31 +89,6 @@ function Projects() {
 
                         <a href='https://rps.adam-montgomery.ca' rel='noopener noreferrer'>Check out the project</a>
                         <a href="https://github.com/Aquinnmo/rps-web" rel="noopener noreferrer">Check out the codebase</a>
-                    </div>
-                </div>
-                <div class="interest-item" id="personal-site">
-                    <div class="display">                        <h1>adam-montgomery.ca</h1>
-                        <h3>Built With:</h3>
-                        <div className="languages no-select projects-logo-grid">
-                            <div className="logo-container" data-tooltip="React">
-                                <img src="/react_logo.svg" className="logo vite" alt="React" />
-                            </div>                            <div className="logo-container" data-tooltip="CSS">
-                                <img src="/css_logo.svg" className="logo vite" alt="CSS" />
-                            </div><div className="logo-container" data-tooltip="JavaScript">
-                                <img src="/javascript_logo.svg" className="logo python" alt="Javascript" />
-                            </div>
-                            <div className="logo-container" data-tooltip="Vite">
-                                <img src="/vite.svg" className="logo vite" alt="Vite" />
-                            </div>
-                            <div className="logo-container" data-tooltip="React Router">
-                                <img src="/react-router.svg" className="logo fire" alt="React Router" />
-                            </div>
-                        </div>
-                        <p>Maintained and Updated Since April 2025</p>
-                    </div>
-                    <div class="info">
-                        <p style={{textAlign:'center'}}>Well what do you think?</p>
-                        <a href='/adam_montgomery_resume.pdf' target='_blank' rel='noopener noreferrer'>Contact me if you have a suggestion!</a>
                     </div>
                 </div>
                 <div class="interest-item">
@@ -193,13 +139,69 @@ function Projects() {
                         <p>Through this project two fellow students and I aimed to help our peers evaluate
                             how ready they were in this difficult job market. We created a website for us to measure
                             how "cooked" you are if trying to find a job. You either take a quick survey or upload you resume
-                            and then you get back Google Gemini powered feedback to help with your job search.
+                            and then you get back Google Gemini powered feedback to help with your job search. I have since maintained
+                            the project and made some slight modifications.
                         </p>
                         <a href="https://cooked.adam-montgomery.ca" target="_blank">Try it for yourself!</a>
                         <br></br>
-                        <a href="https://github.com/nathan-probert/am-i-cooked" target="_blank">Check out our codebase</a>
+                        <a href="https://github.com/Aquinnmo/am-i-cooked" target="_blank">Check out the codebase</a>
                     </div>
                 </div>
+                <div class="interest-item" id="cherrypick">
+                    <div class="display">                        <h1>CherryPick</h1>
+                        <h3>Built With:</h3>
+                        <div className="languages no-select projects-logo-grid">
+                            <div className="logo-container" data-tooltip="Flutter">
+                                <img src="/flutter_logo.svg" className="logo vite" alt="Flutter" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Firebase">
+                                <img src="/firebase_logo.svg" className="logo fire" alt="Firebase" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Python">
+                                <img src="/python_logo.svg" className="logo python" alt="Python" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Docker">
+                                <img src="/docker_logo.svg" className="logo vite" alt="Docker" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Raspberry Pi">
+                                <img src="/raspberry_pi_logo.svg" className="logo fire" alt="Raspberry Pi" />
+                            </div>
+                        </div>
+                        <p>Started Development December 2025</p>
+                        <p>Deployment target: <span style={{ textDecoration: 'underline' }}>Mid 2026</span></p>
+                    </div>
+                    <div class="info">
+                        <p style={{textAlign:'center'}}>I am currently building a cross-platform mobile application with one of my roommates that is an NHL Pick 'Em fantasy game. The backend will run on 
+                            a personal server hosted on a Raspberry Pi.
+                        </p>
+                    </div>
+                </div>
+                <div class="interest-item" id="personal-site">
+                    <div class="display">                        <h1>adam-montgomery.ca</h1>
+                        <h3>Built With:</h3>
+                        <div className="languages no-select projects-logo-grid">
+                            <div className="logo-container" data-tooltip="React">
+                                <img src="/react_logo.svg" className="logo vite" alt="React" />
+                            </div>                            <div className="logo-container" data-tooltip="CSS">
+                                <img src="/css_logo.svg" className="logo vite" alt="CSS" />
+                            </div><div className="logo-container" data-tooltip="JavaScript">
+                                <img src="/javascript_logo.svg" className="logo python" alt="Javascript" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Vite">
+                                <img src="/vite.svg" className="logo vite" alt="Vite" />
+                            </div>
+                            <div className="logo-container" data-tooltip="React Router">
+                                <img src="/react-router.svg" className="logo fire" alt="React Router" />
+                            </div>
+                        </div>
+                        <p>Maintained and Updated Since April 2025</p>
+                    </div>
+                    <div class="info">
+                        <p style={{textAlign:'center'}}>Well what do you think?</p>
+                        <a href='/adam_montgomery_resume.pdf' target='_blank' rel='noopener noreferrer'>Contact me if you have a suggestion!</a>
+                    </div>
+                </div>
+                {/*
                 <div class="interest-item">
                     <div class="display">
                         <h1>
@@ -233,6 +235,7 @@ function Projects() {
                         <a href="https://chip-champ.adam-montgomery.ca" target="_blank" rel="noopener noreferrer">Link to the info page</a>
                     </div>
                 </div>
+                */}
                 <div class="interest-item">
                     <div class="display">                        <h1>Brick Breaker</h1>
                         <h3>Built With:</h3>
