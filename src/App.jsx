@@ -10,6 +10,7 @@ import Navbar from './components/Navbar';
 import React from 'react';
 import ScrollToTop from './components/ScrollToTop'; // Import the new component
 import PageNotFound from './pages/404Page'; // Import the 404 page
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -39,6 +40,7 @@ function AnimatedRoutes() {
 function App() {
   return (
     <Router>
+      <SpeedInsights />
       <Analytics />
       <ScrollToTop /> {/* Add ScrollToTop here */}
       <Navbar />
