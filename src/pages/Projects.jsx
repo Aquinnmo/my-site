@@ -34,6 +34,42 @@ function Projects() {
     return (
         <div className="project-list" style={{ marginTop: `${navbarHeight + effectiveOffset}px` }}>
             <div class="interest-list">
+                <div class="interest-item" id="pump-pal">
+                    <div class="display">                        <h1>Pump Pal</h1>
+                        <h3>Built With:</h3>
+                        <div className="languages no-select projects-logo-grid">
+                            <div className="logo-container" data-tooltip="React Native">
+                                <img src="/react_logo.svg" className="logo vite" alt="React Native" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Expo">
+                                <img src="/expo_logo.svg" className="logo vanilla" alt="Expo" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Firebase">
+                                <img src="/firebase_logo.svg" className="logo fire" alt="Firebase" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Gemini API">
+                                <img src="/gemini_logo.svg" className="logo vite" alt="Gemini API" />
+                            </div>
+                            <div className="logo-container" data-tooltip="Vercel">
+                                <img src="/vercel_logo.svg" className="logo vanilla" alt="Vercel" />
+                            </div>
+                        </div>
+                        <p>Started Development February 2026</p>
+                        <p>Deployment target: <span style={{ textDecoration: 'underline' }}>May 2026</span></p>
+                    </div>
+                    <div class="info">
+                        <p style={{textAlign:'center'}}>
+                            I am currently developing a workout tracking app designed to help you reduce injuries by making sure you are doing balanced workouts.
+                            I built this app to be minimalistic and straightforward. You are also given helpful insights on what you are training through AI-powered analytics.
+                            I am aiming to have this app on app stores by May.
+                        </p>
+
+                        <a href='https://pump.adam-montgomery.ca' target="_blank" rel='noopener noreferrer'>Check out the web preview</a>
+                        <a href='https://expo.dev/accounts/aquinnmo/projects/pump-pal/builds/f3f89684-df21-4f9c-af2c-ad3c53cdbd48' target="_blank" rel='noopener noreferrer'>Click here to download the android preview build</a>
+                        <p>Note: Please update the app in settings after this download, I will not be updating this build often.</p>
+                        <a href='https://github.com/Aquinnmo/pump-pal' target="_blank" rel='noopener noreferrer'>Check out the repo</a>
+                    </div>
+                </div>
                 <div class="interest-item" id="databasing-system">
                     <div class="display">                        <h1>Custom Enterprise-Level Databasing System</h1>
                         <h3>Built With:</h3>
