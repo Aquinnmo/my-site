@@ -120,6 +120,10 @@ Use these as CSS custom property targets under dark mode.
   - slight lift or border brightening for project cards
   - link underline or color shift
 - Theme toggle animation should be simple and not draw attention away from the content.
+- Theme toggle should use a sun icon for switching to day mode and a moon icon for switching to night mode.
+- Action links should use specific, action-matching icons where available.
+- Website and preview links should use an external-arrow icon.
+- Icons should clarify actions without becoming a decorative logo wall.
 
 ## Accessibility Rules
 

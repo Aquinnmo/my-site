@@ -60,8 +60,8 @@ This log exists because the user wants product and design decisions asked explic
 - Should the hero mention DataAnnotation?
 - Which CTA should be primary: resume, email, projects, GitHub, LinkedIn, or another action?
 - Which CTA should be secondary?
-- Should the resume PDF from `legacy/public/adam_montgomery_resume.pdf` be reused as-is?
-- Should the legacy profile photo from `legacy/public/pfp.jpeg` remain the hero portrait?
+- Should the copied resume PDF in `src/assets/portfolio/adam_montgomery_resume.pdf` be reused as-is?
+- Should the copied profile photo in `src/assets/portfolio/pfp.jpeg` remain the hero portrait?
 
 ### Experience
 
@@ -75,8 +75,9 @@ This log exists because the user wants product and design decisions asked explic
 ### Projects
 
 - Are any project claims, dates, deployment targets, or metrics stale and needing correction before use?
-- Should `Links pending` remain visible for projects without documented public links, or should those link rows be hidden?
+- Answered: projects without documented public links should hide the link row instead of showing `Links pending`.
 - Should project tech stacks stay as text tags or use imported tech icons later?
+- Should action icons remain inline SVG plus legacy assets, or should they eventually move into a shared icon component set?
 - Should Chip Champ remain excluded because it was commented out in legacy?
 
 ### Skills
@@ -135,7 +136,7 @@ This log exists because the user wants product and design decisions asked explic
 - Should external fonts be loaded from Google Fonts, bundled locally, or avoided?
 - Should Vercel Analytics and Speed Insights be reintroduced from the legacy site?
 - Should the current root favicon be replaced with a legacy asset or new frozen-lake mark?
-- Should legacy assets be copied into root `public/` or imported from `legacy/public/` during development?
+- Answered: approved legacy assets must be copied into the new app before use. Current copied location is `src/assets/portfolio/`; do not import directly from `legacy/public/`.
 
 ## Validation Questions
 

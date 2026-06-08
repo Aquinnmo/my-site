@@ -6,10 +6,12 @@ This document is the working source of truth for the one-page frozen-lake portfo
 
 - Root app: Vite + React + TypeScript template.
 - Root app entry: `src/main.tsx`.
-- Root visible component: `src/App.tsx`.
+- Root page composition component: `src/App.tsx`.
+- Component directory: `src/components/`.
 - Root styles: `src/index.css` and `src/App.css`.
 - Root public assets: `public/icons.svg` and `public/favicon.svg`.
 - Root template assets: `src/assets/hero.png`, `src/assets/react.svg`, `src/assets/vite.svg`.
+- Copied portfolio assets: `src/assets/portfolio/`.
 - Legacy reference app remains under `legacy/`.
 - Legacy files must not be deleted or moved unless the user explicitly approves.
 
@@ -43,6 +45,7 @@ This document is the working source of truth for the one-page frozen-lake portfo
   - GitHub repository link where available
   - public link where available
   - visual treatment for key tech-stack components
+- Action links should use specific icons where possible, not generic decoration.
 - Skills direction: use judgment to select key languages, tools, and frameworks.
 - Foundry direction: do not create a separate Foundry section; include Foundry only in the experience section.
 
@@ -127,6 +130,8 @@ Mobile flow:
 - Do not introduce multi-page routing in v1 unless explicitly approved.
 - Preserve `legacy/` as the retrieval source.
 - Reuse legacy assets only after the user approves each visible asset decision.
+- Approved legacy assets must be copied into the new app before use; do not import or path directly from `legacy/` in runtime code.
+- Current copied asset location: `src/assets/portfolio/`.
 - Likely reusable asset candidates:
   - `legacy/public/pfp.jpeg`
   - `legacy/public/adam_montgomery_resume.pdf`
@@ -149,11 +154,13 @@ Phase 6 base app shell is implemented in `src/App.tsx`, `src/App.css`, and `src/
 
 Phase 7 blizzard and frozen-lake foundation is implemented in `src/App.tsx` and `src/App.css`.
 
-Phase 8 hero section is implemented in `src/App.tsx` and `src/App.css`.
+Phase 8 hero section is implemented in `src/components/HeroSection.tsx` and `src/App.css`.
 
-Phase 9 experience section is implemented in `src/App.tsx` and `src/App.css`.
+Phase 9 experience section is implemented in `src/components/ExperienceSection.tsx` and `src/App.css`.
 
-Phase 10 projects section is implemented in `src/App.tsx` and `src/App.css`.
+Phase 10 projects section is implemented in `src/components/ProjectsSection.tsx` and `src/App.css`.
+
+Component refactor is implemented. `src/App.tsx` should remain a lightweight page-composition shell; core section data and logic should live inside the related component unless a later shared data layer is explicitly approved.
 
 Current Phase 6 implementation includes:
 
@@ -161,8 +168,8 @@ Current Phase 6 implementation includes:
 - no nav bar
 - constrained content width
 - full-viewport frozen-lake background layers without line, crack, or shard motifs
-- system-preference theme initialization
-- manual light/dark theme toggle
+- system-preference theme initialization inside `src/components/ThemeToggle.tsx`
+- manual light/dark theme toggle inside `src/components/ThemeToggle.tsx`
 - no theme persistence yet because persistence is still unapproved
 - visible global focus styles
 - reduced-motion baseline
@@ -186,24 +193,25 @@ Current Phase 8 implementation includes:
 - concise draft hero summary focused on practical web product delivery
 - three recruiter-facing proof chips
 - primary resume CTA and secondary projects CTA
-- legacy profile photo imported from `legacy/public/pfp.jpeg`
-- legacy resume PDF imported from `legacy/public/adam_montgomery_resume.pdf`
+- profile photo copied to and imported from `src/assets/portfolio/pfp.jpeg`
+- resume PDF copied to and imported from `src/assets/portfolio/adam_montgomery_resume.pdf`
 - centered hero quick links for Resume, LinkedIn, GitHub, and Email
-- quick links use related legacy icons from `legacy/public/`
+- quick links use copied icons from `src/assets/portfolio/`
+- primary resume CTA uses the PDF icon
 - simplified CSS-only under-ice portrait treatment using a circular frame, softer frost haze, lighter blur, cool tint, and small snow/frost particles
 - no crack, shard, etched-line, or ice-line treatment in the portrait
 
 Phase 8 assumptions pending user review:
 
-- The legacy profile photo is acceptable as the visible hero portrait.
-- The legacy resume PDF is acceptable as the primary hero CTA target.
+- The copied legacy profile photo is acceptable as the visible hero portrait.
+- The copied legacy resume PDF is acceptable as the primary hero CTA target.
 - Resume is the primary CTA and projects is the secondary CTA.
 - The draft hero summary is acceptable until the user provides exact copy.
 - The quick-link email target currently uses `mailto:adammontcompany@gmail.com` from legacy Foundry/project contact copy.
 
 Current Phase 9 implementation includes:
 
-- structured experience data in `src/App.tsx`
+- structured experience data in `src/components/ExperienceSection.tsx`
 - centered experience section with left-aligned frosted experience cards
 - no pill-style section kicker tags above headings
 - entries for SPS Commerce, Montgomery Software Foundry Inc., and DataAnnotation
@@ -220,9 +228,15 @@ Phase 9 assumptions pending user review:
 
 Current Phase 10 implementation includes:
 
-- structured project data in `src/App.tsx`
+- structured project data in `src/components/ProjectsSection.tsx`
 - equal-weight responsive project grid
 - compact frosted project cards with project type, name, summary, stack tags, and links
+- project links use action-specific icons:
+  - GitHub icon for repository links
+  - external-arrow icon for web preview and website links
+  - download icon for Android APK links
+  - PDF icon for resume links
+- projects without documented links do not render a placeholder link row
 - visible projects from the legacy projects page:
   - Pump Pal
   - Custom Enterprise Databasing System
@@ -238,8 +252,9 @@ Current Phase 10 implementation includes:
 Phase 10 assumptions pending user review:
 
 - Text stack tags are acceptable as the first visual treatment for project tech stacks.
-- Projects with no public/repo link can show `Links pending`.
+- Projects with no public/repo link should hide the link row instead of showing `Links pending`.
 - The databasing system public action can use the Foundry contact email from legacy.
+- Inline SVG icons are acceptable for action-specific UI where no legacy asset exists.
 
 ## Retrieval Map
 
@@ -249,3 +264,12 @@ Phase 10 assumptions pending user review:
 - Visual system: `REDESIGN_VISUAL_SYSTEM.md`
 - Fine-grained implementation plan: `REDESIGN_PLAN.md`
 - Current app template files: `src/`
+- Page composition: `src/App.tsx`
+- Copied portfolio assets: `src/assets/portfolio/`
+- Background layers: `src/components/Background.tsx`
+- Theme toggle logic: `src/components/ThemeToggle.tsx`
+- Hero logic and content: `src/components/HeroSection.tsx`
+- Experience logic and content: `src/components/ExperienceSection.tsx`
+- Project logic and content: `src/components/ProjectsSection.tsx`
+- Skills placeholder: `src/components/SkillsSection.tsx`
+- Footer placeholder: `src/components/SiteFooter.tsx`

@@ -113,6 +113,10 @@
   top: 1rem;
   right: 1rem;
   z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
   min-width: 4.75rem;
   border: 1px solid var(--color-ice-edge);
   border-radius: 999px;
@@ -122,6 +126,17 @@
   box-shadow: 0 1rem 2.25rem var(--color-shadow);
   backdrop-filter: blur(16px);
   cursor: pointer;
+}
+
+.theme-toggle-icon {
+  width: 1rem;
+  height: 1rem;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
 }
 
 .theme-toggle:hover {
@@ -232,6 +247,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   min-height: 3rem;
   border: 1px solid var(--color-ice-edge);
   border-radius: 999px;
@@ -263,6 +279,20 @@
 .hero-action-secondary {
   color: var(--color-text);
   background: var(--color-panel-strong);
+}
+
+.action-icon {
+  width: 1.18rem;
+  height: 1.18rem;
+  flex: 0 0 auto;
+}
+
+svg.action-icon {
+  fill: currentColor;
+}
+
+.hero-action-primary .action-icon {
+  filter: brightness(0) invert(1);
 }
 
 .hero-action-secondary:hover {
@@ -545,12 +575,6 @@
   gap: 0.3rem;
 }
 
-.project-type {
-  color: var(--color-link);
-  font-size: 0.88rem;
-  font-weight: 850;
-}
-
 .project-card h3 {
   margin: 0;
   font-size: clamp(1.35rem, 2.8vw, 1.9rem);
@@ -591,6 +615,9 @@
 
 .project-links a,
 .project-links span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   border: 1px solid color-mix(in srgb, var(--color-ice-edge) 78%, transparent);
   border-radius: 999px;
   padding: 0.38rem 0.68rem;
@@ -599,6 +626,24 @@
   font-weight: 850;
   line-height: 1;
   text-decoration: none;
+}
+
+.project-link-icon {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+}
+
+svg.project-link-icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+:root[data-theme='dark'] .project-link-icon {
+  filter: drop-shadow(0 0 0.35rem color-mix(in srgb, var(--color-frost) 24%, transparent));
 }
 
 .project-links span {

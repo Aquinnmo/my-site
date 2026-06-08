@@ -34,6 +34,7 @@ The new site should condense the sprawling legacy site into a focused profession
 - Legacy Foundry content: `legacy/src/pages/MontgomerySoftwareFoundry.jsx`
 - Legacy global styles: `legacy/src/style.css`
 - Legacy static assets: `legacy/public/`
+- Copied new-app asset location: `src/assets/portfolio/`
 
 ## Success Criteria
 
@@ -258,7 +259,7 @@ Status: completed as base template implementation.
 - Build a one-page React app shell.
 - Remove route complexity from the new app unless explicitly needed.
 
-Status: completed in `src/App.tsx`.
+Status: completed in `src/App.tsx`; later refactored so `src/App.tsx` is page composition only.
 
 ### Phase 6.2: Add Layout Wrapper
 
@@ -266,7 +267,7 @@ Status: completed in `src/App.tsx`.
 - Add full-width thematic background layers.
 - Ensure page sections are not floating section cards.
 
-Status: completed in `src/App.tsx`, `src/App.css`, and `src/index.css`.
+Status: completed in `src/App.tsx`, `src/components/Background.tsx`, `src/App.css`, and `src/index.css`.
 
 ### Phase 6.3: Add Theme State
 
@@ -283,7 +284,7 @@ Status: completed with system preference and manual toggle. Persistence is inten
 - Ensure theme toggle is keyboard usable.
 - Respect reduced-motion preference.
 
-Status: completed in `src/App.tsx` and `src/index.css`.
+Status: completed in `src/components/ThemeToggle.tsx` and `src/index.css`.
 
 ## Phase 7: Blizzard and Frozen Lake Foundation
 
@@ -328,7 +329,7 @@ Status: completed with draft copy and documented asset/CTA assumptions pending u
 - Avoid putting the hero text inside a card.
 - Leave a visible hint of the next section.
 
-Status: completed with centered name, rotating-role text, draft summary, proof chips, CTAs, and icon quick links.
+Status: completed with centered name, rotating-role text, draft summary, proof chips, icon quick links, and icon-supported CTAs.
 
 ### Phase 8.2: Build Ice-Trapped Profile Image
 
@@ -351,6 +352,8 @@ Status: completed with resume as primary and projects as secondary; this CTA ord
 
 Additional status: completed centered quick links for resume, LinkedIn, GitHub, and email using related legacy icons.
 
+Additional status: completed PDF icon on the resume CTA.
+
 ### Phase 8.4: Mobile Hero Pass
 
 - Confirm the hero does not consume too much vertical space.
@@ -367,7 +370,7 @@ Status: completed with structured cards and SPS details still explicitly pending
 - Convert approved experience entries into structured data.
 - Include title, organization, dates, summary, and concise proof bullets.
 
-Status: completed in `src/App.tsx`.
+Status: completed in `src/components/ExperienceSection.tsx`.
 
 ### Phase 9.2: Build Experience Layout
 
@@ -399,7 +402,7 @@ Status: completed as an equal-weight project grid.
 - Convert approved project entries into structured data.
 - Include name, status, stack, summary, links, and proof points.
 
-Status: completed in `src/App.tsx`. Stale status/date/deployment-target claims were omitted.
+Status: completed in `src/components/ProjectsSection.tsx`. Stale status/date/deployment-target claims were omitted.
 
 ### Phase 10.2: Build Featured Project Layout
 
@@ -420,7 +423,9 @@ Status: intentionally resolved as the same equal-weight card layout for all incl
 - Include deployed links, repos, previews, or contact links only where useful.
 - Clearly distinguish live product links from source-code links.
 
-Status: completed with visible link pills and `Links pending` for projects without documented public links.
+Status: completed with visible link pills and hidden link rows for projects without documented public links.
+
+Additional status: completed action-specific icons for repository, web preview/website, Android APK, and resume links.
 
 ## Phase 11: Skills and Tools Section
 
@@ -596,7 +601,8 @@ Status: completed with visible link pills and `Links pending` for projects witho
 - Should the snowfall be pure CSS, canvas-based, or avoided until the core page is complete?
 - Should the ice-trapped profile treatment be CSS-only, generated-image-assisted, or manually edited from the existing photo?
 - Which CTA should be primary: resume, email, projects, or LinkedIn?
-- Should the resume PDF from `legacy/public/` be reused as-is?
+- Should the copied resume PDF in `src/assets/portfolio/` be reused as-is?
+- If a legacy asset is reused, copy it into the new app first instead of importing directly from `legacy/`.
 
 ## Non-Goals For The First Implementation
 
