@@ -1,86 +1,73 @@
-# Adam's Personal React Site
+# React + TypeScript + Vite
 
-This is a personal website built with React. It showcases projects, experience, and interests.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Features
-- Modern responsive design
-- Clean, functional mobile UI
-- Project portfolio
-- Experience and interests pages
-- Montgomery Software Foundry Inc. service overview
-- Team guessing game
+Currently, two official plugins are available:
 
-## Getting Started
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-### Prerequisites
-- Node.js (v16 or higher recommended)
-- npm
+## React Compiler
 
-### Installation
-1. Clone the repository:
-   ```sh
-   git clone <your-repo-url>
-   cd personal-site
-   ```
-2. Install dependencies:
-   ```sh
-   npm install
-   ```
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-### Running the App
-To start the development server:
-```sh
-npm run dev
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-The site will be available at `http://localhost:3000` by default.
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-### Quality Checks
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-Run the Node-based test suite:
-
-```sh
-npm test
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-Lint the source files for syntax and security red flags:
-
-```sh
-npm run lint
-```
-
-Before deploying, ensure the production build compiles successfully:
-
-```sh
-npm run build
-```
-
-## Project Structure
-- `src/` - Source files
-  - `components/` - Component files
-  - `pages/` - Pages
-- `public/` - Static assets
-- `index.html` - Main HTML file
-- `vercel.json` - Vercel deployment config
-
-## Deployment
-This project can be deployed on Vercel or any static hosting provider.
-
-## Other Notes
-This project uses the React Router for internal page management.
-
-## License
-MIT
-
-<details>
-<summary>Next Improvements</summary>
-
-| Improvement | How |
-|-----:|-----------|
-| Refactoring `src/style.css` | - Break into individual style sheets per page/component  <br>- Factor out reusable styles for consistency |
-| Embedding stats.fm profile stats | - Pull data via API or web scraping  <br>- Contact stats.fm for API access/docs  <br>- Try embedding via iframe |
-| Make the mobile UI more robust | - Further modularize `style.css`  <br>- Improve mobile responsiveness |
-| 404 Page | - Redesign to be fun and interactive  <br>- Add a mini-game or engaging element |
-| Component structure | - Refactor pages to use reusable, modular components  <br>- Improve maintainability and scalability |
-
-</details>
