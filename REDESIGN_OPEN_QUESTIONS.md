@@ -75,6 +75,9 @@ This log exists because the user wants product and design decisions asked explic
 ### Projects
 
 - Are any project claims, dates, deployment targets, or metrics stale and needing correction before use?
+- Should `Links pending` remain visible for projects without documented public links, or should those link rows be hidden?
+- Should project tech stacks stay as text tags or use imported tech icons later?
+- Should Chip Champ remain excluded because it was commented out in legacy?
 
 ### Skills
 

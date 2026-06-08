@@ -392,25 +392,35 @@ Status: completed for Foundry and DataAnnotation from legacy source material. SP
 
 ## Phase 10: Projects Section
 
+Status: completed as an equal-weight project grid.
+
 ### Phase 10.1: Create Project Data Model
 
 - Convert approved project entries into structured data.
 - Include name, status, stack, summary, links, and proof points.
+
+Status: completed in `src/App.tsx`. Stale status/date/deployment-target claims were omitted.
 
 ### Phase 10.2: Build Featured Project Layout
 
 - Give the strongest project or projects more space.
 - Keep project cards compact and comparable.
 
+Status: intentionally resolved as equal-weight cards because the user specified all project cards should have the same visual strength.
+
 ### Phase 10.3: Build Secondary Project Layout
 
 - Add smaller entries for less important projects.
 - Avoid including weak or outdated projects unless the user approves.
 
+Status: intentionally resolved as the same equal-weight card layout for all included projects.
+
 ### Phase 10.4: Add Project Links
 
 - Include deployed links, repos, previews, or contact links only where useful.
 - Clearly distinguish live product links from source-code links.
+
+Status: completed with visible link pills and `Links pending` for projects without documented public links.
 
 ## Phase 11: Skills and Tools Section
 

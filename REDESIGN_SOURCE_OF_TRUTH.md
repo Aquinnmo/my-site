@@ -153,6 +153,8 @@ Phase 8 hero section is implemented in `src/App.tsx` and `src/App.css`.
 
 Phase 9 experience section is implemented in `src/App.tsx` and `src/App.css`.
 
+Phase 10 projects section is implemented in `src/App.tsx` and `src/App.css`.
+
 Current Phase 6 implementation includes:
 
 - one-page semantic shell
@@ -215,6 +217,29 @@ Phase 9 assumptions pending user review:
 - SPS Commerce responsibilities, stack, team, and impact bullets still need user-provided copy.
 - Foundry date label is normalized from legacy `2025-08-20` to `Aug 2025 - Present`.
 - DataAnnotation date label is normalized from legacy `2025-01-05` to `Jan 2025 - Present`.
+
+Current Phase 10 implementation includes:
+
+- structured project data in `src/App.tsx`
+- equal-weight responsive project grid
+- compact frosted project cards with project type, name, summary, stack tags, and links
+- visible projects from the legacy projects page:
+  - Pump Pal
+  - Custom Enterprise Databasing System
+  - YOU WILL LOSE: Rock, Paper, Scissors
+  - Am I Cooked?
+  - CherryPick
+  - adam-montgomery.ca
+  - Brick Breaker
+  - Tic-Tac-Toe
+- project timeline and deployment-target claims are intentionally omitted because the extraction docs mark them as potentially stale
+- Chip Champ remains excluded because it was commented out in legacy and requires explicit approval to revive
+
+Phase 10 assumptions pending user review:
+
+- Text stack tags are acceptable as the first visual treatment for project tech stacks.
+- Projects with no public/repo link can show `Links pending`.
+- The databasing system public action can use the Foundry contact email from legacy.
 
 ## Retrieval Map
 
