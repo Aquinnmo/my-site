@@ -300,65 +300,23 @@ svg.action-icon {
   color: var(--color-link-hover);
 }
 
-.under-ice-portrait {
+.profile-portrait {
   position: relative;
   width: min(72vw, 21rem);
   margin: 0 auto;
 }
 
-.portrait-ice-frame {
+.profile-photo-frame {
   position: relative;
   overflow: hidden;
   aspect-ratio: 1;
-  border: 1px solid color-mix(in srgb, var(--color-frost) 92%, transparent);
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 32% 18%, color-mix(in srgb, var(--color-frost) 76%, transparent), transparent 8rem),
-    radial-gradient(circle at 74% 78%, color-mix(in srgb, var(--color-ice-strong) 28%, transparent), transparent 11rem),
-    var(--color-panel-strong);
-  box-shadow:
-    inset 0 0 1.8rem color-mix(in srgb, var(--color-bg-wind) 78%, transparent),
-    inset 0 -1.2rem 2.8rem color-mix(in srgb, var(--color-ice) 42%, transparent),
-    0 1.6rem 3.4rem var(--color-shadow);
 }
 
-.portrait-ice-frame::before,
-.portrait-ice-frame::after {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  content: '';
-  pointer-events: none;
-}
-
-.portrait-ice-frame::before {
-  background:
-    radial-gradient(circle at 32% 18%, color-mix(in srgb, var(--color-snow) 80%, transparent) 0 0.08rem, transparent 0.09rem),
-    radial-gradient(circle at 68% 30%, color-mix(in srgb, var(--color-frost) 72%, transparent) 0 0.07rem, transparent 0.08rem),
-    radial-gradient(circle at 42% 76%, color-mix(in srgb, var(--color-snow) 72%, transparent) 0 0.075rem, transparent 0.085rem);
-  background-size:
-    7rem 8rem,
-    8rem 7rem,
-    9rem 10rem;
-  mix-blend-mode: screen;
-  opacity: 0.48;
-}
-
-.portrait-ice-frame::after {
-  background:
-    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--color-bg-wind) 46%, transparent), transparent 12rem),
-    radial-gradient(ellipse at 50% 105%, color-mix(in srgb, var(--color-ice) 36%, transparent), transparent 13rem),
-    color-mix(in srgb, var(--color-ice) 11%, transparent);
-  backdrop-filter: blur(0.45px) saturate(0.95);
-}
-
-.portrait-ice-frame img {
+.profile-photo-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 38%;
-  filter: saturate(0.78) contrast(0.98) brightness(1.02);
-  transform: scale(1.03);
 }
 
 .quick-links {
@@ -472,18 +430,20 @@ svg.action-icon {
   align-items: start;
 }
 
-.experience-role {
-  margin-bottom: 0.25rem;
-  color: var(--color-link);
-  font-size: 0.95rem;
-  font-weight: 850;
-}
-
 .experience-card h3 {
   margin: 0;
-  font-size: clamp(1.45rem, 3vw, 2.05rem);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  max-width: 18ch;
+  color: var(--color-text);
+  font-size: clamp(1.75rem, 4vw, 2.65rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.experience-company {
+  margin-top: 0.5rem;
+  color: var(--color-link);
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  font-weight: 850;
 }
 
 .experience-dates {
@@ -692,7 +652,7 @@ svg.project-link-icon {
     padding: 3rem 0 4rem;
   }
 
-  .under-ice-portrait {
+  .profile-portrait {
     width: min(78vw, 18rem);
   }
 

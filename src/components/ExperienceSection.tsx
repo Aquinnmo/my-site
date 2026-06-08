@@ -51,8 +51,8 @@ export function ExperienceSection() {
           <article className="experience-card" key={`${experience.company}-${experience.role}`}>
             <div className="experience-card-header">
               <div>
-                <p className="experience-role">{experience.role}</p>
-                <h3>{experience.company}</h3>
+                <h3>{experience.role}</h3>
+                <p className="experience-company">{experience.company}</p>
               </div>
               <p className="experience-dates">{experience.dates}</p>
             </div>

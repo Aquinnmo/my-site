@@ -85,8 +85,8 @@ export function HeroSection() {
         <h1 id="page-title">Adam Montgomery</h1>
       </div>
 
-      <figure className="under-ice-portrait" aria-label="Profile photo under lake ice">
-        <div className="portrait-ice-frame">
+      <figure className="profile-portrait" aria-label="Profile photo">
+        <div className="profile-photo-frame">
           <img src={profilePhoto} alt="Adam Montgomery" />
         </div>
       </figure>
