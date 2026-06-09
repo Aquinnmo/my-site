@@ -216,8 +216,9 @@ Foundry page Phase 3 is implemented as the shared top page switcher:
 - ordinary clicks use `history.pushState` route updates without a full page reload.
 - active state is derived from `src/App.tsx` route state.
 - the active pill slides between `Adam` and `Foundry` with a transform animation.
-- the `Adam` switcher option uses the portfolio's icy-blue identity, while `Foundry` uses the ember-orange identity.
-- the active pill changes color to match the active destination.
+- the switcher uses one route theme at a time: portfolio icy-blue on `/`, Foundry ember-orange on `/foundry`.
+- individual switcher options do not keep permanent destination colors; both labels and icons inherit the current page theme.
+- the active pill changes color only when the switcher theme changes to the current rendered page.
 - reduced-motion disables the pill transition.
 - mobile styling keeps the switcher compact and separated from the theme toggle.
 
@@ -288,11 +289,14 @@ Foundry page Phase 6 responsive and interaction polish is implemented:
 
 Route transition behavior is implemented:
 
-- selecting `Adam` or `Foundry` starts the page switcher pill color/position transition immediately.
+- selecting `Adam` or `Foundry` starts the page switcher pill position transition immediately while retaining the currently rendered page theme.
 - the switcher and theme toggle remain visible above the transition.
 - page content and footer fade out into a fixed base-color veil.
 - the base-color veil is black in dark mode and white in light mode.
-- after fade-out, the route swaps, scrolls to top, and the new page fades in.
+- after fade-out, the route swaps, the switcher transitions to the new page theme, the page scrolls to top, and the new page fades in.
+- transition timing is synchronized around the 320ms pill slide: 160ms fade-out, then 160ms fade-in.
+- switcher theme color transitions begin at the route handoff and use the same 160ms duration as the page fade-in, so the color shift and page fade complete together.
+- route content uses opacity-only transitions so the page fades cleanly without vertical wobble.
 - reduced-motion skips the fade sequence and swaps routes immediately.
 
 Current Phase 8 implementation includes:

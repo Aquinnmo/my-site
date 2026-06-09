@@ -183,6 +183,9 @@ Use white and orangey-red fire colors as the dominant Foundry light-mode impress
   - slight lift or border brightening for project cards
   - link underline or color shift
 - Theme toggle animation should be simple and not draw attention away from the content.
+- The page switcher should use one current-page palette at a time: portfolio ice colors while the portfolio is rendered and Foundry ember colors while the Foundry page is rendered.
+- Switcher options should not carry permanent destination colors.
+- Page-to-page transitions should fade content into the light/dark base color, swap the rendered route at full veil opacity, then fade the new route in from the top scroll position.
 - Theme toggle should use a sun icon for switching to day mode and a moon icon for switching to night mode.
 - Dark mode is the default initial theme; the toggle manually switches to day mode.
 - Action links should use specific, action-matching icons where available.

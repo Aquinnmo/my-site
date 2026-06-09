@@ -12,8 +12,8 @@ import './App.css'
 type AppRoute = 'portfolio' | 'foundry'
 type RouteTransitionPhase = 'idle' | 'exiting' | 'entering'
 
-const routeTransitionExitMs = 300
-const routeTransitionEnterMs = 300
+const routeTransitionExitMs = 160
+const routeTransitionEnterMs = 160
 
 function getRouteFromPath(pathname: string): AppRoute {
   return pathname === '/foundry' ? 'foundry' : 'portfolio'

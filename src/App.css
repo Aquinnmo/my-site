@@ -273,12 +273,12 @@
   background: var(--route-transition-base);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 300ms ease;
+  transition: opacity 160ms ease;
 }
 
 .route-content {
   opacity: 1;
-  transition: opacity 300ms ease;
+  transition: opacity 160ms ease;
   will-change: opacity;
 }
 
@@ -292,11 +292,11 @@
 
 .site-shell[data-transition-phase='entering'] .route-transition-veil {
   opacity: 0;
-  transition-duration: 300ms;
+  transition-duration: 160ms;
 }
 
 .site-shell[data-transition-phase='entering'] .route-content {
-  animation: route-content-enter 300ms ease both;
+  animation: route-content-enter 160ms ease both;
 }
 
 @keyframes route-content-enter {
@@ -310,21 +310,31 @@
 }
 
 .page-switcher {
+  --switcher-theme-duration: 160ms;
+  --switcher-slide-duration: 320ms;
   --switcher-padding: 0.35rem;
   --switcher-gap: 0.35rem;
   --switcher-pill-width: calc((100% - (var(--switcher-padding) * 2) - var(--switcher-gap)) / 2);
-  --switcher-adam-accent: #87dbff;
-  --switcher-adam-accent-strong: #c5efff;
-  --switcher-adam-edge: #24485c;
-  --switcher-adam-glow: rgba(217, 245, 255, 0.2);
+  --switcher-portfolio-accent: #87dbff;
+  --switcher-portfolio-accent-strong: #c5efff;
+  --switcher-portfolio-edge: #24485c;
+  --switcher-portfolio-glow: rgba(217, 245, 255, 0.2);
+  --switcher-portfolio-surface: rgba(8, 23, 36, 0.9);
+  --switcher-portfolio-pill-surface: rgba(13, 35, 52, 0.88);
   --switcher-foundry-accent: #ff8a24;
   --switcher-foundry-accent-strong: #ffd29a;
   --switcher-foundry-edge: #7a3511;
   --switcher-foundry-glow: rgba(255, 136, 36, 0.24);
-  --switcher-active-accent: var(--switcher-adam-accent);
-  --switcher-active-accent-strong: var(--switcher-adam-accent-strong);
-  --switcher-active-edge: var(--switcher-adam-edge);
-  --switcher-active-glow: var(--switcher-adam-glow);
+  --switcher-foundry-surface: rgba(32, 9, 2, 0.9);
+  --switcher-foundry-pill-surface: rgba(57, 20, 5, 0.9);
+  --switcher-theme-accent: var(--switcher-portfolio-accent);
+  --switcher-theme-accent-strong: var(--switcher-portfolio-accent-strong);
+  --switcher-theme-edge: var(--switcher-portfolio-edge);
+  --switcher-theme-glow: var(--switcher-portfolio-glow);
+  --switcher-theme-surface: var(--switcher-portfolio-surface);
+  --switcher-theme-pill-surface: var(--switcher-portfolio-pill-surface);
+  --switcher-portfolio-layer: 1;
+  --switcher-foundry-layer: 0;
   position: fixed;
   top: 1rem;
   left: 50%;
@@ -334,30 +344,74 @@
   min-width: 13.5rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--switcher-gap);
-  border: 1px solid color-mix(in srgb, var(--switcher-active-edge) 58%, transparent);
-  border-radius: 1.35rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--switcher-theme-edge) 58%, transparent);
+  border-radius: 1.2rem;
   padding: var(--switcher-padding);
-  background:
-    radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--color-frost) 13%, transparent), transparent 58%),
-    radial-gradient(circle at 88% 100%, var(--switcher-active-glow), transparent 62%),
-    color-mix(in srgb, var(--color-panel-strong) 84%, #111 16%);
+  background-color: var(--switcher-theme-surface);
   box-shadow:
     0 1.15rem 2.4rem color-mix(in srgb, var(--color-shadow) 72%, transparent),
-    inset 0 0.04rem 0 color-mix(in srgb, var(--color-frost) 13%, transparent),
-    inset 0 -0.75rem 1.8rem color-mix(in srgb, var(--color-ice) 12%, transparent);
+    0 0 1.6rem color-mix(in srgb, var(--switcher-theme-glow) 42%, transparent),
+    inset 0 0.04rem 0 color-mix(in srgb, var(--switcher-theme-accent-strong) 13%, transparent),
+    inset 0 -0.75rem 1.8rem color-mix(in srgb, var(--switcher-theme-accent) 10%, transparent);
   transform: translateX(-50%);
+  isolation: isolate;
   backdrop-filter: blur(18px);
   transition:
-    border-color 220ms ease,
-    background 220ms ease,
-    box-shadow 220ms ease;
+    border-color var(--switcher-theme-duration) ease,
+    background-color var(--switcher-theme-duration) ease,
+    box-shadow var(--switcher-theme-duration) ease;
 }
 
-.page-switcher[data-active-route='foundry'] {
-  --switcher-active-accent: var(--switcher-foundry-accent);
-  --switcher-active-accent-strong: var(--switcher-foundry-accent-strong);
-  --switcher-active-edge: var(--switcher-foundry-edge);
-  --switcher-active-glow: var(--switcher-foundry-glow);
+.page-switcher[data-theme-route='foundry'] {
+  --switcher-theme-accent: var(--switcher-foundry-accent);
+  --switcher-theme-accent-strong: var(--switcher-foundry-accent-strong);
+  --switcher-theme-edge: var(--switcher-foundry-edge);
+  --switcher-theme-glow: var(--switcher-foundry-glow);
+  --switcher-theme-surface: var(--switcher-foundry-surface);
+  --switcher-theme-pill-surface: var(--switcher-foundry-pill-surface);
+  --switcher-portfolio-layer: 0;
+  --switcher-foundry-layer: 1;
+}
+
+:root[data-theme='light'] .page-switcher {
+  --switcher-portfolio-accent: #0b6e99;
+  --switcher-portfolio-accent-strong: #084c6b;
+  --switcher-portfolio-edge: #86d2ec;
+  --switcher-portfolio-glow: rgba(73, 191, 233, 0.18);
+  --switcher-portfolio-surface: rgba(255, 255, 255, 0.92);
+  --switcher-portfolio-pill-surface: rgba(232, 248, 255, 0.88);
+  --switcher-foundry-accent: #a93d06;
+  --switcher-foundry-accent-strong: #742803;
+  --switcher-foundry-edge: #ef9345;
+  --switcher-foundry-glow: rgba(216, 88, 13, 0.2);
+  --switcher-foundry-surface: rgba(255, 255, 255, 0.92);
+  --switcher-foundry-pill-surface: rgba(255, 242, 229, 0.9);
+}
+
+.page-switcher::before,
+.page-switcher::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  content: '';
+  pointer-events: none;
+  transition: opacity var(--switcher-theme-duration) ease;
+}
+
+.page-switcher::before {
+  opacity: var(--switcher-portfolio-layer);
+  background:
+    radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--switcher-portfolio-accent-strong) 14%, transparent), transparent 58%),
+    radial-gradient(circle at 88% 100%, var(--switcher-portfolio-glow), transparent 62%);
+}
+
+.page-switcher::after {
+  opacity: var(--switcher-foundry-layer);
+  background:
+    radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--switcher-foundry-accent-strong) 16%, transparent), transparent 58%),
+    radial-gradient(circle at 88% 100%, var(--switcher-foundry-glow), transparent 62%);
 }
 
 .page-switcher-active-pill {
@@ -365,32 +419,54 @@
   top: var(--switcher-padding);
   bottom: var(--switcher-padding);
   left: var(--switcher-padding);
-  z-index: 0;
+  z-index: 1;
   width: var(--switcher-pill-width);
-  border: 1px solid color-mix(in srgb, var(--switcher-active-accent) 42%, transparent);
-  border-radius: 1rem;
-  background:
-    radial-gradient(circle at 32% 0%, color-mix(in srgb, var(--switcher-active-accent-strong) 20%, transparent), transparent 70%),
-    radial-gradient(circle at 82% 100%, color-mix(in srgb, var(--switcher-active-accent) 28%, transparent), transparent 72%),
-    color-mix(in srgb, var(--color-panel-strong) 78%, #202020 22%);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--switcher-theme-accent) 42%, transparent);
+  border-radius: 0.82rem;
+  background-color: var(--switcher-theme-pill-surface);
   box-shadow:
-    inset 0 0 0.9rem color-mix(in srgb, var(--switcher-active-accent) 13%, transparent),
-    0 0 1.05rem color-mix(in srgb, var(--switcher-active-accent) 16%, transparent),
+    inset 0 0 0.9rem color-mix(in srgb, var(--switcher-theme-accent) 13%, transparent),
+    0 0 1.05rem color-mix(in srgb, var(--switcher-theme-accent) 16%, transparent),
     0 0.45rem 1.15rem color-mix(in srgb, var(--color-shadow) 52%, transparent);
   transition:
-    border-color 220ms ease,
-    background 220ms ease,
-    box-shadow 220ms ease,
-    transform 260ms ease;
+    border-color var(--switcher-theme-duration) ease,
+    background-color var(--switcher-theme-duration) ease,
+    box-shadow var(--switcher-theme-duration) ease,
+    transform var(--switcher-slide-duration) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .page-switcher[data-active-route='foundry'] .page-switcher-active-pill {
   transform: translateX(calc(100% + var(--switcher-gap)));
 }
 
+.page-switcher-active-pill::before,
+.page-switcher-active-pill::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  content: '';
+  pointer-events: none;
+  transition: opacity var(--switcher-theme-duration) ease;
+}
+
+.page-switcher-active-pill::before {
+  opacity: var(--switcher-portfolio-layer);
+  background:
+    radial-gradient(circle at 32% 0%, color-mix(in srgb, var(--switcher-portfolio-accent-strong) 20%, transparent), transparent 70%),
+    radial-gradient(circle at 82% 100%, color-mix(in srgb, var(--switcher-portfolio-accent) 28%, transparent), transparent 72%);
+}
+
+.page-switcher-active-pill::after {
+  opacity: var(--switcher-foundry-layer);
+  background:
+    radial-gradient(circle at 32% 0%, color-mix(in srgb, var(--switcher-foundry-accent-strong) 22%, transparent), transparent 70%),
+    radial-gradient(circle at 82% 100%, color-mix(in srgb, var(--switcher-foundry-accent) 30%, transparent), transparent 72%);
+}
+
 .page-switcher-link {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -398,41 +474,25 @@
   min-height: 3.1rem;
   border-radius: 999px;
   padding: 0.64rem 0.82rem;
-  color: color-mix(in srgb, var(--switcher-link-accent) 46%, var(--color-text-muted));
+  color: color-mix(in srgb, var(--switcher-theme-accent) 38%, var(--color-text-muted));
   font-size: 0.94rem;
   font-weight: 850;
   line-height: 1;
   text-decoration: none;
-  text-shadow: 0 0 0.8rem color-mix(in srgb, var(--switcher-link-accent) 14%, transparent);
+  text-shadow: 0 0 0.8rem color-mix(in srgb, var(--switcher-theme-accent) 14%, transparent);
   transition:
-    color 180ms ease,
+    color var(--switcher-theme-duration) ease,
+    text-shadow var(--switcher-theme-duration) ease,
     transform 180ms ease;
 }
 
 .page-switcher-link:hover {
-  color: var(--switcher-link-accent-strong);
+  color: var(--switcher-theme-accent-strong);
 }
 
 .page-switcher-link[aria-current='page'] {
-  color: var(--switcher-link-accent-strong);
-}
-
-.page-switcher-link[data-switcher-route='portfolio'] {
-  --switcher-link-accent: var(--switcher-adam-accent);
-  --switcher-link-accent-strong: var(--switcher-adam-accent-strong);
-}
-
-.page-switcher-link[data-switcher-route='foundry'] {
-  --switcher-link-accent: var(--switcher-foundry-accent);
-  --switcher-link-accent-strong: var(--switcher-foundry-accent-strong);
-}
-
-.page-switcher-link[data-switcher-route='portfolio'] .page-switcher-icon {
-  filter: drop-shadow(0 0 0.35rem color-mix(in srgb, var(--switcher-adam-accent) 20%, transparent));
-}
-
-.page-switcher-link[data-switcher-route='foundry'] .page-switcher-icon {
-  filter: drop-shadow(0 0 0.35rem color-mix(in srgb, var(--switcher-foundry-accent) 26%, transparent));
+  color: var(--switcher-theme-accent-strong);
+  text-shadow: 0 0 0.95rem color-mix(in srgb, var(--switcher-theme-accent) 20%, transparent);
 }
 
 .page-switcher-link:focus-visible {
@@ -448,6 +508,8 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.95;
+  filter: drop-shadow(0 0 0.35rem color-mix(in srgb, var(--switcher-theme-accent) 22%, transparent));
+  transition: filter var(--switcher-theme-duration) ease;
 }
 
 .page-flow {

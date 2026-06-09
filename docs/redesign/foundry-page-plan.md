@@ -53,6 +53,8 @@ Status: implemented.
   - active pill slides between destinations using a smooth transform animation.
 - Use semantic links rather than buttons because the control changes pages.
 - Derive active state from the current path.
+- Theme both switcher options from the current rendered page rather than assigning permanent colors per destination.
+- Let the active pill slide toward the selected destination first, then transition the whole switcher from the current page theme to the next page theme at the route handoff.
 - Provide visible focus states for keyboard users.
 - Respect `prefers-reduced-motion` by disabling or simplifying the sliding animation.
 
@@ -108,7 +110,10 @@ Status: implemented.
 - Ensure the active pill animation remains smooth on desktop and mobile.
 - Keep the switcher visible while page content fades out and in during route changes.
 - Fade page content into the current mode's base color: black for dark mode and white for light mode.
-- Swap routes at the top of the page after fade-out, then fade in the new route.
+- Swap routes at the top of the page after fade-out, transition the switcher to the new route theme, then fade in the new route.
+- Keep the 320ms pill slide as the timing anchor: the page should fade out for 160ms, fade in for 160ms, and finish at the same time as the pill slide.
+- Start switcher color transitions at the route handoff and keep them at 160ms so they finish with the page fade-in.
+- Keep route-content transitions opacity-only so the page fade does not introduce vertical movement.
 - Verify the orange-red rising sparks do not obscure text in either color mode.
 - Respect `prefers-reduced-motion` by disabling the spark rise animation and leaving a static ember-speck texture.
 - Keep scrollbars hidden per current site rules.
