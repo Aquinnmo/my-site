@@ -47,7 +47,7 @@
   --color-link: #0b6e99;
   --color-link-hover: #084c6b;
   --color-focus: #0ea5d8;
-  --color-snow: rgba(20, 132, 181, 0.72);
+  --color-snow: rgba(0, 0, 0, 0.897);
   --color-shadow: rgba(42, 132, 174, 0.24);
 
   color-scheme: light;
@@ -60,6 +60,7 @@
 html {
   min-width: 320px;
   min-height: 100%;
+  scrollbar-width: none;
   scroll-behavior: smooth;
 }
 
@@ -69,6 +70,12 @@ body {
   margin: 0;
   color: var(--color-text);
   background: var(--color-bg);
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
 
 button,

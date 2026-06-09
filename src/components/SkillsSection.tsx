@@ -1,7 +1,6 @@
 type SkillGroup = {
   title: string
   icon: 'languages' | 'tools' | 'frameworks' | 'ai'
-  summary: string
   skills: string[]
 }
 
@@ -9,25 +8,21 @@ const skillGroups: SkillGroup[] = [
   {
     title: 'Languages',
     icon: 'languages',
-    summary: 'Core languages used to build typed interfaces, app logic, scripts, and mobile products.',
     skills: ['Kotlin', 'TypeScript', 'Python', 'Java', 'C', 'CSS'],
   },
   {
     title: 'Tools',
     icon: 'tools',
-    summary: 'Practical shipping, database, hosting, and workflow tools used to get projects live.',
     skills: ['GitHub', 'Vercel', 'Render', 'Supabase', 'Firebase', 'MongoDB', 'Docker', 'Redis', 'Kubernetes'],
   },
   {
     title: 'Frameworks',
     icon: 'frameworks',
-    summary: 'Frontend, full-stack, and mobile frameworks used to build maintainable product surfaces.',
     skills: ['React', 'Spring Boot', 'Next.js', 'React Native', 'Expo', 'Node.js'],
   },
   {
     title: 'AI',
     icon: 'ai',
-    summary: 'AI-assisted product features plus disciplined review of generated code quality.',
     skills: ['Gemini API', 'Claude Code', 'AI Feature Design', 'Workflows and Integrations', 'MCP Servers'],
   },
 ]
@@ -81,7 +76,7 @@ export function SkillsSection() {
   return (
     <section className="section-shell content-section" aria-labelledby="skills-title">
       <div className="section-heading-row">
-        <h2 id="skills-title">Skills & Tools</h2>
+        <h2 id="skills-title">Key Skills</h2>
       </div>
       <div className="skills-grid">
         {skillGroups.map((group) => (
@@ -90,7 +85,6 @@ export function SkillsSection() {
               <SkillIcon type={group.icon} />
               <h3>{group.title}</h3>
             </div>
-            <p className="skill-summary">{group.summary}</p>
             <ul className="skill-list" aria-label={`${group.title} skills`}>
               {group.skills.map((skill) => (
                 <li key={skill}>{skill}</li>

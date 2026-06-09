@@ -476,7 +476,7 @@ Status: satisfied by omitting the separate Foundry section.
 
 ## Phase 13: Contact Section
 
-Status: completed with a recruiter-focused footer contact band.
+Status: completed with a recruiter-focused footer contact section styled like the hero, not a card.
 
 ### Phase 13.1: Build Footer Contact
 

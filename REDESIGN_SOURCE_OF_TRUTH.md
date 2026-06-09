@@ -10,6 +10,7 @@ This document is the working source of truth for the one-page frozen-lake portfo
 - Component directory: `src/components/`.
 - Root styles: `src/index.css` and `src/App.css`.
 - Root public assets: `public/favicon.svg`.
+- AI/crawler public files: `public/robots.txt` and `public/llms.txt`.
 - Removed dead template assets: `src/assets/hero.png`, `src/assets/react.svg`, `src/assets/vite.svg`, and `public/icons.svg`.
 - Root Vercel config: `vercel.json`.
 - Copied portfolio assets: `src/assets/portfolio/`.
@@ -107,6 +108,8 @@ Navigation decision:
 
 - No nav bar in v1.
 - The page should be consumed by scrolling only.
+- The page should not show browser scrollbar chrome.
+- Do not use visible divider bars between major page sections.
 
 Above-the-fold requirements:
 
@@ -209,7 +212,7 @@ Current Phase 7 implementation includes:
 Current Phase 8 implementation includes:
 
 - centered single-column hero layout
-- centered section headings and a completed footer contact band
+- centered section headings and a completed hero-aligned footer contact section
 - hero name: Adam Montgomery
 - hero name appears above the profile image
 - rotating title treatment with professional labels and fade-out/fade-in transitions
@@ -293,6 +296,7 @@ Current Phase 11 implementation includes:
 - compact skill labels instead of a decorative logo wall
 - inline SVG category icons owned by the skills component
 - no visible evidence lines inside skill cards
+- no visible summary paragraph inside skill cards
 - responsive one-column mobile layout
 
 Current Phase 13 implementation includes:
@@ -302,7 +306,7 @@ Current Phase 13 implementation includes:
 - copied portfolio icons for every footer link
 - copied resume PDF used for the resume download link
 - email target remains `mailto:adammontcompany@gmail.com`
-- frosted footer contact band styled in `src/App.css`
+- footer contact section is styled like the hero, directly on the lake background instead of as a card
 - primary visual emphasis on `Download Resume` and `Email Me`
 - mobile layout stacks footer links into full-width tap targets
 
@@ -328,6 +332,7 @@ Current cleanup and deploy-prep implementation includes:
 - replaced template README with project-specific local validation and Vercel deployment instructions
 - updated `index.html` title and description for portfolio deployment
 - installed `@vercel/analytics` and `@vercel/speed-insights` in the root app
+- added `robots.txt` for crawler access and `llms.txt` for AI-reader site overview
 
 ## Retrieval Map
 

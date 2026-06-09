@@ -165,16 +165,17 @@
 }
 
 .hero-copy {
-  display: grid;
-  justify-items: center;
-  width: 100%;
-  max-width: 62rem;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
   text-align: center;
 }
 
 .hero-section h1 {
-  justify-self: center;
-  max-width: min(100%, 18ch);
+  display: block;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
   margin: 0;
   font-size: clamp(3.8rem, 8vw, 8.25rem);
   line-height: 0.94;
@@ -429,7 +430,6 @@ svg.action-icon {
   display: grid;
   justify-items: center;
   padding: 4.5rem 0;
-  border-top: 1px solid color-mix(in srgb, var(--color-ice-edge) 70%, transparent);
   text-align: center;
 }
 
@@ -752,11 +752,6 @@ svg.project-link-icon {
   letter-spacing: -0.035em;
 }
 
-.skill-summary {
-  margin-top: 0.85rem;
-  color: var(--color-text-muted);
-}
-
 .skill-list {
   display: flex;
   flex-wrap: wrap;
@@ -780,49 +775,32 @@ svg.project-link-icon {
 .site-footer {
   width: min(100% - 2rem, 72rem);
   margin: 0 auto;
-  border-top: 1px solid color-mix(in srgb, var(--color-ice-edge) 70%, transparent);
-  padding: 4rem 0 3rem;
+  padding: clamp(4rem, 8vw, 6.5rem) 0 3rem;
   color: var(--color-text);
   text-align: center;
 }
 
 .footer-contact {
   position: relative;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--color-ice-edge) 78%, transparent);
-  border-radius: 1rem;
-  padding: clamp(1.25rem, 4vw, 2rem);
-  background:
-    radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--color-frost) 48%, transparent), transparent 18rem),
-    radial-gradient(circle at 88% 100%, color-mix(in srgb, var(--color-ice) 34%, transparent), transparent 17rem),
-    color-mix(in srgb, var(--color-panel-strong) 76%, transparent);
-  box-shadow: 0 1.4rem 3rem color-mix(in srgb, var(--color-shadow) 64%, transparent);
-  backdrop-filter: blur(18px);
-}
-
-.footer-contact > * {
-  position: relative;
-}
-
-.footer-eyebrow {
-  color: var(--color-link);
-  font-size: 0.95rem;
-  font-weight: 850;
+  display: grid;
+  justify-items: center;
+  margin-inline: auto;
 }
 
 .footer-contact h2 {
-  max-width: 12ch;
-  margin: 0.35rem auto 0;
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 1.02;
-  letter-spacing: -0.045em;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+  margin: 0;
+  font-size: clamp(3.2rem, 7vw, 6.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.055em;
 }
 
 .footer-summary {
   max-width: 38rem;
-  margin: 1rem auto 0;
+  margin: 1.1rem auto 0;
   color: var(--color-text-muted);
-  font-size: clamp(1rem, 2vw, 1.18rem);
+  font-size: clamp(1.08rem, 2vw, 1.35rem);
 }
 
 .footer-links {
@@ -830,7 +808,7 @@ svg.project-link-icon {
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.75rem;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .footer-link {
@@ -897,6 +875,7 @@ svg.project-link-icon {
   }
 
   .hero-section h1 {
+    max-width: calc(100vw - 1.5rem);
     font-size: clamp(4.25rem, 10vw, 7rem);
   }
 
@@ -936,7 +915,8 @@ svg.project-link-icon {
   }
 
   .hero-section h1 {
-    max-width: 12ch;
+    width: min(12ch, calc(100vw - 1.25rem));
+    max-width: calc(100vw - 1.25rem);
     font-size: clamp(3.35rem, 14vw, 5.5rem);
     white-space: normal;
   }
@@ -1015,6 +995,8 @@ svg.project-link-icon {
   }
 
   .hero-section h1 {
+    width: min(12ch, calc(100vw - 1rem));
+    max-width: calc(100vw - 1rem);
     font-size: clamp(3rem, 15vw, 4.2rem);
   }
 
@@ -1045,8 +1027,7 @@ svg.project-link-icon {
 
   .experience-card,
   .project-card,
-  .skill-card,
-  .footer-contact {
+  .skill-card {
     border-radius: 0.75rem;
   }
 

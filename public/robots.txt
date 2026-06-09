@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# AI and language-model crawlers can use this site overview:
+# https://adam-montgomery.ca/llms.txt
+
+Sitemap: https://adam-montgomery.ca/sitemap.xml
