@@ -1,37 +1,4 @@
 :root {
-  --color-bg: #f4fbff;
-  --color-bg-deep: #d9efff;
-  --color-bg-wind: #e8f8ff;
-  --color-ice: #b9e4f8;
-  --color-ice-strong: #72c8ed;
-  --color-ice-edge: #a4d3e8;
-  --color-frost: #c9f0ff;
-  --color-panel: rgba(255, 255, 255, 0.72);
-  --color-panel-strong: rgba(255, 255, 255, 0.9);
-  --color-text: #10202d;
-  --color-text-muted: #526879;
-  --color-link: #0b6e99;
-  --color-link-hover: #084c6b;
-  --color-focus: #0ea5d8;
-  --color-snow: rgba(3, 7, 11, 0.34);
-  --color-shadow: rgba(57, 96, 122, 0.18);
-
-  --font-heading: Georgia, 'Times New Roman', serif;
-  --font-body: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', sans-serif;
-
-  color: var(--color-text);
-  background: var(--color-bg);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.65;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-:root[data-theme='dark'] {
   --color-bg: #03070b;
   --color-bg-deep: #071421;
   --color-bg-wind: #0c1d2a;
@@ -48,6 +15,42 @@
   --color-focus: #7ddcff;
   --color-snow: rgba(242, 251, 255, 0.92);
   --color-shadow: rgba(0, 0, 0, 0.55);
+
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+
+  color: var(--color-text);
+  color-scheme: dark;
+  background: var(--color-bg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme='light'] {
+  --color-bg: #fbfeff;
+  --color-bg-deep: #e5f8ff;
+  --color-bg-wind: #c8ecfb;
+  --color-ice: #b9e5f7;
+  --color-ice-strong: #49bfe9;
+  --color-ice-edge: #86d2ec;
+  --color-frost: #8bddfb;
+  --color-panel: rgba(255, 255, 255, 0.76);
+  --color-panel-strong: rgba(255, 255, 255, 0.92);
+  --color-text: #10202d;
+  --color-text-muted: #526879;
+  --color-link: #0b6e99;
+  --color-link-hover: #084c6b;
+  --color-focus: #0ea5d8;
+  --color-snow: rgba(20, 132, 181, 0.72);
+  --color-shadow: rgba(42, 132, 174, 0.24);
+
+  color-scheme: light;
 }
 
 * {

@@ -2,15 +2,15 @@ const experiences = [
   {
     role: 'Software Engineering Intern',
     company: 'SPS Commerce',
-    dates: 'Dates pending',
+    dates: 'May 2026 - Present',
     summary:
-      'Approved experience entry. Specific team, stack, responsibilities, and impact bullets still need final user-provided details.',
+      'Works on production software automation and developer tooling for high-volume commerce services.',
     proof: [
-      'Software engineering internship',
-      'Details pending approval',
-      'Stack pending approval',
+      'Working on production Kotlin/Spring Boot services that deliver 1 million+ documents daily.',
+      'Leading development on an MCP server to help developers diagnose issues when using our services.',
+      'Working with REST APIs to integrate complex services that must have near 100% uptime.',
     ],
-    tags: ['Software Engineering', 'Internship'],
+    tags: ['Kotlin', 'Spring Boot', 'MCP', 'REST APIs'],
   },
   {
     role: 'President, Owner, & Lead Developer',
@@ -19,16 +19,16 @@ const experiences = [
     summary:
       'Runs a custom software business focused on modernizing old systems for small-business owners.',
     proof: [
-      'Owns product discovery, implementation, and delivery',
-      'Builds full-stack tools for operational workflows',
-      'Translates business needs into project specifications',
+      'Founded my company to sell a custom SaaS solution to a wheelchair accessible transit company in the GTA.',
+      'Updated a paper and Excel-based system to an automated online workflow that will prevent data loss.',
+      'Documented customer specifications and developed the custom software in line with the requirements.',
     ],
-    tags: ['Leadership', 'Full Stack', 'Product Design', 'Client Work'],
+    tags: ['SaaS', 'Client Work', 'Product Design', 'Full Stack'],
   },
   {
     role: 'AI Training Contractor',
     company: 'DataAnnotation',
-    dates: 'Jan 2025 - Present',
+    dates: 'Jan 2025 - May 2025',
     summary:
       'Reviews generated code and evaluates AI responses for efficiency, readability, correctness, and usefulness.',
     proof: [

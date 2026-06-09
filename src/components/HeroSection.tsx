@@ -7,10 +7,11 @@ import linkedInIcon from '../assets/portfolio/LinkedIn_icon.svg'
 import pdfIcon from '../assets/portfolio/pdf_icon.svg'
 
 const heroRoles = [
-  'Web developer',
-  'Full-stack builder',
-  'UI-minded engineer',
-  'Software founder',
+  'Web Designer',
+  'Full-Stack Developer',
+  'Entrepreneur',
+  'AI Engineer',
+  'Communicator'
 ]
 
 const quickLinks = [
@@ -85,7 +86,7 @@ export function HeroSection() {
         <h1 id="page-title">Adam Montgomery</h1>
       </div>
 
-      <figure className="profile-portrait" aria-label="Profile photo">
+      <figure className="profile-portrait" aria-label="Profile photo under lake ice">
         <div className="profile-photo-frame">
           <img src={profilePhoto} alt="Adam Montgomery" />
         </div>
@@ -112,8 +113,8 @@ export function HeroSection() {
           {role}
         </p>
         <p className="hero-summary">
-          I build clean, practical web products with a focus on usable
-          interfaces, maintainable systems, and work that ships.
+          I build projects that are easy to digest and integrate into AI workflows with a focus on simple
+          interfaces, modular systems, and apps that drive impact.
         </p>
         <div className="hero-actions" aria-label="Primary actions">
           <a className="hero-action hero-action-primary" href={resumePdf} target="_blank" rel="noreferrer">
@@ -121,7 +122,10 @@ export function HeroSection() {
             Download Resume
           </a>
           <a className="hero-action hero-action-secondary" href="#projects-title">
-            View projects
+            Projects
+          </a>
+          <a className="hero-action hero-action-secondary" href="#skills-title">
+            Skills
           </a>
         </div>
       </div>

@@ -15,7 +15,7 @@ The new site should condense the sprawling legacy site into a focused profession
 - Dark mode should feel like a night blizzard with much more black while preserving the same visual system.
 - Add a light snowfall effect over the whole page.
 - Treat the profile picture as if it is trapped under the ice on a frozen lake.
-- Dark mode should respect system preference and include a manual toggle.
+- Dark mode should be the default and include a manual light/dark toggle.
 - Experience and projects are both high priority.
 - Experience should appear first in section order.
 - Projects should still be one of the most prominent sections.
@@ -271,11 +271,11 @@ Status: completed in `src/App.tsx`, `src/components/Background.tsx`, `src/App.cs
 
 ### Phase 6.3: Add Theme State
 
-- Support system preference.
+- Default to dark mode.
 - Add manual toggle.
 - Persist the user choice if approved.
 
-Status: completed with system preference and manual toggle. Persistence is intentionally not implemented because it is still unapproved.
+Status: completed with dark mode as the default and a manual toggle. System-preference initialization was removed at the user's direction. Persistence is intentionally not implemented because it is still unapproved.
 
 ### Phase 6.4: Add Accessibility Baseline
 
@@ -337,7 +337,7 @@ Status: completed with centered name, rotating-role text, draft summary, proof c
 - Create an under-ice treatment using overlays, frost texture, refraction-like blur, and cold highlights.
 - Ensure the face remains recognizable.
 
-Status: temporarily simplified to a plain profile photo at the user's request. The previous CSS-only under-ice treatment was removed for now.
+Status: completed with a larger CSS-only frozen-lake treatment using soft ice glow, frost haze, blue overlay, snow/frost speckles, and no cracks, shards, or line motifs.
 
 ### Phase 8.3: Add Hero Actions
 
@@ -429,14 +429,14 @@ Additional status: completed action-specific icons for repository, web preview/w
 
 ## Phase 11: Skills and Tools Section
 
-Status: completed with grouped, evidence-oriented skill cards.
+Status: completed with four user-specified skill cards.
 
 ### Phase 11.1: Build Skill Groups
 
 - Group tools by practical capability.
-- Example groups may include frontend, backend, mobile, data, deployment, AI tools, and workflow.
+- Use the user-specified groups: Languages, Tools, Frameworks, and AI.
 
-Status: completed with product frontend, full-stack systems, mobile apps, AI features, deployment, and developer workflow groups.
+Status: completed with Languages, Tools, Frameworks, and AI groups.
 
 ### Phase 11.2: Replace Logo Wall
 
@@ -449,7 +449,7 @@ Status: completed with compact skill labels and inline category icons instead of
 
 - Where possible, connect skills to projects or experience.
 
-Status: completed with one evidence line per group tying the skills back to projects, Foundry, or DataAnnotation.
+Status: visible evidence lines were removed at the user's request. Skills still reflect technologies represented elsewhere on the page.
 
 ## Phase 12: Foundry / Credibility Section
 
@@ -476,6 +476,8 @@ Status: satisfied by omitting the separate Foundry section.
 
 ## Phase 13: Contact Section
 
+Status: completed with a recruiter-focused footer contact band.
+
 ### Phase 13.1: Build Footer Contact
 
 - Include approved links:
@@ -484,16 +486,24 @@ Status: satisfied by omitting the separate Foundry section.
   - GitHub
   - LinkedIn
 
+Status: completed in `src/components/SiteFooter.tsx` with copied portfolio icons and the copied resume PDF.
+
 ### Phase 13.2: Add Final Recruiter Prompt
 
 - Use a concise closing line focused on hiring/contact.
+
+Status: completed with a concise software-engineering-role prompt.
 
 ### Phase 13.3: Verify Link Targets
 
 - Confirm every external link opens correctly.
 - Confirm resume path works.
 
+Status: completed through static source validation and production build validation. Browser click validation remains part of Phase 18.
+
 ## Phase 14: Optional Personal Signal
+
+Status: intentionally skipped for v1 at the user's direction.
 
 ### Phase 14.1: Decide Inclusion
 
@@ -507,31 +517,45 @@ Status: satisfied by omitting the separate Foundry section.
 
 ## Phase 15: Dark Mode Refinement
 
+Status: completed as theme parity refinement. Dark mode was already closer to the target, so light mode now uses the same background/effect placement as dark mode with the dark palette translated into a whiteout lake palette: dark blacks become whites/near-whites, and bright whites become light blues.
+
 ### Phase 15.1: Apply Night Blizzard Styling
 
 - Make dark mode much more black.
 - Keep ice and snow visible without lowering contrast.
 
+Status: completed. Dark mode remains the reference visual system.
+
 ### Phase 15.2: Tune Profile Image Treatment
 
 - Ensure the under-ice effect works in both light and dark modes.
 
+Status: completed. The shared profile effect remains token-driven so it reads as day ice in light mode and night ice in dark mode.
+
 ### Phase 15.3: Verify Toggle Behavior
 
-- Confirm initial mode follows system preference.
-- Confirm manual toggle overrides system preference.
+- Confirm initial mode defaults to dark.
+- Confirm manual toggle switches between dark and light.
+
+Status: completed through source validation and static build validation. Browser toggle validation remains part of Phase 18.
 
 ## Phase 16: Responsive Polish
+
+Status: completed as a CSS responsive polish pass across desktop, tablet, mobile, and reduced-motion/performance concerns. Browser visual validation remains part of Phase 18.
 
 ### Phase 16.1: Desktop Review
 
 - Check wide desktop layout.
 - Ensure no section becomes too stretched.
 
+Status: completed. Wide layouts remain constrained by the page shell and section-specific max widths.
+
 ### Phase 16.2: Tablet Review
 
 - Check mid-width layout.
 - Ensure cards and timeline remain readable.
+
+Status: completed. Tablet widths now collapse project and skill grids into a single readable column with narrower section widths.
 
 ### Phase 16.3: Mobile Review
 
@@ -539,10 +563,14 @@ Status: satisfied by omitting the separate Foundry section.
 - Ensure text does not overflow.
 - Ensure buttons and links are comfortably tappable.
 
+Status: completed. Small-screen rules tighten hero sizing, stack hero actions, resize the profile treatment, and keep link targets full-width where helpful.
+
 ### Phase 16.4: Motion and Performance Review
 
 - Confirm snowfall does not cause visible jank.
 - Reduce animation if needed.
+
+Status: completed through CSS changes. Snow layers use `will-change: transform`; the nearest snow layer is reduced on very small screens; reduced-motion disables snow animation.
 
 ## Phase 17: Accessibility and SEO
 

@@ -1,84 +1,66 @@
 type SkillGroup = {
   title: string
-  icon: 'frontend' | 'backend' | 'mobile' | 'ai' | 'deploy' | 'workflow'
+  icon: 'languages' | 'tools' | 'frameworks' | 'ai'
   summary: string
   skills: string[]
-  evidence: string
 }
 
 const skillGroups: SkillGroup[] = [
   {
-    title: 'Product Frontends',
-    icon: 'frontend',
-    summary: 'Interfaces built for real users, clear flows, and maintainable component systems.',
-    skills: ['React', 'TypeScript', 'Next.js', 'React Router', 'Responsive CSS'],
-    evidence: 'Used across portfolio projects, client software, and recruiter-facing UI work.',
+    title: 'Languages',
+    icon: 'languages',
+    summary: 'Core languages used to build typed interfaces, app logic, scripts, and mobile products.',
+    skills: ['Kotlin', 'TypeScript', 'Python', 'Java', 'C', 'CSS'],
   },
   {
-    title: 'Full-Stack Systems',
-    icon: 'backend',
-    summary: 'Business logic, data modeling, and app structure for operational workflows.',
-    skills: ['Node.js', 'Supabase', 'MongoDB', 'Firebase', 'API Design'],
-    evidence: 'Shown through custom business software, Am I Cooked?, and data-backed apps.',
+    title: 'Tools',
+    icon: 'tools',
+    summary: 'Practical shipping, database, hosting, and workflow tools used to get projects live.',
+    skills: ['GitHub', 'Vercel', 'Render', 'Supabase', 'Firebase', 'MongoDB', 'Docker', 'Redis', 'Kubernetes'],
   },
   {
-    title: 'Mobile Apps',
-    icon: 'mobile',
-    summary: 'Cross-platform mobile builds with practical release and preview workflows.',
-    skills: ['React Native', 'Expo', 'Flutter', 'Android Builds', 'Firebase'],
-    evidence: 'Visible in Pump Pal and CherryPick mobile application work.',
+    title: 'Frameworks',
+    icon: 'frameworks',
+    summary: 'Frontend, full-stack, and mobile frameworks used to build maintainable product surfaces.',
+    skills: ['React', 'Spring Boot', 'Next.js', 'React Native', 'Expo', 'Node.js'],
   },
   {
-    title: 'AI Features',
+    title: 'AI',
     icon: 'ai',
     summary: 'AI-assisted product features plus disciplined review of generated code quality.',
-    skills: ['Gemini API', 'Prompt Evaluation', 'Code Review', 'QA Judgment'],
-    evidence: 'Used in Pump Pal, Am I Cooked?, and DataAnnotation review work.',
-  },
-  {
-    title: 'Deployment',
-    icon: 'deploy',
-    summary: 'Shipping web products with hosted previews, production links, and maintainable release paths.',
-    skills: ['Vercel', 'Render', 'Docker', 'Domain Routing', 'Preview Builds'],
-    evidence: 'Public project links and backend hosting paths are included where available.',
-  },
-  {
-    title: 'Developer Workflow',
-    icon: 'workflow',
-    summary: 'Practical engineering habits around ownership, clarity, iteration, and delivery.',
-    skills: ['GitHub', 'ESLint', 'Technical Writing', 'Project Scoping', 'Client Communication'],
-    evidence: 'Reflected in Foundry ownership, project documentation, and code-review experience.',
+    skills: ['Gemini API', 'Claude Code', 'AI Feature Design', 'Workflows and Integrations', 'MCP Servers'],
   },
 ]
 
 function SkillIcon({ type }: { type: SkillGroup['icon'] }) {
-  if (type === 'frontend') {
+  if (type === 'languages') {
     return (
       <svg className="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="3.5" y="5" width="17" height="12" rx="2" />
-        <path d="M8 20h8" />
-        <path d="M12 17v3" />
-        <path d="m9 9-2 2 2 2" />
-        <path d="m15 9 2 2-2 2" />
+        <path d="m8.5 8-4 4 4 4" />
+        <path d="m15.5 8 4 4-4 4" />
+        <path d="m13.5 5.5-3 13" />
       </svg>
     )
   }
 
-  if (type === 'backend') {
+  if (type === 'tools') {
     return (
       <svg className="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <ellipse cx="12" cy="6" rx="7" ry="3" />
-        <path d="M5 6v6c0 1.65 3.13 3 7 3s7-1.35 7-3V6" />
-        <path d="M5 12v6c0 1.65 3.13 3 7 3s7-1.35 7-3v-6" />
+        <path d="M14.5 5.5 18 2l4 4-3.5 3.5" />
+        <path d="m13 7 4 4" />
+        <path d="M4.5 19.5 12 12" />
+        <path d="m2 22 4.5-1.25L3.25 17.5 2 22Z" />
       </svg>
     )
   }
 
-  if (type === 'mobile') {
+  if (type === 'frameworks') {
     return (
       <svg className="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="7" y="2.75" width="10" height="18.5" rx="2.25" />
-        <path d="M10.5 18h3" />
+        <rect x="4" y="4" width="6.5" height="6.5" rx="1.25" />
+        <rect x="13.5" y="4" width="6.5" height="6.5" rx="1.25" />
+        <rect x="4" y="13.5" width="6.5" height="6.5" rx="1.25" />
+        <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.25" />
       </svg>
     )
   }
@@ -92,26 +74,7 @@ function SkillIcon({ type }: { type: SkillGroup['icon'] }) {
     )
   }
 
-  if (type === 'deploy') {
-    return (
-      <svg className="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 3.5 21 19H3L12 3.5Z" />
-        <path d="M12 9.5V19" />
-      </svg>
-    )
-  }
-
-  return (
-    <svg className="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M4.5 6.5h6" />
-      <path d="M13.5 6.5h6" />
-      <path d="M4.5 12h15" />
-      <path d="M4.5 17.5h6" />
-      <path d="M13.5 17.5h6" />
-      <circle cx="12" cy="6.5" r="1.5" />
-      <circle cx="7.5" cy="17.5" r="1.5" />
-    </svg>
-  )
+  return null
 }
 
 export function SkillsSection() {
@@ -133,7 +96,6 @@ export function SkillsSection() {
                 <li key={skill}>{skill}</li>
               ))}
             </ul>
-            <p className="skill-evidence">{group.evidence}</p>
           </article>
         ))}
       </div>

@@ -108,15 +108,37 @@ Legacy long bio facts:
 
 Experience entries are hard-coded in `legacy/src/pages/Experience.jsx`. Dates below are source values from the legacy file.
 
+### Current Resume Experience Bullets
+
+Source file: `src/assets/portfolio/adam_montgomery_resume.pdf`.
+
+Current rule: if a rendered job appears in the current resume PDF, use the resume bullet points as the source of truth for that job's visible proof bullets.
+
+#### SPS Commerce
+
+Resume title: Systems Automation Framework Coop.
+
+- Working on production Kotlin/Spring Boot services that deliver 1 million+ documents daily.
+- Leading development on an MCP server to help developers diagnose issues when using our services.
+- Working with REST APIs to integrate complex services that must have near 100% uptime.
+
+#### Montgomery Software Foundry Inc.
+
+Resume title: President, Owner, & Lead Developer.
+
+- Founded my company to sell a custom SaaS solution to a wheelchair accessible transit company in the GTA.
+- Updated a paper and Excel-based system to an automated online workflow that will prevent data loss.
+- Documented customer specifications and developed the custom software in line with the requirements.
+
 ### SPS Commerce
 
 - Title: Software Engineering Intern
 - Source type: user-provided new experience entry, not present in `legacy/src/pages/Experience.jsx`.
 - Company: SPS Commerce
-- Dates: not yet specified.
-- Summary source: not yet specified.
-- Skills: not yet specified.
-- Implementation note: create a concise recruiter-facing experience portion, but do not invent responsibilities, dates, stack, or impact metrics without user input.
+- Dates: May 2026 - Present in current site implementation; resume labels the role as Summer 2026.
+- Summary source: current resume bullets in this document.
+- Skills from resume bullets: Kotlin, Spring Boot, MCP, REST APIs.
+- Implementation note: use current resume bullets for visible proof points.
 
 ### Montgomery Software Foundry Inc.
 
@@ -280,6 +302,35 @@ Experience entries are hard-coded in `legacy/src/pages/Experience.jsx`. Dates be
 ## Project Facts
 
 Project entries are hard-coded in `legacy/src/pages/Projects.jsx`. Development and deployment timing below is source material from the legacy file and may be stale.
+
+### Current Resume Project Bullets
+
+Source file: `src/assets/portfolio/adam_montgomery_resume.pdf`.
+
+Current rule: if a rendered project appears in the current resume PDF, use the resume bullet points as the source of truth for that project's visible proof bullets.
+
+#### Fleet Maintenance Management System
+
+Rendered site counterpart: Custom Enterprise Databasing System.
+
+- Created an easy-to-use set of online maintenance tickets stored in a Postgres database for simple querying.
+- Designed a role-based login system using tokens and hashed passwords.
+- Leveraged AI to write unit-tests on edge functions to ensure reliability in production.
+- Secured client data by constructing the system in compliance with OWASP top 10.
+
+#### Pump Pal
+
+- Developed a workout tracker to minimize injuries and balance workouts using personalized workout metrics.
+- Leveraged the Gemini API to analyze workout history and generate insights into the muscles you are working.
+- Implemented a simple and easy-to-use interface to make data digestible and visually appealing.
+
+#### Moneyball
+
+Resume-only note: Moneyball appears in the current resume PDF but is not currently rendered in the site project section.
+
+- Built a full-stack web app from a custom Jupyter Notebook to display advanced MLB analytics.
+- Processed .csv files with 120+ fields with 500+ records to evaluate baseball games at a pitch level.
+- Worked with the official MLB and Statcast APIs to generate easily digestible insights based on game events.
 
 ### Pump Pal
 

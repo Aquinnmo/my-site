@@ -46,6 +46,11 @@ const projects = [
     name: 'Pump Pal',
     summary:
       'Mobile-first workout tracker focused on balanced training, injury reduction, and AI-powered training insights.',
+    proof: [
+      'Developed a workout tracker to minimize injuries and balance workouts using personalized workout metrics.',
+      'Leveraged the Gemini API to analyze workout history and generate insights into the muscles you are working.',
+      'Implemented a simple and easy-to-use interface to make data digestible and visually appealing.',
+    ],
     stack: ['React Native', 'Expo', 'Firebase', 'Gemini API', 'Vercel'],
     links: [
       { label: 'Web Preview', href: 'https://pump.adam-montgomery.ca' },
@@ -60,6 +65,12 @@ const projects = [
     name: 'Custom Enterprise Databasing System',
     summary:
       'Custom maintenance, inventory, and tracking system for a York Region busing company operating hundreds of machines.',
+    proof: [
+      'Created an easy-to-use set of online maintenance tickets stored in a Postgres database for simple querying.',
+      'Designed a role-based login system using tokens and hashed passwords.',
+      'Leveraged AI to write unit-tests on edge functions to ensure reliability in production.',
+      'Secured client data by constructing the system in compliance with OWASP top 10.',
+    ],
     stack: ['Next.js', 'Supabase', 'TypeScript', 'Vercel'],
     links: [],
   },
@@ -67,6 +78,7 @@ const projects = [
     name: 'Rock, Paper, Scissors',
     summary:
       'Interactive exploration of strategy and prediction in Rock, Paper, Scissors, built around algorithms that try to beat human play.',
+    proof: [],
     stack: ['Next.js', 'TypeScript', 'Vercel'],
     links: [
       { label: 'View website', href: 'https://rps.adam-montgomery.ca' },
@@ -77,18 +89,12 @@ const projects = [
     name: 'Am I Cooked?',
     summary:
       'Resume and survey-based readiness tool that gives students Gemini-powered feedback for the job search.',
+    proof: [],
     stack: ['React', 'TypeScript', 'MongoDB', 'Node.js', 'Render', 'Vercel'],
     links: [
       { label: 'View website', href: 'https://cooked.adam-montgomery.ca' },
       { label: 'Repository', href: 'https://github.com/Aquinnmo/am-i-cooked' },
     ],
-  },
-  {
-    name: 'CherryPick',
-    summary:
-      "Cross-platform fantasy sports project for NHL Pick 'Em gameplay with a planned Raspberry Pi-hosted backend.",
-    stack: ['Flutter', 'Firebase', 'Python', 'Docker', 'Raspberry Pi'],
-    links: [],
   },
 ]
 
@@ -105,6 +111,13 @@ export function ProjectsSection() {
               <h3>{project.name}</h3>
             </div>
             <p className="project-summary">{project.summary}</p>
+            {project.proof.length > 0 && (
+              <ul className="project-proof-list">
+                {project.proof.map((proofPoint) => (
+                  <li key={proofPoint}>{proofPoint}</li>
+                ))}
+              </ul>
+            )}
             <ul className="project-stack" aria-label={`${project.name} tech stack`}>
               {project.stack.map((stackItem) => (
                 <li key={stackItem}>{stackItem}</li>

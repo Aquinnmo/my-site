@@ -2,16 +2,6 @@ import { useEffect, useState } from 'react'
 
 type Theme = 'light' | 'dark'
 
-const getSystemTheme = (): Theme => {
-  if (typeof window === 'undefined') {
-    return 'light'
-  }
-
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light'
-}
-
 function SunIcon() {
   return (
     <svg className="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -30,28 +20,14 @@ function MoonIcon() {
 }
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>(getSystemTheme)
-  const [hasManualTheme, setHasManualTheme] = useState(false)
+  const [theme, setTheme] = useState<Theme>('dark')
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
     document.documentElement.style.colorScheme = theme
   }, [theme])
 
-  useEffect(() => {
-    if (hasManualTheme) {
-      return
-    }
-
-    const media = window.matchMedia('(prefers-color-scheme: dark)')
-    const handleChange = () => setTheme(media.matches ? 'dark' : 'light')
-
-    media.addEventListener('change', handleChange)
-    return () => media.removeEventListener('change', handleChange)
-  }, [hasManualTheme])
-
   const toggleTheme = () => {
-    setHasManualTheme(true)
     setTheme((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'))
   }
 

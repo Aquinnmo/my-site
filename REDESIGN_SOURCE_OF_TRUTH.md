@@ -48,6 +48,7 @@ This document is the working source of truth for the one-page frozen-lake portfo
 - Action links should use specific icons where possible, not generic decoration.
 - Skills direction: use judgment to select key languages, tools, and frameworks.
 - Foundry direction: do not create a separate Foundry section; include Foundry only in the experience section.
+- When a rendered project or job appears in the current resume PDF, use the resume bullet points as the source of truth for that item's visible proof bullets.
 
 ## Theme Rules
 
@@ -62,8 +63,9 @@ This document is the working source of truth for the one-page frozen-lake portfo
 - Background texture should come from soft glow, frost haze, snow, depth, and blurred lake color only.
 - Use cold whites, blue-whites, pale blues, icy grays, and dark winter tones.
 - Light and dark modes should share the same layered background styling structure.
-- Light mode should use light-blue glow radials instead of white night-style glow radials.
-- Light mode snow particles should be black/dark, while dark mode snow particles remain bright.
+- Light mode should mirror the same effect placement and styling structure as dark mode.
+- Light mode translates the dark-mode palette into a whiteout lake palette: dark blacks become whites/near-whites, and bright whites become pronounced light blues.
+- Light mode snow particles should be visibly light blue; dark mode snow particles remain bright white.
 - Avoid a technical dashboard look unless explicitly approved.
 - Avoid generic purple-on-white defaults.
 - Avoid logo-wall clutter from the legacy site.
@@ -78,7 +80,7 @@ Detailed Phase 4 visual system tokens and rules are defined in `REDESIGN_VISUAL_
 ### Light Mode
 
 - Visual target: whiteout daylight blizzard on a frozen lake.
-- Primary impression: lots of pale lake ice and light blue, with dark snow visible over the day blizzard.
+- Primary impression: the same blizzard/lake effects as dark mode, translated into white and light-blue daylight values.
 - Text must remain high contrast.
 - Light mode should feel equally designed, not like a fallback.
 
@@ -87,6 +89,7 @@ Detailed Phase 4 visual system tokens and rules are defined in `REDESIGN_VISUAL_
 - Visual target: night blizzard over black lake ice.
 - Primary impression: much more black, deep blue-black ice, visible snow, cold highlights.
 - Dark mode should have equal design weight to light mode.
+- Dark mode is the default initial theme.
 - Dark mode must not make content feel hidden or low contrast.
 
 ## Approved Information Architecture
@@ -147,7 +150,7 @@ Mobile flow:
 
 Phase 1 is documentation only.
 
-Phase 2 content decisions are documented, with the exception of missing exact hero CTA/summary copy and missing SPS Commerce dates/responsibilities.
+Phase 2 content decisions are documented, with the exception of missing exact hero CTA/summary copy.
 
 Phase 3 information architecture is documented.
 
@@ -167,6 +170,14 @@ Phase 11 skills and tools section is implemented in `src/components/SkillsSectio
 
 Phase 12 Foundry/credibility section is intentionally skipped for v1 because the approved direction is to include Foundry only as an experience entry.
 
+Phase 13 contact footer is implemented in `src/components/SiteFooter.tsx` and `src/App.css`.
+
+Phase 14 optional personal signal is intentionally skipped for v1 at the user's direction.
+
+Phase 15 theme refinement is implemented in `src/index.css`. Dark mode remains the visual reference; light mode now mirrors the same effect placement with white/near-white bases and stronger light-blue frost/snow/glow values.
+
+Dark mode tokens are the base `:root` CSS tokens so the first paint defaults to dark before React runs. Light mode tokens apply only under `:root[data-theme='light']`.
+
 Component refactor is implemented. `src/App.tsx` should remain a lightweight page-composition shell; core section data and logic should live inside the related component unless a later shared data layer is explicitly approved.
 
 Current Phase 6 implementation includes:
@@ -175,8 +186,9 @@ Current Phase 6 implementation includes:
 - no nav bar
 - constrained content width
 - full-viewport frozen-lake background layers without line, crack, or shard motifs
-- system-preference theme initialization inside `src/components/ThemeToggle.tsx`
+- dark-mode default theme initialization inside `src/components/ThemeToggle.tsx`
 - manual light/dark theme toggle inside `src/components/ThemeToggle.tsx`
+- no system-preference theme initialization, by current user direction
 - no theme persistence yet because persistence is still unapproved
 - visible global focus styles
 - reduced-motion baseline
@@ -193,7 +205,7 @@ Current Phase 7 implementation includes:
 Current Phase 8 implementation includes:
 
 - centered single-column hero layout
-- centered section headings and footer placeholder while the contact phase is still pending
+- centered section headings and a completed footer contact band
 - hero name: Adam Montgomery
 - hero name appears above the profile image
 - rotating title treatment with professional labels and fade-out/fade-in transitions
@@ -205,7 +217,10 @@ Current Phase 8 implementation includes:
 - centered hero quick links for Resume, LinkedIn, GitHub, and Email
 - quick links use copied icons from `src/assets/portfolio/`
 - primary resume CTA uses the PDF icon
-- temporary plain profile photo treatment with the under-ice styling removed at the user's request
+- larger hero profile photo treatment with a CSS-only frozen-lake effect
+- portrait is a square frame with rounded edges, not a circle
+- portrait treatment uses soft ice glow, frost haze, a lighter blue overlay, depth shadow, and snow/frost speckles
+- portrait treatment should allow more of the original photo color to show through instead of heavily desaturating the image
 - no crack, shard, etched-line, or ice-line treatment in the portrait
 
 Phase 8 assumptions pending user review:
@@ -223,13 +238,12 @@ Current Phase 9 implementation includes:
 - no pill-style section kicker tags above headings
 - entries for SPS Commerce, Montgomery Software Foundry Inc., and DataAnnotation
 - role, company, date label, summary, proof bullets, and skill tags for each entry
-- Foundry and DataAnnotation content rewritten from documented legacy source material
-- SPS Commerce rendered as an approved entry with explicit pending details instead of invented responsibilities
+- SPS Commerce proof bullets synced from the current resume PDF
+- Montgomery Software Foundry proof bullets synced from the current resume PDF
+- DataAnnotation content rewritten from documented legacy source material because it does not appear in the current resume PDF
 
 Phase 9 assumptions pending user review:
 
-- SPS Commerce dates are still unknown and shown as `Dates pending`.
-- SPS Commerce responsibilities, stack, team, and impact bullets still need user-provided copy.
 - Foundry date label is normalized from legacy `2025-08-20` to `Aug 2025 - Present`.
 - DataAnnotation date label is normalized from legacy `2025-01-05` to `Jan 2025 - Present`.
 
@@ -238,6 +252,9 @@ Current Phase 10 implementation includes:
 - structured project data in `src/components/ProjectsSection.tsx`
 - equal-weight responsive project grid
 - compact frosted project cards with name, summary, stack tags, and links
+- visible proof bullets for rendered projects that appear in the current resume PDF
+- Pump Pal proof bullets synced from the current resume PDF
+- Custom Enterprise Databasing System is the rendered site counterpart to the resume's Fleet Maintenance Management System entry; its proof bullets are synced from that resume entry
 - project links use action-specific icons:
   - GitHub icon for repository links
   - external-arrow icon for web preview and website links
@@ -259,21 +276,45 @@ Phase 10 assumptions pending user review:
 - Projects with no public/repo link should hide the link row instead of showing `Links pending`.
 - The databasing system public action can use the Foundry contact email from legacy.
 - Inline SVG icons are acceptable for action-specific UI where no legacy asset exists.
+- Moneyball appears in the current resume PDF but is not currently rendered in the site project section; it has not been added because the user's request was to update bullets for matching rendered items.
 
 Current Phase 11 implementation includes:
 
 - structured skill group data in `src/components/SkillsSection.tsx`
 - grouped skill cards for:
-  - Product Frontends
-  - Full-Stack Systems
-  - Mobile Apps
-  - AI Features
-  - Deployment
-  - Developer Workflow
+  - Languages
+  - Tools
+  - Frameworks
+  - AI
 - compact skill labels instead of a decorative logo wall
 - inline SVG category icons owned by the skills component
-- evidence lines tying each group to visible projects or experience
+- no visible evidence lines inside skill cards
 - responsive one-column mobile layout
+
+Current Phase 13 implementation includes:
+
+- recruiter-focused closing prompt in `src/components/SiteFooter.tsx`
+- contact links for resume, email, GitHub, and LinkedIn
+- copied portfolio icons for every footer link
+- copied resume PDF used for the resume download link
+- email target remains `mailto:adammontcompany@gmail.com`
+- frosted footer contact band styled in `src/App.css`
+- primary visual emphasis on `Download Resume` and `Email Me`
+- mobile layout stacks footer links into full-width tap targets
+
+Current Phase 16 implementation includes:
+
+- desktop content remains constrained by page and section max widths
+- tablet widths collapse project and skill grids to single-column readable cards
+- tablet widths narrow experience, project, and skill content for scanability
+- mobile hero sizing is tightened to avoid oversized first-screen content
+- mobile hero actions stack where needed and remain comfortable tap targets
+- mobile quick links can wrap into balanced centered rows
+- small-mobile profile treatment scales down and uses smaller rounded corners
+- nearest snow layer opacity is reduced on very small screens
+- snow layers use `will-change: transform`
+- reduced-motion still disables snowfall animation
+- browser visual validation remains part of Phase 18
 
 ## Retrieval Map
 
@@ -291,4 +332,4 @@ Current Phase 11 implementation includes:
 - Experience logic and content: `src/components/ExperienceSection.tsx`
 - Project logic and content: `src/components/ProjectsSection.tsx`
 - Skills section: `src/components/SkillsSection.tsx`
-- Footer placeholder: `src/components/SiteFooter.tsx`
+- Footer contact section: `src/components/SiteFooter.tsx`

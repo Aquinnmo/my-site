@@ -5,7 +5,7 @@ This document defines the Phase 4 visual system for the frozen-lake blizzard por
 ## Visual Direction
 
 - Theme: blizzard over a frozen lake.
-- Light mode: daylight blizzard over pale lake ice, using the same layered styling as night mode with light-blue glow radials and dark snow particles.
+- Light mode: daylight blizzard over pale lake ice, using the same layered styling and effect placement as night mode with light-blue glow, frost, and snow particles.
 - Dark mode: night blizzard, black lake ice, deep blue shadows, and bright white snow particles.
 - The design should feel natural, cold, and atmospheric, not like a technical dashboard.
 - The recruiter use case remains primary: high contrast, scannable hierarchy, and low-friction reading.
@@ -16,26 +16,26 @@ Use these as CSS custom property targets.
 
 | Token | Value | Purpose |
 | --- | --- | --- |
-| `--color-bg` | `#f4fbff` | Day blizzard base |
-| `--color-bg-deep` | `#d9efff` | Frozen lake blue wash |
-| `--color-bg-wind` | `#e8f8ff` | Light-blue blizzard cloud layer |
-| `--color-ice` | `#b9e4f8` | Ice surfaces |
-| `--color-ice-strong` | `#72c8ed` | Strong frozen-lake blue |
-| `--color-ice-edge` | `#a4d3e8` | Ice edges and dividers |
-| `--color-frost` | `#c9f0ff` | Light-blue frost/radial highlight |
-| `--color-panel` | `rgba(255, 255, 255, 0.72)` | Frosted panels |
-| `--color-panel-strong` | `rgba(255, 255, 255, 0.9)` | High-readability panels |
+| `--color-bg` | `#fbfeff` | Whiteout counterpart to dark sky/black ice |
+| `--color-bg-deep` | `#e5f8ff` | Near-white frozen lake depth |
+| `--color-bg-wind` | `#c8ecfb` | Pronounced light-blue blizzard cloud layer |
+| `--color-ice` | `#b9e5f7` | Pale but visible ice surfaces |
+| `--color-ice-strong` | `#49bfe9` | Strong daylight frozen-lake blue |
+| `--color-ice-edge` | `#86d2ec` | More visible ice edges and dividers |
+| `--color-frost` | `#8bddfb` | Pronounced light-blue frost/radial highlight |
+| `--color-panel` | `rgba(255, 255, 255, 0.76)` | Frosted whiteout panels |
+| `--color-panel-strong` | `rgba(255, 255, 255, 0.92)` | High-readability whiteout panels |
 | `--color-text` | `#10202d` | Primary text |
 | `--color-text-muted` | `#526879` | Secondary text |
 | `--color-link` | `#0b6e99` | Links and quiet actions |
 | `--color-link-hover` | `#084c6b` | Link hover |
 | `--color-focus` | `#0ea5d8` | Focus outline |
-| `--color-snow` | `rgba(3, 7, 11, 0.34)` | Dark day-mode snow particles |
-| `--color-shadow` | `rgba(57, 96, 122, 0.18)` | Cold shadow |
+| `--color-snow` | `rgba(20, 132, 181, 0.72)` | More visible light-blue day-mode snow particles |
+| `--color-shadow` | `rgba(42, 132, 174, 0.24)` | Stronger cold blue daylight shadow |
 
 ## Dark Theme Tokens
 
-Use these as CSS custom property targets under dark mode.
+Use these as the base `:root` CSS custom property targets so the site defaults to dark before JavaScript runs.
 
 | Token | Value | Purpose |
 | --- | --- | --- |
@@ -84,7 +84,9 @@ Use these as CSS custom property targets under dark mode.
   - blurred frost haze
   - snowfall overlay
 - Day and night modes should share the same background composition; day mode should not become a separate white-only styling system.
-- Day-mode glow radials should read light blue, while night-mode glow radials can read white-blue.
+- Day mode should use the same effect placement as night mode.
+- Day-mode dark bases should become white or near-white; night-mode whites should become light blue.
+- Day-mode glow radials and snow should read as pronounced light blue, while night-mode glow radials and snow can read white-blue.
 - Panels should look like frosted ice laid over the lake, not generic glass cards.
 - Cards are allowed for repeated experience and project items only.
 - Avoid wrapping every section in a card.
@@ -98,11 +100,12 @@ Use these as CSS custom property targets under dark mode.
 - Frozen-lake texture should be implied through color, frost, blur, snow, and depth instead of lines.
 - Do not use pill-style section kicker tags above section headings.
 - Profile image treatment should combine:
-  - desaturated/cool image color
-  - translucent blue-white ice overlay
+  - visible original photo color with a cool ice cast
+  - translucent blue-white ice overlay that does not wash out the photo
   - frost edge highlight
   - soft refraction or blur layer
   - snow/frost texture above the image
+- Profile image should be square with rounded edges.
 - Profile image treatment must keep the face recognizable.
 
 ## Motion Rules
@@ -123,6 +126,7 @@ Use these as CSS custom property targets under dark mode.
   - link underline or color shift
 - Theme toggle animation should be simple and not draw attention away from the content.
 - Theme toggle should use a sun icon for switching to day mode and a moon icon for switching to night mode.
+- Dark mode is the default initial theme; the toggle manually switches to day mode.
 - Action links should use specific, action-matching icons where available.
 - Website and preview links should use an external-arrow icon.
 - Icons should clarify actions without becoming a decorative logo wall.
