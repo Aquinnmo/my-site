@@ -381,6 +381,9 @@ Resume-only note: Moneyball appears in the current resume PDF but is not current
   - Vercel
 - Summary source: Explores how computers can dominate a game of chance.
 - Summary source: Created algorithms intended to improve at Rock, Paper, Scissors.
+- Current site proof bullet: Built an interactive web project that explores how computers can improve at a game of chance.
+- Current site proof bullet: Created prediction algorithms designed to adapt to human Rock, Paper, Scissors patterns.
+- Current site proof bullet: Published the project with a live website and public repository for review.
 - Links:
   - Live project: `https://rps.adam-montgomery.ca`
   - Repository: `https://github.com/Aquinnmo/rps-web`
@@ -400,6 +403,9 @@ Resume-only note: Moneyball appears in the current resume PDF but is not current
   - Vite
 - Summary source: Built with two fellow students to help peers evaluate job-market readiness.
 - Summary source: Users take a survey or upload a resume and receive Google Gemini-powered job-search feedback.
+- Current site proof bullet: Built with two fellow students to help peers evaluate job-market readiness.
+- Current site proof bullet: Supported both survey-based input and resume upload flows for feedback generation.
+- Current site proof bullet: Used Google Gemini to generate practical job-search feedback from user responses.
 - Links:
   - Live project: `https://cooked.adam-montgomery.ca`
   - Repository: `https://github.com/Aquinnmo/am-i-cooked`

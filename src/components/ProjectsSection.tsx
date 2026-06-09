@@ -50,6 +50,7 @@ const projects = [
       'Developed a workout tracker to minimize injuries and balance workouts using personalized workout metrics.',
       'Leveraged the Gemini API to analyze workout history and generate insights into the muscles you are working.',
       'Implemented a simple and easy-to-use interface to make data digestible and visually appealing.',
+      'Used Firebase to store workout data as a NoSQL database allows for workout flexibility.',
     ],
     stack: ['React Native', 'Expo', 'Firebase', 'Gemini API', 'Vercel'],
     links: [
@@ -77,8 +78,12 @@ const projects = [
   {
     name: 'Rock, Paper, Scissors',
     summary:
-      'Interactive exploration of strategy and prediction in Rock, Paper, Scissors, built around algorithms that try to beat human play.',
-    proof: [],
+      'Interactive exploration of strategy and prediction in Rock, Paper, Scissors, built around algorithms that beat human play.',
+    proof: [
+      'Researched human tendencies when playing rock, paper, scissors. I used empirical data to design strategies that exploited human tendencies.',
+      'Used dynamic-length Markov Chains to create weighted predicitions based on the user\'s previous moves.',
+      'Implemented transition tables, weighted probabilites, and tiebreaker fall-backs to optimize algorithms.',
+    ],
     stack: ['Next.js', 'TypeScript', 'Vercel'],
     links: [
       { label: 'View website', href: 'https://rps.adam-montgomery.ca' },
@@ -89,7 +94,11 @@ const projects = [
     name: 'Am I Cooked?',
     summary:
       'Resume and survey-based readiness tool that gives students Gemini-powered feedback for the job search.',
-    proof: [],
+    proof: [
+      'Built with two fellow students to help peers evaluate job-market readiness in under 36 hours.',
+      'Supported both survey-based input and resume upload flows for feedback generation. We received 50+ responses in under an hour.',
+      'Used Google Gemini to generate practical job-search feedback from user responses.',
+    ],
     stack: ['React', 'TypeScript', 'MongoDB', 'Node.js', 'Render', 'Vercel'],
     links: [
       { label: 'View website', href: 'https://cooked.adam-montgomery.ca' },

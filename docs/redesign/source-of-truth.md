@@ -259,9 +259,11 @@ Current Phase 10 implementation includes:
 - structured project data in `src/components/ProjectsSection.tsx`
 - equal-weight responsive project grid
 - compact frosted project cards with name, summary, stack tags, and links
-- visible proof bullets for rendered projects that appear in the current resume PDF
+- visible proof bullets for every rendered project card
 - Pump Pal proof bullets synced from the current resume PDF
 - Custom Enterprise Databasing System is the rendered site counterpart to the resume's Fleet Maintenance Management System entry; its proof bullets are synced from that resume entry
+- Rock, Paper, Scissors proof bullets are derived from documented legacy project facts
+- Am I Cooked proof bullets are derived from documented legacy project facts
 - project links use action-specific icons:
   - GitHub icon for repository links
   - external-arrow icon for web preview and website links
