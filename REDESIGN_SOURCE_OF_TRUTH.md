@@ -61,6 +61,9 @@ This document is the working source of truth for the one-page frozen-lake portfo
 - Do not use crack lines, shard motifs, etched ice lines, or repeating linear ice textures in the background.
 - Background texture should come from soft glow, frost haze, snow, depth, and blurred lake color only.
 - Use cold whites, blue-whites, pale blues, icy grays, and dark winter tones.
+- Light and dark modes should share the same layered background styling structure.
+- Light mode should use light-blue glow radials instead of white night-style glow radials.
+- Light mode snow particles should be black/dark, while dark mode snow particles remain bright.
 - Avoid a technical dashboard look unless explicitly approved.
 - Avoid generic purple-on-white defaults.
 - Avoid logo-wall clutter from the legacy site.
@@ -75,7 +78,7 @@ Detailed Phase 4 visual system tokens and rules are defined in `REDESIGN_VISUAL_
 ### Light Mode
 
 - Visual target: whiteout daylight blizzard on a frozen lake.
-- Primary impression: lots of white, light blue, frost, snow, and pale lake ice.
+- Primary impression: lots of pale lake ice and light blue, with dark snow visible over the day blizzard.
 - Text must remain high contrast.
 - Light mode should feel equally designed, not like a fallback.
 
@@ -160,6 +163,10 @@ Phase 9 experience section is implemented in `src/components/ExperienceSection.t
 
 Phase 10 projects section is implemented in `src/components/ProjectsSection.tsx` and `src/App.css`.
 
+Phase 11 skills and tools section is implemented in `src/components/SkillsSection.tsx` and `src/App.css`.
+
+Phase 12 Foundry/credibility section is intentionally skipped for v1 because the approved direction is to include Foundry only as an experience entry.
+
 Component refactor is implemented. `src/App.tsx` should remain a lightweight page-composition shell; core section data and logic should live inside the related component unless a later shared data layer is explicitly approved.
 
 Current Phase 6 implementation includes:
@@ -186,7 +193,7 @@ Current Phase 7 implementation includes:
 Current Phase 8 implementation includes:
 
 - centered single-column hero layout
-- centered placeholder section headings, panels, and footer while the page is still in early implementation
+- centered section headings and footer placeholder while the contact phase is still pending
 - hero name: Adam Montgomery
 - hero name appears above the profile image
 - rotating title treatment with professional labels and fade-out/fade-in transitions
@@ -198,7 +205,7 @@ Current Phase 8 implementation includes:
 - centered hero quick links for Resume, LinkedIn, GitHub, and Email
 - quick links use copied icons from `src/assets/portfolio/`
 - primary resume CTA uses the PDF icon
-- simplified CSS-only under-ice portrait treatment using a circular frame, softer frost haze, lighter blur, cool tint, and small snow/frost particles
+- temporary plain profile photo treatment with the under-ice styling removed at the user's request
 - no crack, shard, etched-line, or ice-line treatment in the portrait
 
 Phase 8 assumptions pending user review:
@@ -230,22 +237,19 @@ Current Phase 10 implementation includes:
 
 - structured project data in `src/components/ProjectsSection.tsx`
 - equal-weight responsive project grid
-- compact frosted project cards with project type, name, summary, stack tags, and links
+- compact frosted project cards with name, summary, stack tags, and links
 - project links use action-specific icons:
   - GitHub icon for repository links
   - external-arrow icon for web preview and website links
   - download icon for Android APK links
   - PDF icon for resume links
 - projects without documented links do not render a placeholder link row
-- visible projects from the legacy projects page:
+- visible projects currently implemented:
   - Pump Pal
   - Custom Enterprise Databasing System
-  - YOU WILL LOSE: Rock, Paper, Scissors
+  - Rock, Paper, Scissors
   - Am I Cooked?
   - CherryPick
-  - adam-montgomery.ca
-  - Brick Breaker
-  - Tic-Tac-Toe
 - project timeline and deployment-target claims are intentionally omitted because the extraction docs mark them as potentially stale
 - Chip Champ remains excluded because it was commented out in legacy and requires explicit approval to revive
 
@@ -255,6 +259,21 @@ Phase 10 assumptions pending user review:
 - Projects with no public/repo link should hide the link row instead of showing `Links pending`.
 - The databasing system public action can use the Foundry contact email from legacy.
 - Inline SVG icons are acceptable for action-specific UI where no legacy asset exists.
+
+Current Phase 11 implementation includes:
+
+- structured skill group data in `src/components/SkillsSection.tsx`
+- grouped skill cards for:
+  - Product Frontends
+  - Full-Stack Systems
+  - Mobile Apps
+  - AI Features
+  - Deployment
+  - Developer Workflow
+- compact skill labels instead of a decorative logo wall
+- inline SVG category icons owned by the skills component
+- evidence lines tying each group to visible projects or experience
+- responsive one-column mobile layout
 
 ## Retrieval Map
 
@@ -271,5 +290,5 @@ Phase 10 assumptions pending user review:
 - Hero logic and content: `src/components/HeroSection.tsx`
 - Experience logic and content: `src/components/ExperienceSection.tsx`
 - Project logic and content: `src/components/ProjectsSection.tsx`
-- Skills placeholder: `src/components/SkillsSection.tsx`
+- Skills section: `src/components/SkillsSection.tsx`
 - Footer placeholder: `src/components/SiteFooter.tsx`

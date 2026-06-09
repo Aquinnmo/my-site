@@ -5,8 +5,8 @@ This document defines the Phase 4 visual system for the frozen-lake blizzard por
 ## Visual Direction
 
 - Theme: blizzard over a frozen lake.
-- Light mode: daylight whiteout, pale lake ice, snow, and cold blue highlights.
-- Dark mode: night blizzard, black lake ice, deep blue shadows, and bright snow particles.
+- Light mode: daylight blizzard over pale lake ice, using the same layered styling as night mode with light-blue glow radials and dark snow particles.
+- Dark mode: night blizzard, black lake ice, deep blue shadows, and bright white snow particles.
 - The design should feel natural, cold, and atmospheric, not like a technical dashboard.
 - The recruiter use case remains primary: high contrast, scannable hierarchy, and low-friction reading.
 
@@ -16,13 +16,13 @@ Use these as CSS custom property targets.
 
 | Token | Value | Purpose |
 | --- | --- | --- |
-| `--color-bg` | `#f8fbff` | Snow background |
-| `--color-bg-deep` | `#eaf6ff` | Frozen lake blue wash |
-| `--color-bg-wind` | `#ffffff` | Whiteout highlight |
-| `--color-ice` | `#d7efff` | Ice surfaces |
-| `--color-ice-strong` | `#9fd8f5` | Strong frozen-lake blue |
-| `--color-ice-edge` | `#b9ddea` | Ice edges and dividers |
-| `--color-frost` | `#eef9ff` | Frost overlay |
+| `--color-bg` | `#f4fbff` | Day blizzard base |
+| `--color-bg-deep` | `#d9efff` | Frozen lake blue wash |
+| `--color-bg-wind` | `#e8f8ff` | Light-blue blizzard cloud layer |
+| `--color-ice` | `#b9e4f8` | Ice surfaces |
+| `--color-ice-strong` | `#72c8ed` | Strong frozen-lake blue |
+| `--color-ice-edge` | `#a4d3e8` | Ice edges and dividers |
+| `--color-frost` | `#c9f0ff` | Light-blue frost/radial highlight |
 | `--color-panel` | `rgba(255, 255, 255, 0.72)` | Frosted panels |
 | `--color-panel-strong` | `rgba(255, 255, 255, 0.9)` | High-readability panels |
 | `--color-text` | `#10202d` | Primary text |
@@ -30,7 +30,7 @@ Use these as CSS custom property targets.
 | `--color-link` | `#0b6e99` | Links and quiet actions |
 | `--color-link-hover` | `#084c6b` | Link hover |
 | `--color-focus` | `#0ea5d8` | Focus outline |
-| `--color-snow` | `rgba(255, 255, 255, 0.9)` | Snow particles |
+| `--color-snow` | `rgba(3, 7, 11, 0.34)` | Dark day-mode snow particles |
 | `--color-shadow` | `rgba(57, 96, 122, 0.18)` | Cold shadow |
 
 ## Dark Theme Tokens
@@ -83,6 +83,8 @@ Use these as CSS custom property targets under dark mode.
   - soft lake glow
   - blurred frost haze
   - snowfall overlay
+- Day and night modes should share the same background composition; day mode should not become a separate white-only styling system.
+- Day-mode glow radials should read light blue, while night-mode glow radials can read white-blue.
 - Panels should look like frosted ice laid over the lake, not generic glass cards.
 - Cards are allowed for repeated experience and project items only.
 - Avoid wrapping every section in a card.

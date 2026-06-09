@@ -337,7 +337,7 @@ Status: completed with centered name, rotating-role text, draft summary, proof c
 - Create an under-ice treatment using overlays, frost texture, refraction-like blur, and cold highlights.
 - Ensure the face remains recognizable.
 
-Status: completed with simplified CSS-only under-ice treatment using the legacy profile image. The name is positioned above the portrait.
+Status: temporarily simplified to a plain profile photo at the user's request. The previous CSS-only under-ice treatment was removed for now.
 
 ### Phase 8.3: Add Hero Actions
 
@@ -429,34 +429,50 @@ Additional status: completed action-specific icons for repository, web preview/w
 
 ## Phase 11: Skills and Tools Section
 
+Status: completed with grouped, evidence-oriented skill cards.
+
 ### Phase 11.1: Build Skill Groups
 
 - Group tools by practical capability.
 - Example groups may include frontend, backend, mobile, data, deployment, AI tools, and workflow.
+
+Status: completed with product frontend, full-stack systems, mobile apps, AI features, deployment, and developer workflow groups.
 
 ### Phase 11.2: Replace Logo Wall
 
 - Avoid a large decorative logo grid.
 - Use compact skill labels or small icon-supported rows.
 
+Status: completed with compact skill labels and inline category icons instead of a legacy logo wall.
+
 ### Phase 11.3: Tie Skills to Evidence
 
 - Where possible, connect skills to projects or experience.
 
+Status: completed with one evidence line per group tying the skills back to projects, Foundry, or DataAnnotation.
+
 ## Phase 12: Foundry / Credibility Section
+
+Status: intentionally skipped for v1 because the user approved Foundry only as an experience entry.
 
 ### Phase 12.1: Build Foundry Summary
 
 - Condense Foundry into a small professional credibility section if approved.
 - Emphasize custom software, small-business systems, modernization, and full-stack delivery.
 
+Status: not implemented. Foundry remains in the experience section only.
+
 ### Phase 12.2: Add Contact Path
 
 - Add a mail link or CTA if Foundry remains visible.
 
+Status: not implemented because there is no separate Foundry section.
+
 ### Phase 12.3: Keep It Secondary
 
 - Ensure this section supports the portfolio rather than becoming a separate company page.
+
+Status: satisfied by omitting the separate Foundry section.
 
 ## Phase 13: Contact Section
 
