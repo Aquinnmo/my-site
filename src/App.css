@@ -1,8 +1,73 @@
 .site-shell {
+  --route-transition-base: #000;
   position: relative;
   isolation: isolate;
   min-height: 100svh;
   overflow-x: hidden;
+}
+
+:root[data-theme='light'] .site-shell {
+  --route-transition-base: #fff;
+}
+
+.site-shell[data-route='foundry'] {
+  --color-ember-bg: #050101;
+  --color-ember-bg-deep: #160700;
+  --color-ember-bg-smoke: #2b0d02;
+  --color-ember-surface: #411706;
+  --color-ember-accent: #d85a12;
+  --color-ember-edge: #7a3511;
+  --color-ember-glow: #ffc06f;
+  --color-ember-panel: rgba(24, 7, 1, 0.74);
+  --color-ember-panel-strong: rgba(32, 9, 2, 0.9);
+  --color-ember-text: #fff8ef;
+  --color-ember-text-muted: #dfb996;
+  --color-ember-link: #ff8a24;
+  --color-ember-link-hover: #ffd29a;
+  --color-ember-focus: #ff9a2f;
+  --color-ember-spark: rgba(255, 136, 22, 0.94);
+  --color-ember-spark-hot: rgba(255, 215, 128, 0.96);
+  --color-ember-shadow: rgba(0, 0, 0, 0.62);
+  --color-bg: var(--color-ember-bg);
+  --color-bg-deep: var(--color-ember-bg-deep);
+  --color-bg-wind: var(--color-ember-bg-smoke);
+  --color-ice: var(--color-ember-surface);
+  --color-ice-strong: var(--color-ember-accent);
+  --color-ice-edge: var(--color-ember-edge);
+  --color-frost: var(--color-ember-glow);
+  --color-panel: var(--color-ember-panel);
+  --color-panel-strong: var(--color-ember-panel-strong);
+  --color-text: var(--color-ember-text);
+  --color-text-muted: var(--color-ember-text-muted);
+  --color-link: var(--color-ember-link);
+  --color-link-hover: var(--color-ember-link-hover);
+  --color-focus: var(--color-ember-focus);
+  --color-snow: var(--color-ember-spark);
+  --color-shadow: var(--color-ember-shadow);
+  color: var(--color-text);
+  background: var(--color-bg);
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] .site-shell[data-route='foundry'] {
+  --color-ember-bg: #fffaf3;
+  --color-ember-bg-deep: #ffead1;
+  --color-ember-bg-smoke: #ffd5a3;
+  --color-ember-surface: #ffc182;
+  --color-ember-accent: #d8580d;
+  --color-ember-edge: #ef9345;
+  --color-ember-glow: #ff8a24;
+  --color-ember-panel: rgba(255, 250, 248, 0.78);
+  --color-ember-panel-strong: rgba(255, 255, 255, 0.92);
+  --color-ember-text: #2b1305;
+  --color-ember-text-muted: #765b3d;
+  --color-ember-link: #a93d06;
+  --color-ember-link-hover: #742803;
+  --color-ember-focus: #d8580d;
+  --color-ember-spark: rgba(223, 82, 8, 0.86);
+  --color-ember-spark-hot: rgba(255, 170, 49, 0.92);
+  --color-ember-shadow: rgba(177, 83, 19, 0.24);
+  color-scheme: light;
 }
 
 .lake-background {
@@ -35,6 +100,21 @@
   filter: blur(10px);
 }
 
+.site-shell[data-route='foundry'] .lake-glow {
+  background:
+    radial-gradient(circle at 22% 10%, color-mix(in srgb, var(--color-ice-strong) 38%, transparent), transparent 31rem),
+    radial-gradient(circle at 84% 8%, color-mix(in srgb, var(--color-frost) 18%, transparent), transparent 27rem),
+    linear-gradient(180deg, var(--color-bg-wind) 0%, var(--color-bg) 36%, var(--color-bg-deep) 100%);
+}
+
+.site-shell[data-route='foundry'] .lake-sheen {
+  opacity: 0.72;
+  background:
+    radial-gradient(ellipse at 16% 74%, color-mix(in srgb, var(--color-ice-strong) 28%, transparent), transparent 34rem),
+    radial-gradient(ellipse at 78% 52%, color-mix(in srgb, var(--color-frost) 24%, transparent), transparent 28rem),
+    radial-gradient(ellipse at 48% 96%, color-mix(in srgb, var(--color-bg-wind) 52%, transparent), transparent 36rem);
+}
+
 .snowfall {
   position: fixed;
   inset: 0;
@@ -51,6 +131,35 @@
   transform: translate3d(0, -12vh, 0);
   animation: snow-fall var(--snow-duration, 26s) linear infinite;
   will-change: transform;
+}
+
+.site-shell[data-route='foundry'] .snow-layer {
+  inset: 0 0 -20vh;
+  transform: translate3d(0, 112vh, 0);
+  animation-name: ember-rise;
+}
+
+.site-shell[data-route='foundry'] .snow-layer-small {
+  --snow-opacity: 0.72;
+  background-image:
+    radial-gradient(circle, var(--color-ember-spark-hot) 0 0.06rem, var(--color-ember-spark) 0.07rem, transparent 0.095rem),
+    radial-gradient(circle, var(--color-ember-spark) 0 0.05rem, transparent 0.075rem);
+}
+
+.site-shell[data-route='foundry'] .snow-layer-medium {
+  --snow-opacity: 0.62;
+  animation-name: ember-rise-drift;
+  background-image:
+    radial-gradient(circle, var(--color-ember-spark-hot) 0 0.085rem, var(--color-ember-spark) 0.098rem, transparent 0.13rem),
+    radial-gradient(circle, var(--color-ember-spark) 0 0.075rem, transparent 0.105rem);
+}
+
+.site-shell[data-route='foundry'] .snow-layer-near {
+  --snow-opacity: 0.42;
+  background-image:
+    radial-gradient(circle, var(--color-ember-spark-hot) 0 0.14rem, var(--color-ember-spark) 0.158rem, transparent 0.195rem),
+    radial-gradient(circle, var(--color-ember-spark) 0 0.115rem, transparent 0.155rem);
+  filter: blur(0.25px) drop-shadow(0 0 0.28rem color-mix(in srgb, var(--color-ember-spark) 68%, transparent));
 }
 
 .snow-layer-small {
@@ -109,6 +218,18 @@
   }
 }
 
+@keyframes ember-rise {
+  to {
+    transform: translate3d(1.8rem, -112vh, 0);
+  }
+}
+
+@keyframes ember-rise-drift {
+  to {
+    transform: translate3d(-2.4rem, -112vh, 0);
+  }
+}
+
 .theme-toggle {
   position: fixed;
   top: 1rem;
@@ -143,6 +264,190 @@
 .theme-toggle:hover {
   border-color: var(--color-ice-strong);
   color: var(--color-link-hover);
+}
+
+.route-transition-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 16;
+  background: var(--route-transition-base);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.route-content {
+  opacity: 1;
+  transition: opacity 300ms ease;
+  will-change: opacity;
+}
+
+.site-shell[data-transition-phase='exiting'] .route-transition-veil {
+  opacity: 1;
+}
+
+.site-shell[data-transition-phase='exiting'] .route-content {
+  opacity: 0;
+}
+
+.site-shell[data-transition-phase='entering'] .route-transition-veil {
+  opacity: 0;
+  transition-duration: 300ms;
+}
+
+.site-shell[data-transition-phase='entering'] .route-content {
+  animation: route-content-enter 300ms ease both;
+}
+
+@keyframes route-content-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.page-switcher {
+  --switcher-padding: 0.35rem;
+  --switcher-gap: 0.35rem;
+  --switcher-pill-width: calc((100% - (var(--switcher-padding) * 2) - var(--switcher-gap)) / 2);
+  --switcher-adam-accent: #87dbff;
+  --switcher-adam-accent-strong: #c5efff;
+  --switcher-adam-edge: #24485c;
+  --switcher-adam-glow: rgba(217, 245, 255, 0.2);
+  --switcher-foundry-accent: #ff8a24;
+  --switcher-foundry-accent-strong: #ffd29a;
+  --switcher-foundry-edge: #7a3511;
+  --switcher-foundry-glow: rgba(255, 136, 36, 0.24);
+  --switcher-active-accent: var(--switcher-adam-accent);
+  --switcher-active-accent-strong: var(--switcher-adam-accent-strong);
+  --switcher-active-edge: var(--switcher-adam-edge);
+  --switcher-active-glow: var(--switcher-adam-glow);
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  z-index: 21;
+  display: grid;
+  width: min(22rem, calc(100vw - 8rem));
+  min-width: 13.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--switcher-gap);
+  border: 1px solid color-mix(in srgb, var(--switcher-active-edge) 58%, transparent);
+  border-radius: 1.35rem;
+  padding: var(--switcher-padding);
+  background:
+    radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--color-frost) 13%, transparent), transparent 58%),
+    radial-gradient(circle at 88% 100%, var(--switcher-active-glow), transparent 62%),
+    color-mix(in srgb, var(--color-panel-strong) 84%, #111 16%);
+  box-shadow:
+    0 1.15rem 2.4rem color-mix(in srgb, var(--color-shadow) 72%, transparent),
+    inset 0 0.04rem 0 color-mix(in srgb, var(--color-frost) 13%, transparent),
+    inset 0 -0.75rem 1.8rem color-mix(in srgb, var(--color-ice) 12%, transparent);
+  transform: translateX(-50%);
+  backdrop-filter: blur(18px);
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.page-switcher[data-active-route='foundry'] {
+  --switcher-active-accent: var(--switcher-foundry-accent);
+  --switcher-active-accent-strong: var(--switcher-foundry-accent-strong);
+  --switcher-active-edge: var(--switcher-foundry-edge);
+  --switcher-active-glow: var(--switcher-foundry-glow);
+}
+
+.page-switcher-active-pill {
+  position: absolute;
+  top: var(--switcher-padding);
+  bottom: var(--switcher-padding);
+  left: var(--switcher-padding);
+  z-index: 0;
+  width: var(--switcher-pill-width);
+  border: 1px solid color-mix(in srgb, var(--switcher-active-accent) 42%, transparent);
+  border-radius: 1rem;
+  background:
+    radial-gradient(circle at 32% 0%, color-mix(in srgb, var(--switcher-active-accent-strong) 20%, transparent), transparent 70%),
+    radial-gradient(circle at 82% 100%, color-mix(in srgb, var(--switcher-active-accent) 28%, transparent), transparent 72%),
+    color-mix(in srgb, var(--color-panel-strong) 78%, #202020 22%);
+  box-shadow:
+    inset 0 0 0.9rem color-mix(in srgb, var(--switcher-active-accent) 13%, transparent),
+    0 0 1.05rem color-mix(in srgb, var(--switcher-active-accent) 16%, transparent),
+    0 0.45rem 1.15rem color-mix(in srgb, var(--color-shadow) 52%, transparent);
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease,
+    transform 260ms ease;
+}
+
+.page-switcher[data-active-route='foundry'] .page-switcher-active-pill {
+  transform: translateX(calc(100% + var(--switcher-gap)));
+}
+
+.page-switcher-link {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.48rem;
+  min-height: 3.1rem;
+  border-radius: 999px;
+  padding: 0.64rem 0.82rem;
+  color: color-mix(in srgb, var(--switcher-link-accent) 46%, var(--color-text-muted));
+  font-size: 0.94rem;
+  font-weight: 850;
+  line-height: 1;
+  text-decoration: none;
+  text-shadow: 0 0 0.8rem color-mix(in srgb, var(--switcher-link-accent) 14%, transparent);
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.page-switcher-link:hover {
+  color: var(--switcher-link-accent-strong);
+}
+
+.page-switcher-link[aria-current='page'] {
+  color: var(--switcher-link-accent-strong);
+}
+
+.page-switcher-link[data-switcher-route='portfolio'] {
+  --switcher-link-accent: var(--switcher-adam-accent);
+  --switcher-link-accent-strong: var(--switcher-adam-accent-strong);
+}
+
+.page-switcher-link[data-switcher-route='foundry'] {
+  --switcher-link-accent: var(--switcher-foundry-accent);
+  --switcher-link-accent-strong: var(--switcher-foundry-accent-strong);
+}
+
+.page-switcher-link[data-switcher-route='portfolio'] .page-switcher-icon {
+  filter: drop-shadow(0 0 0.35rem color-mix(in srgb, var(--switcher-adam-accent) 20%, transparent));
+}
+
+.page-switcher-link[data-switcher-route='foundry'] .page-switcher-icon {
+  filter: drop-shadow(0 0 0.35rem color-mix(in srgb, var(--switcher-foundry-accent) 26%, transparent));
+}
+
+.page-switcher-link:focus-visible {
+  outline-offset: 0.3rem;
+}
+
+.page-switcher-icon {
+  width: 1.18rem;
+  height: 1.18rem;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.95;
 }
 
 .page-flow {
@@ -446,6 +751,154 @@ svg.action-icon {
   font-size: clamp(2.3rem, 6vw, 4.8rem);
   line-height: 1.05;
   letter-spacing: -0.045em;
+}
+
+.foundry-page-flow {
+  padding-top: clamp(6.5rem, 9vw, 8rem);
+}
+
+.foundry-hero-section {
+  display: grid;
+  justify-items: center;
+  min-height: min(40rem, 76svh);
+  padding: clamp(4rem, 8vw, 6.5rem) 0 clamp(3.5rem, 7vw, 5rem);
+  text-align: center;
+  scroll-margin-top: 7rem;
+}
+
+.foundry-hero-copy {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+}
+
+.foundry-hero-section h1 {
+  width: min(13ch, 100%);
+  margin: 0;
+  font-size: clamp(3.2rem, 7vw, 6.5rem);
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+}
+
+.foundry-route-summary {
+  max-width: 42rem;
+  margin-top: 1.2rem;
+  color: var(--color-text-muted);
+  font-size: clamp(1.08rem, 2vw, 1.35rem);
+}
+
+.foundry-route-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.foundry-route-cta {
+  width: fit-content;
+}
+
+.foundry-section {
+  padding-block: clamp(3.25rem, 7vw, 5rem);
+}
+
+.foundry-grid {
+  display: grid;
+  width: min(100%, 68rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.foundry-card,
+.foundry-step {
+  position: relative;
+  display: grid;
+  align-content: start;
+  overflow: hidden;
+  min-height: 100%;
+  border: 1px solid color-mix(in srgb, var(--color-ice-edge) 78%, transparent);
+  border-radius: 0.9rem;
+  padding: clamp(1rem, 2.3vw, 1.25rem);
+  background:
+    radial-gradient(circle at 88% 0%, color-mix(in srgb, var(--color-frost) 46%, transparent), transparent 14rem),
+    color-mix(in srgb, var(--color-panel-strong) 72%, transparent);
+  box-shadow: 0 1.2rem 2.7rem color-mix(in srgb, var(--color-shadow) 62%, transparent);
+  text-align: left;
+  backdrop-filter: blur(18px);
+}
+
+.foundry-card::before,
+.foundry-step::before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 12% 100%, color-mix(in srgb, var(--color-ice) 34%, transparent), transparent 15rem);
+  content: '';
+  pointer-events: none;
+}
+
+.foundry-card > *,
+.foundry-step > * {
+  position: relative;
+}
+
+.foundry-card h3,
+.foundry-step h3 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.foundry-card p,
+.foundry-step p {
+  margin-top: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.foundry-steps {
+  display: grid;
+  width: min(100%, 68rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.foundry-step-number {
+  width: fit-content;
+  margin-bottom: 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--color-ice-edge) 78%, transparent);
+  border-radius: 999px;
+  padding: 0.34rem 0.65rem;
+  color: var(--color-link);
+  background: color-mix(in srgb, var(--color-panel) 72%, transparent);
+  font-size: 0.88rem;
+  font-weight: 850;
+  line-height: 1.15;
+}
+
+.foundry-founder {
+  padding-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.foundry-founder-copy {
+  display: grid;
+  justify-items: center;
+  width: min(100%, 52rem);
+  text-align: center;
+}
+
+.foundry-founder-copy h2 {
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(2.3rem, 6vw, 4.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.foundry-founder-copy p {
+  max-width: 42rem;
+  margin-top: 1rem;
+  color: var(--color-text-muted);
+  font-size: clamp(1.05rem, 2vw, 1.22rem);
 }
 
 .experience-list {
@@ -884,7 +1337,9 @@ svg.project-link-icon {
   }
 
   .project-grid,
-  .skills-grid {
+  .skills-grid,
+  .foundry-grid,
+  .foundry-steps {
     grid-template-columns: 1fr;
     width: min(100%, 42rem);
   }
@@ -895,6 +1350,25 @@ svg.project-link-icon {
 }
 
 @media (max-width: 48rem) {
+  .page-switcher {
+    top: 0.75rem;
+    left: 0.75rem;
+    width: min(15rem, calc(100vw - 6.25rem));
+    min-width: 0;
+    transform: none;
+  }
+
+  .page-switcher-link {
+    min-height: 2.75rem;
+    padding: 0.54rem 0.42rem;
+    font-size: 0.86rem;
+  }
+
+  .page-switcher-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
   .theme-toggle {
     top: 0.75rem;
     right: 0.75rem;
@@ -906,6 +1380,15 @@ svg.project-link-icon {
   .page-flow {
     width: min(100% - 1.25rem, 72rem);
     padding-top: 3.75rem;
+  }
+
+  .foundry-page-flow {
+    padding-top: 4.75rem;
+  }
+
+  .foundry-hero-section {
+    min-height: auto;
+    padding-top: 4.25rem;
   }
 
   .hero-section {
@@ -974,6 +1457,12 @@ svg.project-link-icon {
     width: 100%;
   }
 
+  .foundry-grid,
+  .foundry-steps {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
   .site-footer {
     width: min(100% - 1.25rem, 72rem);
     padding: 3rem 0 2rem;
@@ -1027,7 +1516,9 @@ svg.project-link-icon {
 
   .experience-card,
   .project-card,
-  .skill-card {
+  .skill-card,
+  .foundry-card,
+  .foundry-step {
     border-radius: 0.75rem;
   }
 
@@ -1042,9 +1533,38 @@ svg.project-link-icon {
   .snow-layer-near {
     --snow-opacity: 0.18;
   }
+
+  .site-shell[data-route='foundry'] .snow-layer-medium {
+    --snow-opacity: 0.48;
+  }
+
+  .site-shell[data-route='foundry'] .snow-layer-near {
+    --snow-opacity: 0.28;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .route-transition-veil {
+    transition: none;
+  }
+
+  .route-content {
+    transition: none;
+    animation: none;
+  }
+
+  .page-switcher-active-pill {
+    transition: none;
+  }
+
+  .page-switcher {
+    transition: none;
+  }
+
+  .page-switcher-link {
+    transition: none;
+  }
+
   .hero-role {
     transition: none;
   }

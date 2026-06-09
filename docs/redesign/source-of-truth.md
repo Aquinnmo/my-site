@@ -1,6 +1,6 @@
 # Redesign Source of Truth
 
-This document is the working source of truth for the one-page frozen-lake portfolio redesign. Keep it updated whenever a product, content, or visual decision changes.
+This document is the working source of truth for the frozen-lake portfolio and Foundry site redesign. Keep it updated whenever a product, content, or visual decision changes.
 
 ## Current Project State
 
@@ -19,15 +19,17 @@ This document is the working source of truth for the one-page frozen-lake portfo
 
 ## Locked Product Direction
 
-- The first redesigned version is one page only.
-- The page is a condensed version of the legacy site, not a recreation of every legacy route.
+- The redesigned site now has two approved pages: the main portfolio at `/` and the Montgomery Software Foundry page at `/foundry`.
+- The main portfolio remains a condensed version of the legacy site, not a recreation of every legacy route.
+- The Foundry page is a focused business page for Montgomery Software Foundry Inc.
 - The primary user is a recruiter or hiring manager scanning quickly.
 - The page must communicate experienced web developer credibility.
 - The page must be easy to scan before it is visually elaborate.
 - Projects and experience are both high-priority content areas.
 - Experience appears before projects in section order unless the user changes this.
 - Projects still need strong visual weight and should not feel secondary.
-- The page must preserve a strong frozen-lake blizzard theme.
+- The portfolio page must preserve a strong frozen-lake blizzard theme.
+- The Foundry page must use a matching layout and visual language, but reinterpret the theme as crackling embers.
 - Ask before making visible product, copy, content-selection, or major visual decisions.
 
 ## Approved Content Decisions
@@ -49,25 +51,26 @@ This document is the working source of truth for the one-page frozen-lake portfo
   - visual treatment for key tech-stack components
 - Action links should use specific icons where possible, not generic decoration.
 - Skills direction: use judgment to select key languages, tools, and frameworks.
-- Foundry direction: do not create a separate Foundry section; include Foundry only in the experience section.
+- Foundry direction: create a separate `/foundry` page by copying and refining the legacy Foundry page content; keep Foundry in the portfolio experience section as well.
 - When a rendered project or job appears in the current resume PDF, use the resume bullet points as the source of truth for that item's visible proof bullets.
 
 ## Theme Rules
 
 ### Shared
 
-- Theme concept: blizzard over a frozen lake.
-- Snowfall should appear over the whole page.
-- Snowfall must not block reading or interaction.
+- Portfolio theme concept: blizzard over a frozen lake.
+- Foundry theme concept: crackling embers using the same visual structure as the portfolio.
+- Atmospheric particles should appear over the whole page.
+- Atmospheric particles must not block reading or interaction.
 - Motion must respect `prefers-reduced-motion`.
-- Ice texture should feel like lake ice, not generic glassmorphism.
+- Portfolio ice texture should feel like lake ice, not generic glassmorphism.
 - Do not use crack lines, shard motifs, etched ice lines, or repeating linear ice textures in the background.
-- Background texture should come from soft glow, frost haze, snow, depth, and blurred lake color only.
-- Use cold whites, blue-whites, pale blues, icy grays, and dark winter tones.
+- Portfolio background texture should come from soft glow, frost haze, snow, depth, and blurred lake color only.
+- Portfolio colors should use cold whites, blue-whites, pale blues, icy grays, and dark winter tones.
 - Light and dark modes should share the same layered background styling structure.
 - Light mode should mirror the same effect placement and styling structure as dark mode.
 - Light mode translates the dark-mode palette into a whiteout lake palette: dark blacks become whites/near-whites, and bright whites become pronounced light blues.
-- Light mode snow particles should be visibly light blue; dark mode snow particles remain bright white.
+- Portfolio light mode snow particles should be visibly light blue; portfolio dark mode snow particles remain bright white.
 - Avoid a technical dashboard look unless explicitly approved.
 - Avoid generic purple-on-white defaults.
 - Avoid logo-wall clutter from the legacy site.
@@ -78,6 +81,18 @@ This document is the working source of truth for the one-page frozen-lake portfo
 - The face must remain recognizable.
 
 Detailed Phase 4 visual system tokens and rules are defined in `visual-system.md`.
+
+### Foundry Page
+
+- Visual target: crackling embers, not blizzard.
+- The Foundry page should look nearly identical in layout, hierarchy, spacing, surfaces, and atmosphere to the portfolio portion.
+- The main difference is the theme palette and particle direction.
+- Dark mode Foundry palette: black with orangey-red fire accents.
+- Light mode Foundry palette: white with orangey-red fire accents.
+- Foundry particles should reuse the same snowfall layer approach, but render orange-red in both light and dark modes.
+- Foundry particle motion should invert the y-axis so particles rise like sparks instead of falling like snow.
+- Foundry panels should keep the same frosted/layered readability approach, translated into ember-tinted surfaces.
+- Foundry should avoid becoming a generic fire illustration, forge illustration, or separate visual system.
 
 ### Light Mode
 
@@ -96,7 +111,7 @@ Detailed Phase 4 visual system tokens and rules are defined in `visual-system.md
 
 ## Approved Information Architecture
 
-Final one-page section order:
+Main portfolio section order:
 
 1. Hero
 2. Experience
@@ -106,10 +121,14 @@ Final one-page section order:
 
 Navigation decision:
 
-- No nav bar in v1.
-- The page should be consumed by scrolling only.
-- The page should not show browser scrollbar chrome.
-- Do not use visible divider bars between major page sections.
+- No full nav bar.
+- Approved navigation exception: a compact fixed page switcher styled after `src/foundry/sample_toggle_bar.png`.
+- The page switcher options must be labeled `Adam` and `Foundry`.
+- `Adam` links to `/`; `Foundry` links to `/foundry`.
+- The active switcher pill should slide between the two options with a smooth animation.
+- The main portfolio should still be consumed primarily by scrolling.
+- The site should not show browser scrollbar chrome.
+- Do not use visible divider bars between major sections.
 
 Above-the-fold requirements:
 
@@ -136,8 +155,8 @@ Mobile flow:
 ## Current Implementation Constraints
 
 - Build in the root Vite app unless the user changes direction.
-- Keep the redesigned site one page for now.
-- Do not introduce multi-page routing in v1 unless explicitly approved.
+- Keep the redesigned site limited to the approved `/` and `/foundry` pages for now.
+- Do not recreate the old multi-page legacy route structure.
 - Preserve `legacy/` as the retrieval source.
 - Reuse legacy assets only after the user approves each visible asset decision.
 - Approved legacy assets must be copied into the new app before use; do not import or path directly from `legacy/` in runtime code.
@@ -172,7 +191,44 @@ Phase 10 projects section is implemented in `src/components/ProjectsSection.tsx`
 
 Phase 11 skills and tools section is implemented in `src/components/SkillsSection.tsx` and `src/App.css`.
 
-Phase 12 Foundry/credibility section is intentionally skipped for v1 because the approved direction is to include Foundry only as an experience entry.
+Phase 12 Foundry/credibility section was intentionally skipped for the one-page portfolio because Foundry remains represented in the experience section.
+
+Foundry page Phase 1 is implemented as a product-contract update. The approved direction is now:
+
+- add a separate `/foundry` page for Montgomery Software Foundry Inc.
+- copy and refine the legacy Foundry page content.
+- add a compact fixed page switcher with `Adam` and `Foundry` options.
+- animate the active switcher pill sliding between those two options.
+- keep `/` as the main recruiter-facing portfolio page.
+
+Foundry page Phase 2 is implemented as lightweight route-state handling:
+
+- `/` renders the portfolio route.
+- `/foundry` renders a minimal Foundry route placeholder.
+- route state is handled in `src/App.tsx` without introducing React Router.
+- the existing Vercel SPA fallback rewrite remains unchanged.
+- shared app shell behavior remains in place: Analytics, Speed Insights, background, theme toggle, and footer.
+
+Foundry page Phase 3 is implemented as the shared top page switcher:
+
+- `src/components/PageSwitcher.tsx` renders the fixed `Adam` / `Foundry` switcher.
+- the switcher uses semantic links and preserves normal modified-click browser behavior.
+- ordinary clicks use `history.pushState` route updates without a full page reload.
+- active state is derived from `src/App.tsx` route state.
+- the active pill slides between `Adam` and `Foundry` with a transform animation.
+- the `Adam` switcher option uses the portfolio's icy-blue identity, while `Foundry` uses the ember-orange identity.
+- the active pill changes color to match the active destination.
+- reduced-motion disables the pill transition.
+- mobile styling keeps the switcher compact and separated from the theme toggle.
+
+Foundry page Phase 4 is implemented as the first full Foundry content pass:
+
+- `src/components/FoundryPage.tsx` now renders the refined legacy Foundry content structure.
+- the page includes hero, contact CTA, `What we build`, `Why teams choose the Foundry`, `Our collaborative process`, and `Built by Adam Montgomery`.
+- service, differentiator, and process content is structured in local typed arrays.
+- copy preserves the meaning of the legacy Foundry page while tightening it for scanability.
+- Foundry content styling reuses the portfolio's section, card, and responsive layout patterns.
+- the black/orangey-red and white/orangey-red ember visual variant is implemented in Phase 5.
 
 Phase 13 contact footer is implemented in `src/components/SiteFooter.tsx` and `src/App.css`.
 
@@ -186,8 +242,9 @@ Component refactor is implemented. `src/App.tsx` should remain a lightweight pag
 
 Current Phase 6 implementation includes:
 
-- one-page semantic shell
-- no nav bar
+- portfolio semantic shell
+- no full nav bar
+- compact `Adam` / `Foundry` page switcher is implemented in `src/components/PageSwitcher.tsx`
 - constrained content width
 - full-viewport frozen-lake background layers without line, crack, or shard motifs
 - dark-mode default theme initialization inside `src/components/ThemeToggle.tsx`
@@ -208,6 +265,35 @@ Current Phase 7 implementation includes:
 - snowfall sits over the whole page while the theme toggle remains above it
 - `prefers-reduced-motion` disables snow animation and leaves static snow texture
 - frozen-lake background remains soft haze/glow only, with no line, crack, shard, or etched motifs
+
+Foundry page Phase 5 visual variant is implemented:
+
+- the existing portfolio background and particle architecture is reused.
+- `src/App.css` scopes Foundry color tokens under `.site-shell[data-route='foundry']`.
+- Foundry dark mode uses black and orangey-red fire tokens.
+- Foundry light mode uses white and orangey-red fire tokens under `:root[data-theme='light'] .site-shell[data-route='foundry']`.
+- Foundry route-specific tokens use ember names such as `--color-ember-bg`, `--color-ember-accent`, and `--color-ember-spark`, then map back into the shared portfolio token API.
+- Foundry particles render orange-red in both modes through `--color-ember-spark` / `--color-ember-spark-hot`.
+- Foundry particles use higher opacity, hot centers, and a subtle glow so the rising sparks remain noticeable.
+- Foundry particles use `ember-rise` and `ember-rise-drift` keyframes so they rise instead of falling.
+- reduced-motion continues to disable particle animation.
+
+Foundry page Phase 6 responsive and interaction polish is implemented:
+
+- mobile switcher links meet comfortable tap sizing.
+- the Foundry page gets extra top offset so the fixed switcher does not cover hero content.
+- the active switcher pill transitions border, background, shadow, and transform for smoother theme changes.
+- small-screen Foundry spark opacity is reduced with route-specific selectors so sparks stay visible without crowding text.
+- reduced-motion disables switcher and particle animation transitions.
+
+Route transition behavior is implemented:
+
+- selecting `Adam` or `Foundry` starts the page switcher pill color/position transition immediately.
+- the switcher and theme toggle remain visible above the transition.
+- page content and footer fade out into a fixed base-color veil.
+- the base-color veil is black in dark mode and white in light mode.
+- after fade-out, the route swaps, scrolls to top, and the new page fades in.
+- reduced-motion skips the fade sequence and swaps routes immediately.
 
 Current Phase 8 implementation includes:
 

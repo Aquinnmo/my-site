@@ -52,10 +52,12 @@ function SkillIcon({ type }: { type: SkillGroup['icon'] }) {
   if (type === 'frameworks') {
     return (
       <svg className="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="4" y="4" width="6.5" height="6.5" rx="1.25" />
-        <rect x="13.5" y="4" width="6.5" height="6.5" rx="1.25" />
-        <rect x="4" y="13.5" width="6.5" height="6.5" rx="1.25" />
-        <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.25" />
+        <circle cx="12" cy="5" r="2.5" />
+        <circle cx="5.5" cy="18" r="2.5" />
+        <circle cx="18.5" cy="18" r="2.5" />
+        <path d="m10.9 7.25-4.3 8.5" />
+        <path d="m13.1 7.25 4.3 8.5" />
+        <path d="M8 18h8" />
       </svg>
     )
   }
@@ -63,8 +65,12 @@ function SkillIcon({ type }: { type: SkillGroup['icon'] }) {
   if (type === 'ai') {
     return (
       <svg className="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 3.5 13.65 9 19 10.65 13.65 12.3 12 17.75 10.35 12.3 5 10.65 10.35 9 12 3.5Z" />
-        <path d="m18.5 15 .6 2 1.9.6-1.9.6-.6 2-.6-2-1.9-.6 1.9-.6.6-2Z" />
+        <path d="M9.25 4.25a3.25 3.25 0 0 0-3.15 4.05A3.75 3.75 0 0 0 5 15.55a3.5 3.5 0 0 0 5.9 2.55V5.85a3.2 3.2 0 0 0-1.65-1.6Z" />
+        <path d="M14.75 4.25a3.25 3.25 0 0 1 3.15 4.05A3.75 3.75 0 0 1 19 15.55a3.5 3.5 0 0 1-5.9 2.55V5.85a3.2 3.2 0 0 1 1.65-1.6Z" />
+        <path d="M8.1 9.1c.8.05 1.5.45 1.95 1.1" />
+        <path d="M15.9 9.1c-.8.05-1.5.45-1.95 1.1" />
+        <path d="M8.35 14.8c.7-.05 1.3-.35 1.75-.9" />
+        <path d="M15.65 14.8c-.7-.05-1.3-.35-1.75-.9" />
       </svg>
     )
   }

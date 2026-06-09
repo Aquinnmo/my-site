@@ -1,13 +1,18 @@
 # Redesign Visual System
 
-This document defines the Phase 4 visual system for the frozen-lake blizzard portfolio. It should be used before implementation work begins so future agents can retrieve exact color, typography, surface, and motion decisions.
+This document defines the Phase 4 visual system for the frozen-lake blizzard portfolio and the approved Foundry ember variant. It should be used before implementation work begins so future agents can retrieve exact color, typography, surface, and motion decisions.
 
 ## Visual Direction
 
 - Theme: blizzard over a frozen lake.
+- Foundry variant: crackling embers with the same layout, surface, and particle architecture as the portfolio.
 - Light mode: daylight blizzard over pale lake ice, using the same layered styling and effect placement as night mode with light-blue glow, frost, and snow particles.
 - Dark mode: night blizzard, black lake ice, deep blue shadows, and bright white snow particles.
-- The design should feel natural, cold, and atmospheric, not like a technical dashboard.
+- Foundry light mode: white with orangey-red fire accents, using the same effect placement as Foundry dark mode.
+- Foundry dark mode: black with orangey-red fire accents and ember particles.
+- The portfolio should feel natural, cold, and atmospheric, not like a technical dashboard.
+- The Foundry variant should feel natural, warm, and atmospheric while preserving the same readable structure.
+- The Foundry page should feel like the same site translated from blizzard to embers, not a separate fire-themed landing page.
 - The recruiter use case remains primary: high contrast, scannable hierarchy, and low-friction reading.
 
 ## Light Theme Tokens
@@ -56,6 +61,57 @@ Use these as the base `:root` CSS custom property targets so the site defaults t
 | `--color-snow` | `rgba(242, 251, 255, 0.92)` | Snow particles |
 | `--color-shadow` | `rgba(0, 0, 0, 0.55)` | Night shadow |
 
+## Foundry Theme Variant
+
+The Foundry page should reuse the portfolio visual system structure with page-scoped ember tokens or equivalent CSS variables. It should not fork the site into a new design language.
+
+### Foundry Dark Mode Targets
+
+Use black and orangey-red fire colors as the dominant Foundry dark-mode impression.
+
+| Role | Target | Purpose |
+| --- | --- | --- |
+| Background base | near-black / black | Replaces frozen-lake night base |
+| Deep background | orange-red black | Adds ember depth without brightening the page |
+| Accent | saturated orange-red | Primary Foundry links, highlights, and active states |
+| Accent hover | warm flame orange | Hover and emphasis states |
+| Panel | translucent black-red | Same readable panel logic as portfolio cards |
+| Panel strong | deeper translucent black-red | Higher contrast surfaces |
+| Particle | orange-red | Rising sparks in both color modes |
+| Shadow | black with red tint | Keeps depth consistent with ember theme |
+
+### Foundry Light Mode Targets
+
+Use white and orangey-red fire colors as the dominant Foundry light-mode impression.
+
+| Role | Target | Purpose |
+| --- | --- | --- |
+| Background base | white / near-white | Replaces whiteout lake base |
+| Deep background | very pale warm orange-red | Adds ember warmth while keeping readability |
+| Accent | orange-red | Primary Foundry links, highlights, and active states |
+| Accent hover | deep burnt orange | Hover and emphasis states |
+| Panel | translucent white | Same readable panel logic as portfolio cards |
+| Panel strong | stronger translucent white | Higher contrast surfaces |
+| Particle | orange-red | Rising sparks in both color modes |
+| Shadow | soft red tint | Daylight counterpart to ember depth |
+
+### Foundry Particle Rules
+
+- Reuse the existing snowfall layer technique for particle density, layering, and pointer-event behavior.
+- Render particles orange-red in both dark and light modes.
+- Use a brighter hot-core spark color in addition to the base orange-red particle color.
+- Keep Foundry spark opacity high enough to be clearly visible in both black/red dark mode and white/orange-red light mode.
+- Invert the y-axis movement so particles rise upward like sparks instead of falling downward like snow.
+- Preserve varied particle sizes, opacities, and speeds across at least two layers.
+- Keep `prefers-reduced-motion` behavior: disable the rising animation and leave a static ember-speck texture.
+- Particles must not obscure text or intercept clicks.
+
+### Foundry Variable Naming
+
+- Foundry route-specific variables should use ember names, such as `--color-ember-bg`, `--color-ember-accent`, `--color-ember-spark`, and `--color-ember-spark-hot`.
+- Map ember variables back into the shared token names used by the portfolio components, such as `--color-bg`, `--color-link`, and `--color-snow`.
+- Avoid assigning fire colors directly to ice-named shared variables without the ember alias layer.
+
 ## Typography Rules
 
 - Typography should feel natural and human, not geometric or code-centric.
@@ -78,15 +134,16 @@ Use these as the base `:root` CSS custom property targets so the site defaults t
 ## Surface Rules
 
 - Page background should be layered, not flat:
-  - base snow or night color
-  - radial ice-blue glow
-  - soft lake glow
-  - blurred frost haze
-  - snowfall overlay
+  - base whiteout or night color
+  - radial glow
+  - soft depth glow
+  - blurred haze
+  - particle overlay
 - Day and night modes should share the same background composition; day mode should not become a separate white-only styling system.
 - Day mode should use the same effect placement as night mode.
 - Day-mode dark bases should become white or near-white; night-mode whites should become light blue.
-- Day-mode glow radials and snow should read as pronounced light blue, while night-mode glow radials and snow can read white-blue.
+- Portfolio day-mode glow radials and snow should read as pronounced light blue, while portfolio night-mode glow radials and snow can read white-blue.
+- Foundry glow radials and particles should read as orangey-red fire colors in both color modes.
 - Panels should look like frosted ice laid over the lake, not generic glass cards.
 - Cards are allowed for repeated experience and project items only.
 - Avoid wrapping every section in a card.
@@ -110,13 +167,14 @@ Use these as the base `:root` CSS custom property targets so the site defaults t
 
 ## Motion Rules
 
-- Snowfall should be site-wide.
-- Snowfall is CSS-based for the current implementation.
-- Snow should appear as a foreground atmospheric layer over the page, but pointer events must be disabled.
-- Snowfall should be light to medium density.
-- Snow speed should vary across at least two layers.
-- Snow should not obscure text.
-- Use `prefers-reduced-motion` to disable falling animation and leave a static frost/snow texture.
+- Atmospheric particles should be site-wide for the active page.
+- Portfolio snowfall is CSS-based for the current implementation.
+- Foundry sparks should reuse the same CSS particle-layer approach.
+- Particles should appear as a foreground atmospheric layer over the page, but pointer events must be disabled.
+- Particle density should be light to medium.
+- Particle speed should vary across at least two layers.
+- Particles should not obscure text.
+- Use `prefers-reduced-motion` to disable falling or rising animation and leave a static frost/snow or ember-speck texture.
 - Page-load animation should be subtle:
   - hero content can fade in and rise slightly
   - section groups can reveal with a small stagger
