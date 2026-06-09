@@ -77,7 +77,7 @@ This document is the working source of truth for the one-page frozen-lake portfo
 - Profile image treatment: the picture should look trapped under lake ice.
 - The face must remain recognizable.
 
-Detailed Phase 4 visual system tokens and rules are defined in `REDESIGN_VISUAL_SYSTEM.md`.
+Detailed Phase 4 visual system tokens and rules are defined in `visual-system.md`.
 
 ### Light Mode
 
@@ -158,7 +158,7 @@ Phase 2 content decisions are documented, with the exception of missing exact he
 
 Phase 3 information architecture is documented.
 
-Phase 4 visual system documentation is defined in `REDESIGN_VISUAL_SYSTEM.md`.
+Phase 4 visual system documentation is defined in `visual-system.md`.
 
 Phase 6 base app shell is implemented in `src/App.tsx`, `src/App.css`, and `src/index.css`.
 
@@ -336,11 +336,13 @@ Current cleanup and deploy-prep implementation includes:
 
 ## Retrieval Map
 
-- Full legacy inventory: `legacy/LEGACY_SITE_INDEX.md`
-- Extracted reusable content: `REDESIGN_CONTENT_EXTRACTION.md`
-- Open product/design questions: `REDESIGN_OPEN_QUESTIONS.md`
-- Visual system: `REDESIGN_VISUAL_SYSTEM.md`
-- Fine-grained implementation plan: `REDESIGN_PLAN.md`
+- Agent navigation entrypoint: `../../AGENTS.md`
+- Documentation index: `../README.md`
+- Full legacy inventory: `../../legacy/LEGACY_SITE_INDEX.md`
+- Extracted reusable content: `content-extraction.md`
+- Open product/design questions: `open-questions.md`
+- Visual system: `visual-system.md`
+- Fine-grained implementation plan: `plan.md`
 - Current app template files: `src/`
 - Page composition: `src/App.tsx`
 - Copied portfolio assets: `src/assets/portfolio/`

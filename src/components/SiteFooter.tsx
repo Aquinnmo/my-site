@@ -47,7 +47,7 @@ export function SiteFooter() {
       <div className="footer-contact">
         <h2>Let&apos;s build</h2>
         <p className="footer-summary">
-          I&apos;m searching for software engineering, data science, and GenAI roles.
+          I&apos;m searching for software engineering, data science, and GenAI roles for the Fall 2026 semester.
         </p>
         <nav className="footer-links" aria-label="Contact links">
           {footerLinks.map((link) => (

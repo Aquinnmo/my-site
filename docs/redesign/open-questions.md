@@ -7,7 +7,7 @@ This log exists because the user wants product and design decisions asked explic
 - Add new questions when a decision is needed.
 - Mark a question answered only after the user gives a clear decision.
 - Copy exact user wording into the answer note when possible.
-- If a decision affects implementation, update `REDESIGN_SOURCE_OF_TRUTH.md` and `REDESIGN_PLAN.md`.
+- If a decision affects implementation, update `source-of-truth.md` and `plan.md`.
 
 ## Answered Decisions
 

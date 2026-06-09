@@ -2,6 +2,13 @@
 
 Single-page React/Vite portfolio redesigned for recruiter scanning with a frozen-lake blizzard visual system.
 
+## Repo Navigation
+
+- Agent entrypoint: `AGENTS.md`
+- Docs index: `docs/README.md`
+- Current site source of truth: `docs/redesign/source-of-truth.md`
+- Legacy site index: `legacy/LEGACY_SITE_INDEX.md`
+
 ## Local Development
 
 ```bash

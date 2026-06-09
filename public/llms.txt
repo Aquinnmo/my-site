@@ -43,6 +43,15 @@ This site is intended to help recruiters, hiring managers, and technical reviewe
 - Email: mailto:adammontcompany@gmail.com
 - Resume: linked from the site as a PDF download.
 
+## Repository Navigation
+
+- Agent entrypoint: AGENTS.md.
+- Documentation index: docs/README.md.
+- Current site source of truth: docs/redesign/source-of-truth.md.
+- Visual system: docs/redesign/visual-system.md.
+- Content extraction: docs/redesign/content-extraction.md.
+- Legacy retrieval index: legacy/LEGACY_SITE_INDEX.md.
+
 ## Notes For AI Readers
 
 - Prefer the current rendered site and this file over legacy source files.

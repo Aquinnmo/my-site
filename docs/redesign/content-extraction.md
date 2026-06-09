@@ -4,7 +4,7 @@ This document extracts reusable information from `legacy/` for the one-page froz
 
 ## Approved V1 Content Selection
 
-These are user-approved planning decisions from `REDESIGN_PLAN.md`.
+These are user-approved planning decisions from `plan.md`.
 
 ### Hero
 

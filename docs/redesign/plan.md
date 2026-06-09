@@ -69,7 +69,7 @@ Status: completed. `legacy/LEGACY_SITE_INDEX.md` now includes hidden legacy meta
   - implementation phase sequence
 - Keep the document updated whenever the user makes a decision.
 
-Status: completed. See `REDESIGN_SOURCE_OF_TRUTH.md`.
+Status: completed. See `source-of-truth.md`.
 
 ### Phase 1.3: Create Content Extraction Notes
 
@@ -83,18 +83,18 @@ Status: completed. See `REDESIGN_SOURCE_OF_TRUTH.md`.
   - contact links
   - optional personal signals
 
-Status: completed. See `REDESIGN_CONTENT_EXTRACTION.md`.
+Status: completed. See `content-extraction.md`.
 
 ### Phase 1.4: Create Open Questions Log
 
 - Document any unanswered product, copy, or visual decisions.
 - Ask the user before resolving any decision that affects visible content or design direction.
 
-Status: completed. See `REDESIGN_OPEN_QUESTIONS.md`.
+Status: completed. See `open-questions.md`.
 
 ## Phase 2: Content Decisions
 
-Status: completed with documented decisions. Remaining implementation clarifications are tracked in `REDESIGN_OPEN_QUESTIONS.md`.
+Status: completed with documented decisions. Remaining implementation clarifications are tracked in `open-questions.md`.
 
 ### Phase 2.1: Hero Content Lock
 
@@ -165,11 +165,11 @@ Status: completed as IA requirements.
 - Decide how the ice-trapped profile image should scale on mobile.
 - Ensure no visual effect blocks scanability.
 
-Status: partially completed. Mobile order matches desktop. Exact mobile profile-image scaling remains open in `REDESIGN_OPEN_QUESTIONS.md`.
+Status: partially completed. Mobile order matches desktop. Exact mobile profile-image scaling remains open in `open-questions.md`.
 
 ## Phase 4: Visual System Documentation
 
-Status: completed as documentation. See `REDESIGN_VISUAL_SYSTEM.md`.
+Status: completed as documentation. See `visual-system.md`.
 
 ### Phase 4.1: Light Theme Tokens
 
@@ -183,7 +183,7 @@ Status: completed as documentation. See `REDESIGN_VISUAL_SYSTEM.md`.
   - focus outlines
   - cards or panels
 
-Status: completed in `REDESIGN_VISUAL_SYSTEM.md`.
+Status: completed in `visual-system.md`.
 
 ### Phase 4.2: Dark Theme Tokens
 
@@ -197,7 +197,7 @@ Status: completed in `REDESIGN_VISUAL_SYSTEM.md`.
   - focus outlines
   - panels
 
-Status: completed in `REDESIGN_VISUAL_SYSTEM.md`.
+Status: completed in `visual-system.md`.
 
 ### Phase 4.3: Typography Rules
 
@@ -206,7 +206,7 @@ Status: completed in `REDESIGN_VISUAL_SYSTEM.md`.
 - Keep headings scan-friendly.
 - Do not use viewport-scaled font sizes.
 
-Status: completed in `REDESIGN_VISUAL_SYSTEM.md`.
+Status: completed in `visual-system.md`.
 
 ### Phase 4.4: Surface Rules
 
@@ -214,7 +214,7 @@ Status: completed in `REDESIGN_VISUAL_SYSTEM.md`.
 - Keep cards reserved for repeated items such as experience and projects.
 - Avoid nested cards.
 
-Status: completed in `REDESIGN_VISUAL_SYSTEM.md`.
+Status: completed in `visual-system.md`.
 
 ### Phase 4.5: Motion Rules
 
@@ -223,7 +223,7 @@ Status: completed in `REDESIGN_VISUAL_SYSTEM.md`.
 - Define page-load animation rules.
 - Keep motion subtle enough for professional readability.
 
-Status: completed in `REDESIGN_VISUAL_SYSTEM.md`.
+Status: completed in `visual-system.md`.
 
 ## Phase 5: Project Setup
 
