@@ -1,0 +1,60 @@
+# Adam Montgomery Portfolio
+
+Adam Montgomery's portfolio is a single-page software engineering site focused on recruiter scanning.
+It presents Adam's experience, projects, skills, resume, and contact links in a frozen-lake blizzard visual theme.
+
+## Primary Purpose
+
+This site is intended to help recruiters, hiring managers, and technical reviewers quickly understand Adam's software engineering background.
+
+## Main Sections
+
+- Hero: Adam Montgomery, rotating professional descriptors, resume download, project link, skills link, and quick contact links.
+- Experience: SPS Commerce, Montgomery Software Foundry Inc., and DataAnnotation.
+- Projects: Pump Pal, Custom Enterprise Databasing System, Rock Paper Scissors, and Am I Cooked.
+- Skills: Languages, Tools, Frameworks, and AI.
+- Contact: resume download, email, GitHub, and LinkedIn.
+
+## Experience Summary
+
+- SPS Commerce: software engineering intern working with production Kotlin and Spring Boot services, MCP tooling, and REST APIs.
+- Montgomery Software Foundry Inc.: founder and lead developer building custom SaaS and operational software for clients.
+- DataAnnotation: AI training contractor focused on code review, evaluation criteria, and quality assurance for AI-generated responses.
+
+## Project Summary
+
+- Pump Pal: React Native and Expo workout tracker using Firebase and Gemini API for workout insights.
+- Custom Enterprise Databasing System: Next.js, Supabase, and TypeScript system for maintenance tickets, role-based login, and production reliability.
+- Rock Paper Scissors: Next.js and TypeScript strategy/prediction project.
+- Am I Cooked: React and TypeScript job-search readiness tool using Gemini-powered feedback.
+
+## Skills Summary
+
+- Languages: Kotlin, TypeScript, Python, Java, C, CSS.
+- Tools: GitHub, Vercel, Render, Supabase, Firebase, MongoDB, Docker, Redis, Kubernetes.
+- Frameworks: React, Spring Boot, Next.js, React Native, Expo, Node.js.
+- AI: Gemini API, Claude Code, AI feature design, workflows and integrations, MCP servers.
+
+## Important Links
+
+- Site: https://adam-montgomery.ca
+- GitHub: https://github.com/Aquinnmo
+- LinkedIn: https://linkedin.com/in/adam-montgomery-05a936315
+- Email: mailto:adammontcompany@gmail.com
+- Resume: linked from the site as a PDF download.
+
+## Repository Navigation
+
+- Agent entrypoint: AGENTS.md.
+- Documentation index: docs/README.md.
+- Current site source of truth: docs/redesign/source-of-truth.md.
+- Visual system: docs/redesign/visual-system.md.
+- Content extraction: docs/redesign/content-extraction.md.
+- Legacy retrieval index: legacy/LEGACY_SITE_INDEX.md.
+
+## Notes For AI Readers
+
+- Prefer the current rendered site and this file over legacy source files.
+- The site is intentionally one page.
+- The current visual theme is a blizzard over a frozen lake.
+- The site emphasizes projects, professional experience, practical web development, and AI-integrated workflows.

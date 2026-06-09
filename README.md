@@ -1,86 +1,54 @@
-# Adam's Personal React Site
+# Adam Montgomery Portfolio
 
-This is a personal website built with React. It showcases projects, experience, and interests.
+Single-page React/Vite portfolio redesigned for recruiter scanning with a frozen-lake blizzard visual system.
 
-## Features
-- Modern responsive design
-- Clean, functional mobile UI
-- Project portfolio
-- Experience and interests pages
-- Montgomery Software Foundry Inc. service overview
-- Team guessing game
+## Repo Navigation
 
-## Getting Started
+- Agent entrypoint: `AGENTS.md`
+- Docs index: `docs/README.md`
+- Current site source of truth: `docs/redesign/source-of-truth.md`
+- Legacy site index: `legacy/LEGACY_SITE_INDEX.md`
 
-### Prerequisites
-- Node.js (v16 or higher recommended)
-- npm
+## Local Development
 
-### Installation
-1. Clone the repository:
-   ```sh
-   git clone <your-repo-url>
-   cd personal-site
-   ```
-2. Install dependencies:
-   ```sh
-   npm install
-   ```
-
-### Running the App
-To start the development server:
-```sh
+```bash
+npm install
 npm run dev
 ```
 
-The site will be available at `http://localhost:3000` by default.
+## Validation
 
-### Quality Checks
-
-Run the Node-based test suite:
-
-```sh
-npm test
-```
-
-Lint the source files for syntax and security red flags:
-
-```sh
+```bash
 npm run lint
-```
-
-Before deploying, ensure the production build compiles successfully:
-
-```sh
 npm run build
 ```
 
-## Project Structure
-- `src/` - Source files
-  - `components/` - Component files
-  - `pages/` - Pages
-- `public/` - Static assets
-- `index.html` - Main HTML file
-- `vercel.json` - Vercel deployment config
+## Vercel Deployment
 
-## Deployment
-This project can be deployed on Vercel or any static hosting provider.
+This root app is prepared for Vercel using the deploy-relevant legacy configuration:
 
-## Other Notes
-This project uses the React Router for internal page management.
+- `vercel.json` rewrites all routes to `/` for SPA fallback behavior.
+- `@vercel/analytics` and `@vercel/speed-insights` are installed and rendered in `src/App.tsx`.
+- `.vercel/` is ignored and should be linked locally with Vercel CLI instead of committed.
 
-## License
-MIT
+Recommended Vercel project settings:
 
-<details>
-<summary>Next Improvements</summary>
+- Framework Preset: `Vite`
+- Build Command: `npm run build`
+- Output Directory: `dist`
+- Install Command: `npm install`
 
-| Improvement | How |
-|-----:|-----------|
-| Refactoring `src/style.css` | - Break into individual style sheets per page/component  <br>- Factor out reusable styles for consistency |
-| Embedding stats.fm profile stats | - Pull data via API or web scraping  <br>- Contact stats.fm for API access/docs  <br>- Try embedding via iframe |
-| Make the mobile UI more robust | - Further modularize `style.css`  <br>- Improve mobile responsiveness |
-| 404 Page | - Redesign to be fun and interactive  <br>- Add a mini-game or engaging element |
-| Component structure | - Refactor pages to use reusable, modular components  <br>- Improve maintainability and scalability |
+Optional CLI flow:
 
-</details>
+```bash
+vercel link
+vercel build
+vercel deploy --prebuilt
+```
+
+For production:
+
+```bash
+vercel build --prod
+vercel deploy --prebuilt --prod
+```
