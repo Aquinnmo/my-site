@@ -597,20 +597,28 @@ Status: completed through CSS changes. Snow layers use `will-change: transform`;
 
 ## Phase 18: Validation
 
+Status: partially completed for static validation and production build validation after cleanup/deploy prep. Local browser validation remains pending.
+
 ### Phase 18.1: Static Validation
 
 - Run lint or syntax checks available in the new project.
+
+Status: completed after Vercel deploy-prep changes with `npm run lint`.
 
 ### Phase 18.2: Build Validation
 
 - Run production build.
 - Fix build errors before continuing.
 
+Status: completed after Vercel deploy-prep changes with `npm run build`.
+
 ### Phase 18.3: Local Browser Validation
 
 - Start the dev server.
 - Review desktop and mobile viewports.
 - Check light and dark modes.
+
+Status: pending. Dev-server/browser visual validation has not been run in this session.
 
 ### Phase 18.4: Final Content Audit
 
@@ -619,15 +627,21 @@ Status: completed through CSS changes. Snow layers use `will-change: transform`;
 
 ## Phase 19: Cleanup
 
+Status: partially completed for confirmed dead template code/assets and deploy-prep documentation.
+
 ### Phase 19.1: Remove Unused New Code
 
 - Remove unused components, styles, or assets from the new app area.
 - Do not delete legacy files unless explicitly approved.
 
+Status: completed for currently confirmed dead root assets/styles. Removed unused hero proof-chip CSS, `src/assets/hero.png`, and `public/icons.svg`. Existing deleted template SVGs remain absent.
+
 ### Phase 19.2: Update Documentation
 
 - Update the redesign notes with final implementation facts.
 - Add run/build instructions for the new app.
+
+Status: completed for current cleanup/deploy-prep pass. Root `README.md` now includes local validation and Vercel deployment instructions.
 
 ### Phase 19.3: Final Review Summary
 

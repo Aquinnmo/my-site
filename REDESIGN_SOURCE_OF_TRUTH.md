@@ -9,8 +9,9 @@ This document is the working source of truth for the one-page frozen-lake portfo
 - Root page composition component: `src/App.tsx`.
 - Component directory: `src/components/`.
 - Root styles: `src/index.css` and `src/App.css`.
-- Root public assets: `public/icons.svg` and `public/favicon.svg`.
-- Root template assets: `src/assets/hero.png`, `src/assets/react.svg`, `src/assets/vite.svg`.
+- Root public assets: `public/favicon.svg`.
+- Removed dead template assets: `src/assets/hero.png`, `src/assets/react.svg`, `src/assets/vite.svg`, and `public/icons.svg`.
+- Root Vercel config: `vercel.json`.
 - Copied portfolio assets: `src/assets/portfolio/`.
 - Legacy reference app remains under `legacy/`.
 - Legacy files must not be deleted or moved unless the user explicitly approves.
@@ -192,6 +193,9 @@ Current Phase 6 implementation includes:
 - no theme persistence yet because persistence is still unapproved
 - visible global focus styles
 - reduced-motion baseline
+- Vercel Analytics and Speed Insights rendered in `src/App.tsx`
+- Vercel SPA fallback rewrite in root `vercel.json`, copied from the deploy-relevant legacy config
+- `.vercel/` ignored because legacy `.vercel/README.txt` says project linkage metadata should not be shared or committed
 
 Current Phase 7 implementation includes:
 
@@ -315,6 +319,15 @@ Current Phase 16 implementation includes:
 - snow layers use `will-change: transform`
 - reduced-motion still disables snowfall animation
 - browser visual validation remains part of Phase 18
+
+Current cleanup and deploy-prep implementation includes:
+
+- removed unused hero proof-chip CSS
+- removed unused root template image asset `src/assets/hero.png`
+- removed unused root public sprite `public/icons.svg`
+- replaced template README with project-specific local validation and Vercel deployment instructions
+- updated `index.html` title and description for portfolio deployment
+- installed `@vercel/analytics` and `@vercel/speed-insights` in the root app
 
 ## Retrieval Map
 

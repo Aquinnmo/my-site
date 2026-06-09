@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Background } from './components/Background'
 import { ExperienceSection } from './components/ExperienceSection'
 import { HeroSection } from './components/HeroSection'
@@ -10,6 +12,8 @@ import './App.css'
 function App() {
   return (
     <div className="site-shell">
+      <SpeedInsights />
+      <Analytics />
       <Background />
       <ThemeToggle />
 
