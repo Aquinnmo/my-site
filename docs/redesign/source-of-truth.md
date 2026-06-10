@@ -228,7 +228,7 @@ Foundry page Phase 4 is implemented as the first full Foundry content pass:
 - the page includes hero, contact CTA, `What we build`, `Why teams choose the Foundry`, `Our collaborative process`, and `Built by Adam Montgomery`.
 - service, differentiator, and process content is structured in local typed arrays.
 - copy preserves the meaning of the legacy Foundry page while tightening it for scanability.
-- Foundry content styling reuses the portfolio's section, card, and responsive layout patterns.
+- Foundry content styling reuses the portfolio's section rhythm while moving key service, differentiator, and process areas away from repeated card grids.
 - the black/orangey-red and white/orangey-red ember visual variant is implemented in Phase 5.
 
 Phase 13 contact footer is implemented in `src/components/SiteFooter.tsx` and `src/App.css`.
@@ -298,6 +298,53 @@ Route transition behavior is implemented:
 - switcher theme color transitions begin at the route handoff and use the same 160ms duration as the page fade-in, so the color shift and page fade complete together.
 - route content uses opacity-only transitions so the page fades cleanly without vertical wobble.
 - reduced-motion skips the fade sequence and swaps routes immediately.
+
+Foundry detail/liveliness Phase 1 is implemented as a richer content model:
+
+- `src/components/FoundryPage.tsx` separates hero content, contact actions, proof items, service outcomes/examples, case-study facts, process artifacts, and founder content.
+- the richer content uses only documented Foundry facts, including the custom SaaS / GTA accessible transit modernization work, paper and Excel workflow replacement, data-loss prevention goal, and customer specification work.
+- lightweight proof, case-study, service-detail, process-artifact, and founder surfaces are rendered with the existing ember visual system so the page has more substance before later layout-polish phases.
+
+Foundry detail/liveliness Phase 2 is implemented as a richer hero and proof strip:
+
+- the Foundry hero keeps `Montgomery Software Foundry Inc.` as the H1 and adds a concise service-positioning eyebrow.
+- the hero copy now explains that the Foundry turns paper, spreadsheets, and scattered business processes into focused web software.
+- the hero actions include the primary `Get in touch` email CTA and a secondary `See current work` in-page anchor to the concrete client-work section.
+- the proof strip renders `Custom SaaS`, `Legacy workflow modernization`, and `Requirements to release` as ember-tinted compact proof panels.
+
+Foundry detail/liveliness Phase 3 is implemented as a concrete work section:
+
+- the case-study section is based only on approved facts about the custom SaaS / GTA accessible transit modernization work.
+- the section includes a lead summary and open `Problem`, `Approach`, and `Outcome` columns without arrows, chevrons, or a card-style outer panel.
+- the section avoids fake metrics, client names, screenshots, and testimonials.
+
+Foundry detail/liveliness Phase 4 is implemented as a services and outcomes upgrade:
+
+- the `What we build` section now includes a short section summary before the service grid.
+- the `What we build` section uses a premium editorial service list rather than card surfaces.
+- the `Why teams choose the Foundry` section uses a short, open differentiator row with light rules and no numbers or card surfaces.
+- each service item has a clear service title, practical description, labeled `Best for` problem, and labeled `Outcome`.
+
+Foundry detail/liveliness Phase 5 is implemented as a process timeline:
+
+- the process expands from three repeated cards into five stages: `Discover`, `Shape`, `Build`, `Launch`, and `Support`.
+- each stage includes only a number, title, and quick summary.
+- desktop renders the process as a left-to-right ember-accent roadmap without card surfaces, while tablet/mobile collapse it into a vertical roadmap.
+- no additional process animation is introduced, so reduced-motion behavior remains static.
+
+Foundry detail/liveliness Phase 6 is implemented as a founder profile and final CTA section:
+
+- the `Built by Adam Montgomery` section now uses the shared profile photo from `src/assets/portfolio/pfp.jpeg`.
+- under the section title, the founder layout places the profile photo on the left and concise founder copy with the `Start a conversation` email CTA on the right.
+- it avoids a card-based wrapper so the section reads as an editorial profile block rather than another panel.
+- the final CTA target remains `mailto:adammontcompany@gmail.com`.
+
+Foundry page structure is modularized:
+
+- `src/components/FoundryPage.tsx` is composition-only and imports Foundry section components.
+- Foundry-specific section components live in `src/components/foundry/`.
+- Foundry content, section data, and TypeScript content types live in `src/foundry/foundryContent.ts`.
+- Visual behavior remains controlled by the existing Foundry CSS classes in `src/App.css`.
 
 Current Phase 8 implementation includes:
 

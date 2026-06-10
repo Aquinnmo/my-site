@@ -8,6 +8,8 @@ The Foundry page should copy the legacy Foundry page structure and refine the co
 
 Foundry dark mode should use black with orangey-red fire accents. Foundry light mode should use white with orangey-red fire accents. The page should reuse the same snowfall effect architecture, but particles should be orange-red in both color modes and should rise upward like sparks by inverting the y-axis motion.
 
+Detail and liveliness follow-up work is tracked in `docs/redesign/foundry-detail-liveliness-plan.md`. That plan extends this implemented baseline with a richer content model, concrete client-work detail, and livelier Foundry-specific surfaces.
+
 ## Phase 1: Update The Product Contract
 
 - Update `docs/redesign/source-of-truth.md` so the site is no longer documented as strictly one-page only.
@@ -89,7 +91,7 @@ Status: implemented.
 - Preserve varied particle sizes, opacities, and speeds across the layers.
 - Do not import or path directly into `legacy/` from runtime code.
 - Avoid nested cards and page-wide card wrappers.
-- Use cards only for repeated service, differentiator, or process items.
+- Prefer editorial rows, bands, and timelines over repeated card grids for service, differentiator, and process content.
 - Give the Foundry page a stronger business-service hierarchy than the portfolio:
   - clear hero.
   - concise services.

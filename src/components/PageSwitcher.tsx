@@ -42,10 +42,12 @@ function AdamIcon() {
 function FoundryIcon() {
   return (
     <svg className="page-switcher-icon" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M4.5 19.5h15" />
-      <path d="M7.25 16.75h9.5" />
-      <path d="M8.5 5.25h7l2 4.5-2.25 4.25h-6.5L6.5 9.75l2-4.5Z" />
-      <path d="M10 8.25h4" />
+      <path d="M4.5 20h15" />
+      <path d="M6.75 20v-7.1a5.25 5.25 0 0 1 10.5 0V20" />
+      <path d="M9.1 20v-6.35a2.9 2.9 0 0 1 5.8 0V20" />
+      <path d="M7.8 7.4h8.4" />
+      <path d="M9.25 4.65h5.5" />
+      <path d="M12 17.05c1.05-.68 1.68-1.52 1.48-2.54-.14-.7-.62-1.26-1.1-1.74-.1.82-.46 1.3-.93 1.84-.55.63-.82 1.24-.35 1.9.22.3.52.47.9.54Z" />
     </svg>
   )
 }
