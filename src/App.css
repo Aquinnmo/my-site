@@ -3,7 +3,7 @@
   position: relative;
   isolation: isolate;
   min-height: 100svh;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 :root[data-theme='light'] .site-shell {
@@ -1385,9 +1385,34 @@ svg.action-icon {
   font-weight: 750;
 }
 
+.experience-section {
+  --experience-card-count: 3;
+  --experience-scroll-segment: 100svh;
+  --experience-track-height: calc(var(--experience-card-count) * var(--experience-scroll-segment));
+}
+
+.experience-scroll-track {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+}
+
+.experience-sticky-viewport {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+}
+
+.experience-card-stage {
+  display: grid;
+  justify-items: center;
+  width: min(100%, 58rem);
+}
+
 .experience-list {
   display: grid;
-  width: min(100%, 58rem);
+  justify-self: center;
+  width: 100%;
   gap: 1rem;
 }
 
@@ -1910,6 +1935,65 @@ svg.project-link-icon {
   }
 }
 
+@media (min-width: 48.001rem) {
+  .experience-section {
+    padding: 0;
+  }
+
+  .experience-scroll-track {
+    min-height: var(--experience-track-height);
+  }
+
+  .experience-sticky-viewport {
+    position: sticky;
+    top: 0;
+    align-content: center;
+    height: 100svh;
+    min-height: 38rem;
+    padding: clamp(1rem, 3svh, 1.75rem) 0;
+  }
+
+  .experience-sticky-viewport .section-heading-row {
+    margin-bottom: clamp(0.85rem, 2svh, 1.25rem);
+  }
+
+  .experience-card-stage {
+    position: relative;
+    min-height: clamp(27rem, 62svh, 34rem);
+    perspective: 1200px;
+    perspective-origin: 50% 42%;
+  }
+
+  .experience-list {
+    position: relative;
+    min-height: inherit;
+    gap: 0;
+    transform-style: preserve-3d;
+  }
+
+  .experience-card {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    align-content: start;
+    min-height: inherit;
+    opacity: var(--experience-card-opacity);
+    filter: var(--experience-card-filter);
+    transform: var(--experience-card-transform);
+    transform-origin: 50% 84%;
+    will-change: transform, opacity, filter;
+  }
+
+  .experience-card[data-experience-card-state='active'] {
+    pointer-events: auto;
+  }
+
+  .experience-card[data-experience-card-state='future'],
+  .experience-card[data-experience-card-state='past'] {
+    pointer-events: none;
+  }
+}
+
 @media (max-width: 48rem) {
   .page-switcher {
     top: 0.75rem;
@@ -2122,6 +2206,43 @@ svg.project-link-icon {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .experience-section {
+    padding: 4.5rem 0;
+  }
+
+  .experience-scroll-track {
+    min-height: auto;
+  }
+
+  .experience-sticky-viewport {
+    position: static;
+    top: auto;
+    min-height: auto;
+    padding: 0;
+  }
+
+  .experience-card-stage {
+    min-height: auto;
+    perspective: none;
+  }
+
+  .experience-list {
+    position: static;
+    min-height: auto;
+    gap: 1rem;
+  }
+
+  .experience-card {
+    position: relative;
+    inset: auto;
+    min-height: 0;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    filter: none;
+    will-change: auto;
+  }
+
   .route-transition-veil {
     transition: none;
   }
