@@ -44,7 +44,15 @@ const experiences = [
 
 type ExperienceScrollState = {
   activeIndex: number
-  scrollProgress: number
+  phase: ExperienceTimelinePhase
+  phaseProgress: number
+}
+
+type ExperienceTimelinePhase = 'retreat' | 'transition' | 'final'
+
+type ExperienceTimelineState = ExperienceScrollState & {
+  incomingIndex: number | null
+  outgoingIndex: number
 }
 
 type ExperienceTrackStyle = CSSProperties & {
@@ -74,63 +82,121 @@ function smoothstep(value: number) {
 }
 
 function getExperienceTimelineUnits(cardCount: number) {
-  return cardCount * EXPERIENCE_CARD_HOLD_UNITS + Math.max(cardCount - 1, 0) * EXPERIENCE_CARD_TRANSITION_UNITS
+  return (
+    Math.max(cardCount - 1, 0) * (EXPERIENCE_CARD_HOLD_UNITS + EXPERIENCE_CARD_TRANSITION_UNITS) +
+    EXPERIENCE_CARD_HOLD_UNITS
+  )
 }
 
-function getExperienceScrollProgress(totalProgress: number, cardCount: number) {
+function getExperienceTimelineState(totalProgress: number, cardCount: number): ExperienceTimelineState {
   const timelineProgress = totalProgress * getExperienceTimelineUnits(cardCount)
 
-  for (let index = 0; index < cardCount; index += 1) {
-    const holdStart = index * (EXPERIENCE_CARD_HOLD_UNITS + EXPERIENCE_CARD_TRANSITION_UNITS)
-    const holdEnd = holdStart + EXPERIENCE_CARD_HOLD_UNITS
-    const transitionEnd = holdEnd + EXPERIENCE_CARD_TRANSITION_UNITS
+  for (let index = 0; index < cardCount - 1; index += 1) {
+    const retreatStart = index * (EXPERIENCE_CARD_HOLD_UNITS + EXPERIENCE_CARD_TRANSITION_UNITS)
+    const retreatEnd = retreatStart + EXPERIENCE_CARD_HOLD_UNITS
+    const transitionEnd = retreatEnd + EXPERIENCE_CARD_TRANSITION_UNITS
 
-    if (timelineProgress <= holdEnd || index === cardCount - 1) {
-      return index
+    if (timelineProgress <= retreatEnd) {
+      return {
+        activeIndex: index,
+        incomingIndex: null,
+        outgoingIndex: index,
+        phase: 'retreat',
+        phaseProgress: smoothstep((timelineProgress - retreatStart) / EXPERIENCE_CARD_HOLD_UNITS),
+      }
     }
 
     if (timelineProgress <= transitionEnd) {
-      return index + smoothstep((timelineProgress - holdEnd) / EXPERIENCE_CARD_TRANSITION_UNITS)
+      return {
+        activeIndex: smoothstep((timelineProgress - retreatEnd) / EXPERIENCE_CARD_TRANSITION_UNITS) < 0.5 ? index : index + 1,
+        incomingIndex: index + 1,
+        outgoingIndex: index,
+        phase: 'transition',
+        phaseProgress: smoothstep((timelineProgress - retreatEnd) / EXPERIENCE_CARD_TRANSITION_UNITS),
+      }
     }
   }
 
-  return cardCount - 1
+  return {
+    activeIndex: cardCount - 1,
+    incomingIndex: null,
+    outgoingIndex: cardCount - 1,
+    phase: 'final',
+    phaseProgress: 0,
+  }
 }
 
-function getExperienceCardMotion(index: number, scrollProgress: number) {
-  const offset = index - scrollProgress
-  const aheadDepth = clamp(offset, 0, 2)
-  const pastDepth = clamp(-offset, 0, 2)
-  const distanceFromTop = Math.abs(offset)
-  const isPast = offset < 0
+function getExperienceCardMotion(index: number, timelineState: ExperienceTimelineState) {
+  const isOutgoingCard = index === timelineState.outgoingIndex
+  const isIncomingCard = index === timelineState.incomingIndex
 
-  const visibleProgress = 1 - clamp(distanceFromTop, 0, 1)
-  const easedVisibleProgress = smoothstep(visibleProgress)
-  const translateX = isPast ? pastDepth * -0.8 : aheadDepth * 0.18
-  const translateY = isPast ? pastDepth * -1.7 : aheadDepth * 12
-  const translateZ = isPast ? pastDepth * -7 : aheadDepth * -3
-  const rotate = isPast ? pastDepth * -3.8 : aheadDepth * 1.15
-  const scale = 0.94 + easedVisibleProgress * 0.06 - (isPast ? pastDepth * 0.018 : 0)
-  const opacity = easedVisibleProgress
-  const brightness = 0.74 + easedVisibleProgress * 0.26 - (isPast ? pastDepth * 0.05 : 0)
-  const saturation = 0.78 + easedVisibleProgress * 0.22 - (isPast ? pastDepth * 0.04 : 0)
-  const zIndex = Math.round(120 - distanceFromTop * 30 + (isPast ? -12 : 0))
+  if (timelineState.phase === 'retreat' && isOutgoingCard) {
+    const retreatProgress = timelineState.phaseProgress
+
+    return {
+      opacity: 1,
+      zIndex: 120,
+      filter: `saturate(${1 - retreatProgress * 0.08}) brightness(${1 - retreatProgress * 0.06})`,
+      transform: `translate3d(0, 0, ${(retreatProgress * -8).toFixed(3)}rem) rotate(0deg) scale(${(
+        1 -
+        retreatProgress * 0.045
+      ).toFixed(3)})`,
+    }
+  }
+
+  if (timelineState.phase === 'transition' && isOutgoingCard) {
+    const fadeProgress = timelineState.phaseProgress
+
+    return {
+      opacity: clamp(1 - fadeProgress * 1.15, 0, 1),
+      zIndex: 90,
+      filter: `saturate(${0.92 - fadeProgress * 0.18}) brightness(${0.94 - fadeProgress * 0.2})`,
+      transform: `translate3d(0, 0, ${(-8 - fadeProgress * 5).toFixed(3)}rem) rotate(0deg) scale(${(
+        0.955 -
+        fadeProgress * 0.045
+      ).toFixed(3)})`,
+    }
+  }
+
+  if (timelineState.phase === 'transition' && isIncomingCard) {
+    const incomingProgress = timelineState.phaseProgress
+
+    return {
+      opacity: incomingProgress,
+      zIndex: 120,
+      filter: `saturate(${0.86 + incomingProgress * 0.14}) brightness(${0.82 + incomingProgress * 0.18})`,
+      transform: `translate3d(0, ${((1 - incomingProgress) * 12).toFixed(3)}rem, 0) rotate(0deg) scale(${(
+        0.97 +
+        incomingProgress * 0.03
+      ).toFixed(3)})`,
+    }
+  }
+
+  if (timelineState.phase === 'final' && isOutgoingCard) {
+    return {
+      opacity: 1,
+      zIndex: 120,
+      filter: 'saturate(1) brightness(1)',
+      transform: 'translate3d(0, 0, 0) rotate(0deg) scale(1)',
+    }
+  }
 
   return {
-    opacity,
-    zIndex,
-    filter: `saturate(${saturation}) brightness(${brightness})`,
-    transform: `translate3d(${translateX.toFixed(3)}rem, ${translateY.toFixed(
-      3,
-    )}rem, ${translateZ.toFixed(3)}rem) rotate(${rotate.toFixed(3)}deg) scale(${scale.toFixed(3)})`,
+    opacity: 0,
+    zIndex: 0,
+    filter: 'saturate(0.72) brightness(0.72)',
+    transform: `translate3d(0, ${index > timelineState.outgoingIndex ? '12rem' : '0'}, -13rem) rotate(0deg) scale(0.9)`,
   }
 }
 
 function useExperienceScrollProgress(cardCount: number) {
   const trackRef = useRef<HTMLDivElement>(null)
-  const [scrollState, setScrollState] = useState<ExperienceScrollState>({
+  const [scrollState, setScrollState] = useState<ExperienceTimelineState>({
     activeIndex: 0,
-    scrollProgress: 0,
+    incomingIndex: null,
+    outgoingIndex: 0,
+    phase: 'retreat',
+    phaseProgress: 0,
   })
 
   useEffect(() => {
@@ -143,9 +209,9 @@ function useExperienceScrollProgress(cardCount: number) {
 
       if (!desktopQuery.matches || reducedMotionQuery.matches || !trackRef.current) {
         setScrollState((currentState) =>
-          currentState.activeIndex === 0 && currentState.scrollProgress === 0
+          currentState.activeIndex === 0 && currentState.phase === 'retreat' && currentState.phaseProgress === 0
             ? currentState
-            : { activeIndex: 0, scrollProgress: 0 },
+            : { activeIndex: 0, incomingIndex: null, outgoingIndex: 0, phase: 'retreat', phaseProgress: 0 },
         )
         return
       }
@@ -153,18 +219,24 @@ function useExperienceScrollProgress(cardCount: number) {
       const trackRect = trackRef.current.getBoundingClientRect()
       const scrollDistance = Math.max(trackRect.height - window.innerHeight, 1)
       const totalProgress = clamp(-trackRect.top / scrollDistance, 0, 1)
-      const rawCardProgress = getExperienceScrollProgress(totalProgress, cardCount)
-      const activeIndex = Math.min(cardCount - 1, Math.round(rawCardProgress))
+      const timelineState = getExperienceTimelineState(totalProgress, cardCount)
 
       setScrollState((currentState) => {
         if (
-          currentState.activeIndex === activeIndex &&
-          Math.abs(currentState.scrollProgress - rawCardProgress) < 0.003
+          currentState.activeIndex === timelineState.activeIndex &&
+          currentState.phase === timelineState.phase &&
+          Math.abs(currentState.phaseProgress - timelineState.phaseProgress) < 0.003
         ) {
           return currentState
         }
 
-        return { activeIndex, scrollProgress: rawCardProgress }
+        return {
+          activeIndex: timelineState.activeIndex,
+          incomingIndex: timelineState.incomingIndex,
+          outgoingIndex: timelineState.outgoingIndex,
+          phase: timelineState.phase,
+          phaseProgress: timelineState.phaseProgress,
+        }
       })
     }
 
@@ -218,7 +290,7 @@ export function ExperienceSection() {
           <div className="experience-card-stage">
             <div className="experience-list">
               {experiences.map((experience, index) => {
-                const cardMotion = getExperienceCardMotion(index, scrollState.scrollProgress)
+                const cardMotion = getExperienceCardMotion(index, scrollState)
 
                 return (
                   <article
@@ -227,7 +299,7 @@ export function ExperienceSection() {
                     data-experience-card-state={
                       index === scrollState.activeIndex
                         ? 'active'
-                        : index < scrollState.scrollProgress
+                        : index < scrollState.activeIndex
                           ? 'past'
                           : 'future'
                     }
