@@ -1,9 +1,73 @@
+import { useState } from 'react'
+
 import githubIcon from '../assets/portfolio/github_logo.svg'
 import pdfIcon from '../assets/portfolio/pdf_icon.svg'
 
 type ProjectLink = {
   label: string
   href: string
+}
+
+type ProjectVisualType = 'mobile' | 'database' | 'strategy' | 'feedback'
+
+type Project = {
+  name: string
+  summary: string
+  proof: string[]
+  stack: string[]
+  links: ProjectLink[]
+  visualType: ProjectVisualType
+}
+
+function ProjectVisualIcon({ type }: { type: ProjectVisualType }) {
+  if (type === 'mobile') {
+    return (
+      <svg className="project-visual-icon" viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="19" y="6" width="26" height="52" rx="6" />
+        <path d="M26 13h12" />
+        <path d="M27 50h10" />
+        <path d="M25 23h14" />
+        <path d="M25 30h14" />
+        <path d="M25 37h10" />
+      </svg>
+    )
+  }
+
+  if (type === 'database') {
+    return (
+      <svg className="project-visual-icon" viewBox="0 0 64 64" aria-hidden="true">
+        <ellipse cx="32" cy="14" rx="20" ry="8" />
+        <path d="M12 14v24c0 4.4 9 8 20 8s20-3.6 20-8V14" />
+        <path d="M12 26c0 4.4 9 8 20 8s20-3.6 20-8" />
+        <path d="M12 38c0 4.4 9 8 20 8s20-3.6 20-8" />
+        <path d="M25 53h14" />
+      </svg>
+    )
+  }
+
+  if (type === 'strategy') {
+    return (
+      <svg className="project-visual-icon" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M18 18h12v12H18z" />
+        <path d="M34 18h12v12H34z" />
+        <path d="M18 34h12v12H18z" />
+        <path d="M34 34h12v12H34z" />
+        <path d="M24 30v4" />
+        <path d="M30 24h4" />
+        <path d="M40 30v4" />
+        <path d="M30 40h4" />
+      </svg>
+    )
+  }
+
+  return (
+    <svg className="project-visual-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M16 18h32v22H24l-8 8V18z" />
+      <path d="M24 27h16" />
+      <path d="M24 34h10" />
+      <path d="M42 44l4 4 8-10" />
+    </svg>
+  )
 }
 
 function ExternalArrowIcon() {
@@ -41,9 +105,10 @@ function ProjectLinkIcon({ link }: { link: ProjectLink }) {
   return <ExternalArrowIcon />
 }
 
-const projects = [
+const projects: Project[] = [
   {
     name: 'Pump Pal',
+    visualType: 'mobile',
     summary:
       'Mobile-first workout tracker focused on balanced training, injury reduction, and AI-powered training insights.',
     proof: [
@@ -64,6 +129,7 @@ const projects = [
   },
   {
     name: 'Custom Enterprise Databasing System',
+    visualType: 'database',
     summary:
       'Custom maintenance, inventory, and tracking system for a York Region busing company operating hundreds of machines.',
     proof: [
@@ -77,6 +143,7 @@ const projects = [
   },
   {
     name: 'Rock, Paper, Scissors',
+    visualType: 'strategy',
     summary:
       'Interactive exploration of strategy and prediction in Rock, Paper, Scissors, built around algorithms that beat human play.',
     proof: [
@@ -92,6 +159,7 @@ const projects = [
   },
   {
     name: 'Am I Cooked?',
+    visualType: 'feedback',
     summary:
       'Resume and survey-based readiness tool that gives students Gemini-powered feedback for the job search.',
     proof: [
@@ -107,43 +175,73 @@ const projects = [
   },
 ]
 
+function ProjectContent({ project, titleId }: { project: Project; titleId?: string }) {
+  return (
+    <>
+      <div className="project-card-header">
+        <h3 id={titleId}>{project.name}</h3>
+      </div>
+      <p className="project-summary">{project.summary}</p>
+      {project.proof.length > 0 && (
+        <ul className="project-proof-list">
+          {project.proof.map((proofPoint) => (
+            <li key={proofPoint}>{proofPoint}</li>
+          ))}
+        </ul>
+      )}
+      <ul className="project-stack" aria-label={`${project.name} tech stack`}>
+        {project.stack.map((stackItem) => (
+          <li key={stackItem}>{stackItem}</li>
+        ))}
+      </ul>
+      {project.links.length > 0 && (
+        <div className="project-links" aria-label={`${project.name} links`}>
+          {project.links.map((link) => (
+            <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
+              <ProjectLinkIcon link={link} />
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </>
+  )
+}
+
 export function ProjectsSection() {
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0)
+  const activeProject = projects[activeProjectIndex]
+  const inactiveProjects = projects
+    .map((project, index) => ({ project, index }))
+    .filter(({ index }) => index !== activeProjectIndex)
+
   return (
     <section className="section-shell content-section" aria-labelledby="projects-title">
       <div className="section-heading-row">
         <h2 id="projects-title">Projects</h2>
       </div>
-      <div className="project-grid">
-        {projects.map((project) => (
-          <article className="project-card" key={project.name}>
-            <div className="project-card-header">
-              <h3>{project.name}</h3>
-            </div>
-            <p className="project-summary">{project.summary}</p>
-            {project.proof.length > 0 && (
-              <ul className="project-proof-list">
-                {project.proof.map((proofPoint) => (
-                  <li key={proofPoint}>{proofPoint}</li>
-                ))}
-              </ul>
-            )}
-            <ul className="project-stack" aria-label={`${project.name} tech stack`}>
-              {project.stack.map((stackItem) => (
-                <li key={stackItem}>{stackItem}</li>
-              ))}
-            </ul>
-            {project.links.length > 0 && (
-              <div className="project-links" aria-label={`${project.name} links`}>
-                {project.links.map((link) => (
-                  <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
-                    <ProjectLinkIcon link={link} />
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            )}
-          </article>
-        ))}
+      <div className="project-gallery">
+        <article className="project-card project-focus-card" aria-labelledby="active-project-title">
+          <div className="project-focus-visual" aria-hidden="true">
+            <ProjectVisualIcon type={activeProject.visualType} />
+          </div>
+          <div className="project-focus-content">
+            <ProjectContent project={activeProject} titleId="active-project-title" />
+          </div>
+        </article>
+        <div className="project-selector-row" aria-label="Choose featured project">
+          {inactiveProjects.map(({ project, index }) => (
+            <button
+              className="project-selector-card"
+              key={project.name}
+              type="button"
+              onClick={() => setActiveProjectIndex(index)}
+              aria-label={`Feature ${project.name}`}
+            >
+              {project.name}
+            </button>
+          ))}
+        </div>
       </div>
     </section>
   )

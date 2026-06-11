@@ -405,8 +405,13 @@ Phase 9 assumptions pending user review:
 Current Phase 10 implementation includes:
 
 - structured project data in `src/components/ProjectsSection.tsx`
-- equal-weight responsive project grid
-- compact frosted project cards with name, summary, stack tags, and links
+- Phase 1 focused project gallery structure in `src/components/ProjectsSection.tsx`
+- Pump Pal is the default focused project
+- the focused project renders as a larger frosted project card with a left-side default icon panel and right-side project content
+- inactive projects render as name-only selector cards in a bottom row
+- selecting an inactive project updates the focused project in local React state
+- detailed gallery sizing, overflow behavior, and liquid-glass morph animation remain planned in `docs/redesign/projects-gallery-plan.md`
+- compact frosted project content still includes name, summary, stack tags, and links inside the focused card
 - visible proof bullets for every rendered project card
 - Pump Pal proof bullets synced from the current resume PDF
 - Custom Enterprise Databasing System is the rendered site counterpart to the resume's Fleet Maintenance Management System entry; its proof bullets are synced from that resume entry
@@ -423,7 +428,6 @@ Current Phase 10 implementation includes:
   - Custom Enterprise Databasing System
   - Rock, Paper, Scissors
   - Am I Cooked?
-  - CherryPick
 - project timeline and deployment-target claims are intentionally omitted because the extraction docs mark them as potentially stale
 - Chip Champ remains excluded because it was commented out in legacy and requires explicit approval to revive
 

@@ -15,6 +15,7 @@ This folder contains durable project context for agents and maintainers.
 - `redesign/source-of-truth.md`: current implementation facts and product rules.
 - `redesign/plan.md`: completed phase history and validation notes.
 - `redesign/experience-cue-card-scroll-plan.md`: implementation plan and current status for the responsive pinned Experience cue-card scroll interaction.
+- `redesign/projects-gallery-plan.md`: implementation plan for the focused Projects gallery with bottom-row selectors and liquid-glass morph animation.
 - `redesign/visual-system.md`: theme tokens, surface rules, motion rules, and accessibility rules.
 - `redesign/content-extraction.md`: legacy/resume-derived content source material.
 - `redesign/open-questions.md`: unresolved or deferred decisions.

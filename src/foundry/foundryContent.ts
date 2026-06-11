@@ -122,23 +122,23 @@ export const differentiators: FoundryItem[] = [
 export const engagementSteps: FoundryProcessStep[] = [
   {
     title: 'Discover',
-    description: 'Map the workflow, pain points, and success criteria.',
+    description: 'Map your workflow, pain points, and success criteria.',
   },
   {
-    title: 'Shape',
+    title: 'Visualize',
     description: 'Turn the plan into screens, roles, and data flow.',
   },
   {
     title: 'Build',
-    description: 'Develop the interface, backend, data, and deployment.',
+    description: 'We work our magic to delivering the tech without you touching any code.',
   },
   {
     title: 'Launch',
-    description: 'Move the team onto the new workflow with a clean handoff.',
+    description: 'Move the team onto the new workflow with a smooth handoff.',
   },
   {
     title: 'Support',
-    description: 'Refine the system as real usage reveals new needs.',
+    description: 'Refine the system as usage reveals new needs.',
   },
 ]
 
