@@ -1614,28 +1614,45 @@ svg.action-icon {
 
 .project-selector-card {
   appearance: none;
+  position: relative;
+  overflow: hidden;
   min-height: 4.25rem;
-  border: 1px solid color-mix(in srgb, var(--color-ice-edge) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-ice-edge) 78%, transparent);
   border-radius: 0.85rem;
   padding: 0.8rem 0.95rem;
   color: var(--color-text);
   background:
-    radial-gradient(circle at 16% 100%, color-mix(in srgb, var(--color-ice) 24%, transparent), transparent 8rem),
-    color-mix(in srgb, var(--color-panel) 74%, transparent);
-  box-shadow: 0 0.85rem 1.9rem color-mix(in srgb, var(--color-shadow) 44%, transparent);
+    linear-gradient(160deg, color-mix(in srgb, var(--color-frost) 18%, transparent), transparent 34%),
+    linear-gradient(135deg, color-mix(in srgb, var(--color-panel) 88%, transparent), color-mix(in srgb, var(--color-panel-strong) 72%, transparent));
+  box-shadow:
+    0 1.2rem 2.7rem color-mix(in srgb, var(--color-shadow) 56%, transparent),
+    inset 0 0 1.8rem color-mix(in srgb, var(--color-frost) 9%, transparent);
   font: inherit;
   font-size: clamp(0.92rem, 1.8vw, 1rem);
   font-weight: 850;
   line-height: 1.12;
   text-align: left;
+  text-shadow: 0 0 0.8rem color-mix(in srgb, var(--color-frost) 22%, transparent);
   cursor: pointer;
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(18px);
+}
+
+.project-selector-card::before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 12% 100%, color-mix(in srgb, var(--color-ice) 34%, transparent), transparent 9rem);
+  content: '';
+  pointer-events: none;
 }
 
 .project-selector-card:hover,
 .project-selector-card:focus-visible {
   border-color: var(--color-ice-strong);
   color: var(--color-link-hover);
+  box-shadow:
+    0 1.35rem 3rem color-mix(in srgb, var(--color-shadow) 62%, transparent),
+    inset 0 0 2rem color-mix(in srgb, var(--color-frost) 14%, transparent);
 }
 
 .project-card {
