@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { type CSSProperties, type Ref, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 import githubIcon from '../assets/portfolio/github_logo.svg'
 import pdfIcon from '../assets/portfolio/pdf_icon.svg'
@@ -17,6 +17,69 @@ type Project = {
   stack: string[]
   links: ProjectLink[]
   visualType: ProjectVisualType
+}
+
+type ProjectMorphRect = {
+  height: number
+  left: number
+  top: number
+  width: number
+}
+
+type ProjectMorphRequest = {
+  focusFromRect: ProjectMorphRect
+  focusTitleFromRect: ProjectMorphRect
+  fromIndex: number
+  selectedFromRect: ProjectMorphRect
+  selectedTitleFromRect: ProjectMorphRect
+  selectorFromRects: Partial<Record<number, ProjectMorphRect>>
+  selectorTitleFromRects: Partial<Record<number, ProjectMorphRect>>
+  toIndex: number
+}
+
+type ProjectMorphLayer = {
+  fromRect: ProjectMorphRect
+  id: string
+  project: Project
+  titleFromScale: number
+  titleToScale: number
+  toRect: ProjectMorphRect
+  type: 'incoming' | 'outgoing' | 'shift'
+}
+
+type ProjectMorphTitleLayer = {
+  fromRect: ProjectMorphRect
+  id: string
+  project: Project
+  toRect: ProjectMorphRect
+  type: 'incoming' | 'outgoing' | 'shift'
+}
+
+type ProjectMorphLayerStyle = CSSProperties & {
+  '--project-morph-from-height': string
+  '--project-morph-from-width': string
+  '--project-morph-title-scale': string
+  '--project-morph-x': string
+  '--project-morph-y': string
+}
+
+type ProjectMorphTitleLayerStyle = CSSProperties & {
+  '--project-morph-title-font-size': string
+  '--project-morph-title-x': string
+  '--project-morph-title-y': string
+}
+
+function toProjectMorphRect(rect: DOMRect): ProjectMorphRect {
+  return {
+    height: rect.height,
+    left: rect.left,
+    top: rect.top,
+    width: rect.width,
+  }
+}
+
+function prefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
 function ProjectVisualIcon({ type }: { type: ProjectVisualType }) {
@@ -175,11 +238,21 @@ const projects: Project[] = [
   },
 ]
 
-function ProjectContent({ project, titleId }: { project: Project; titleId?: string }) {
+function ProjectContent({
+  project,
+  titleId,
+  titleRef,
+}: {
+  project: Project
+  titleId?: string
+  titleRef?: Ref<HTMLHeadingElement>
+}) {
   return (
     <>
       <div className="project-card-header">
-        <h3 id={titleId}>{project.name}</h3>
+        <h3 id={titleId} ref={titleRef}>
+          {project.name}
+        </h3>
       </div>
       <p className="project-summary">{project.summary}</p>
       {project.proof.length > 0 && (
@@ -208,12 +281,326 @@ function ProjectContent({ project, titleId }: { project: Project; titleId?: stri
   )
 }
 
+function ProjectMorphLayer({
+  layer,
+  onDone,
+}: {
+  layer: ProjectMorphLayer
+  onDone: (layerId: string) => void
+}) {
+  const [isActive, setIsActive] = useState(false)
+  const hasReportedDoneRef = useRef(false)
+  const targetRect = isActive ? layer.toRect : layer.fromRect
+
+  const reportDone = useCallback(() => {
+    if (hasReportedDoneRef.current) {
+      return
+    }
+
+    hasReportedDoneRef.current = true
+    onDone(layer.id)
+  }, [layer.id, onDone])
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => setIsActive(true))
+    const fallback = window.setTimeout(reportDone, 680)
+
+    return () => {
+      window.cancelAnimationFrame(frame)
+      window.clearTimeout(fallback)
+    }
+  }, [reportDone])
+
+  return (
+    <div
+      aria-hidden="true"
+      className={`project-morph-layer project-morph-layer-${layer.type}`}
+      data-project-morph-active={isActive ? 'true' : undefined}
+      onTransitionEnd={(event) => {
+        if (event.target === event.currentTarget && event.propertyName === 'transform') {
+          reportDone()
+        }
+      }}
+      style={
+        {
+          '--project-morph-from-height': `${layer.fromRect.height}px`,
+          '--project-morph-from-width': `${layer.fromRect.width}px`,
+          '--project-morph-title-scale': String(isActive ? layer.titleToScale : layer.titleFromScale),
+          '--project-morph-x': `${targetRect.left}px`,
+          '--project-morph-y': `${targetRect.top}px`,
+          height: `${targetRect.height}px`,
+          width: `${targetRect.width}px`,
+        } as ProjectMorphLayerStyle
+      }
+    >
+      <div className="project-morph-surface">
+        {layer.type === 'outgoing' && (
+          <div className="project-morph-detail">
+            <div className="project-morph-visual" aria-hidden="true">
+              <ProjectVisualIcon type={layer.project.visualType} />
+            </div>
+            <p>{layer.project.summary}</p>
+            <ul>
+              {layer.project.stack.slice(0, 4).map((stackItem) => (
+                <li key={stackItem}>{stackItem}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function getTitleFontSize(rect: ProjectMorphRect) {
+  return Math.max(14, Math.min(32, rect.height * 0.72))
+}
+
+function ProjectMorphTitleLayer({
+  layer,
+  onDone,
+}: {
+  layer: ProjectMorphTitleLayer
+  onDone: (layerId: string) => void
+}) {
+  const [isActive, setIsActive] = useState(false)
+  const hasReportedDoneRef = useRef(false)
+  const targetRect = isActive ? layer.toRect : layer.fromRect
+
+  const reportDone = useCallback(() => {
+    if (hasReportedDoneRef.current) {
+      return
+    }
+
+    hasReportedDoneRef.current = true
+    onDone(layer.id)
+  }, [layer.id, onDone])
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => setIsActive(true))
+    const fallback = window.setTimeout(reportDone, 680)
+
+    return () => {
+      window.cancelAnimationFrame(frame)
+      window.clearTimeout(fallback)
+    }
+  }, [reportDone])
+
+  return (
+    <div
+      aria-hidden="true"
+      className={`project-morph-title-layer project-morph-title-layer-${layer.type}`}
+      onTransitionEnd={(event) => {
+        if (event.target === event.currentTarget && event.propertyName === 'transform') {
+          reportDone()
+        }
+      }}
+      style={
+        {
+          '--project-morph-title-font-size': `${getTitleFontSize(targetRect)}px`,
+          '--project-morph-title-x': `${targetRect.left}px`,
+          '--project-morph-title-y': `${targetRect.top}px`,
+          height: `${targetRect.height}px`,
+          width: `${targetRect.width}px`,
+        } as ProjectMorphTitleLayerStyle
+      }
+    >
+      {layer.project.name}
+    </div>
+  )
+}
+
 export function ProjectsSection() {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0)
+  const [morphLayers, setMorphLayers] = useState<ProjectMorphLayer[]>([])
+  const [morphTitleLayers, setMorphTitleLayers] = useState<ProjectMorphTitleLayer[]>([])
+  const [morphRequest, setMorphRequest] = useState<ProjectMorphRequest | null>(null)
+  const focusCardRef = useRef<HTMLElement | null>(null)
+  const focusTitleRef = useRef<HTMLHeadingElement | null>(null)
+  const selectorRefs = useRef<Record<number, HTMLButtonElement | null>>({})
+  const selectorTitleRefs = useRef<Record<number, HTMLSpanElement | null>>({})
   const activeProject = projects[activeProjectIndex]
   const inactiveProjects = projects
     .map((project, index) => ({ project, index }))
     .filter(({ index }) => index !== activeProjectIndex)
+  const isMorphing = morphLayers.length > 0 || morphTitleLayers.length > 0 || morphRequest !== null
+  const handleMorphLayerDone = useCallback((layerId: string) => {
+    setMorphLayers((currentLayers) => currentLayers.filter((currentLayer) => currentLayer.id !== layerId))
+  }, [])
+
+  const handleMorphTitleLayerDone = useCallback((layerId: string) => {
+    setMorphTitleLayers((currentLayers) => currentLayers.filter((currentLayer) => currentLayer.id !== layerId))
+  }, [])
+
+  const getSelectorRects = useCallback(() => {
+    return Object.fromEntries(
+      Object.entries(selectorRefs.current)
+        .filter((entry): entry is [string, HTMLButtonElement] => entry[1] !== null)
+        .map(([index, node]) => [Number(index), toProjectMorphRect(node.getBoundingClientRect())]),
+    ) as Partial<Record<number, ProjectMorphRect>>
+  }, [])
+
+  const getSelectorTitleRects = useCallback(() => {
+    return Object.fromEntries(
+      Object.entries(selectorTitleRefs.current)
+        .filter((entry): entry is [string, HTMLSpanElement] => entry[1] !== null)
+        .map(([index, node]) => [Number(index), toProjectMorphRect(node.getBoundingClientRect())]),
+    ) as Partial<Record<number, ProjectMorphRect>>
+  }, [])
+
+  useLayoutEffect(() => {
+    if (!morphRequest || activeProjectIndex !== morphRequest.toIndex) {
+      return
+    }
+
+    let isCancelled = false
+
+    window.queueMicrotask(() => {
+      if (isCancelled) {
+        return
+      }
+
+      if (prefersReducedMotion()) {
+        setMorphRequest(null)
+        return
+      }
+
+      const focusCard = focusCardRef.current
+      const focusTitle = focusTitleRef.current
+      const selectorToRects = getSelectorRects()
+      const selectorTitleToRects = getSelectorTitleRects()
+      const outgoingToRect = selectorToRects[morphRequest.fromIndex]
+      const outgoingTitleToRect = selectorTitleToRects[morphRequest.fromIndex]
+
+      if (!focusCard || !focusTitle || !outgoingToRect || !outgoingTitleToRect) {
+        setMorphRequest(null)
+        return
+      }
+
+      const focusRect = toProjectMorphRect(focusCard.getBoundingClientRect())
+      const focusTitleRect = toProjectMorphRect(focusTitle.getBoundingClientRect())
+      const now = Date.now()
+      const shiftLayers = Object.entries(morphRequest.selectorFromRects)
+        .filter(([index]) => Number(index) !== morphRequest.toIndex)
+        .flatMap(([index, fromRect]) => {
+          const projectIndex = Number(index)
+          const toRect = selectorToRects[projectIndex]
+
+          if (!fromRect || !toRect) {
+            return []
+          }
+
+          return [
+            {
+              fromRect,
+              id: `shift-${projectIndex}-${now}`,
+              project: projects[projectIndex],
+              titleFromScale: 1,
+              titleToScale: 1,
+              toRect,
+              type: 'shift' as const,
+            },
+          ]
+        })
+      const shiftTitleLayers = Object.entries(morphRequest.selectorTitleFromRects)
+        .filter(([index]) => Number(index) !== morphRequest.toIndex)
+        .flatMap(([index, fromRect]) => {
+          const projectIndex = Number(index)
+          const toRect = selectorTitleToRects[projectIndex]
+
+          if (!fromRect || !toRect) {
+            return []
+          }
+
+          return [
+            {
+              fromRect,
+              id: `title-shift-${projectIndex}-${now}`,
+              project: projects[projectIndex],
+              toRect,
+              type: 'shift' as const,
+            },
+          ]
+        })
+
+      setMorphLayers([
+        ...shiftLayers,
+        {
+          fromRect: morphRequest.selectedFromRect,
+          id: `incoming-${morphRequest.toIndex}-${now}`,
+          project: projects[morphRequest.toIndex],
+          titleFromScale: 0.84,
+          titleToScale: 1.18,
+          toRect: focusRect,
+          type: 'incoming',
+        },
+        {
+          fromRect: morphRequest.focusFromRect,
+          id: `outgoing-${morphRequest.fromIndex}-${now}`,
+          project: projects[morphRequest.fromIndex],
+          titleFromScale: 1.18,
+          titleToScale: 0.84,
+          toRect: outgoingToRect,
+          type: 'outgoing',
+        },
+      ])
+      setMorphTitleLayers([
+        ...shiftTitleLayers,
+        {
+          fromRect: morphRequest.selectedTitleFromRect,
+          id: `title-incoming-${morphRequest.toIndex}-${now}`,
+          project: projects[morphRequest.toIndex],
+          toRect: focusTitleRect,
+          type: 'incoming',
+        },
+        {
+          fromRect: morphRequest.focusTitleFromRect,
+          id: `title-outgoing-${morphRequest.fromIndex}-${now}`,
+          project: projects[morphRequest.fromIndex],
+          toRect: outgoingTitleToRect,
+          type: 'outgoing',
+        },
+      ])
+      setMorphRequest(null)
+    })
+
+    return () => {
+      isCancelled = true
+    }
+  }, [activeProjectIndex, getSelectorRects, getSelectorTitleRects, morphRequest])
+
+  function handleProjectSelect(index: number) {
+    if (index === activeProjectIndex || isMorphing) {
+      return
+    }
+
+    if (prefersReducedMotion()) {
+      setActiveProjectIndex(index)
+      return
+    }
+
+    const selectedCard = selectorRefs.current[index]
+    const selectedTitle = selectorTitleRefs.current[index]
+    const focusCard = focusCardRef.current
+    const focusTitle = focusTitleRef.current
+
+    if (!selectedCard || !selectedTitle || !focusCard || !focusTitle) {
+      setActiveProjectIndex(index)
+      return
+    }
+
+    setMorphRequest({
+      focusFromRect: toProjectMorphRect(focusCard.getBoundingClientRect()),
+      focusTitleFromRect: toProjectMorphRect(focusTitle.getBoundingClientRect()),
+      fromIndex: activeProjectIndex,
+      selectedFromRect: toProjectMorphRect(selectedCard.getBoundingClientRect()),
+      selectedTitleFromRect: toProjectMorphRect(selectedTitle.getBoundingClientRect()),
+      selectorFromRects: getSelectorRects(),
+      selectorTitleFromRects: getSelectorTitleRects(),
+      toIndex: index,
+    })
+    setActiveProjectIndex(index)
+  }
 
   return (
     <section className="section-shell content-section" aria-labelledby="projects-title">
@@ -221,28 +608,54 @@ export function ProjectsSection() {
         <h2 id="projects-title">Projects</h2>
       </div>
       <div className="project-gallery">
-        <article className="project-card project-focus-card" aria-labelledby="active-project-title">
+        <article
+          className="project-card project-focus-card"
+          data-project-focus-morphing={isMorphing ? 'true' : undefined}
+          aria-labelledby="active-project-title"
+          ref={focusCardRef}
+        >
           <div className="project-focus-visual" aria-hidden="true">
             <ProjectVisualIcon type={activeProject.visualType} />
           </div>
           <div className="project-focus-content">
-            <ProjectContent project={activeProject} titleId="active-project-title" />
+            <ProjectContent project={activeProject} titleId="active-project-title" titleRef={focusTitleRef} />
           </div>
         </article>
-        <div className="project-selector-row" aria-label="Choose featured project">
+        <div
+          className="project-selector-row"
+          data-project-selector-row-morphing={isMorphing ? 'true' : undefined}
+          aria-label="Choose featured project"
+        >
           {inactiveProjects.map(({ project, index }) => (
             <button
               className="project-selector-card"
               key={project.name}
               type="button"
-              onClick={() => setActiveProjectIndex(index)}
+              disabled={isMorphing}
+              onClick={() => handleProjectSelect(index)}
+              ref={(node) => {
+                selectorRefs.current[index] = node
+              }}
               aria-label={`Feature ${project.name}`}
             >
-              {project.name}
+              <span
+                className="project-selector-title"
+                ref={(node) => {
+                  selectorTitleRefs.current[index] = node
+                }}
+              >
+                {project.name}
+              </span>
             </button>
           ))}
         </div>
       </div>
+      {morphLayers.map((layer) => (
+        <ProjectMorphLayer key={layer.id} layer={layer} onDone={handleMorphLayerDone} />
+      ))}
+      {morphTitleLayers.map((layer) => (
+        <ProjectMorphTitleLayer key={layer.id} layer={layer} onDone={handleMorphTitleLayerDone} />
+      ))}
     </section>
   )
 }

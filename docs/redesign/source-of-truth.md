@@ -412,7 +412,11 @@ Current Phase 10 implementation includes:
 - the bottom row matches the focus card width, expands inactive cards when they fit, and scrolls horizontally with standardized selector card widths when needed
 - desktop and tablet use a two-column focus card; mobile keeps the same gallery behavior with the visual stacked above the content
 - selecting an inactive project updates the focused project in local React state
-- liquid-glass morph animation remains planned in `docs/redesign/projects-gallery-plan.md`
+- project selection uses temporary liquid-glass FLIP-style overlay layers to morph the selected bottom-row card into the focus card and the previous focus card into the bottom row
+- during the morph, the real focus card and selector row are hidden so content does not visibly swap mid-animation
+- project names stay visible and move between their actual focus-card and selector-row text positions while outgoing focus-card details fade out quickly
+- unchanged bottom-row cards use shift overlays so row order changes animate instead of snapping
+- reduced-motion users get an instant project swap without morph layers
 - compact frosted project content still includes name, summary, stack tags, and links inside the focused card
 - visible proof bullets for every rendered project card
 - Pump Pal proof bullets synced from the current resume PDF

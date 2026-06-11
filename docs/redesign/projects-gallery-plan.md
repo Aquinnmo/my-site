@@ -72,6 +72,16 @@ Success criteria:
 - Keyboard users can tab through selector buttons and activate them.
 - Reduced-motion users get an instant, stable swap.
 
+Status: implemented in `src/components/ProjectsSection.tsx` and `src/App.css`.
+
+Refined implementation notes:
+
+- The real focus card and real selector row are hidden during the morph so content does not visibly swap mid-animation.
+- The selected bottom-row card morphs into the focus card as a title-preserving overlay; the title moves between its real text positions instead of being centered in the card.
+- The outgoing focus card morphs back to the selector row behind the incoming overlay.
+- Outgoing focus-card detail fades out quickly, leaving the project name visible as it scales down.
+- Other bottom-row cards receive shift overlays so the row moves smoothly when the selected project changes row order.
+
 ## Phase 4: Docs And Validation
 
 - Update `docs/redesign/source-of-truth.md` with the new Projects gallery behavior.
