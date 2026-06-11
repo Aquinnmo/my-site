@@ -6,6 +6,8 @@ Convert the portfolio Experience section into a pinned scroll sequence on both m
 
 Keep the current frozen-lake visual language, card content, section order, no navbar, no divider bars, and no scrollbar chrome. Mobile should use the same cue-card behavior as desktop with viewport-appropriate sizing. Reduced-motion users keep the static stacked-card layout.
 
+Current status: Phases 1-3 are implemented. Phase 4 docs are updated here and in `source-of-truth.md`; latest code validation passed with `npm run lint` and `npm run build`. Chrome visual verification was attempted but blocked by the local Chrome automation sandbox, so final visual acceptance remains user/dev-build driven.
+
 ## Phase 1: Structure And Scroll Model
 
 - Refactor `src/components/ExperienceSection.tsx` only enough to support the interaction:
@@ -21,6 +23,8 @@ Success criteria:
 - The page scrolls naturally into and out of the Experience section.
 - No body scroll locking, scroll hijacking, or wheel-event interception is introduced.
 - Current content and semantic card structure remain intact.
+
+Status: implemented in `src/components/ExperienceSection.tsx`.
 
 ## Phase 2: Cue-Card Interaction
 
@@ -42,6 +46,17 @@ Success criteria:
 - Once the last card segment completes, Projects scrolls into view normally.
 - The visual treatment still reads as the existing frosted experience cards, not a new design system.
 
+Status: implemented in `src/components/ExperienceSection.tsx` and `src/App.css`.
+
+Implementation notes:
+
+- The scroll track uses a sticky viewport and deterministic track height derived from the card count and timeline units.
+- The React hook reads scroll progress from the track position and viewport height; it listens to window and visual viewport scroll/resize events so mobile browser chrome changes do not disable progress updates.
+- Each card receives transform, opacity, filter, active/future/past state, and z-index through inline CSS custom properties.
+- The active card first retreats straight back, then the next card rises straight up from the bottom during the transition.
+- Outgoing cards fade and blur subtly as they move behind the active card.
+- Each card has a visible solo-reading interval before the next card enters.
+
 ## Phase 3: Responsive Sizing And Reduced-Motion Fallback
 
 - At `max-width: 48rem`, keep the same pinned cue-card behavior but adjust card height, heading spacing, transform distances, and readable content sizing so the experience does not overflow or feel cramped.
@@ -54,6 +69,16 @@ Success criteria:
 - Reduced-motion users get static cards with no leaf-through transforms.
 - No content overlaps on narrow screens.
 - Keyboard/tab order remains the same as the document order.
+
+Status: implemented.
+
+Mobile implementation notes:
+
+- Mobile keeps the same cue-card interaction model as desktop.
+- The sticky viewport remains full-height and centered.
+- The Experience heading is positioned within the sticky viewport so it does not push the card stage off-center.
+- The card stage is independently centered in the viewport with compact card sizing and tighter type/tag spacing.
+- Reduced-motion restores the ordinary static stacked-card layout and disables transforms.
 
 ## Phase 4: Polish, Docs, And Validation
 
@@ -76,6 +101,19 @@ Success criteria:
 - Mobile interaction matches desktop behavior while fitting the smaller viewport.
 - Reduced-motion fallback is confirmed.
 - No visual regressions to Hero, Projects, Skills, footer, theme toggle, page switcher, or snowfall.
+
+Status: partially implemented.
+
+Completed:
+
+- `docs/redesign/source-of-truth.md` records the current Experience interaction.
+- `docs/README.md` links to this plan for retrieval.
+- `npm run lint` passed after implementation.
+- `npm run build` passed after implementation.
+
+Remaining:
+
+- Browser visual verification still needs a working local browser automation path or user confirmation from the dev build.
 
 ## Public Interfaces And Types
 

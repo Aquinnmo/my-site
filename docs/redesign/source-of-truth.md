@@ -378,7 +378,18 @@ Phase 8 assumptions pending user review:
 Current Phase 9 implementation includes:
 
 - structured experience data in `src/components/ExperienceSection.tsx`
-- centered experience section with left-aligned frosted experience cards
+- pinned cue-card scroll interaction in `src/components/ExperienceSection.tsx` and `src/App.css`
+- Experience still appears after Hero and before Projects
+- the Experience section uses a deterministic scroll track with a sticky full-viewport stage
+- the viewport appears fixed while scrolling through Experience, then releases into Projects after the final card segment
+- mobile, tablet, and desktop use the same cue-card interaction model
+- mobile keeps the card stage centered like desktop, with the heading positioned within the sticky viewport so it does not push the active card off-center
+- cards advance in order: SPS Commerce, Montgomery Software Foundry Inc., then DataAnnotation
+- the active card is visually foremost while previous cards retreat straight back, fade, and blur subtly
+- incoming cards rise straight up from the bottom during the transition
+- each card has a solo-reading interval before the next card enters
+- reduced-motion users get the static stacked-card layout instead of the cue-card transforms
+- the card visuals remain the existing frosted experience cards rather than a new surface style
 - no pill-style section kicker tags above headings
 - entries for SPS Commerce, Montgomery Software Foundry Inc., and DataAnnotation
 - role, company, date label, summary, proof bullets, and skill tags for each entry
