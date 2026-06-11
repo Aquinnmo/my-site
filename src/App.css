@@ -1641,10 +1641,7 @@ svg.action-icon {
     inset 0 -1.2rem 2.2rem color-mix(in srgb, var(--color-shadow) 18%, transparent);
   font: inherit;
   font-size: clamp(0.92rem, 1.8vw, 1rem);
-  font-weight: 850;
-  line-height: 1.12;
   text-align: left;
-  text-shadow: 0 0 0.8rem color-mix(in srgb, var(--color-frost) 22%, transparent);
   cursor: pointer;
   backdrop-filter: blur(18px);
   scroll-snap-align: start;
@@ -1665,6 +1662,9 @@ svg.action-icon {
   z-index: 1;
   display: block;
   max-width: 100%;
+  font-weight: 850;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
 }
 
 .project-selector-row[data-project-selector-row-morphing='true'] .project-selector-card {
@@ -1839,7 +1839,7 @@ svg.action-icon {
   overflow: visible;
   color: var(--color-text);
   font-size: var(--project-morph-title-font-size);
-  font-weight: 900;
+  font-weight: 850;
   line-height: 1.08;
   text-align: left;
   text-shadow: 0 0 0.95rem color-mix(in srgb, var(--color-frost) 28%, transparent);
@@ -1905,6 +1905,7 @@ svg.action-icon {
 .project-card h3 {
   margin: 0;
   font-size: clamp(1.35rem, 2.8vw, 1.9rem);
+  font-weight: 850;
   line-height: 1.08;
   letter-spacing: -0.035em;
 }

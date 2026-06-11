@@ -412,8 +412,10 @@ function ProjectMorphTitleLayer({
 
 export function ProjectsSection() {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0)
-  const [morphLayers, setMorphLayers] = useState<ProjectMorphLayer[]>([])
-  const [morphTitleLayers, setMorphTitleLayers] = useState<ProjectMorphTitleLayer[]>([])
+  const [morphState, setMorphState] = useState<{
+    layers: ProjectMorphLayer[]
+    titleLayers: ProjectMorphTitleLayer[]
+  }>({ layers: [], titleLayers: [] })
   const [morphRequest, setMorphRequest] = useState<ProjectMorphRequest | null>(null)
   const focusCardRef = useRef<HTMLElement | null>(null)
   const focusTitleRef = useRef<HTMLHeadingElement | null>(null)
@@ -423,13 +425,21 @@ export function ProjectsSection() {
   const inactiveProjects = projects
     .map((project, index) => ({ project, index }))
     .filter(({ index }) => index !== activeProjectIndex)
+  const { layers: morphLayers, titleLayers: morphTitleLayers } = morphState
   const isMorphing = morphLayers.length > 0 || morphTitleLayers.length > 0 || morphRequest !== null
+
   const handleMorphLayerDone = useCallback((layerId: string) => {
-    setMorphLayers((currentLayers) => currentLayers.filter((currentLayer) => currentLayer.id !== layerId))
+    setMorphState((currentState) => ({
+      ...currentState,
+      layers: currentState.layers.filter((layer) => layer.id !== layerId),
+    }))
   }, [])
 
   const handleMorphTitleLayerDone = useCallback((layerId: string) => {
-    setMorphTitleLayers((currentLayers) => currentLayers.filter((currentLayer) => currentLayer.id !== layerId))
+    setMorphState((currentState) => ({
+      ...currentState,
+      titleLayers: currentState.titleLayers.filter((layer) => layer.id !== layerId),
+    }))
   }, [])
 
   const getSelectorRects = useCallback(() => {
@@ -453,15 +463,12 @@ export function ProjectsSection() {
       return
     }
 
-    let isCancelled = false
+    const request = morphRequest
 
-    window.queueMicrotask(() => {
-      if (isCancelled) {
-        return
-      }
-
+    window.requestAnimationFrame(() => {
       if (prefersReducedMotion()) {
         setMorphRequest(null)
+        setMorphState({ layers: [], titleLayers: [] })
         return
       }
 
@@ -469,8 +476,8 @@ export function ProjectsSection() {
       const focusTitle = focusTitleRef.current
       const selectorToRects = getSelectorRects()
       const selectorTitleToRects = getSelectorTitleRects()
-      const outgoingToRect = selectorToRects[morphRequest.fromIndex]
-      const outgoingTitleToRect = selectorTitleToRects[morphRequest.fromIndex]
+      const outgoingToRect = selectorToRects[request.fromIndex]
+      const outgoingTitleToRect = selectorTitleToRects[request.fromIndex]
 
       if (!focusCard || !focusTitle || !outgoingToRect || !outgoingTitleToRect) {
         setMorphRequest(null)
@@ -480,8 +487,8 @@ export function ProjectsSection() {
       const focusRect = toProjectMorphRect(focusCard.getBoundingClientRect())
       const focusTitleRect = toProjectMorphRect(focusTitle.getBoundingClientRect())
       const now = Date.now()
-      const shiftLayers = Object.entries(morphRequest.selectorFromRects)
-        .filter(([index]) => Number(index) !== morphRequest.toIndex)
+      const shiftLayers = Object.entries(request.selectorFromRects)
+        .filter(([index]) => Number(index) !== request.toIndex)
         .flatMap(([index, fromRect]) => {
           const projectIndex = Number(index)
           const toRect = selectorToRects[projectIndex]
@@ -502,8 +509,8 @@ export function ProjectsSection() {
             },
           ]
         })
-      const shiftTitleLayers = Object.entries(morphRequest.selectorTitleFromRects)
-        .filter(([index]) => Number(index) !== morphRequest.toIndex)
+      const shiftTitleLayers = Object.entries(request.selectorTitleFromRects)
+        .filter(([index]) => Number(index) !== request.toIndex)
         .flatMap(([index, fromRect]) => {
           const projectIndex = Number(index)
           const toRect = selectorTitleToRects[projectIndex]
@@ -523,50 +530,49 @@ export function ProjectsSection() {
           ]
         })
 
-      setMorphLayers([
-        ...shiftLayers,
-        {
-          fromRect: morphRequest.selectedFromRect,
-          id: `incoming-${morphRequest.toIndex}-${now}`,
-          project: projects[morphRequest.toIndex],
-          titleFromScale: 0.84,
-          titleToScale: 1.18,
-          toRect: focusRect,
-          type: 'incoming',
-        },
-        {
-          fromRect: morphRequest.focusFromRect,
-          id: `outgoing-${morphRequest.fromIndex}-${now}`,
-          project: projects[morphRequest.fromIndex],
-          titleFromScale: 1.18,
-          titleToScale: 0.84,
-          toRect: outgoingToRect,
-          type: 'outgoing',
-        },
-      ])
-      setMorphTitleLayers([
-        ...shiftTitleLayers,
-        {
-          fromRect: morphRequest.selectedTitleFromRect,
-          id: `title-incoming-${morphRequest.toIndex}-${now}`,
-          project: projects[morphRequest.toIndex],
-          toRect: focusTitleRect,
-          type: 'incoming',
-        },
-        {
-          fromRect: morphRequest.focusTitleFromRect,
-          id: `title-outgoing-${morphRequest.fromIndex}-${now}`,
-          project: projects[morphRequest.fromIndex],
-          toRect: outgoingTitleToRect,
-          type: 'outgoing',
-        },
-      ])
+      setMorphState((currentState) => ({
+        ...currentState,
+        layers: [
+          ...shiftLayers,
+          {
+            fromRect: request.selectedFromRect,
+            id: `incoming-${request.toIndex}-${now}`,
+            project: projects[request.toIndex],
+            titleFromScale: 0.84,
+            titleToScale: 1.18,
+            toRect: focusRect,
+            type: 'incoming',
+          },
+          {
+            fromRect: request.focusFromRect,
+            id: `outgoing-${request.fromIndex}-${now}`,
+            project: projects[request.fromIndex],
+            titleFromScale: 1.18,
+            titleToScale: 0.84,
+            toRect: outgoingToRect,
+            type: 'outgoing',
+          },
+        ],
+        titleLayers: [
+          ...shiftTitleLayers,
+          {
+            fromRect: request.selectedTitleFromRect,
+            id: `title-incoming-${request.toIndex}-${now}`,
+            project: projects[request.toIndex],
+            toRect: focusTitleRect,
+            type: 'incoming',
+          },
+          {
+            fromRect: request.focusTitleFromRect,
+            id: `title-outgoing-${request.fromIndex}-${now}`,
+            project: projects[request.fromIndex],
+            toRect: outgoingTitleToRect,
+            type: 'outgoing',
+          },
+        ],
+      }))
       setMorphRequest(null)
     })
-
-    return () => {
-      isCancelled = true
-    }
   }, [activeProjectIndex, getSelectorRects, getSelectorTitleRects, morphRequest])
 
   function handleProjectSelect(index: number) {
@@ -589,10 +595,12 @@ export function ProjectsSection() {
       return
     }
 
+    const currentActive = activeProjectIndex
+
     setMorphRequest({
       focusFromRect: toProjectMorphRect(focusCard.getBoundingClientRect()),
       focusTitleFromRect: toProjectMorphRect(focusTitle.getBoundingClientRect()),
-      fromIndex: activeProjectIndex,
+      fromIndex: currentActive,
       selectedFromRect: toProjectMorphRect(selectedCard.getBoundingClientRect()),
       selectedTitleFromRect: toProjectMorphRect(selectedTitle.getBoundingClientRect()),
       selectorFromRects: getSelectorRects(),
