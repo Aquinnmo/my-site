@@ -200,14 +200,14 @@ function useExperienceScrollProgress(cardCount: number) {
   })
 
   useEffect(() => {
-    const desktopQuery = window.matchMedia('(min-width: 48.001rem)')
     const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const visualViewport = window.visualViewport
     let animationFrame = 0
 
     const updateScrollState = () => {
       animationFrame = 0
 
-      if (!desktopQuery.matches || reducedMotionQuery.matches || !trackRef.current) {
+      if (reducedMotionQuery.matches || !trackRef.current) {
         setScrollState((currentState) =>
           currentState.activeIndex === 0 && currentState.phase === 'retreat' && currentState.phaseProgress === 0
             ? currentState
@@ -217,8 +217,10 @@ function useExperienceScrollProgress(cardCount: number) {
       }
 
       const trackRect = trackRef.current.getBoundingClientRect()
-      const scrollDistance = Math.max(trackRect.height - window.innerHeight, 1)
-      const totalProgress = clamp(-trackRect.top / scrollDistance, 0, 1)
+      const trackTop = trackRect.top + window.scrollY
+      const viewportHeight = visualViewport?.height ?? window.innerHeight
+      const scrollDistance = Math.max(trackRef.current.offsetHeight - viewportHeight, 1)
+      const totalProgress = clamp((window.scrollY - trackTop) / scrollDistance, 0, 1)
       const timelineState = getExperienceTimelineState(totalProgress, cardCount)
 
       setScrollState((currentState) => {
@@ -249,7 +251,8 @@ function useExperienceScrollProgress(cardCount: number) {
     updateScrollState()
     window.addEventListener('scroll', requestScrollStateUpdate, { passive: true })
     window.addEventListener('resize', requestScrollStateUpdate)
-    desktopQuery.addEventListener('change', requestScrollStateUpdate)
+    visualViewport?.addEventListener('scroll', requestScrollStateUpdate, { passive: true })
+    visualViewport?.addEventListener('resize', requestScrollStateUpdate)
     reducedMotionQuery.addEventListener('change', requestScrollStateUpdate)
 
     return () => {
@@ -259,7 +262,8 @@ function useExperienceScrollProgress(cardCount: number) {
 
       window.removeEventListener('scroll', requestScrollStateUpdate)
       window.removeEventListener('resize', requestScrollStateUpdate)
-      desktopQuery.removeEventListener('change', requestScrollStateUpdate)
+      visualViewport?.removeEventListener('scroll', requestScrollStateUpdate)
+      visualViewport?.removeEventListener('resize', requestScrollStateUpdate)
       reducedMotionQuery.removeEventListener('change', requestScrollStateUpdate)
     }
   }, [cardCount])
@@ -280,6 +284,8 @@ export function ExperienceSection() {
       <div
         className="experience-scroll-track"
         data-experience-active-index={scrollState.activeIndex}
+        data-experience-phase={scrollState.phase}
+        data-experience-phase-progress={scrollState.phaseProgress.toFixed(3)}
         ref={trackRef}
         style={experienceTrackStyle}
       >
