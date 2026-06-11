@@ -1571,7 +1571,6 @@ svg.action-icon {
   gap: clamp(1rem, 2.5vw, 1.5rem);
   align-items: stretch;
   min-height: clamp(30rem, 58vw, 38rem);
-  transition: opacity 140ms ease;
 }
 
 .project-focus-visual {
@@ -1776,17 +1775,39 @@ svg.action-icon {
   grid-template-columns: minmax(7rem, 0.42fr) minmax(0, 0.58fr);
   align-items: center;
   gap: 1rem;
-  opacity: 1;
-  transition:
-    opacity 110ms ease,
-    transform 110ms ease,
-    filter 110ms ease;
 }
 
-.project-morph-layer[data-project-morph-active='true'] .project-morph-detail {
+.project-morph-layer-outgoing .project-morph-detail {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease,
+    filter 300ms ease;
+}
+
+.project-morph-layer-outgoing[data-project-morph-active='true'] .project-morph-detail {
   opacity: 0;
   filter: blur(0.65rem);
-  transform: scale(0.985);
+  transform: scale(0.92);
+}
+
+.project-morph-layer-incoming .project-morph-detail {
+  opacity: 0;
+  filter: blur(0.65rem);
+  transform: scale(0.92);
+  transition:
+    opacity 400ms ease,
+    transform 400ms ease,
+    filter 400ms ease;
+  transition-delay: 1800ms;
+}
+
+.project-morph-layer-incoming[data-project-morph-active='true'] .project-morph-detail {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
 }
 
 .project-morph-visual {

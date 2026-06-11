@@ -321,7 +321,7 @@ function ProjectMorphLayer({
       }
     >
       <div className="project-morph-surface">
-        {layer.type === 'outgoing' && (
+        {(layer.type === 'outgoing' || layer.type === 'incoming') && (
           <div className="project-morph-detail">
             <div className="project-morph-visual" aria-hidden="true">
               <ProjectVisualIcon type={layer.project.visualType} />
@@ -446,75 +446,53 @@ export function ProjectsSection() {
       return
     }
 
-    let isCancelled = false
+    const focusCard = focusCardRef.current
+    const focusTitle = focusTitleRef.current
+    const selectorToRects = getSelectorRects()
+    const selectorTitleToRects = getSelectorTitleRects()
+    const outgoingToRect = selectorToRects[morphRequest.fromIndex]!
+    const outgoingTitleToRect = selectorTitleToRects[morphRequest.fromIndex]!
 
-    window.queueMicrotask(() => {
-      if (isCancelled) {
-        return
-      }
+    const focusRect = toProjectMorphRect(focusCard!.getBoundingClientRect())
+    const focusTitleRect = toProjectMorphRect(focusTitle!.getBoundingClientRect())
+    const now = Date.now()
 
-      if (prefersReducedMotion()) {
-        setMorphRequest(null)
-        return
-      }
-
-      const focusCard = focusCardRef.current
-      const focusTitle = focusTitleRef.current
-      const selectorToRects = getSelectorRects()
-      const selectorTitleToRects = getSelectorTitleRects()
-      const outgoingToRect = selectorToRects[morphRequest.fromIndex]
-      const outgoingTitleToRect = selectorTitleToRects[morphRequest.fromIndex]
-
-      if (!focusCard || !focusTitle || !outgoingToRect || !outgoingTitleToRect) {
-        setMorphRequest(null)
-        return
-      }
-
-      const focusRect = toProjectMorphRect(focusCard.getBoundingClientRect())
-      const focusTitleRect = toProjectMorphRect(focusTitle.getBoundingClientRect())
-      const now = Date.now()
-
-      setMorphLayers([
-        {
-          fromRect: morphRequest.selectedFromRect,
-          id: `incoming-${morphRequest.toIndex}-${now}`,
-          project: projects[morphRequest.toIndex],
-          titleFromScale: 0.84,
-          titleToScale: 1.18,
-          toRect: focusRect,
-          type: 'incoming',
-        },
-        {
-          fromRect: morphRequest.focusFromRect,
-          id: `outgoing-${morphRequest.fromIndex}-${now}`,
-          project: projects[morphRequest.fromIndex],
-          titleFromScale: 1.18,
-          titleToScale: 0.84,
-          toRect: outgoingToRect,
-          type: 'outgoing',
-        },
-      ])
-      setMorphTitleLayers([
-        {
-          fromRect: morphRequest.selectedTitleFromRect,
-          id: `title-incoming-${morphRequest.toIndex}-${now}`,
-          project: projects[morphRequest.toIndex],
-          toRect: focusTitleRect,
-          type: 'incoming',
-        },
-        {
-          fromRect: morphRequest.focusTitleFromRect,
-          id: `title-outgoing-${morphRequest.fromIndex}-${now}`,
-          project: projects[morphRequest.fromIndex],
-          toRect: outgoingTitleToRect,
-          type: 'outgoing',
-        },
-      ])
-    })
-
-    return () => {
-      isCancelled = true
-    }
+    setMorphLayers([
+      {
+        fromRect: morphRequest.selectedFromRect,
+        id: `incoming-${morphRequest.toIndex}-${now}`,
+        project: projects[morphRequest.toIndex],
+        titleFromScale: 0.84,
+        titleToScale: 1.18,
+        toRect: focusRect,
+        type: 'incoming',
+      },
+      {
+        fromRect: morphRequest.focusFromRect,
+        id: `outgoing-${morphRequest.fromIndex}-${now}`,
+        project: projects[morphRequest.fromIndex],
+        titleFromScale: 1.18,
+        titleToScale: 0.84,
+        toRect: outgoingToRect,
+        type: 'outgoing',
+      },
+    ])
+    setMorphTitleLayers([
+      {
+        fromRect: morphRequest.selectedTitleFromRect,
+        id: `title-incoming-${morphRequest.toIndex}-${now}`,
+        project: projects[morphRequest.toIndex],
+        toRect: focusTitleRect,
+        type: 'incoming',
+      },
+      {
+        fromRect: morphRequest.focusTitleFromRect,
+        id: `title-outgoing-${morphRequest.fromIndex}-${now}`,
+        project: projects[morphRequest.fromIndex],
+        toRect: outgoingTitleToRect,
+        type: 'outgoing',
+      },
+    ])
   }, [activeProjectIndex, getSelectorRects, getSelectorTitleRects, morphRequest])
 
   function handleProjectSelect(index: number) {
