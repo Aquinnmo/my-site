@@ -409,8 +409,10 @@ Current Phase 10 implementation includes:
 - Pump Pal is the default focused project
 - the focused project renders as a larger frosted project card with a left-side default icon panel and right-side project content
 - inactive projects render as name-only selector cards in a bottom row
+- the bottom row matches the focus card width, expands inactive cards when they fit, and scrolls horizontally with standardized selector card widths when needed
+- desktop and tablet use a two-column focus card; mobile keeps the same gallery behavior with the visual stacked above the content
 - selecting an inactive project updates the focused project in local React state
-- detailed gallery sizing, overflow behavior, and liquid-glass morph animation remain planned in `docs/redesign/projects-gallery-plan.md`
+- liquid-glass morph animation remains planned in `docs/redesign/projects-gallery-plan.md`
 - compact frosted project content still includes name, summary, stack tags, and links inside the focused card
 - visible proof bullets for every rendered project card
 - Pump Pal proof bullets synced from the current resume PDF

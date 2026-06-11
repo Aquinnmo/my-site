@@ -57,6 +57,8 @@ Success criteria:
 - Mobile keeps the same gallery behavior without clipped text or overlap.
 - Bottom selector cards fill available width when possible and scroll horizontally when needed.
 
+Status: implemented in `src/App.css`.
+
 ## Phase 3: Morph Animation
 
 - Add FLIP measurement and temporary transition layers.
