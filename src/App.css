@@ -74,7 +74,7 @@
   position: fixed;
   inset: 0;
   z-index: -3;
-  overflow: hidden;
+  overflow: visible;
   pointer-events: none;
 }
 
@@ -1571,6 +1571,12 @@ svg.action-icon {
   gap: clamp(1rem, 2.5vw, 1.5rem);
   align-items: stretch;
   min-height: clamp(30rem, 58vw, 38rem);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-panel) 88%, transparent), color-mix(in srgb, var(--color-panel-strong) 72%, transparent));
+  box-shadow:
+    0 1rem 2.2rem color-mix(in srgb, var(--color-shadow) 52%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-frost) 18%, transparent),
+    inset 0 0 1.4rem color-mix(in srgb, var(--color-frost) 8%, transparent),
+    inset 0 -1rem 1.8rem color-mix(in srgb, var(--color-shadow) 16%, transparent);
 }
 
 .project-focus-visual {
@@ -1580,10 +1586,10 @@ svg.action-icon {
   aspect-ratio: 0.82;
   border: 1px solid color-mix(in srgb, var(--color-ice-edge) 72%, transparent);
   border-radius: 0.85rem;
-  background:
-    radial-gradient(circle at 32% 26%, color-mix(in srgb, var(--color-frost) 30%, transparent), transparent 10rem),
-    linear-gradient(145deg, color-mix(in srgb, var(--color-panel-strong) 58%, transparent), color-mix(in srgb, var(--color-panel) 74%, transparent));
-  box-shadow: inset 0 0 2.2rem color-mix(in srgb, var(--color-frost) 12%, transparent);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--color-panel-strong) 58%, transparent), color-mix(in srgb, var(--color-panel) 74%, transparent));
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--color-frost) 14%, transparent),
+    inset 0 0 1.4rem color-mix(in srgb, var(--color-frost) 8%, transparent);
 }
 
 .project-visual-icon {
@@ -1614,6 +1620,7 @@ svg.action-icon {
   width: 100%;
   background: transparent;
   overflow-x: auto;
+  padding-block: 0.12rem 0.45rem;
   overscroll-behavior-inline: contain;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
@@ -1633,12 +1640,12 @@ svg.action-icon {
   border-radius: 0.85rem;
   padding: 0.8rem 0.95rem;
   color: var(--color-text);
-  background:
-    linear-gradient(160deg, color-mix(in srgb, var(--color-frost) 18%, transparent), transparent 34%),
-    linear-gradient(135deg, color-mix(in srgb, var(--color-panel) 88%, transparent), color-mix(in srgb, var(--color-panel-strong) 72%, transparent));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-panel) 88%, transparent), color-mix(in srgb, var(--color-panel-strong) 72%, transparent));
   box-shadow:
-    inset 0 0 1.8rem color-mix(in srgb, var(--color-frost) 10%, transparent),
-    inset 0 -1.2rem 2.2rem color-mix(in srgb, var(--color-shadow) 18%, transparent);
+    0 0.38rem 0.9rem color-mix(in srgb, var(--color-shadow) 34%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-frost) 18%, transparent),
+    inset 0 0 1.4rem color-mix(in srgb, var(--color-frost) 8%, transparent),
+    inset 0 -1rem 1.8rem color-mix(in srgb, var(--color-shadow) 16%, transparent);
   font: inherit;
   font-size: clamp(0.92rem, 1.8vw, 1rem);
   font-weight: 850;
@@ -1676,12 +1683,8 @@ svg.action-icon {
 }
 
 .project-selector-card::before {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(circle at 12% 100%, color-mix(in srgb, var(--color-ice) 34%, transparent), transparent 9rem);
-  content: '';
-  pointer-events: none;
+  display: none;
+  content: none;
 }
 
 .project-selector-card:hover,
@@ -1689,8 +1692,10 @@ svg.action-icon {
   border-color: var(--color-ice-strong);
   color: var(--color-link-hover);
   box-shadow:
-    inset 0 0 2rem color-mix(in srgb, var(--color-frost) 16%, transparent),
-    inset 0 -1.25rem 2.3rem color-mix(in srgb, var(--color-shadow) 20%, transparent);
+    0 0.42rem 1rem color-mix(in srgb, var(--color-shadow) 38%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-frost) 22%, transparent),
+    inset 0 0 1.5rem color-mix(in srgb, var(--color-frost) 10%, transparent),
+    inset 0 -1rem 1.8rem color-mix(in srgb, var(--color-shadow) 16%, transparent);
 }
 
 .project-morph-layer {
@@ -1702,58 +1707,54 @@ svg.action-icon {
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--color-ice-edge) 82%, transparent);
   border-radius: 0.9rem;
-  background:
-    radial-gradient(circle at 88% 0%, color-mix(in srgb, var(--color-frost) 48%, transparent), transparent 14rem),
-    radial-gradient(circle at 12% 100%, color-mix(in srgb, var(--color-ice) 34%, transparent), transparent 15rem),
-    color-mix(in srgb, var(--color-panel-strong) 76%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-panel) 88%, transparent), color-mix(in srgb, var(--color-panel-strong) 72%, transparent));
   box-shadow:
-    0 1.2rem 2.7rem color-mix(in srgb, var(--color-shadow) 62%, transparent),
-    inset 0 0 2rem color-mix(in srgb, var(--color-frost) 12%, transparent);
-  opacity: 0.96;
+    0 1rem 2.2rem color-mix(in srgb, var(--color-shadow) 52%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-frost) 18%, transparent),
+    inset 0 0 1.4rem color-mix(in srgb, var(--color-frost) 8%, transparent),
+    inset 0 -1rem 1.8rem color-mix(in srgb, var(--color-shadow) 16%, transparent);
+  opacity: 1;
   pointer-events: none;
   transform: translate3d(var(--project-morph-x), var(--project-morph-y), 0);
   transition:
-    width 2600ms cubic-bezier(0.2, 0.86, 0.25, 1),
-    height 2600ms cubic-bezier(0.2, 0.86, 0.25, 1),
-    transform 2600ms cubic-bezier(0.2, 0.86, 0.25, 1),
-    opacity 2600ms ease,
-    filter 2600ms ease,
-    border-radius 2600ms ease;
+    width 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    height 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    transform 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    opacity 520ms ease 60ms,
+    filter 520ms ease 60ms,
+    border-radius 520ms ease 60ms;
   backdrop-filter: blur(22px) saturate(1.16);
   will-change: width, height, transform, opacity, filter;
 }
 
 .project-morph-layer::before {
-  position: absolute;
-  inset: -18%;
-  background:
-    radial-gradient(circle at 30% 22%, color-mix(in srgb, var(--color-frost) 28%, transparent), transparent 10rem),
-    linear-gradient(115deg, transparent 18%, color-mix(in srgb, var(--color-ice-edge) 16%, transparent), transparent 58%);
-  content: '';
-  opacity: 0.78;
-  pointer-events: none;
+  display: none;
+  content: none;
 }
 
 .project-morph-layer-incoming {
   z-index: 184;
-  filter: blur(0) saturate(1.12);
+  filter: none;
 }
 
 .project-morph-layer-outgoing {
   z-index: 178;
-  opacity: 0.92;
-  filter: blur(0.5px) saturate(0.98);
+  box-shadow:
+    0 0.38rem 0.9rem color-mix(in srgb, var(--color-shadow) 34%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-frost) 18%, transparent),
+    inset 0 0 1.4rem color-mix(in srgb, var(--color-frost) 8%, transparent),
+    inset 0 -1rem 1.8rem color-mix(in srgb, var(--color-shadow) 16%, transparent);
+  opacity: 1;
+  filter: none;
+}
+
+.project-morph-layer-outgoing::before {
+  display: none;
 }
 
 .project-morph-layer-shift {
   z-index: 174;
   border-radius: 0.85rem;
-  background:
-    linear-gradient(160deg, color-mix(in srgb, var(--color-frost) 18%, transparent), transparent 34%),
-    linear-gradient(135deg, color-mix(in srgb, var(--color-panel) 88%, transparent), color-mix(in srgb, var(--color-panel-strong) 72%, transparent));
-  box-shadow:
-    inset 0 0 1.8rem color-mix(in srgb, var(--color-frost) 10%, transparent),
-    inset 0 -1.2rem 2.2rem color-mix(in srgb, var(--color-shadow) 18%, transparent);
 }
 
 .project-morph-surface {
@@ -1769,12 +1770,16 @@ svg.action-icon {
 
 .project-morph-detail {
   position: absolute;
-  inset: clamp(0.75rem, 2vw, 1.25rem);
+  top: calc(clamp(1rem, 2.3vw, 1.25rem) + clamp(1.46rem, 3.024vw, 2.052rem) + clamp(1rem, 2.5vw, 1.5rem));
+  right: clamp(1rem, 2.3vw, 1.25rem);
+  bottom: clamp(1rem, 2.3vw, 1.25rem);
+  left: clamp(1rem, 2.3vw, 1.25rem);
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(7rem, 0.42fr) minmax(0, 0.58fr);
-  align-items: center;
-  gap: 1rem;
+  grid-template-columns: minmax(14rem, 0.82fr) minmax(0, 1.18fr);
+  align-items: stretch;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  min-height: 0;
 }
 
 .project-morph-layer-outgoing .project-morph-detail {
@@ -1782,9 +1787,9 @@ svg.action-icon {
   filter: blur(0);
   transform: scale(1);
   transition:
-    opacity 300ms ease,
-    transform 300ms ease,
-    filter 300ms ease;
+    opacity 60ms ease,
+    transform 60ms ease,
+    filter 60ms ease;
 }
 
 .project-morph-layer-outgoing[data-project-morph-active='true'] .project-morph-detail {
@@ -1798,10 +1803,10 @@ svg.action-icon {
   filter: blur(0.65rem);
   transform: scale(0.92);
   transition:
-    opacity 400ms ease,
-    transform 400ms ease,
-    filter 400ms ease;
-  transition-delay: 1800ms;
+    opacity 80ms ease,
+    transform 80ms ease,
+    filter 80ms ease;
+  transition-delay: 580ms;
 }
 
 .project-morph-layer-incoming[data-project-morph-active='true'] .project-morph-detail {
@@ -1814,46 +1819,24 @@ svg.action-icon {
   display: grid;
   place-items: center;
   height: 100%;
-  min-height: 8rem;
   border: 1px solid color-mix(in srgb, var(--color-ice-edge) 60%, transparent);
   border-radius: 0.75rem;
-  background:
-    radial-gradient(circle at 32% 26%, color-mix(in srgb, var(--color-frost) 24%, transparent), transparent 8rem),
-    color-mix(in srgb, var(--color-panel) 52%, transparent);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--color-panel-strong) 58%, transparent), color-mix(in srgb, var(--color-panel) 74%, transparent));
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--color-frost) 14%, transparent),
+    inset 0 0 1.4rem color-mix(in srgb, var(--color-frost) 8%, transparent);
 }
 
 .project-morph-visual .project-visual-icon {
-  width: min(48%, 6.5rem);
-  min-width: 3rem;
+  width: min(52%, 9rem);
+  min-width: 5.5rem;
 }
 
-.project-morph-detail p {
-  margin: 0;
-  color: var(--color-text-muted);
-  font-size: clamp(0.86rem, 1.6vw, 1rem);
-  line-height: 1.45;
+.project-morph-content {
+  display: grid;
+  align-content: start;
+  min-width: 0;
   text-align: left;
-}
-
-.project-morph-detail ul {
-  display: flex;
-  flex-wrap: wrap;
-  grid-column: 2;
-  gap: 0.38rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.project-morph-detail li {
-  border: 1px solid color-mix(in srgb, var(--color-ice-edge) 62%, transparent);
-  border-radius: 999px;
-  padding: 0.32rem 0.52rem;
-  color: var(--color-text);
-  background: color-mix(in srgb, var(--color-panel) 64%, transparent);
-  font-size: 0.78rem;
-  font-weight: 800;
-  line-height: 1.1;
 }
 
 .project-morph-title-layer {
@@ -1862,24 +1845,28 @@ svg.action-icon {
   left: 0;
   z-index: 190;
   overflow: visible;
-  color: var(--color-text);
-  font-family: var(--font-heading);
+  color: var(--project-morph-title-color);
+  font-family: var(--project-morph-title-font-family);
   font-size: var(--project-morph-title-font-size);
-  font-weight: 850;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  font-weight: var(--project-morph-title-font-weight);
+  line-height: var(--project-morph-title-line-height);
+  letter-spacing: var(--project-morph-title-letter-spacing);
   text-align: left;
-  text-shadow: 0 0 0.95rem color-mix(in srgb, var(--color-frost) 28%, transparent);
+  text-shadow: var(--project-morph-title-shadow);
   pointer-events: none;
   transform: translate3d(var(--project-morph-title-x), var(--project-morph-title-y), 0);
   transform-origin: top left;
   transition:
-    width 2600ms cubic-bezier(0.2, 0.86, 0.25, 1),
-    height 2600ms cubic-bezier(0.2, 0.86, 0.25, 1),
-    transform 2600ms cubic-bezier(0.2, 0.86, 0.25, 1),
-    font-size 2600ms cubic-bezier(0.2, 0.86, 0.25, 1),
+    width 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    height 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    transform 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    font-size 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    line-height 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    letter-spacing 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    color 520ms ease 60ms,
+    text-shadow 520ms ease 60ms,
     opacity 120ms ease;
-  will-change: width, height, transform, font-size;
+  will-change: width, height, transform, font-size, color;
 }
 
 .project-morph-title-layer-incoming {
@@ -1903,21 +1890,19 @@ svg.action-icon {
   border: 1px solid color-mix(in srgb, var(--color-ice-edge) 78%, transparent);
   border-radius: 0.9rem;
   padding: clamp(1rem, 2.3vw, 1.25rem);
-  background:
-    radial-gradient(circle at 88% 0%, color-mix(in srgb, var(--color-frost) 46%, transparent), transparent 14rem),
-    color-mix(in srgb, var(--color-panel-strong) 72%, transparent);
-  box-shadow: 0 1.2rem 2.7rem color-mix(in srgb, var(--color-shadow) 62%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-panel) 88%, transparent), color-mix(in srgb, var(--color-panel-strong) 72%, transparent));
+  box-shadow:
+    0 1rem 2.2rem color-mix(in srgb, var(--color-shadow) 52%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-frost) 18%, transparent),
+    inset 0 0 1.4rem color-mix(in srgb, var(--color-frost) 8%, transparent),
+    inset 0 -1rem 1.8rem color-mix(in srgb, var(--color-shadow) 16%, transparent);
   text-align: left;
   backdrop-filter: blur(18px);
 }
 
 .project-card::before {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(circle at 12% 100%, color-mix(in srgb, var(--color-ice) 34%, transparent), transparent 15rem);
-  content: '';
-  pointer-events: none;
+  display: none;
+  content: none;
 }
 
 .project-card > * {
@@ -2025,55 +2010,68 @@ svg.project-link-icon {
   color: var(--color-link-hover);
 }
 
-.skills-grid {
-  display: grid;
-  width: min(100%, 68rem);
-  grid-template-columns: repeat(2, minmax(20rem, 1fr));
-  gap: 1rem;
-}
-
-.skill-card {
+.skills-chart {
+  --skill-bubble-size: clamp(3.4rem, 6vw, 4.4rem);
+  --skill-icon-size: 1.9rem;
+  cursor: default;
   position: relative;
-  display: grid;
-  align-content: start;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--color-ice-edge) 78%, transparent);
-  border-radius: 0.9rem;
-  padding: clamp(1rem, 2.3vw, 1.2rem);
-  background:
-    radial-gradient(circle at 90% 6%, color-mix(in srgb, var(--color-frost) 42%, transparent), transparent 12rem),
-    color-mix(in srgb, var(--color-panel-strong) 74%, transparent);
-  box-shadow: 0 1.2rem 2.7rem color-mix(in srgb, var(--color-shadow) 58%, transparent);
-  text-align: left;
-  backdrop-filter: blur(18px);
+  isolation: isolate;
+  width: min(100%, 68rem);
+  min-height: clamp(30rem, 58vw, 40rem);
+  overflow: visible;
 }
 
-.skill-card::before {
+.skills-chart::before,
+.skills-chart::after {
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(circle at 8% 100%, color-mix(in srgb, var(--color-ice) 34%, transparent), transparent 13rem);
+  z-index: 0;
   content: '';
   pointer-events: none;
 }
 
-.skill-card > * {
-  position: relative;
+.skills-chart::before {
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-frost) 48%, transparent) 0 0.18rem,
+    transparent 0.18rem 0.72rem
+  );
 }
 
-.skill-card-header {
+.skills-chart::after {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background-image: repeating-linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-frost) 48%, transparent) 0 0.18rem,
+    transparent 0.18rem 0.72rem
+  );
+}
+
+.skills-chart-label {
+  position: absolute;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 0.7rem;
+  color: var(--color-text);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 900;
+  line-height: 1;
 }
 
 .skill-icon {
-  width: 2.35rem;
-  height: 2.35rem;
+  width: 2.1rem;
+  height: 2.1rem;
   flex: 0 0 auto;
   border: 1px solid color-mix(in srgb, var(--color-ice-edge) 82%, transparent);
-  border-radius: 0.8rem;
-  padding: 0.48rem;
+  border-radius: 0.72rem;
+  padding: 0.42rem;
   color: var(--color-link);
   background: color-mix(in srgb, var(--color-panel) 78%, transparent);
   fill: none;
@@ -2083,31 +2081,137 @@ svg.project-link-icon {
   stroke-width: 1.65;
 }
 
-.skill-card h3 {
-  margin: 0;
-  font-size: clamp(1.2rem, 2.3vw, 1.55rem);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+.skills-chart-label[data-skill-label-position='top-left'] {
+  top: clamp(1rem, 2.2vw, 1.35rem);
+  left: clamp(1rem, 2.2vw, 1.35rem);
 }
 
-.skill-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.58rem;
-  margin: 1rem 0 0;
-  padding: 0;
-  list-style: none;
+.skills-chart-label[data-skill-label-position='top-right'] {
+  top: clamp(1rem, 2.2vw, 1.35rem);
+  right: clamp(1rem, 2.2vw, 1.35rem);
 }
 
-.skill-list li {
-  border: 1px solid color-mix(in srgb, var(--color-ice-edge) 76%, transparent);
+.skills-chart-label[data-skill-label-position='bottom-left'] {
+  bottom: clamp(1rem, 2.2vw, 1.35rem);
+  left: clamp(1rem, 2.2vw, 1.35rem);
+}
+
+.skills-chart-label[data-skill-label-position='bottom-right'] {
+  right: clamp(1rem, 2.2vw, 1.35rem);
+  bottom: clamp(1rem, 2.2vw, 1.35rem);
+}
+
+.skill-bubble {
+  position: absolute;
+  top: var(--skill-y);
+  left: var(--skill-x);
+  z-index: 2;
+  display: grid;
+  width: var(--skill-bubble-size);
+  height: var(--skill-bubble-size);
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--skill-color) 48%, var(--color-ice-edge));
   border-radius: 999px;
-  padding: 0.46rem 0.78rem;
+  padding: 0;
   color: var(--color-text);
-  background: color-mix(in srgb, var(--color-panel) 72%, transparent);
-  font-size: 0.94rem;
+  background:
+    radial-gradient(circle at 42% 30%, color-mix(in srgb, var(--skill-color) 14%, transparent), transparent 58%),
+    color-mix(in srgb, var(--color-panel-strong) 80%, transparent);
+  box-shadow:
+    0 0.7rem 1.4rem color-mix(in srgb, var(--color-shadow) 42%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-frost) 16%, transparent);
+  outline: none;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease,
+    transform 180ms cubic-bezier(0.2, 0.86, 0.25, 1);
+  will-change: transform, filter;
+}
+
+.skill-bubble-icon {
+  display: block;
+  width: var(--skill-icon-size);
+  height: var(--skill-icon-size);
+  object-fit: contain;
+  filter: drop-shadow(0 0 0 color-mix(in srgb, var(--skill-color) 0%, transparent));
+  transition: filter 180ms ease;
+}
+
+:root:not([data-theme='light']) .skill-bubble[data-skill-invert-icon='true'] .skill-bubble-icon {
+  filter: invert(1) drop-shadow(0 0 0 color-mix(in srgb, var(--skill-color) 0%, transparent));
+}
+
+.skill-bubble-monogram {
+  display: grid;
+  place-items: center;
+  color: var(--skill-color);
+  font-size: 0.86rem;
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1;
+}
+
+.skill-tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.55rem);
+  left: 50%;
+  width: max-content;
+  max-width: 12rem;
+  border: 1px solid color-mix(in srgb, var(--skill-color) 54%, var(--color-ice-edge));
+  border-radius: 999px;
+  padding: 0.35rem 0.62rem;
+  color: var(--color-text);
+  background: black;
+  box-shadow: 0 0.55rem 1.2rem color-mix(in srgb, var(--color-shadow) 46%, transparent);
+  font-size: 0.82rem;
+  font-weight: 850;
+  line-height: 1.1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(0.18rem);
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+}
+
+.skill-bubble:hover,
+.skill-bubble:focus-visible {
+  z-index: 8;
+  border-color: color-mix(in srgb, var(--skill-color) 82%, var(--color-frost));
+  background:
+    radial-gradient(circle at 42% 30%, color-mix(in srgb, var(--skill-color) 24%, transparent), transparent 62%),
+    color-mix(in srgb, var(--color-panel-strong) 90%, transparent);
+  box-shadow:
+    0 0 1.6rem color-mix(in srgb, var(--skill-color) 52%, transparent),
+    0 1rem 2rem color-mix(in srgb, var(--color-shadow) 50%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-frost) 26%, transparent),
+    inset 0 0 1.15rem color-mix(in srgb, var(--skill-color) 18%, transparent);
+  filter: drop-shadow(0 0 0.9rem color-mix(in srgb, var(--skill-color) 46%, transparent));
+  transform: translate(-50%, -50%) scale(1.24);
+}
+
+.skill-bubble:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--skill-color) 76%, var(--color-frost));
+  outline-offset: 0.28rem;
+}
+
+.skill-bubble:hover .skill-bubble-icon,
+.skill-bubble:focus-visible .skill-bubble-icon {
+  filter: drop-shadow(0 0 0.55rem color-mix(in srgb, var(--skill-color) 58%, transparent));
+}
+
+:root:not([data-theme='light']) .skill-bubble[data-skill-invert-icon='true']:hover .skill-bubble-icon,
+:root:not([data-theme='light']) .skill-bubble[data-skill-invert-icon='true']:focus-visible .skill-bubble-icon {
+  filter: invert(1) drop-shadow(0 0 0.55rem color-mix(in srgb, var(--skill-color) 58%, transparent));
+}
+
+.skill-bubble:hover .skill-tooltip,
+.skill-bubble:focus-visible .skill-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .site-footer {
@@ -2222,7 +2326,6 @@ svg.project-link-icon {
   }
 
   .project-grid,
-  .skills-grid,
   .foundry-grid,
   .foundry-steps,
   .foundry-proof-strip,
@@ -2238,6 +2341,10 @@ svg.project-link-icon {
   .project-focus-card {
     grid-template-columns: minmax(12rem, 0.78fr) minmax(0, 1.22fr);
     min-height: auto;
+  }
+
+  .project-morph-detail {
+    grid-template-columns: minmax(12rem, 0.78fr) minmax(0, 1.22fr);
   }
 
   .project-focus-visual {
@@ -2321,6 +2428,12 @@ svg.project-link-icon {
 
   .experience-list {
     width: min(100%, 42rem);
+  }
+
+  .skills-chart {
+    --skill-bubble-size: clamp(3.2rem, 7vw, 4.05rem);
+    --skill-icon-size: 1.75rem;
+    min-height: clamp(28rem, 66vw, 36rem);
   }
 }
 
@@ -2501,7 +2614,17 @@ svg.project-link-icon {
     min-height: 0;
   }
 
+  .project-morph-detail {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
   .project-focus-visual {
+    min-height: clamp(10rem, 38vw, 13rem);
+    aspect-ratio: 16 / 9;
+  }
+
+  .project-morph-visual {
     min-height: clamp(10rem, 38vw, 13rem);
     aspect-ratio: 16 / 9;
   }
@@ -2516,9 +2639,69 @@ svg.project-link-icon {
     padding: 0.72rem 0.78rem;
   }
 
-  .skills-grid {
-    grid-template-columns: 1fr;
+  .skills-chart {
+    --skill-bubble-size: 3.65rem;
+    --skill-icon-size: 1.7rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.8rem;
     width: 100%;
+    min-height: auto;
+    padding: 0.2rem 0 1rem;
+  }
+
+  .skills-chart::before,
+  .skills-chart::after {
+    display: none;
+  }
+
+  .skills-chart-label {
+    position: static;
+    width: 100%;
+    margin: 1.35rem 0 0.15rem;
+    padding-inline: 0.15rem;
+  }
+
+  .skills-chart-label:first-child {
+    margin-top: 0;
+  }
+
+  .skills-chart-label[data-skill-label-position='top-left'] {
+    order: 0;
+  }
+
+  .skills-chart-label[data-skill-label-position='top-right'] {
+    order: 7;
+  }
+
+  .skills-chart-label[data-skill-label-position='bottom-left'] {
+    order: 16;
+  }
+
+  .skills-chart-label[data-skill-label-position='bottom-right'] {
+    order: 22;
+  }
+
+  .skill-bubble {
+    position: relative;
+    top: auto;
+    left: auto;
+    flex: 0 0 var(--skill-bubble-size);
+    order: var(--skill-mobile-order);
+    transform: none;
+  }
+
+  .skill-bubble:hover,
+  .skill-bubble:focus-visible {
+    transform: scale(1.16);
+  }
+
+  .skill-tooltip {
+    bottom: auto;
+    top: calc(100% + 0.48rem);
+    max-width: min(12rem, calc(100vw - 2rem));
   }
 
   .foundry-grid,
@@ -2597,17 +2780,38 @@ svg.project-link-icon {
     width: 100%;
   }
 
+  .skills-chart {
+    --skill-bubble-size: 3.25rem;
+    --skill-icon-size: 1.48rem;
+    gap: 0.68rem;
+  }
+
+  .skills-chart-label {
+    gap: 0.55rem;
+    margin-top: 1.15rem;
+    font-size: 1rem;
+  }
+
+  .skill-icon {
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: 0.62rem;
+    padding: 0.36rem;
+  }
+
+  .skill-tooltip {
+    font-size: 0.78rem;
+  }
+
   .experience-card,
-  .project-card,
-  .skill-card {
+  .project-card {
     border-radius: 0.75rem;
   }
 
   .project-links a,
   .project-links span,
   .experience-tags li,
-  .project-stack li,
-  .skill-list li {
+  .project-stack li {
     max-width: 100%;
   }
 
@@ -2709,11 +2913,38 @@ svg.project-link-icon {
     transform: none;
   }
 
+  .skill-bubble,
+  .skill-bubble-icon,
+  .skill-tooltip {
+    transition: none;
+  }
+
+  .skill-bubble:hover,
+  .skill-bubble:focus-visible {
+    transform: translate(-50%, -50%);
+  }
+
+  .skill-tooltip {
+    transform: translateX(-50%);
+  }
+
+  .skill-bubble:hover .skill-tooltip,
+  .skill-bubble:focus-visible .skill-tooltip {
+    transform: translateX(-50%);
+  }
+
   .footer-link {
     transition: none;
   }
 
   .footer-link:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 48rem) and (prefers-reduced-motion: reduce) {
+  .skill-bubble:hover,
+  .skill-bubble:focus-visible {
     transform: none;
   }
 }

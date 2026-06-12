@@ -3,6 +3,9 @@ import { type CSSProperties, useCallback, useEffect, useLayoutEffect, useRef, us
 import githubIcon from '../assets/portfolio/github_logo.svg'
 import pdfIcon from '../assets/portfolio/pdf_icon.svg'
 
+const PROJECT_MORPH_TOTAL_MS = 700
+const PROJECT_MORPH_REAL_SELECTOR_REVEAL_MS = 660
+
 type ProjectLink = {
   label: string
   href: string
@@ -26,12 +29,24 @@ type ProjectMorphRect = {
   width: number
 }
 
+type ProjectMorphTitleStyle = {
+  color: string
+  fontFamily: string
+  fontSize: string
+  fontWeight: string
+  letterSpacing: string
+  lineHeight: string
+  textShadow: string
+}
+
 type ProjectMorphRequest = {
   focusFromRect: ProjectMorphRect
   focusTitleFromRect: ProjectMorphRect
+  focusTitleFromStyle: ProjectMorphTitleStyle
   fromIndex: number
   selectedFromRect: ProjectMorphRect
   selectedTitleFromRect: ProjectMorphRect
+  selectedTitleFromStyle: ProjectMorphTitleStyle
   selectorFromRects: Partial<Record<number, ProjectMorphRect>>
   selectorTitleFromRects: Partial<Record<number, ProjectMorphRect>>
   toIndex: number
@@ -49,9 +64,11 @@ type ProjectMorphLayer = {
 
 type ProjectMorphTitleLayer = {
   fromRect: ProjectMorphRect
+  fromStyle: ProjectMorphTitleStyle
   id: string
   project: Project
   toRect: ProjectMorphRect
+  toStyle: ProjectMorphTitleStyle
   type: 'incoming' | 'outgoing' | 'shift'
 }
 
@@ -64,7 +81,13 @@ type ProjectMorphLayerStyle = CSSProperties & {
 }
 
 type ProjectMorphTitleLayerStyle = CSSProperties & {
+  '--project-morph-title-color': string
+  '--project-morph-title-font-family': string
   '--project-morph-title-font-size': string
+  '--project-morph-title-font-weight': string
+  '--project-morph-title-letter-spacing': string
+  '--project-morph-title-line-height': string
+  '--project-morph-title-shadow': string
   '--project-morph-title-x': string
   '--project-morph-title-y': string
 }
@@ -75,6 +98,39 @@ function toProjectMorphRect(rect: DOMRect): ProjectMorphRect {
     left: rect.left,
     top: rect.top,
     width: rect.width,
+  }
+}
+
+function getTextMorphRect(node: HTMLElement): ProjectMorphRect {
+  const textNode = Array.from(node.childNodes).find((childNode) => childNode.nodeType === Node.TEXT_NODE)
+
+  if (!textNode) {
+    return toProjectMorphRect(node.getBoundingClientRect())
+  }
+
+  const range = document.createRange()
+  range.selectNodeContents(textNode)
+  const rect = range.getBoundingClientRect()
+  range.detach()
+
+  if (rect.width === 0 || rect.height === 0) {
+    return toProjectMorphRect(node.getBoundingClientRect())
+  }
+
+  return toProjectMorphRect(rect)
+}
+
+function getTitleMorphStyle(node: HTMLElement): ProjectMorphTitleStyle {
+  const style = window.getComputedStyle(node)
+
+  return {
+    color: style.color,
+    fontFamily: style.fontFamily,
+    fontSize: style.fontSize,
+    fontWeight: style.fontWeight,
+    letterSpacing: style.letterSpacing,
+    lineHeight: style.lineHeight,
+    textShadow: style.textShadow,
   }
 }
 
@@ -290,7 +346,7 @@ function ProjectMorphLayer({
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => setIsActive(true))
-    const fallback = window.setTimeout(reportDone, 3400)
+    const fallback = window.setTimeout(reportDone, PROJECT_MORPH_TOTAL_MS)
 
     return () => {
       window.cancelAnimationFrame(frame)
@@ -303,11 +359,6 @@ function ProjectMorphLayer({
       aria-hidden="true"
       className={`project-morph-layer project-morph-layer-${layer.type}`}
       data-project-morph-active={isActive ? 'true' : undefined}
-      onTransitionEnd={(event) => {
-        if (event.target === event.currentTarget && event.propertyName === 'transform') {
-          reportDone()
-        }
-      }}
       style={
         {
           '--project-morph-from-height': `${layer.fromRect.height}px`,
@@ -326,21 +377,14 @@ function ProjectMorphLayer({
             <div className="project-morph-visual" aria-hidden="true">
               <ProjectVisualIcon type={layer.project.visualType} />
             </div>
-            <p>{layer.project.summary}</p>
-            <ul>
-              {layer.project.stack.slice(0, 4).map((stackItem) => (
-                <li key={stackItem}>{stackItem}</li>
-              ))}
-            </ul>
+            <div className="project-morph-content">
+              <ProjectContent project={layer.project} />
+            </div>
           </div>
         )}
       </div>
     </div>
   )
-}
-
-function getTitleFontSize(rect: ProjectMorphRect) {
-  return Math.max(14, Math.min(32, rect.height * 0.72))
 }
 
 function ProjectMorphTitleLayer({
@@ -353,6 +397,7 @@ function ProjectMorphTitleLayer({
   const [isActive, setIsActive] = useState(false)
   const hasReportedDoneRef = useRef(false)
   const targetRect = isActive ? layer.toRect : layer.fromRect
+  const targetStyle = isActive ? layer.toStyle : layer.fromStyle
 
   const reportDone = useCallback(() => {
     if (hasReportedDoneRef.current) {
@@ -365,7 +410,7 @@ function ProjectMorphTitleLayer({
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => setIsActive(true))
-    const fallback = window.setTimeout(reportDone, 3400)
+    const fallback = window.setTimeout(reportDone, PROJECT_MORPH_TOTAL_MS)
 
     return () => {
       window.cancelAnimationFrame(frame)
@@ -377,14 +422,15 @@ function ProjectMorphTitleLayer({
     <div
       aria-hidden="true"
       className={`project-morph-title-layer project-morph-title-layer-${layer.type}`}
-      onTransitionEnd={(event) => {
-        if (event.target === event.currentTarget && event.propertyName === 'transform') {
-          reportDone()
-        }
-      }}
       style={
         {
-          '--project-morph-title-font-size': `${getTitleFontSize(targetRect)}px`,
+          '--project-morph-title-color': targetStyle.color,
+          '--project-morph-title-font-family': targetStyle.fontFamily,
+          '--project-morph-title-font-size': targetStyle.fontSize,
+          '--project-morph-title-font-weight': targetStyle.fontWeight,
+          '--project-morph-title-letter-spacing': targetStyle.letterSpacing,
+          '--project-morph-title-line-height': targetStyle.lineHeight,
+          '--project-morph-title-shadow': targetStyle.textShadow,
           '--project-morph-title-x': `${targetRect.left}px`,
           '--project-morph-title-y': `${targetRect.top}px`,
           height: `${targetRect.height}px`,
@@ -402,6 +448,8 @@ export function ProjectsSection() {
   const [morphLayers, setMorphLayers] = useState<ProjectMorphLayer[]>([])
   const [morphTitleLayers, setMorphTitleLayers] = useState<ProjectMorphTitleLayer[]>([])
   const [morphRequest, setMorphRequest] = useState<ProjectMorphRequest | null>(null)
+  const [morphingSelectorIndex, setMorphingSelectorIndex] = useState<number | null>(null)
+  const selectorRevealTimeoutRef = useRef<number | null>(null)
   const focusCardRef = useRef<HTMLElement | null>(null)
   const focusTitleRef = useRef<HTMLHeadingElement | null>(null)
   const selectorRefs = useRef<Record<number, HTMLButtonElement | null>>({})
@@ -416,13 +464,24 @@ export function ProjectsSection() {
       const next = currentLayers.filter((currentLayer) => currentLayer.id !== layerId)
       if (next.length === 0) {
         setMorphRequest(null)
+        setMorphingSelectorIndex(null)
       }
       return next
     })
   }, [])
 
   const handleMorphTitleLayerDone = useCallback((layerId: string) => {
-    setMorphTitleLayers((currentLayers) => currentLayers.filter((currentLayer) => currentLayer.id !== layerId))
+    setMorphTitleLayers((currentLayers) => {
+      return currentLayers.filter((currentLayer) => currentLayer.id !== layerId)
+    })
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      if (selectorRevealTimeoutRef.current !== null) {
+        window.clearTimeout(selectorRevealTimeoutRef.current)
+      }
+    }
   }, [])
 
   const getSelectorRects = useCallback(() => {
@@ -451,10 +510,11 @@ export function ProjectsSection() {
     const selectorToRects = getSelectorRects()
     const selectorTitleToRects = getSelectorTitleRects()
     const outgoingToRect = selectorToRects[morphRequest.fromIndex]!
-    const outgoingTitleToRect = selectorTitleToRects[morphRequest.fromIndex]!
+    const outgoingTitleNode = selectorTitleRefs.current[morphRequest.fromIndex]
+    const outgoingTitleToRect = outgoingTitleNode ? getTextMorphRect(outgoingTitleNode) : selectorTitleToRects[morphRequest.fromIndex]!
 
     const focusRect = toProjectMorphRect(focusCard!.getBoundingClientRect())
-    const focusTitleRect = toProjectMorphRect(focusTitle!.getBoundingClientRect())
+    const focusTitleRect = getTextMorphRect(focusTitle!)
     const now = Date.now()
 
     setMorphLayers([
@@ -480,16 +540,20 @@ export function ProjectsSection() {
     setMorphTitleLayers([
       {
         fromRect: morphRequest.selectedTitleFromRect,
+        fromStyle: morphRequest.selectedTitleFromStyle,
         id: `title-incoming-${morphRequest.toIndex}-${now}`,
         project: projects[morphRequest.toIndex],
         toRect: focusTitleRect,
+        toStyle: getTitleMorphStyle(focusTitle!),
         type: 'incoming',
       },
       {
         fromRect: morphRequest.focusTitleFromRect,
+        fromStyle: morphRequest.focusTitleFromStyle,
         id: `title-outgoing-${morphRequest.fromIndex}-${now}`,
         project: projects[morphRequest.fromIndex],
         toRect: outgoingTitleToRect,
+        toStyle: getTitleMorphStyle(selectorTitleRefs.current[morphRequest.fromIndex]!),
         type: 'outgoing',
       },
     ])
@@ -501,6 +565,11 @@ export function ProjectsSection() {
     }
 
     if (prefersReducedMotion()) {
+      if (selectorRevealTimeoutRef.current !== null) {
+        window.clearTimeout(selectorRevealTimeoutRef.current)
+        selectorRevealTimeoutRef.current = null
+      }
+      setMorphingSelectorIndex(null)
       setActiveProjectIndex(index)
       return
     }
@@ -511,16 +580,31 @@ export function ProjectsSection() {
     const focusTitle = focusTitleRef.current
 
     if (!selectedCard || !selectedTitle || !focusCard || !focusTitle) {
+      if (selectorRevealTimeoutRef.current !== null) {
+        window.clearTimeout(selectorRevealTimeoutRef.current)
+        selectorRevealTimeoutRef.current = null
+      }
+      setMorphingSelectorIndex(null)
       setActiveProjectIndex(index)
       return
     }
 
+    if (selectorRevealTimeoutRef.current !== null) {
+      window.clearTimeout(selectorRevealTimeoutRef.current)
+    }
+    setMorphingSelectorIndex(activeProjectIndex)
+    selectorRevealTimeoutRef.current = window.setTimeout(() => {
+      setMorphingSelectorIndex(null)
+      selectorRevealTimeoutRef.current = null
+    }, PROJECT_MORPH_REAL_SELECTOR_REVEAL_MS)
     setMorphRequest({
       focusFromRect: toProjectMorphRect(focusCard.getBoundingClientRect()),
-      focusTitleFromRect: toProjectMorphRect(focusTitle.getBoundingClientRect()),
+      focusTitleFromRect: getTextMorphRect(focusTitle),
+      focusTitleFromStyle: getTitleMorphStyle(focusTitle),
       fromIndex: activeProjectIndex,
       selectedFromRect: toProjectMorphRect(selectedCard.getBoundingClientRect()),
-      selectedTitleFromRect: toProjectMorphRect(selectedTitle.getBoundingClientRect()),
+      selectedTitleFromRect: getTextMorphRect(selectedTitle),
+      selectedTitleFromStyle: getTitleMorphStyle(selectedTitle),
       selectorFromRects: {},
       selectorTitleFromRects: {},
       toIndex: index,
@@ -563,7 +647,7 @@ export function ProjectsSection() {
               type="button"
               disabled={isMorphing}
               data-project-selector-morphing={
-                isMorphing && (index === activeProjectIndex || index === morphRequest?.fromIndex)
+                isMorphing && index === morphingSelectorIndex
                   ? 'true'
                   : undefined
               }
