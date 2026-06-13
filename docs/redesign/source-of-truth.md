@@ -378,7 +378,18 @@ Phase 8 assumptions pending user review:
 Current Phase 9 implementation includes:
 
 - structured experience data in `src/components/ExperienceSection.tsx`
-- centered experience section with left-aligned frosted experience cards
+- pinned cue-card scroll interaction in `src/components/ExperienceSection.tsx` and `src/App.css`
+- Experience still appears after Hero and before Projects
+- the Experience section uses a deterministic scroll track with a sticky full-viewport stage
+- the viewport appears fixed while scrolling through Experience, then releases into Projects after the final card segment
+- mobile, tablet, and desktop use the same cue-card interaction model
+- mobile keeps the card stage centered like desktop, with the heading positioned within the sticky viewport so it does not push the active card off-center
+- cards advance in order: SPS Commerce, Montgomery Software Foundry Inc., then DataAnnotation
+- the active card is visually foremost while previous cards retreat straight back, fade, and blur subtly
+- incoming cards rise straight up from the bottom during the transition
+- each card has a solo-reading interval before the next card enters
+- reduced-motion users get the static stacked-card layout instead of the cue-card transforms
+- the card visuals remain the existing frosted experience cards rather than a new surface style
 - no pill-style section kicker tags above headings
 - entries for SPS Commerce, Montgomery Software Foundry Inc., and DataAnnotation
 - role, company, date label, summary, proof bullets, and skill tags for each entry
@@ -394,8 +405,19 @@ Phase 9 assumptions pending user review:
 Current Phase 10 implementation includes:
 
 - structured project data in `src/components/ProjectsSection.tsx`
-- equal-weight responsive project grid
-- compact frosted project cards with name, summary, stack tags, and links
+- Phase 1 focused project gallery structure in `src/components/ProjectsSection.tsx`
+- Pump Pal is the default focused project
+- the focused project renders as a larger frosted project card with a left-side default icon panel and right-side project content
+- inactive projects render as name-only selector cards in a bottom row
+- the bottom row matches the focus card width, expands inactive cards when they fit, and scrolls horizontally with standardized selector card widths when needed
+- desktop and tablet use a two-column focus card; mobile keeps the same gallery behavior with the visual stacked above the content
+- selecting an inactive project updates the focused project in local React state
+- project selection uses temporary liquid-glass FLIP-style overlay layers to morph the selected bottom-row card into the focus card and the previous focus card into the bottom row
+- during the morph, the real focus card and selector row are hidden so content does not visibly swap mid-animation
+- project names stay visible and move between their actual focus-card and selector-row text positions while outgoing focus-card details fade out quickly
+- unchanged bottom-row cards use shift overlays so row order changes animate instead of snapping
+- reduced-motion users get an instant project swap without morph layers
+- compact frosted project content still includes name, summary, stack tags, and links inside the focused card
 - visible proof bullets for every rendered project card
 - Pump Pal proof bullets synced from the current resume PDF
 - Custom Enterprise Databasing System is the rendered site counterpart to the resume's Fleet Maintenance Management System entry; its proof bullets are synced from that resume entry
@@ -412,7 +434,6 @@ Current Phase 10 implementation includes:
   - Custom Enterprise Databasing System
   - Rock, Paper, Scissors
   - Am I Cooked?
-  - CherryPick
 - project timeline and deployment-target claims are intentionally omitted because the extraction docs mark them as potentially stale
 - Chip Champ remains excluded because it was commented out in legacy and requires explicit approval to revive
 

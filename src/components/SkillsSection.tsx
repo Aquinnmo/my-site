@@ -1,33 +1,114 @@
+import { type CSSProperties } from 'react'
+
+import cIcon from '../assets/portfolio/skills/c_logo.svg'
+import claudeIcon from '../assets/portfolio/skills/claude_logo.svg'
+import cssIcon from '../assets/portfolio/skills/css_logo.svg'
+import dockerIcon from '../assets/portfolio/skills/docker_logo.svg'
+import expoIcon from '../assets/portfolio/skills/expo_logo.svg'
+import firebaseIcon from '../assets/portfolio/skills/firebase_logo.svg'
+import geminiIcon from '../assets/portfolio/skills/gemini_logo.svg'
+import githubIcon from '../assets/portfolio/skills/github_logo.svg'
+import javaIcon from '../assets/portfolio/skills/java_logo.svg'
+import mongoIcon from '../assets/portfolio/skills/mongodb_logo.svg'
+import nextIcon from '../assets/portfolio/skills/nextjs_logo.svg'
+import nodeIcon from '../assets/portfolio/skills/nodejs_logo.svg'
+import pythonIcon from '../assets/portfolio/skills/python_logo.svg'
+import reactIcon from '../assets/portfolio/skills/react_logo.svg'
+import renderIcon from '../assets/portfolio/skills/render_logo.svg'
+import supabaseIcon from '../assets/portfolio/skills/supabase_logo.svg'
+import typescriptIcon from '../assets/portfolio/skills/typescript_logo.svg'
+import vercelIcon from '../assets/portfolio/skills/vercel_logo.svg'
+
+type SkillGroupId = 'languages' | 'tools' | 'frameworks' | 'ai'
+
+type SkillIcon =
+  | {
+      kind: 'asset'
+      src: string
+    }
+  | {
+      kind: 'monogram'
+      label: string
+    }
+
+type SkillBubble = {
+  name: string
+  group: SkillGroupId
+  icon: SkillIcon
+  color: string
+}
+
 type SkillGroup = {
+  id: SkillGroupId
   title: string
-  icon: 'languages' | 'tools' | 'frameworks' | 'ai'
-  skills: string[]
+  icon: SkillGroupId
 }
 
 const skillGroups: SkillGroup[] = [
   {
+    id: 'languages',
     title: 'Languages',
     icon: 'languages',
-    skills: ['Kotlin', 'TypeScript', 'Python', 'Java', 'C', 'CSS'],
   },
   {
+    id: 'tools',
     title: 'Tools',
     icon: 'tools',
-    skills: ['GitHub', 'Vercel', 'Render', 'Supabase', 'Firebase', 'MongoDB', 'Docker', 'Redis', 'Kubernetes'],
   },
   {
+    id: 'frameworks',
     title: 'Frameworks',
     icon: 'frameworks',
-    skills: ['React', 'Spring Boot', 'Next.js', 'React Native', 'Expo', 'Node.js'],
   },
   {
+    id: 'ai',
     title: 'AI',
     icon: 'ai',
-    skills: ['Gemini API', 'Claude Code', 'AI Feature Design', 'Workflows and Integrations', 'MCP Servers'],
   },
 ]
 
-function SkillIcon({ type }: { type: SkillGroup['icon'] }) {
+const skillBubbles: SkillBubble[] = [
+  { name: 'Kotlin', group: 'languages', icon: { kind: 'monogram', label: 'K' }, color: '#a97bff' },
+  { name: 'TypeScript', group: 'languages', icon: { kind: 'asset', src: typescriptIcon }, color: '#3178c6' },
+  { name: 'Python', group: 'languages', icon: { kind: 'asset', src: pythonIcon }, color: '#ffd43b' },
+  { name: 'Java', group: 'languages', icon: { kind: 'asset', src: javaIcon }, color: '#e76f00' },
+  { name: 'C', group: 'languages', icon: { kind: 'asset', src: cIcon }, color: '#659ad2' },
+  { name: 'CSS', group: 'languages', icon: { kind: 'asset', src: cssIcon }, color: '#1572b6' },
+
+  { name: 'GitHub', group: 'tools', icon: { kind: 'asset', src: githubIcon }, color: '#f3fbff' },
+  { name: 'Vercel', group: 'tools', icon: { kind: 'asset', src: vercelIcon }, color: '#f3fbff' },
+  { name: 'Render', group: 'tools', icon: { kind: 'asset', src: renderIcon }, color: '#46e3b7' },
+  { name: 'Supabase', group: 'tools', icon: { kind: 'asset', src: supabaseIcon }, color: '#3ecf8e' },
+  { name: 'Firebase', group: 'tools', icon: { kind: 'asset', src: firebaseIcon }, color: '#ffca28' },
+  { name: 'MongoDB', group: 'tools', icon: { kind: 'asset', src: mongoIcon }, color: '#47a248' },
+  { name: 'Docker', group: 'tools', icon: { kind: 'asset', src: dockerIcon }, color: '#2496ed' },
+  { name: 'Redis', group: 'tools', icon: { kind: 'monogram', label: 'R' }, color: '#dc382d' },
+  { name: 'Kubernetes', group: 'tools', icon: { kind: 'monogram', label: 'K8s' }, color: '#326ce5' },
+
+  { name: 'React', group: 'frameworks', icon: { kind: 'asset', src: reactIcon }, color: '#61dafb' },
+  { name: 'Spring Boot', group: 'frameworks', icon: { kind: 'monogram', label: 'SB' }, color: '#6db33f' },
+  { name: 'Next.js', group: 'frameworks', icon: { kind: 'asset', src: nextIcon }, color: '#f3fbff' },
+  { name: 'React Native', group: 'frameworks', icon: { kind: 'asset', src: reactIcon }, color: '#61dafb' },
+  { name: 'Expo', group: 'frameworks', icon: { kind: 'asset', src: expoIcon }, color: '#f3fbff' },
+  { name: 'Node.js', group: 'frameworks', icon: { kind: 'asset', src: nodeIcon }, color: '#5fa04e' },
+
+  { name: 'Gemini API', group: 'ai', icon: { kind: 'asset', src: geminiIcon }, color: '#8ab4f8' },
+  { name: 'Claude Code', group: 'ai', icon: { kind: 'asset', src: claudeIcon }, color: '#d77655' },
+  { name: 'AI Feature Design', group: 'ai', icon: { kind: 'monogram', label: 'AI' }, color: '#87dbff' },
+  {
+    name: 'Workflows and Integrations',
+    group: 'ai',
+    icon: { kind: 'monogram', label: 'WI' },
+    color: '#b8f7d4',
+  },
+  { name: 'MCP Servers', group: 'ai', icon: { kind: 'monogram', label: 'MCP' }, color: '#c5efff' },
+]
+
+type SkillBubbleStyle = CSSProperties & {
+  '--skill-color': string
+}
+
+function GroupIcon({ type }: { type: SkillGroup['icon'] }) {
   if (type === 'languages') {
     return (
       <svg className="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -78,25 +159,64 @@ function SkillIcon({ type }: { type: SkillGroup['icon'] }) {
   return null
 }
 
+function SkillBubbleIcon({ icon }: { icon: SkillIcon }) {
+  if (icon.kind === 'asset') {
+    return <img className="skill-bubble-icon" src={icon.src} alt="" aria-hidden="true" />
+  }
+
+  return (
+    <span className="skill-bubble-icon skill-bubble-monogram" aria-hidden="true">
+      {icon.label}
+    </span>
+  )
+}
+
+function getSkillTooltipId(skillName: string) {
+  return `skill-tooltip-${skillName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
+}
+
 export function SkillsSection() {
   return (
     <section className="section-shell content-section" aria-labelledby="skills-title">
       <div className="section-heading-row">
         <h2 id="skills-title">Key Skills</h2>
       </div>
-      <div className="skills-grid">
+      <div className="skills-chart" role="group" aria-label="Grouped skills">
         {skillGroups.map((group) => (
-          <article className="skill-card" key={group.title}>
-            <div className="skill-card-header">
-              <SkillIcon type={group.icon} />
-              <h3>{group.title}</h3>
+          <div className="skills-chart-group" key={group.id}>
+            <div className="skills-chart-label" aria-hidden="true">
+              <GroupIcon type={group.icon} />
+              <span>{group.title}</span>
             </div>
-            <ul className="skill-list" aria-label={`${group.title} skills`}>
-              {group.skills.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul>
-          </article>
+            <div className="skills-chart-row">
+              {skillBubbles
+                .filter((skill) => skill.group === group.id)
+                .map((skill) => {
+                  const skillStyle: SkillBubbleStyle = {
+                    '--skill-color': skill.color,
+                  }
+                  const tooltipId = getSkillTooltipId(skill.name)
+
+                  return (
+                    <button
+                      className="skill-bubble"
+                      data-skill-group={skill.group}
+                      data-skill-invert-icon={skill.icon.kind === 'asset' && skill.color === '#f3fbff' ? 'true' : undefined}
+                      key={skill.name}
+                      style={skillStyle}
+                      type="button"
+                      aria-label={skill.name}
+                      aria-describedby={tooltipId}
+                    >
+                      <SkillBubbleIcon icon={skill.icon} />
+                      <span className="skill-tooltip" id={tooltipId} role="tooltip">
+                        {skill.name}
+                      </span>
+                    </button>
+                  )
+                })}
+            </div>
+          </div>
         ))}
       </div>
     </section>
