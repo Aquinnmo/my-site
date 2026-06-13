@@ -1609,9 +1609,22 @@ svg.action-icon {
   min-width: 0;
 }
 
+.project-focus-card {
+  transition: opacity 0ms;
+}
+
 .project-focus-card[data-project-focus-morphing='true'] {
   opacity: 0;
-  transition-duration: 0ms;
+}
+
+.project-focus-card > * {
+  opacity: 1;
+  transition: opacity 260ms ease 220ms;
+}
+
+.project-focus-card[data-project-focus-morphing='true'] > * {
+  opacity: 0;
+  transition: opacity 0ms;
 }
 
 .project-icon-row {
@@ -1702,8 +1715,6 @@ svg.action-icon {
     width 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
     height 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
     transform 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
-    opacity 520ms ease 60ms,
-    filter 520ms ease 60ms,
     border-radius 520ms ease 60ms;
   backdrop-filter: blur(22px) saturate(1.16);
   will-change: width, height, transform, opacity, filter;
@@ -1717,6 +1728,30 @@ svg.action-icon {
 .project-morph-layer-incoming {
   z-index: 184;
   filter: none;
+  opacity: 0;
+  transition:
+    width 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    height 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    transform 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    opacity 320ms ease 120ms,
+    filter 320ms ease 120ms,
+    border-radius 520ms ease 60ms;
+}
+
+.project-morph-layer-incoming[data-project-morph-phase='morphing'],
+.project-morph-layer-incoming[data-project-morph-phase='exiting'] {
+  opacity: 1;
+}
+
+.project-morph-layer-incoming[data-project-morph-phase='exiting'] {
+  opacity: 0;
+  transition:
+    width 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    height 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    transform 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    opacity 200ms ease,
+    filter 200ms ease,
+    border-radius 520ms ease 60ms;
 }
 
 .project-morph-layer-outgoing {
@@ -1729,9 +1764,17 @@ svg.action-icon {
   opacity: 1;
   filter: none;
   transform-origin: center;
+  transition:
+    width 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    height 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    transform 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
+    opacity 360ms ease 60ms,
+    filter 360ms ease 60ms,
+    border-radius 520ms ease 60ms;
 }
 
-.project-morph-layer-outgoing[data-project-morph-active='true'] {
+.project-morph-layer-outgoing[data-project-morph-phase='morphing'],
+.project-morph-layer-outgoing[data-project-morph-phase='exiting'] {
   opacity: 0;
   filter: blur(0.75rem);
   transform: translate3d(var(--project-morph-x), var(--project-morph-y), 0) scale(0.88);
@@ -1784,35 +1827,33 @@ svg.action-icon {
   filter: blur(0);
   transform: scale(1);
   transition:
-    opacity 180ms ease,
-    transform 180ms ease,
-    filter 180ms ease;
+    opacity 220ms ease 40ms,
+    transform 220ms ease 40ms,
+    filter 220ms ease 40ms;
 }
 
-.project-morph-layer-outgoing[data-project-morph-active='true'] .project-morph-header,
-.project-morph-layer-outgoing[data-project-morph-active='true'] .project-morph-detail {
-  opacity: 0.18;
-  filter: blur(0.45rem);
-  transform: scale(0.96);
-}
-
-.project-morph-layer-incoming .project-morph-header,
-.project-morph-layer-incoming .project-morph-detail {
+.project-morph-layer-outgoing[data-project-morph-phase='morphing'] .project-morph-header,
+.project-morph-layer-outgoing[data-project-morph-phase='morphing'] .project-morph-detail,
+.project-morph-layer-outgoing[data-project-morph-phase='exiting'] .project-morph-header,
+.project-morph-layer-outgoing[data-project-morph-phase='exiting'] .project-morph-detail {
   opacity: 0;
-  filter: blur(0.65rem);
-  transform: scale(0.92);
-  transition:
-    opacity 120ms ease,
-    transform 120ms ease,
-    filter 120ms ease;
-  transition-delay: 560ms;
+  filter: blur(0.5rem);
+  transform: scale(0.95);
 }
 
-.project-morph-layer-incoming[data-project-morph-active='true'] .project-morph-header,
-.project-morph-layer-incoming[data-project-morph-active='true'] .project-morph-detail {
-  opacity: 1;
-  filter: blur(0);
-  transform: scale(1);
+.project-morph-surface-icon-only {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  padding: 0;
+}
+
+.project-morph-surface-icon-only .project-visual-icon {
+  width: 58%;
+  height: 58%;
+  min-width: auto;
+  stroke-width: 3.2;
 }
 
 .project-morph-visual {

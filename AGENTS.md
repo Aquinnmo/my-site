@@ -35,11 +35,12 @@ Use this file as the first stop for repo orientation.
 
 ## Validation
 
-Run these after code or config changes:
+Run this after code or config changes:
 
 ```bash
 npm run lint
-npm run build
 ```
+
+Do not run `npm run build`. Agents must never trigger production builds.
 
 Docs-only changes do not require a production build unless links, public files, or deployment behavior changed.

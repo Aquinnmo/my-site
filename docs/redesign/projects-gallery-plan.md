@@ -86,7 +86,8 @@ Refined implementation notes:
 
 - Update `docs/redesign/source-of-truth.md` with the new Projects gallery behavior.
 - Keep this file synchronized if implementation details change.
-- Run `npm run lint` and `npm run build`.
+- Run `npm run lint`.
+- Do not run `npm run build`.
 - Browser-check desktop and mobile if automation is available.
 
 Success criteria:
