@@ -3,10 +3,10 @@ import { type CSSProperties, useCallback, useEffect, useRef, useState } from 're
 import githubIcon from '../assets/portfolio/github_logo.svg'
 import pdfIcon from '../assets/portfolio/pdf_icon.svg'
 
-const OUTGOING_CONTENT_FADE_MS = 200
-const OUTGOING_CARD_EXIT_MS = 300
-const INCOMING_MORPH_MS = 580
-const INCOMING_REVEAL_MS = 260
+const OUTGOING_CONTENT_FADE_MS = 160
+const OUTGOING_CARD_EXIT_MS = 240
+const INCOMING_MORPH_MS = 464
+const INCOMING_REVEAL_MS = 208
 
 type ProjectLink = {
   label: string

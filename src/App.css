@@ -1610,7 +1610,7 @@ svg.action-icon {
 }
 
 .project-focus-card {
-  transition: opacity 130ms ease 130ms;
+  transition: opacity 104ms ease 104ms;
 }
 
 .project-focus-card[data-project-focus-morph-phase='initial'],
@@ -1633,7 +1633,7 @@ svg.action-icon {
 
 .project-focus-card > * {
   opacity: 1;
-  transition: opacity 130ms ease 130ms;
+  transition: opacity 104ms ease 104ms;
 }
 
 .project-focus-card[data-project-focus-morph-phase='initial'] > *,
@@ -1730,10 +1730,10 @@ svg.action-icon {
   pointer-events: none;
   transform: translate3d(var(--project-morph-x), var(--project-morph-y), 0);
   transition:
-    width 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
-    height 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
-    transform 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
-    border-radius 520ms ease 60ms;
+    width 416ms cubic-bezier(0.2, 0.86, 0.25, 1) 48ms,
+    height 416ms cubic-bezier(0.2, 0.86, 0.25, 1) 48ms,
+    transform 416ms cubic-bezier(0.2, 0.86, 0.25, 1) 48ms,
+    border-radius 416ms ease 48ms;
   backdrop-filter: blur(22px) saturate(1.16);
   will-change: width, height, transform, opacity, filter;
 }
@@ -1748,11 +1748,11 @@ svg.action-icon {
   opacity: 1;
   filter: none;
   transition:
-    opacity 130ms ease 130ms,
-    width 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
-    height 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
-    transform 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
-    border-radius 520ms ease 60ms;
+    opacity 104ms ease 104ms,
+    width 416ms cubic-bezier(0.2, 0.86, 0.25, 1) 48ms,
+    height 416ms cubic-bezier(0.2, 0.86, 0.25, 1) 48ms,
+    transform 416ms cubic-bezier(0.2, 0.86, 0.25, 1) 48ms,
+    border-radius 416ms ease 48ms;
 }
 
 .project-morph-layer-incoming[data-project-morph-phase='incomingReveal'] {
@@ -1760,7 +1760,7 @@ svg.action-icon {
 }
 
 .project-morph-layer-incoming .project-morph-surface-icon-only {
-  transition: opacity 130ms ease;
+  transition: opacity 104ms ease;
 }
 
 .project-morph-layer-incoming[data-project-morph-phase='incomingReveal'] .project-morph-surface-icon-only {
@@ -1779,9 +1779,9 @@ svg.action-icon {
   transform: translate3d(var(--project-morph-x), var(--project-morph-y), 0) scale(1);
   transform-origin: center;
   transition:
-    opacity 300ms ease,
-    transform 300ms ease,
-    filter 300ms ease;
+    opacity 240ms ease,
+    transform 240ms ease,
+    filter 240ms ease;
 }
 
 .project-morph-layer-outgoing[data-project-morph-phase='outgoingCardExit'],
@@ -1809,7 +1809,7 @@ svg.action-icon {
   padding: clamp(1rem, 2.3vw, 1.25rem);
   text-align: left;
   opacity: 1;
-  transition: opacity 260ms ease;
+  transition: opacity 208ms ease;
 }
 
 .project-morph-header {
@@ -1831,7 +1831,7 @@ svg.action-icon {
 .project-morph-layer-outgoing .project-morph-visual,
 .project-morph-layer-outgoing .project-morph-content {
   opacity: 1;
-  transition: opacity 200ms ease;
+  transition: opacity 160ms ease;
 }
 
 .project-morph-layer-outgoing[data-project-morph-phase='outgoingContentFade'] .project-morph-header,
