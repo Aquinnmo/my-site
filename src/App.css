@@ -1610,21 +1610,39 @@ svg.action-icon {
 }
 
 .project-focus-card {
-  transition: opacity 0ms;
+  transition: opacity 130ms ease 130ms;
 }
 
-.project-focus-card[data-project-focus-morphing='true'] {
+.project-focus-card[data-project-focus-morph-phase='initial'],
+.project-focus-card[data-project-focus-morph-phase='outgoingContentFade'],
+.project-focus-card[data-project-focus-morph-phase='outgoingCardExit'],
+.project-focus-card[data-project-focus-morph-phase='incomingMorph'],
+.project-focus-card[data-project-focus-morph-phase='incomingReveal'] {
+  height: var(--project-focus-morph-height);
+  min-height: var(--project-focus-morph-height);
+}
+
+.project-focus-card[data-project-focus-morph-phase='initial'],
+.project-focus-card[data-project-focus-morph-phase='outgoingContentFade'],
+.project-focus-card[data-project-focus-morph-phase='outgoingCardExit'],
+.project-focus-card[data-project-focus-morph-phase='incomingMorph'] {
   opacity: 0;
+  transition-duration: 0ms;
+  transition-delay: 0ms;
 }
 
 .project-focus-card > * {
   opacity: 1;
-  transition: opacity 260ms ease 220ms;
+  transition: opacity 130ms ease 130ms;
 }
 
-.project-focus-card[data-project-focus-morphing='true'] > * {
+.project-focus-card[data-project-focus-morph-phase='initial'] > *,
+.project-focus-card[data-project-focus-morph-phase='outgoingContentFade'] > *,
+.project-focus-card[data-project-focus-morph-phase='outgoingCardExit'] > *,
+.project-focus-card[data-project-focus-morph-phase='incomingMorph'] > * {
   opacity: 0;
-  transition: opacity 0ms;
+  transition-duration: 0ms;
+  transition-delay: 0ms;
 }
 
 .project-icon-row {
@@ -1727,31 +1745,26 @@ svg.action-icon {
 
 .project-morph-layer-incoming {
   z-index: 184;
-  filter: none;
-  opacity: 0;
-  transition:
-    width 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
-    height 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
-    transform 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
-    opacity 320ms ease 120ms,
-    filter 320ms ease 120ms,
-    border-radius 520ms ease 60ms;
-}
-
-.project-morph-layer-incoming[data-project-morph-phase='morphing'],
-.project-morph-layer-incoming[data-project-morph-phase='exiting'] {
   opacity: 1;
-}
-
-.project-morph-layer-incoming[data-project-morph-phase='exiting'] {
-  opacity: 0;
+  filter: none;
   transition:
+    opacity 130ms ease 130ms,
     width 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
     height 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
     transform 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
-    opacity 200ms ease,
-    filter 200ms ease,
     border-radius 520ms ease 60ms;
+}
+
+.project-morph-layer-incoming[data-project-morph-phase='incomingReveal'] {
+  opacity: 0;
+}
+
+.project-morph-layer-incoming .project-morph-surface-icon-only {
+  transition: opacity 130ms ease;
+}
+
+.project-morph-layer-incoming[data-project-morph-phase='incomingReveal'] .project-morph-surface-icon-only {
+  opacity: 0;
 }
 
 .project-morph-layer-outgoing {
@@ -1763,18 +1776,17 @@ svg.action-icon {
     inset 0 -1rem 1.8rem color-mix(in srgb, var(--color-shadow) 16%, transparent);
   opacity: 1;
   filter: none;
+  transform: translate3d(var(--project-morph-x), var(--project-morph-y), 0) scale(1);
   transform-origin: center;
   transition:
-    width 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
-    height 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
-    transform 520ms cubic-bezier(0.2, 0.86, 0.25, 1) 60ms,
-    opacity 360ms ease 60ms,
-    filter 360ms ease 60ms,
-    border-radius 520ms ease 60ms;
+    opacity 300ms ease,
+    transform 300ms ease,
+    filter 300ms ease;
 }
 
-.project-morph-layer-outgoing[data-project-morph-phase='morphing'],
-.project-morph-layer-outgoing[data-project-morph-phase='exiting'] {
+.project-morph-layer-outgoing[data-project-morph-phase='outgoingCardExit'],
+.project-morph-layer-outgoing[data-project-morph-phase='incomingMorph'],
+.project-morph-layer-outgoing[data-project-morph-phase='incomingReveal'] {
   opacity: 0;
   filter: blur(0.75rem);
   transform: translate3d(var(--project-morph-x), var(--project-morph-y), 0) scale(0.88);
@@ -1785,16 +1797,19 @@ svg.action-icon {
 }
 
 .project-morph-surface {
-  position: relative;
+  position: absolute;
+  inset: 0;
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
   grid-template-rows: auto 1fr;
   gap: clamp(1rem, 2.5vw, 1.5rem);
+  align-content: start;
   align-items: stretch;
-  height: 100%;
   min-width: 0;
   padding: clamp(1rem, 2.3vw, 1.25rem);
   text-align: left;
+  opacity: 1;
+  transition: opacity 260ms ease;
 }
 
 .project-morph-header {
@@ -1812,36 +1827,30 @@ svg.action-icon {
   letter-spacing: -0.035em;
 }
 
-.project-morph-detail {
-  position: static;
-  display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-  align-items: stretch;
-  gap: clamp(1rem, 2.5vw, 1.5rem);
-  min-height: 0;
-}
-
 .project-morph-layer-outgoing .project-morph-header,
-.project-morph-layer-outgoing .project-morph-detail {
+.project-morph-layer-outgoing .project-morph-visual,
+.project-morph-layer-outgoing .project-morph-content {
   opacity: 1;
-  filter: blur(0);
-  transform: scale(1);
-  transition:
-    opacity 220ms ease 40ms,
-    transform 220ms ease 40ms,
-    filter 220ms ease 40ms;
+  transition: opacity 200ms ease;
 }
 
-.project-morph-layer-outgoing[data-project-morph-phase='morphing'] .project-morph-header,
-.project-morph-layer-outgoing[data-project-morph-phase='morphing'] .project-morph-detail,
-.project-morph-layer-outgoing[data-project-morph-phase='exiting'] .project-morph-header,
-.project-morph-layer-outgoing[data-project-morph-phase='exiting'] .project-morph-detail {
+.project-morph-layer-outgoing[data-project-morph-phase='outgoingContentFade'] .project-morph-header,
+.project-morph-layer-outgoing[data-project-morph-phase='outgoingContentFade'] .project-morph-visual,
+.project-morph-layer-outgoing[data-project-morph-phase='outgoingContentFade'] .project-morph-content,
+.project-morph-layer-outgoing[data-project-morph-phase='outgoingCardExit'] .project-morph-header,
+.project-morph-layer-outgoing[data-project-morph-phase='outgoingCardExit'] .project-morph-visual,
+.project-morph-layer-outgoing[data-project-morph-phase='outgoingCardExit'] .project-morph-content,
+.project-morph-layer-outgoing[data-project-morph-phase='incomingMorph'] .project-morph-header,
+.project-morph-layer-outgoing[data-project-morph-phase='incomingMorph'] .project-morph-visual,
+.project-morph-layer-outgoing[data-project-morph-phase='incomingMorph'] .project-morph-content,
+.project-morph-layer-outgoing[data-project-morph-phase='incomingReveal'] .project-morph-header,
+.project-morph-layer-outgoing[data-project-morph-phase='incomingReveal'] .project-morph-visual,
+.project-morph-layer-outgoing[data-project-morph-phase='incomingReveal'] .project-morph-content {
   opacity: 0;
-  filter: blur(0.5rem);
-  transform: scale(0.95);
 }
 
 .project-morph-surface-icon-only {
+  z-index: 1;
   display: grid;
   place-items: center;
   grid-template-columns: 1fr;
@@ -2311,10 +2320,6 @@ svg.project-link-icon {
     min-height: auto;
   }
 
-  .project-morph-detail {
-    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
-  }
-
   .project-focus-visual {
     min-height: 100%;
   }
@@ -2592,11 +2597,6 @@ svg.project-link-icon {
     min-height: 0;
   }
 
-  .project-morph-detail {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-  }
-
   .project-focus-visual {
     min-height: clamp(10rem, 38vw, 13rem);
     aspect-ratio: 16 / 9;
@@ -2860,6 +2860,20 @@ svg.project-link-icon {
 
   .footer-link:hover {
     transform: none;
+  }
+
+  .project-morph-layer,
+  .project-morph-layer-incoming,
+  .project-morph-layer-outgoing,
+  .project-morph-surface,
+  .project-morph-layer-outgoing .project-morph-header,
+  .project-morph-layer-outgoing .project-morph-visual,
+  .project-morph-layer-outgoing .project-morph-content,
+  .project-morph-layer-incoming .project-morph-header,
+  .project-morph-layer-incoming .project-morph-visual,
+  .project-morph-layer-incoming .project-morph-content {
+    transition: none !important;
+    animation: none !important;
   }
 }
 

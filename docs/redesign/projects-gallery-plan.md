@@ -1,117 +1,200 @@
-# Projects Gallery Redesign Plan
+# Projects Top-Icon Liquid Glass Morph Plan
 
 ## Summary
 
-Redesign the Projects section from an equal-weight grid into a focused gallery: one large frosted focus card, with all other projects shown as name-only selector cards in a bottom row that matches the focus card width. Default focus is `Pump Pal`. Mobile uses the same gallery model, with the focus card stacked vertically. Project content stays unchanged.
+Keep the current Projects layout with all project icons visible at the top of the Projects section. When a visitor selects an icon, that icon becomes the incoming liquid-glass object and morphs into the focused project card. The old focused card does not move toward the icon row; it pushes backward into the screen, blurs, and fades out.
 
-## Key Changes
+## Phase 1: Keep The Current Layout
 
-- Replace the static project grid in `ProjectsSection.tsx` with stateful gallery selection:
-  - `activeProjectIndex` starts at `0` (`Pump Pal`).
-  - The focus card renders the active project.
-  - The bottom row renders every inactive project as a button/card with only the project name.
-  - Selecting a bottom-row card swaps it into focus and moves the previous active project into the bottom row.
-- Preserve current focus-card content and visual language:
-  - Right side contains the existing title, summary, proof bullets, stack tags, and links.
-  - Left side contains a project visual placeholder for now: a frosted icon panel with a unique default icon per project.
-  - The focus card keeps the current `.project-card` frosted surface, border, blur, shadow, typography, and link/tag styling.
-- Implement the bottom row as a full-width gallery tray:
-  - Tray width equals the focus card width.
-  - If inactive name cards fit, they expand evenly to fill the tray.
-  - If inactive name cards overflow, they use a standardized fixed width and scroll horizontally.
-  - Name cards contain only project names, no descriptions, tags, proof bullets, or links.
-  - Tray scrolling is horizontal only and should not introduce visible global scrollbar chrome.
-- Implement the liquid-glass morph with CSS FLIP, no new dependencies:
-  - On selection, measure the selected tray card and current focus card before changing state.
-  - Render two temporary glassy transition layers: selected project morphs from tray position to focus position, previous focus morphs from focus position to its new tray position.
-  - Use transform, scale, opacity, blur, border-color, and background interpolation to create the liquid-glass feel.
-  - During animation, hide the real selected tray/focus surfaces visually but keep layout stable.
-  - After animation completes, remove transition layers and reveal the settled gallery.
-  - `prefers-reduced-motion: reduce` skips the morph and swaps instantly.
+Status: implemented in the current working tree.
 
-## Phase 1: Structure
-
-- Refactor Projects into a gallery layout without changing project data or copy.
-- Add focus card, visual placeholder area, content area, and bottom selector row.
-- Keep semantic heading and section order unchanged.
+- Keep the existing top icon row in `src/components/ProjectsSection.tsx`.
+- Keep all project icons visible at all times, including the active project icon.
+- Keep the focused project card below the icon row.
+- Keep the icon row at the top of the Projects section, not sticky to the viewport.
+- Do not restore the old bottom selector row.
 
 Success criteria:
 
-- Projects still appears after Experience and before Skills.
-- Pump Pal is focused by default.
-- Inactive projects appear only as name cards in the bottom row.
-- Existing project content remains available in the focus card.
+- All icons are visible above the focused card.
+- The active icon remains visible.
+- The focused project content still renders below the icons.
 
-Status: implemented in `src/components/ProjectsSection.tsx` and `src/App.css`.
+## Phase 2: Restore The Useful Original Morph Code
 
-## Phase 2: Layout And Responsiveness
+Status: superseded by the smoother title fade-in change.
 
-- Style the focus card as a two-column card on desktop/tablet: visual left, content right.
-- Stack the visual above content on mobile.
-- Make the bottom row exactly match the focus card width.
-- Implement expand-to-fill and horizontal-overflow behavior for selector cards.
+Do not restore the original title-morph pieces. They caused visible title jank because the title moved independently from the card content.
+
+Keep the useful original morph idea limited to fixed glass overlay layers for the card surface.
 
 Success criteria:
 
-- Desktop focus card reads as a larger version of the current frosted project card.
-- Mobile keeps the same gallery behavior without clipped text or overlap.
-- Bottom selector cards fill available width when possible and scroll horizontally when needed.
+- The title remains in the normal morph card header.
+- The title fades in with the rest of the incoming card content.
+- No separate title layer or title measurement code exists.
 
-Status: implemented in `src/App.css`.
+## Phase 3: Rewrite The Morph State
 
-## Phase 3: Morph Animation
+Status: implemented.
 
-- Add FLIP measurement and temporary transition layers.
-- Animate selected project from tray to focus and previous focus from focus to tray.
-- Add reduced-motion fallback.
+Change the morph state so it matches the new behavior.
 
-Success criteria:
+`ProjectMorphLayer` should only support:
 
-- Selecting a project produces a smooth liquid-glass swap.
-- Layout does not jump during or after the animation.
-- Keyboard users can tab through selector buttons and activate them.
-- Reduced-motion users get an instant, stable swap.
+- `incoming`
+- `outgoing`
 
-Status: implemented in `src/components/ProjectsSection.tsx` and `src/App.css`.
+`ProjectMorphRequest` should store:
 
-Refined implementation notes:
+- `fromIndex`
+- `toIndex`
+- `selectedIconFromRect`
+- `focusFromRect`
 
-- The real focus card and real selector row are hidden during the morph so content does not visibly swap mid-animation.
-- The selected bottom-row card morphs into the focus card as a title-preserving overlay; the title moves between its real text positions instead of being centered in the card.
-- The outgoing focus card morphs back to the selector row behind the incoming overlay.
-- Outgoing focus-card detail fades out quickly, leaving the project name visible as it scales down.
-- Other bottom-row cards receive shift overlays so the row moves smoothly when the selected project changes row order.
-
-## Phase 4: Docs And Validation
-
-- Update `docs/redesign/source-of-truth.md` with the new Projects gallery behavior.
-- Keep this file synchronized if implementation details change.
-- Run `npm run lint`.
-- Do not run `npm run build`.
-- Browser-check desktop and mobile if automation is available.
+Remove any selector-row state and refs that only existed for bottom cards.
 
 Success criteria:
 
-- Lint passes.
-- Production build passes.
-- Docs match the implemented behavior.
-- No regressions to Experience, Skills, footer, theme toggle, page switcher, or snowfall.
+- No code expects an outgoing project to travel to a selector card.
+- No code depends on `.project-selector-row`, `.project-selector-card`, or `.project-selector-title`.
+- The selected icon rect is the only source rect for the incoming animation.
 
-## Tests And Scenarios
+## Phase 4: Change Click Handling
 
-- Default load shows Pump Pal in focus.
-- Clicking each inactive project swaps it into focus.
-- Repeated rapid clicks do not leave stale overlay layers or broken state.
-- Bottom row remains focus-card width at desktop, tablet, and mobile sizes.
-- Selector row scrolls horizontally if future project count exceeds available width.
-- All links in the focused card still open correctly.
-- `prefers-reduced-motion: reduce` disables morph animation.
-- Keyboard tab and Enter/Space selection work for bottom-row project buttons.
+Status: implemented.
+
+In `handleProjectSelect(index)`:
+
+- Return if the clicked project is already active.
+- Return if `isMorphing` is true.
+- If reduced motion is enabled, call `setActiveProjectIndex(index)` and stop.
+- Measure the clicked icon button using `iconRefs.current[index].getBoundingClientRect()`.
+- Measure the current focus card using `focusCardRef.current.getBoundingClientRect()`.
+- Store those values in `morphRequest`.
+- Then call `setActiveProjectIndex(index)`.
+
+Success criteria:
+
+- The new active project is chosen after measurements are saved.
+- Reduced-motion users get an instant swap.
+- Rapid clicks cannot stack multiple broken animations.
+
+## Phase 5: Build The New Overlay Layers
+
+Status: implemented.
+
+In the `useLayoutEffect` that runs after `activeProjectIndex` changes:
+
+- Measure the new focus card rect.
+- Measure the new focus title rect and style.
+- Create one `incoming` morph layer:
+  - project is the newly selected project
+  - starts at `selectedIconFromRect`
+  - ends at the new focus card rect
+- Create one `outgoing` morph layer:
+  - project is the old focused project
+  - starts at `focusFromRect`
+  - ends at `focusFromRect`
+- Do not create a separate incoming title layer; the title should fade in with the rest of the incoming card content.
+
+Do not create a layer that moves the old card into the icon row.
+
+Success criteria:
+
+- Selected icon expands into the focused card.
+- Old focused card stays in place while retreating.
+- New title fades in exactly where the focused card title belongs.
+
+## Phase 6: Rewrite The CSS Animation
+
+Status: implemented.
+
+In `src/App.css`:
+
+- Keep `.project-icon-row` and `.project-icon-card`.
+- Remove unused bottom-selector CSS if present:
+  - `.project-selector-row`
+  - `.project-selector-card`
+  - `.project-selector-title`
+  - `.project-selector-card[data-project-selector-morphing='true']`
+
+Incoming layer behavior:
+
+- Starts icon-sized.
+- Expands into the focus-card rect.
+- Uses the existing frosted/liquid glass border, blur, shadow, and background.
+- Keeps full project details hidden until the end of the animation.
+
+Outgoing layer behavior:
+
+- Does not move to the icon row.
+- Uses the old focus card position.
+- Animates to `opacity: 0`.
+- Animates to `filter: blur(0.75rem)`.
+- Animates to `scale(0.88)`.
+- Sits behind the incoming layer.
+
+Title behavior:
+
+- Do not use `.project-morph-title-layer`.
+- Fade `.project-morph-header` in with `.project-morph-detail`.
+- Keep the title in the normal card grid so there is no independent title-position jank.
+
+Success criteria:
+
+- The incoming animation reads as liquid glass.
+- The outgoing card visually pushes backward and disappears.
+- The old card never travels upward to the icon row.
+
+## Phase 7: Update Docs
+
+Update `docs/redesign/projects-gallery-plan.md`:
+
+- Replace bottom-selector language with top-icon-row language.
+- State that all icons stay visible.
+- State that selected icon morphs into the focused project.
+- State that old focused project retreats and fades.
+
+Update `docs/redesign/source-of-truth.md`:
+
+- Active project icon remains visible.
+- All icons stay at the top of the Projects section.
+- Selected icon morphs into the focused card.
+- Previous focused card pushes backward and fades out.
+- Reduced motion swaps instantly.
+
+Success criteria:
+
+- Docs match the implemented animation.
+- Future agents do not reintroduce the bottom selector row.
+
+## Phase 8: Validate
+
+Run:
+
+```bash
+npm run lint
+```
+
+Do not run `npm run build`.
+
+Manual checks:
+
+- Page loads with Pump Pal focused.
+- All four icons are visible above the focused card.
+- Clicking each icon changes the focused project.
+- Selected icon morphs into the project card.
+- Previous card fades backward.
+- Previous card never moves toward the icon row.
+- Active icon remains visible during the animation.
+- Rapid clicks during animation do not break state.
+- Reduced-motion mode swaps instantly.
+- Mobile has no overlap, clipped text, or layout jump.
 
 ## Assumptions
 
-- Current rendered project list remains the source of truth; no new projects are added in this redesign.
-- Default project icons are local inline SVG/CSS icons, not real screenshots yet.
 - No new animation library is added.
-- The active project is not duplicated in the bottom row while focused.
-- Selection state does not persist across page reloads.
+- The icon row remains at the top of the Projects section, not sticky.
+- The current project data and copy do not change.
+- The focused card layout remains desktop two-column and mobile stacked.
