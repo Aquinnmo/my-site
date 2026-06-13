@@ -2402,6 +2402,16 @@ svg.project-link-icon {
   }
 }
 
+.footer-legal {
+  max-width: 38rem;
+  margin: 2.2rem auto 0;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  opacity: 0.72;
+}
+
 @media (max-width: 48rem) {
   .page-switcher {
     top: 0.75rem;

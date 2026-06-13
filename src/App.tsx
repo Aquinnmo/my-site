@@ -5,6 +5,7 @@ import { Background } from './components/Background'
 import { FoundryPage } from './components/FoundryPage'
 import { PageSwitcher } from './components/PageSwitcher'
 import { PortfolioPage } from './components/PortfolioPage'
+import { FoundryFooter } from './components/FoundryFooter'
 import { SiteFooter } from './components/SiteFooter'
 import { ThemeToggle } from './components/ThemeToggle'
 import './App.css'
@@ -102,7 +103,7 @@ function App() {
       <div className="route-content">
         {route === 'foundry' ? <FoundryPage /> : <PortfolioPage />}
 
-        <SiteFooter />
+        {route === 'foundry' ? <FoundryFooter /> : <SiteFooter />}
       </div>
     </div>
   )
