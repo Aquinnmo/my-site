@@ -2042,8 +2042,8 @@ svg.project-link-icon {
 }
 
 .skill-icon {
-  width: 2.1rem;
-  height: 2.1rem;
+  width: 2.5rem;
+  height: 2.5rem;
   flex: 0 0 auto;
   border: 1px solid color-mix(in srgb, var(--color-ice-edge) 82%, transparent);
   border-radius: 0.72rem;
@@ -2130,7 +2130,7 @@ svg.project-link-icon {
   border-radius: 999px;
   padding: 0.35rem 0.62rem;
   color: var(--color-text);
-  background: black;
+  background: var(--route-transition-base);
   box-shadow: 0 0.55rem 1.2rem color-mix(in srgb, var(--color-shadow) 46%, transparent);
   font-size: 0.82rem;
   font-weight: 850;
