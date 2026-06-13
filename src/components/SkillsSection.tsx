@@ -36,15 +36,12 @@ type SkillBubble = {
   group: SkillGroupId
   icon: SkillIcon
   color: string
-  x: number
-  y: number
 }
 
 type SkillGroup = {
   id: SkillGroupId
   title: string
   icon: SkillGroupId
-  labelPosition: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
 }
 
 const skillGroups: SkillGroup[] = [
@@ -52,72 +49,63 @@ const skillGroups: SkillGroup[] = [
     id: 'languages',
     title: 'Languages',
     icon: 'languages',
-    labelPosition: 'top-left',
   },
   {
     id: 'tools',
     title: 'Tools',
     icon: 'tools',
-    labelPosition: 'top-right',
   },
   {
     id: 'frameworks',
     title: 'Frameworks',
     icon: 'frameworks',
-    labelPosition: 'bottom-left',
   },
   {
     id: 'ai',
     title: 'AI',
     icon: 'ai',
-    labelPosition: 'bottom-right',
   },
 ]
 
 const skillBubbles: SkillBubble[] = [
-  { name: 'Kotlin', group: 'languages', icon: { kind: 'monogram', label: 'K' }, color: '#a97bff', x: 24, y: 23 },
-  { name: 'TypeScript', group: 'languages', icon: { kind: 'asset', src: typescriptIcon }, color: '#3178c6', x: 34, y: 18 },
-  { name: 'Python', group: 'languages', icon: { kind: 'asset', src: pythonIcon }, color: '#ffd43b', x: 18, y: 36 },
-  { name: 'Java', group: 'languages', icon: { kind: 'asset', src: javaIcon }, color: '#e76f00', x: 32, y: 34 },
-  { name: 'C', group: 'languages', icon: { kind: 'asset', src: cIcon }, color: '#659ad2', x: 42, y: 39 },
-  { name: 'CSS', group: 'languages', icon: { kind: 'asset', src: cssIcon }, color: '#1572b6', x: 43, y: 24 },
+  { name: 'Kotlin', group: 'languages', icon: { kind: 'monogram', label: 'K' }, color: '#a97bff' },
+  { name: 'TypeScript', group: 'languages', icon: { kind: 'asset', src: typescriptIcon }, color: '#3178c6' },
+  { name: 'Python', group: 'languages', icon: { kind: 'asset', src: pythonIcon }, color: '#ffd43b' },
+  { name: 'Java', group: 'languages', icon: { kind: 'asset', src: javaIcon }, color: '#e76f00' },
+  { name: 'C', group: 'languages', icon: { kind: 'asset', src: cIcon }, color: '#659ad2' },
+  { name: 'CSS', group: 'languages', icon: { kind: 'asset', src: cssIcon }, color: '#1572b6' },
 
-  { name: 'GitHub', group: 'tools', icon: { kind: 'asset', src: githubIcon }, color: '#f3fbff', x: 60, y: 16 },
-  { name: 'Vercel', group: 'tools', icon: { kind: 'asset', src: vercelIcon }, color: '#f3fbff', x: 75, y: 20 },
-  { name: 'Render', group: 'tools', icon: { kind: 'asset', src: renderIcon }, color: '#46e3b7', x: 86, y: 14 },
-  { name: 'Supabase', group: 'tools', icon: { kind: 'asset', src: supabaseIcon }, color: '#3ecf8e', x: 61, y: 32 },
-  { name: 'Firebase', group: 'tools', icon: { kind: 'asset', src: firebaseIcon }, color: '#ffca28', x: 81, y: 29 },
-  { name: 'MongoDB', group: 'tools', icon: { kind: 'asset', src: mongoIcon }, color: '#47a248', x: 70, y: 39 },
-  { name: 'Docker', group: 'tools', icon: { kind: 'asset', src: dockerIcon }, color: '#2496ed', x: 88, y: 40 },
-  { name: 'Redis', group: 'tools', icon: { kind: 'monogram', label: 'R' }, color: '#dc382d', x: 68, y: 11 },
-  { name: 'Kubernetes', group: 'tools', icon: { kind: 'monogram', label: 'K8s' }, color: '#326ce5', x: 58, y: 43 },
+  { name: 'GitHub', group: 'tools', icon: { kind: 'asset', src: githubIcon }, color: '#f3fbff' },
+  { name: 'Vercel', group: 'tools', icon: { kind: 'asset', src: vercelIcon }, color: '#f3fbff' },
+  { name: 'Render', group: 'tools', icon: { kind: 'asset', src: renderIcon }, color: '#46e3b7' },
+  { name: 'Supabase', group: 'tools', icon: { kind: 'asset', src: supabaseIcon }, color: '#3ecf8e' },
+  { name: 'Firebase', group: 'tools', icon: { kind: 'asset', src: firebaseIcon }, color: '#ffca28' },
+  { name: 'MongoDB', group: 'tools', icon: { kind: 'asset', src: mongoIcon }, color: '#47a248' },
+  { name: 'Docker', group: 'tools', icon: { kind: 'asset', src: dockerIcon }, color: '#2496ed' },
+  { name: 'Redis', group: 'tools', icon: { kind: 'monogram', label: 'R' }, color: '#dc382d' },
+  { name: 'Kubernetes', group: 'tools', icon: { kind: 'monogram', label: 'K8s' }, color: '#326ce5' },
 
-  { name: 'React', group: 'frameworks', icon: { kind: 'asset', src: reactIcon }, color: '#61dafb', x: 19, y: 62 },
-  { name: 'Spring Boot', group: 'frameworks', icon: { kind: 'monogram', label: 'SB' }, color: '#6db33f', x: 34, y: 65 },
-  { name: 'Next.js', group: 'frameworks', icon: { kind: 'asset', src: nextIcon }, color: '#f3fbff', x: 44, y: 59 },
-  { name: 'React Native', group: 'frameworks', icon: { kind: 'asset', src: reactIcon }, color: '#61dafb', x: 25, y: 78 },
-  { name: 'Expo', group: 'frameworks', icon: { kind: 'asset', src: expoIcon }, color: '#f3fbff', x: 39, y: 82 },
-  { name: 'Node.js', group: 'frameworks', icon: { kind: 'asset', src: nodeIcon }, color: '#5fa04e', x: 46, y: 72 },
+  { name: 'React', group: 'frameworks', icon: { kind: 'asset', src: reactIcon }, color: '#61dafb' },
+  { name: 'Spring Boot', group: 'frameworks', icon: { kind: 'monogram', label: 'SB' }, color: '#6db33f' },
+  { name: 'Next.js', group: 'frameworks', icon: { kind: 'asset', src: nextIcon }, color: '#f3fbff' },
+  { name: 'React Native', group: 'frameworks', icon: { kind: 'asset', src: reactIcon }, color: '#61dafb' },
+  { name: 'Expo', group: 'frameworks', icon: { kind: 'asset', src: expoIcon }, color: '#f3fbff' },
+  { name: 'Node.js', group: 'frameworks', icon: { kind: 'asset', src: nodeIcon }, color: '#5fa04e' },
 
-  { name: 'Gemini API', group: 'ai', icon: { kind: 'asset', src: geminiIcon }, color: '#8ab4f8', x: 60, y: 62 },
-  { name: 'Claude Code', group: 'ai', icon: { kind: 'asset', src: claudeIcon }, color: '#d77655', x: 73, y: 62 },
-  { name: 'AI Feature Design', group: 'ai', icon: { kind: 'monogram', label: 'AI' }, color: '#87dbff', x: 84, y: 67 },
+  { name: 'Gemini API', group: 'ai', icon: { kind: 'asset', src: geminiIcon }, color: '#8ab4f8' },
+  { name: 'Claude Code', group: 'ai', icon: { kind: 'asset', src: claudeIcon }, color: '#d77655' },
+  { name: 'AI Feature Design', group: 'ai', icon: { kind: 'monogram', label: 'AI' }, color: '#87dbff' },
   {
     name: 'Workflows and Integrations',
     group: 'ai',
     icon: { kind: 'monogram', label: 'WI' },
     color: '#b8f7d4',
-    x: 62,
-    y: 78,
   },
-  { name: 'MCP Servers', group: 'ai', icon: { kind: 'monogram', label: 'MCP' }, color: '#c5efff', x: 76, y: 81 },
+  { name: 'MCP Servers', group: 'ai', icon: { kind: 'monogram', label: 'MCP' }, color: '#c5efff' },
 ]
 
 type SkillBubbleStyle = CSSProperties & {
   '--skill-color': string
-  '--skill-mobile-order': number
-  '--skill-x': string
-  '--skill-y': string
 }
 
 function GroupIcon({ type }: { type: SkillGroup['icon'] }) {
@@ -193,45 +181,43 @@ export function SkillsSection() {
       <div className="section-heading-row">
         <h2 id="skills-title">Key Skills</h2>
       </div>
-      <div className="skills-chart" role="group" aria-label="Grouped skill bubble chart">
+      <div className="skills-chart" role="group" aria-label="Grouped skills">
         {skillGroups.map((group) => (
-          <div
-            className="skills-chart-label"
-            data-skill-label-position={group.labelPosition}
-            key={group.id}
-            aria-hidden="true"
-          >
-            <GroupIcon type={group.icon} />
-            <span>{group.title}</span>
+          <div className="skills-chart-group" key={group.id}>
+            <div className="skills-chart-label" aria-hidden="true">
+              <GroupIcon type={group.icon} />
+              <span>{group.title}</span>
+            </div>
+            <div className="skills-chart-row">
+              {skillBubbles
+                .filter((skill) => skill.group === group.id)
+                .map((skill) => {
+                  const skillStyle: SkillBubbleStyle = {
+                    '--skill-color': skill.color,
+                  }
+                  const tooltipId = getSkillTooltipId(skill.name)
+
+                  return (
+                    <button
+                      className="skill-bubble"
+                      data-skill-group={skill.group}
+                      data-skill-invert-icon={skill.icon.kind === 'asset' && skill.color === '#f3fbff' ? 'true' : undefined}
+                      key={skill.name}
+                      style={skillStyle}
+                      type="button"
+                      aria-label={skill.name}
+                      aria-describedby={tooltipId}
+                    >
+                      <SkillBubbleIcon icon={skill.icon} />
+                      <span className="skill-tooltip" id={tooltipId} role="tooltip">
+                        {skill.name}
+                      </span>
+                    </button>
+                  )
+                })}
+            </div>
           </div>
         ))}
-        {skillBubbles.map((skill) => {
-          const skillStyle: SkillBubbleStyle = {
-            '--skill-color': skill.color,
-            '--skill-mobile-order': skillBubbles.indexOf(skill) + 1,
-            '--skill-x': `${skill.x}%`,
-            '--skill-y': `${skill.y}%`,
-          }
-          const tooltipId = getSkillTooltipId(skill.name)
-
-          return (
-            <button
-              className="skill-bubble"
-              data-skill-group={skill.group}
-              data-skill-invert-icon={skill.icon.kind === 'asset' && skill.color === '#f3fbff' ? 'true' : undefined}
-              key={skill.name}
-              style={skillStyle}
-              type="button"
-              aria-label={skill.name}
-              aria-describedby={tooltipId}
-            >
-              <SkillBubbleIcon icon={skill.icon} />
-              <span className="skill-tooltip" id={tooltipId} role="tooltip">
-                {skill.name}
-              </span>
-            </button>
-          )
-        })}
       </div>
     </section>
   )
