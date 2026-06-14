@@ -1,6 +1,7 @@
 import aiFeatureIcon from '../assets/portfolio/skills/ai_brain_data.svg'
 import cIcon from '../assets/portfolio/skills/c_logo.svg'
 import claudeIcon from '../assets/portfolio/skills/claude_logo.svg'
+import codexIcon from '../assets/portfolio/skills/codex_logo.svg'
 import cssIcon from '../assets/portfolio/skills/css_logo.svg'
 import dockerIcon from '../assets/portfolio/skills/docker_logo.svg'
 import expoIcon from '../assets/portfolio/skills/expo_logo.svg'
@@ -47,7 +48,7 @@ export type SkillBubble = {
 }
 
 export const skillBubbles: SkillBubble[] = [
-  { name: 'Kotlin', group: 'languages', icon: { kind: 'asset', src: kotlinIcon }, color: '#7F52FF', invertInDarkMode: true },
+  { name: 'Kotlin', group: 'languages', icon: { kind: 'asset', src: kotlinIcon }, color: '#B125EA' },
   { name: 'TypeScript', group: 'languages', icon: { kind: 'asset', src: typescriptIcon }, color: '#3178c6' },
   { name: 'Python', group: 'languages', icon: { kind: 'asset', src: pythonIcon }, color: '#ffd43b' },
   { name: 'Java', group: 'languages', icon: { kind: 'asset', src: javaIcon }, color: '#e76f00' },
@@ -65,7 +66,7 @@ export const skillBubbles: SkillBubble[] = [
   { name: 'Kubernetes', group: 'tools', icon: { kind: 'asset', src: kubernetesIcon }, color: '#326ce5' },
 
   { name: 'React', group: 'frameworks', icon: { kind: 'asset', src: reactIcon }, color: '#61dafb' },
-  { name: 'Spring Boot', group: 'frameworks', icon: { kind: 'asset', src: springBootIcon }, color: '#6DB33F', invertInDarkMode: true },
+  { name: 'Spring Boot', group: 'frameworks', icon: { kind: 'asset', src: springBootIcon }, color: '#6DB33F' },
   { name: 'Next.js', group: 'frameworks', icon: { kind: 'asset', src: nextIcon }, color: '#f3fbff', invertInDarkMode: true },
   { name: 'React Native', group: 'frameworks', icon: { kind: 'asset', src: reactIcon }, color: '#f3fbff', monochrome: true },
   { name: 'Expo', group: 'frameworks', icon: { kind: 'asset', src: expoIcon }, color: '#f3fbff', invertInDarkMode: true },
@@ -73,6 +74,7 @@ export const skillBubbles: SkillBubble[] = [
 
   { name: 'Gemini API', group: 'ai', icon: { kind: 'asset', src: geminiIcon }, color: '#8ab4f8' },
   { name: 'Claude Code', group: 'ai', icon: { kind: 'asset', src: claudeIcon }, color: '#d77655' },
+  { name: 'Codex', group: 'ai', icon: { kind: 'asset', src: codexIcon }, color: '#f3fbff', invertInDarkMode: true },
   { name: 'AI Feature Design', group: 'ai', icon: { kind: 'asset', src: aiFeatureIcon }, color: '#87dbff', invertInDarkMode: true },
   {
     name: 'Workflows and Integrations',

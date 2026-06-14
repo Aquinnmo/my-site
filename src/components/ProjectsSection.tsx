@@ -2,6 +2,7 @@ import { type CSSProperties, useCallback, useEffect, useRef, useState } from 're
 
 import cookedIcon from '../assets/portfolio/project_icons/cooked.png'
 import githubIcon from '../assets/portfolio/github_logo.svg'
+import moneyballIcon from '../assets/portfolio/project_icons/moneyball.png'
 import pumpPalIcon from '../assets/portfolio/project_icons/pump_pal.png'
 import rpsIcon from '../assets/portfolio/project_icons/rps.png'
 import watIcon from '../assets/portfolio/project_icons/wat.png'
@@ -20,7 +21,7 @@ type ProjectLink = {
   href: string
 }
 
-type ProjectVisualType = 'dumbbell' | 'bus' | 'chain' | 'fire'
+type ProjectVisualType = 'dumbbell' | 'bus' | 'chain' | 'fire' | 'baseball'
 
 type Project = {
   name: string
@@ -122,6 +123,18 @@ function ProjectGlyph({ type }: { type: ProjectVisualType }) {
     )
   }
 
+  if (type === 'baseball') {
+    return (
+      <svg className="project-visual-icon project-visual-icon--svg" viewBox="0 0 64 64" aria-hidden="true">
+        <g transform="scale(2.6667)">
+          <circle vectorEffect="non-scaling-stroke" cx="12" cy="12" r="9.5" />
+          <path vectorEffect="non-scaling-stroke" d="M5.5,6.5 Q12,9 18.5,6.5" />
+          <path vectorEffect="non-scaling-stroke" d="M5.5,17.5 Q12,15 18.5,17.5" />
+        </g>
+      </svg>
+    )
+  }
+
   return (
     <svg className="project-visual-icon project-visual-icon--svg" viewBox="0 0 64 64" aria-hidden="true">
       <g transform="scale(2.6667)">
@@ -167,6 +180,24 @@ function ProjectLinkIcon({ link }: { link: ProjectLink }) {
 }
 
 const projects: Project[] = [
+  {
+    name: 'Moneyball',
+    icon: moneyballIcon,
+    visualType: 'baseball',
+    summary:
+      'Full-stack web app that processes MLB pitch-level data through Jupyter Notebooks, CSV parsing, and the Statcast API to surface advanced baseball analytics.\nPlease note: the free Render instance can take multiple minutes to spin up the Spring Boot server.',
+    proof: [
+      'Built a full-stack web app from a custom Jupyter Notebook to display advanced MLB analytics.',
+      'Processed .csv files with 120+ fields with 500+ records to evaluate baseball games at a pitch level.',
+      'Worked with the official MLB and Statcast APIs to generate easily digestible insights based on game events.',
+    ],
+    stack: ['Kotlin', 'React', 'Spring Boot', 'TypeScript', 'GitHub', 'Render'],
+    links: [
+      { label: 'View website', href: 'https://aquinnmo.github.io/moneyball' },
+      { label: 'Frontend Repository', href: 'https://github.com/Aquinnmo/moneyball' },
+      { label: 'Backend Repository', href: 'https://github.com/Aquinnmo/moneyball-spring' },
+    ],
+  },
   {
     name: 'Pump Pal',
     icon: pumpPalIcon,
