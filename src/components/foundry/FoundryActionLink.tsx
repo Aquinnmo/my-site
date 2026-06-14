@@ -1,4 +1,6 @@
 import type { FoundryAction } from '../../foundry/foundryContent'
+import './styling/FoundryActionLink.css'
+import '../styling/actions.css'
 
 export function FoundryActionLink({ action }: { action: FoundryAction }) {
   const actionClass =

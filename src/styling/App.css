@@ -1,0 +1,125 @@
+.site-shell {
+  --route-transition-base: #000;
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  overflow-x: clip;
+}
+
+:root[data-theme='light'] .site-shell {
+  --route-transition-base: #fff;
+}
+
+.site-shell[data-route='foundry'] {
+  --color-ember-bg: #050101;
+  --color-ember-bg-deep: #160700;
+  --color-ember-bg-smoke: #2b0d02;
+  --color-ember-surface: #411706;
+  --color-ember-accent: #d85a12;
+  --color-ember-edge: #7a3511;
+  --color-ember-glow: #ffc06f;
+  --color-ember-panel: rgba(24, 7, 1, 0.74);
+  --color-ember-panel-strong: rgba(32, 9, 2, 0.9);
+  --color-ember-text: #fff8ef;
+  --color-ember-text-muted: #dfb996;
+  --color-ember-link: #ff8a24;
+  --color-ember-link-hover: #ffd29a;
+  --color-ember-focus: #ff9a2f;
+  --color-ember-spark: rgba(255, 136, 22, 0.94);
+  --color-ember-spark-hot: rgba(255, 215, 128, 0.96);
+  --color-ember-shadow: rgba(0, 0, 0, 0.62);
+  --color-bg: var(--color-ember-bg);
+  --color-bg-deep: var(--color-ember-bg-deep);
+  --color-bg-wind: var(--color-ember-bg-smoke);
+  --color-ice: var(--color-ember-surface);
+  --color-ice-strong: var(--color-ember-accent);
+  --color-ice-edge: var(--color-ember-edge);
+  --color-frost: var(--color-ember-glow);
+  --color-panel: var(--color-ember-panel);
+  --color-panel-strong: var(--color-ember-panel-strong);
+  --color-text: var(--color-ember-text);
+  --color-text-muted: var(--color-ember-text-muted);
+  --color-link: var(--color-ember-link);
+  --color-link-hover: var(--color-ember-link-hover);
+  --color-focus: var(--color-ember-focus);
+  --color-snow: var(--color-ember-spark);
+  --color-shadow: var(--color-ember-shadow);
+  color: var(--color-text);
+  background: var(--color-bg);
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] .site-shell[data-route='foundry'] {
+  --color-ember-bg: #fffaf3;
+  --color-ember-bg-deep: #ffead1;
+  --color-ember-bg-smoke: #ffd5a3;
+  --color-ember-surface: #ffc182;
+  --color-ember-accent: #d8580d;
+  --color-ember-edge: #ef9345;
+  --color-ember-glow: #ff8a24;
+  --color-ember-panel: rgba(255, 250, 248, 0.78);
+  --color-ember-panel-strong: rgba(255, 255, 255, 0.92);
+  --color-ember-text: #2b1305;
+  --color-ember-text-muted: #765b3d;
+  --color-ember-link: #a93d06;
+  --color-ember-link-hover: #742803;
+  --color-ember-focus: #d8580d;
+  --color-ember-spark: rgba(223, 82, 8, 0.86);
+  --color-ember-spark-hot: rgba(255, 170, 49, 0.92);
+  --color-ember-shadow: rgba(177, 83, 19, 0.24);
+  color-scheme: light;
+}
+
+.route-transition-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 16;
+  background: var(--route-transition-base);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.route-content {
+  opacity: 1;
+  transition: opacity 160ms ease;
+  will-change: opacity;
+}
+
+.site-shell[data-transition-phase='exiting'] .route-transition-veil {
+  opacity: 1;
+}
+
+.site-shell[data-transition-phase='exiting'] .route-content {
+  opacity: 0;
+}
+
+.site-shell[data-transition-phase='entering'] .route-transition-veil {
+  opacity: 0;
+  transition-duration: 160ms;
+}
+
+.site-shell[data-transition-phase='entering'] .route-content {
+  animation: route-content-enter 160ms ease both;
+}
+
+@keyframes route-content-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-transition-veil {
+    transition: none;
+  }
+
+  .route-content {
+    transition: none;
+    animation: none;
+  }
+}

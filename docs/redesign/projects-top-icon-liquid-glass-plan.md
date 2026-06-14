@@ -175,9 +175,8 @@ Run:
 
 ```bash
 npm run lint
+npm run build
 ```
-
-Do not run `npm run build`.
 
 Manual checks:
 

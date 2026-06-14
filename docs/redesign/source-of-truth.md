@@ -408,14 +408,14 @@ Current Phase 10 implementation includes:
 - Phase 1 focused project gallery structure in `src/components/ProjectsSection.tsx`
 - Pump Pal is the default focused project
 - the focused project renders as a larger frosted project card with a left-side default icon panel and right-side project content
-- inactive projects render as name-only selector cards in a bottom row
-- the bottom row matches the focus card width, expands inactive cards when they fit, and scrolls horizontally with standardized selector card widths when needed
+- all project icons are visible at the top of the Projects section, including the active project icon
+- the icon row is at the top of the Projects section, not sticky to the viewport
 - desktop and tablet use a two-column focus card; mobile keeps the same gallery behavior with the visual stacked above the content
-- selecting an inactive project updates the focused project in local React state
-- project selection uses temporary liquid-glass FLIP-style overlay layers to morph the selected bottom-row card into the focus card and the previous focus card into the bottom row
-- during the morph, the real focus card and selector row are hidden so content does not visibly swap mid-animation
+- selecting an icon morphs it into the focused project card
+- the previous focused card pushes backward into the screen, blurs, and fades out
+- the old card never moves toward the icon row
+- during the morph, the real focus card is hidden so content does not visibly swap mid-animation
 - project names stay visible and move between their actual focus-card and selector-row text positions while outgoing focus-card details fade out quickly
-- unchanged bottom-row cards use shift overlays so row order changes animate instead of snapping
 - reduced-motion users get an instant project swap without morph layers
 - compact frosted project content still includes name, summary, stack tags, and links inside the focused card
 - visible proof bullets for every rendered project card

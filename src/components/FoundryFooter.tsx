@@ -1,4 +1,5 @@
 import { foundryContactHref } from '../foundry/foundryContent'
+import './styling/footer.css'
 import emailIcon from '../assets/portfolio/email_icon.svg'
 
 export function FoundryFooter() {

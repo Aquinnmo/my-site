@@ -5,6 +5,8 @@ import emailIcon from '../assets/portfolio/email_icon.svg'
 import githubIcon from '../assets/portfolio/github_logo.svg'
 import linkedInIcon from '../assets/portfolio/LinkedIn_icon.svg'
 import pdfIcon from '../assets/portfolio/pdf_icon.svg'
+import './styling/HeroSection.css'
+import './styling/actions.css'
 
 const heroRoles = [
   'Web Designer',
@@ -14,30 +16,48 @@ const heroRoles = [
   'Communicator'
 ]
 
-const quickLinks = [
+type QuickLink = {
+  label: string
+  href: string
+  icon: string
+  external: boolean
+  color: string
+  invertInDarkMode?: boolean
+  invertInLightMode?: boolean
+  monochrome?: boolean
+}
+
+const quickLinks: QuickLink[] = [
   {
     label: 'Resume',
     href: resumePdf,
     icon: pdfIcon,
     external: true,
+    color: '#e76f00',
+    invertInDarkMode: true,
   },
   {
     label: 'LinkedIn',
     href: 'https://linkedin.com/in/adam-montgomery-05a936315',
     icon: linkedInIcon,
     external: true,
+    color: '#007EBB',
   },
   {
     label: 'GitHub',
     href: 'https://github.com/Aquinnmo',
     icon: githubIcon,
     external: true,
+    color: '#f3fbff',
+    invertInDarkMode: true,
   },
   {
     label: 'Email',
     href: 'mailto:adammontcompany@gmail.com',
     icon: emailIcon,
     external: false,
+    color: '#87dbff',
+    invertInDarkMode: true,
   },
 ]
 
@@ -101,8 +121,12 @@ export function HeroSection() {
             target={link.external ? '_blank' : undefined}
             rel={link.external ? 'noreferrer' : undefined}
             aria-label={link.label}
+            style={{ '--quick-link-color': link.color } as React.CSSProperties}
+            data-skill-invert-icon={link.invertInDarkMode ? 'true' : undefined}
+            data-skill-invert-icon-light={link.invertInLightMode ? 'true' : undefined}
+            data-skill-monochrome={link.monochrome ? 'true' : undefined}
           >
-            <img src={link.icon} alt="" aria-hidden="true" />
+            <img className="quick-link-icon" src={link.icon} alt="" aria-hidden="true" />
             <span>{link.label}</span>
           </a>
         ))}

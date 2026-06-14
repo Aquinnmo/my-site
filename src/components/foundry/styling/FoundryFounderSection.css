@@ -1,0 +1,142 @@
+.foundry-founder-strengths {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.05rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.foundry-founder-strengths li {
+  border: 1px solid color-mix(in srgb, var(--color-ice-edge) 76%, transparent);
+  border-radius: 999px;
+  padding: 0.4rem 0.66rem;
+  color: var(--color-text);
+  background: color-mix(in srgb, var(--color-panel) 72%, transparent);
+  font-size: 0.86rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.foundry-founder {
+  padding-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.foundry-founder-header {
+  display: grid;
+  justify-items: center;
+  width: min(100%, 52rem);
+  text-align: center;
+}
+
+.foundry-founder-header h2 {
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(2.3rem, 6vw, 4.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.foundry-founder-header .foundry-section-eyebrow {
+  margin: 0.85rem 0 0;
+}
+
+.foundry-founder-layout {
+  display: grid;
+  width: min(100%, 58rem);
+  grid-template-columns: minmax(12rem, 0.72fr) minmax(0, 1fr);
+  gap: clamp(1.4rem, 5vw, 4rem);
+  align-items: center;
+  margin-top: clamp(1.5rem, 4vw, 2.6rem);
+  text-align: left;
+}
+
+.foundry-founder-portrait {
+  position: relative;
+  width: min(100%, 18rem);
+  margin: 0;
+  justify-self: end;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-link) 52%, transparent);
+  border-radius: 0.85rem;
+  background:
+    radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--color-link) 18%, transparent), transparent 60%),
+    color-mix(in srgb, var(--color-panel-strong) 62%, transparent);
+  box-shadow:
+    0 1.4rem 3rem color-mix(in srgb, var(--color-shadow) 58%, transparent),
+    0 0 1.8rem color-mix(in srgb, var(--color-link) 22%, transparent);
+}
+
+.foundry-founder-portrait::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, transparent 58%, color-mix(in srgb, var(--color-link) 16%, transparent)),
+    radial-gradient(circle at 20% 16%, color-mix(in srgb, var(--color-frost) 18%, transparent), transparent 42%);
+  content: '';
+  pointer-events: none;
+}
+
+.foundry-founder-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.foundry-founder-copy {
+  display: grid;
+  gap: 1.2rem;
+  justify-items: start;
+  justify-self: start;
+  max-width: 36rem;
+  text-align: left;
+}
+
+.foundry-founder-copy p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: clamp(1.05rem, 2vw, 1.22rem);
+}
+
+.foundry-founder-strengths {
+  justify-content: center;
+}
+
+.foundry-founder-closing {
+  color: var(--color-text);
+  font-weight: 750;
+}
+
+@media (max-width: 68rem) {
+  .foundry-founder-layout {
+    width: min(100%, 42rem);
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .foundry-founder-portrait {
+    justify-self: center;
+    width: min(68vw, 17rem);
+  }
+
+  .foundry-founder-copy {
+    justify-items: center;
+    justify-self: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 48rem) {
+  .foundry-founder-layout {
+    width: 100%;
+  }
+
+  .foundry-founder-portrait {
+    width: min(76vw, 15rem);
+    border-radius: 0.75rem;
+  }
+}

@@ -1,3 +1,5 @@
+import './styling/Background.css'
+
 export function Background() {
   return (
     <>

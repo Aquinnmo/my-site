@@ -7,7 +7,7 @@ Use this file as the first stop for repo orientation.
 - App type: React + TypeScript + Vite single-page portfolio.
 - Main composition: `src/App.tsx`.
 - Global tokens/base CSS: `src/index.css`.
-- Main visual/layout CSS: `src/App.css`.
+- Main visual/layout CSS: split across `src/components/**/*.css` and `src/components/_shared/*.css`; `src/App.css` is reserved for the App shell/route-transition styles only.
 - Components: `src/components/`.
 - Public crawler/AI files: `public/robots.txt` and `public/llms.txt`.
 - Vercel config: `vercel.json`.
@@ -22,6 +22,30 @@ Use this file as the first stop for repo orientation.
 - Open questions/known unresolved decisions: `docs/redesign/open-questions.md`.
 - Legacy site retrieval index: `legacy/LEGACY_SITE_INDEX.md`.
 
+## Styling Conventions
+
+Styles are split into co-located, plain CSS files. Do not reintroduce a single monolithic stylesheet.
+
+- **Global reset and theme tokens**: `src/index.css` (resets, `:root` tokens, base typography, `prefers-reduced-motion`).
+- **App shell / route-transition styles only**: `src/App.css` (`site-shell`, `route-transition-veil`, `route-content`).
+- **Component-specific styles**: each React component imports a matching `.css` file next to its `.tsx`.
+  - Examples: `src/components/HeroSection.tsx` imports `./HeroSection.css`; `src/components/foundry/FoundryHeroSection.tsx` imports `./FoundryHeroSection.css`.
+- **Shared cross-component patterns**: `src/components/_shared/`.
+  - `layout.css`: `.page-flow`, `.section-shell`, `.content-section`, `.section-heading-row`, `.content-section h2`.
+  - `actions.css`: `.hero-action`, `.hero-action-primary`, `.hero-action-secondary`, `.action-icon`.
+  - `footer.css`: `.site-footer`, `.footer-contact`, `.footer-links`, `.footer-link`, `.footer-link-primary`, `.footer-legal`.
+- **Foundry-only shared patterns**: `src/components/foundry/_shared.css`.
+  - `.foundry-section`, `.foundry-section-summary`, `.foundry-section-eyebrow`.
+- **Import rule**: components must import their own CSS and any shared CSS they rely on. Page components (`PortfolioPage`, `FoundryPage`) import `_shared/layout.css`. Footer components import `_shared/footer.css`. Components using action links import `_shared/actions.css`.
+- **No empty component CSS files**: if a component has no unique styles (e.g., `PortfolioPage`, `SiteFooter`, `FoundryFooter`), it imports only the shared file(s) it needs and does not create an empty `.css` file.
+
+## Asset Conventions
+
+- Single-colour SVG logos (black or white) must contrast the active theme.
+  - Black SVGs: set `invertInDarkMode: true` in `src/components/skillData.ts` so they render white in night mode and black in day mode.
+  - White SVGs: set `invertInLightMode: true` so they render black in day mode and white in night mode.
+  - Apply the same `data-skill-invert-icon` / `data-skill-invert-icon-light` attributes and CSS filters to quick links and project stack icons when they use single-colour SVGs.
+
 ## Current Product Rules
 
 - The site is finished as a one-page recruiter-facing portfolio.
@@ -35,11 +59,12 @@ Use this file as the first stop for repo orientation.
 
 ## Validation
 
-Run these after code or config changes:
+Run this after code or config changes:
 
 ```bash
 npm run lint
-npm run build
 ```
+
+Do not run `npm run build`. Agents must never trigger production builds.
 
 Docs-only changes do not require a production build unless links, public files, or deployment behavior changed.

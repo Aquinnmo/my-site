@@ -1,42 +1,8 @@
 import { type CSSProperties } from 'react'
 
-import cIcon from '../assets/portfolio/skills/c_logo.svg'
-import claudeIcon from '../assets/portfolio/skills/claude_logo.svg'
-import cssIcon from '../assets/portfolio/skills/css_logo.svg'
-import dockerIcon from '../assets/portfolio/skills/docker_logo.svg'
-import expoIcon from '../assets/portfolio/skills/expo_logo.svg'
-import firebaseIcon from '../assets/portfolio/skills/firebase_logo.svg'
-import geminiIcon from '../assets/portfolio/skills/gemini_logo.svg'
-import githubIcon from '../assets/portfolio/skills/github_logo.svg'
-import javaIcon from '../assets/portfolio/skills/java_logo.svg'
-import mongoIcon from '../assets/portfolio/skills/mongodb_logo.svg'
-import nextIcon from '../assets/portfolio/skills/nextjs_logo.svg'
-import nodeIcon from '../assets/portfolio/skills/nodejs_logo.svg'
-import pythonIcon from '../assets/portfolio/skills/python_logo.svg'
-import reactIcon from '../assets/portfolio/skills/react_logo.svg'
-import renderIcon from '../assets/portfolio/skills/render_logo.svg'
-import supabaseIcon from '../assets/portfolio/skills/supabase_logo.svg'
-import typescriptIcon from '../assets/portfolio/skills/typescript_logo.svg'
-import vercelIcon from '../assets/portfolio/skills/vercel_logo.svg'
-
-type SkillGroupId = 'languages' | 'tools' | 'frameworks' | 'ai'
-
-type SkillIcon =
-  | {
-      kind: 'asset'
-      src: string
-    }
-  | {
-      kind: 'monogram'
-      label: string
-    }
-
-type SkillBubble = {
-  name: string
-  group: SkillGroupId
-  icon: SkillIcon
-  color: string
-}
+import './styling/SkillsSection.css'
+import './styling/layout.css'
+import { skillBubbles, type SkillGroupId, type SkillIcon } from './skillData'
 
 type SkillGroup = {
   id: SkillGroupId
@@ -65,43 +31,6 @@ const skillGroups: SkillGroup[] = [
     title: 'AI',
     icon: 'ai',
   },
-]
-
-const skillBubbles: SkillBubble[] = [
-  { name: 'Kotlin', group: 'languages', icon: { kind: 'monogram', label: 'K' }, color: '#a97bff' },
-  { name: 'TypeScript', group: 'languages', icon: { kind: 'asset', src: typescriptIcon }, color: '#3178c6' },
-  { name: 'Python', group: 'languages', icon: { kind: 'asset', src: pythonIcon }, color: '#ffd43b' },
-  { name: 'Java', group: 'languages', icon: { kind: 'asset', src: javaIcon }, color: '#e76f00' },
-  { name: 'C', group: 'languages', icon: { kind: 'asset', src: cIcon }, color: '#659ad2' },
-  { name: 'CSS', group: 'languages', icon: { kind: 'asset', src: cssIcon }, color: '#1572b6' },
-
-  { name: 'GitHub', group: 'tools', icon: { kind: 'asset', src: githubIcon }, color: '#f3fbff' },
-  { name: 'Vercel', group: 'tools', icon: { kind: 'asset', src: vercelIcon }, color: '#f3fbff' },
-  { name: 'Render', group: 'tools', icon: { kind: 'asset', src: renderIcon }, color: '#46e3b7' },
-  { name: 'Supabase', group: 'tools', icon: { kind: 'asset', src: supabaseIcon }, color: '#3ecf8e' },
-  { name: 'Firebase', group: 'tools', icon: { kind: 'asset', src: firebaseIcon }, color: '#ffca28' },
-  { name: 'MongoDB', group: 'tools', icon: { kind: 'asset', src: mongoIcon }, color: '#47a248' },
-  { name: 'Docker', group: 'tools', icon: { kind: 'asset', src: dockerIcon }, color: '#2496ed' },
-  { name: 'Redis', group: 'tools', icon: { kind: 'monogram', label: 'R' }, color: '#dc382d' },
-  { name: 'Kubernetes', group: 'tools', icon: { kind: 'monogram', label: 'K8s' }, color: '#326ce5' },
-
-  { name: 'React', group: 'frameworks', icon: { kind: 'asset', src: reactIcon }, color: '#61dafb' },
-  { name: 'Spring Boot', group: 'frameworks', icon: { kind: 'monogram', label: 'SB' }, color: '#6db33f' },
-  { name: 'Next.js', group: 'frameworks', icon: { kind: 'asset', src: nextIcon }, color: '#f3fbff' },
-  { name: 'React Native', group: 'frameworks', icon: { kind: 'asset', src: reactIcon }, color: '#61dafb' },
-  { name: 'Expo', group: 'frameworks', icon: { kind: 'asset', src: expoIcon }, color: '#f3fbff' },
-  { name: 'Node.js', group: 'frameworks', icon: { kind: 'asset', src: nodeIcon }, color: '#5fa04e' },
-
-  { name: 'Gemini API', group: 'ai', icon: { kind: 'asset', src: geminiIcon }, color: '#8ab4f8' },
-  { name: 'Claude Code', group: 'ai', icon: { kind: 'asset', src: claudeIcon }, color: '#d77655' },
-  { name: 'AI Feature Design', group: 'ai', icon: { kind: 'monogram', label: 'AI' }, color: '#87dbff' },
-  {
-    name: 'Workflows and Integrations',
-    group: 'ai',
-    icon: { kind: 'monogram', label: 'WI' },
-    color: '#b8f7d4',
-  },
-  { name: 'MCP Servers', group: 'ai', icon: { kind: 'monogram', label: 'MCP' }, color: '#c5efff' },
 ]
 
 type SkillBubbleStyle = CSSProperties & {
@@ -201,7 +130,9 @@ export function SkillsSection() {
                     <button
                       className="skill-bubble"
                       data-skill-group={skill.group}
-                      data-skill-invert-icon={skill.icon.kind === 'asset' && skill.color === '#f3fbff' ? 'true' : undefined}
+                      data-skill-invert-icon={skill.icon.kind === 'asset' && skill.invertInDarkMode ? 'true' : undefined}
+                      data-skill-invert-icon-light={skill.icon.kind === 'asset' && skill.invertInLightMode ? 'true' : undefined}
+                      data-skill-monochrome={skill.icon.kind === 'asset' && skill.monochrome ? 'true' : undefined}
                       key={skill.name}
                       style={skillStyle}
                       type="button"

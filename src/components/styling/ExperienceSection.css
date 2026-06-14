@@ -1,0 +1,288 @@
+.experience-section {
+  --experience-card-count: 3;
+  --experience-scroll-segment: 100svh;
+  --experience-track-height: calc(var(--experience-card-count) * var(--experience-scroll-segment));
+  padding: 0;
+}
+
+.experience-scroll-track {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  min-height: var(--experience-track-height);
+}
+
+.experience-sticky-viewport {
+  position: sticky;
+  top: 0;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  width: 100%;
+  height: 100dvh;
+  min-height: 38rem;
+  padding: clamp(1rem, 3svh, 1.75rem) 0;
+}
+
+.experience-sticky-viewport .section-heading-row {
+  margin-bottom: clamp(0.85rem, 2svh, 1.25rem);
+}
+
+.experience-card-stage {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: min(100%, 58rem);
+  min-height: clamp(27rem, 62svh, 34rem);
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
+.experience-list {
+  position: relative;
+  display: grid;
+  justify-self: center;
+  width: 100%;
+  min-height: inherit;
+  gap: 0;
+  transform-style: preserve-3d;
+}
+
+.experience-card {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: start;
+  overflow: hidden;
+  min-height: inherit;
+  border: 1px solid color-mix(in srgb, var(--color-ice-edge) 82%, transparent);
+  border-radius: 0.9rem;
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+  background:
+    radial-gradient(circle at 10% 0%, color-mix(in srgb, var(--color-frost) 52%, transparent), transparent 18rem),
+    color-mix(in srgb, var(--color-panel-strong) 76%, transparent);
+  box-shadow: 0 1.4rem 3rem color-mix(in srgb, var(--color-shadow) 70%, transparent);
+  opacity: var(--experience-card-opacity);
+  text-align: left;
+  backdrop-filter: blur(18px);
+  filter: var(--experience-card-filter);
+  transform: var(--experience-card-transform);
+  transform-origin: 50% 50%;
+  will-change: transform, opacity, filter;
+}
+
+.experience-card[data-experience-card-state='active'] {
+  pointer-events: auto;
+}
+
+.experience-card[data-experience-card-state='future'],
+.experience-card[data-experience-card-state='past'] {
+  pointer-events: none;
+}
+
+.experience-card::before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 86% 18%, color-mix(in srgb, var(--color-ice) 38%, transparent), transparent 16rem);
+  content: '';
+  pointer-events: none;
+}
+
+.experience-card > * {
+  position: relative;
+}
+
+.experience-card-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: start;
+}
+
+.experience-card h3 {
+  margin: 0;
+  max-width: 18ch;
+  color: var(--color-text);
+  font-size: clamp(1.75rem, 4vw, 2.65rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.experience-company {
+  margin-top: 0.5rem;
+  color: var(--color-link);
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  font-weight: 850;
+}
+
+.experience-dates {
+  padding: 0.1rem 0 0.1rem 0.65rem;
+  border-left: 1px solid color-mix(in srgb, var(--color-ice-edge) 78%, transparent);
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.experience-summary {
+  margin-top: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.experience-proof-list {
+  display: grid;
+  gap: 0.42rem;
+  margin: 1rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--color-text);
+}
+
+.experience-proof-list li::marker {
+  color: var(--color-link);
+}
+
+.experience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.58rem;
+  margin: 1.05rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.experience-tags li {
+  border: 1px solid color-mix(in srgb, var(--color-ice-edge) 78%, transparent);
+  border-radius: 999px;
+  padding: 0.46rem 0.78rem;
+  color: var(--color-text);
+  background: color-mix(in srgb, var(--color-panel) 72%, transparent);
+  font-size: 0.94rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+@media (max-width: 68rem) {
+  .experience-list {
+    width: min(100%, 42rem);
+  }
+}
+
+@media (max-width: 48rem) {
+  .experience-section {
+    padding: 0;
+  }
+
+  .experience-sticky-viewport {
+    min-height: 100dvh;
+    padding: clamp(0.75rem, 2.5svh, 1.25rem) 0;
+  }
+
+  .experience-sticky-viewport .section-heading-row {
+    margin-bottom: clamp(0.55rem, 1.6svh, 0.85rem);
+  }
+
+  .experience-card-stage {
+    width: min(100%, 27rem);
+    min-height: min(34rem, calc(100dvh - 7rem));
+    perspective: 900px;
+  }
+
+  .experience-list {
+    width: 100%;
+  }
+
+  .experience-card {
+    padding: clamp(0.82rem, 3vw, 1rem);
+  }
+
+  .experience-card-header {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .experience-card h3 {
+    max-width: 100%;
+    font-size: clamp(1.35rem, 6vw, 1.9rem);
+    letter-spacing: -0.035em;
+  }
+
+  .experience-company {
+    margin-top: 0.35rem;
+    font-size: clamp(0.9rem, 3.8vw, 1rem);
+  }
+
+  .experience-dates {
+    width: fit-content;
+    padding: 0.1rem 0 0.1rem 0.52rem;
+    font-size: 0.76rem;
+  }
+
+  .experience-summary {
+    margin-top: 0.62rem;
+    font-size: 0.9rem;
+    line-height: 1.38;
+  }
+
+  .experience-proof-list {
+    gap: 0.32rem;
+    margin-top: 0.68rem;
+    font-size: 0.88rem;
+    line-height: 1.35;
+  }
+
+  .experience-tags {
+    gap: 0.38rem;
+    margin-top: 0.72rem;
+  }
+
+  .experience-tags li {
+    padding: 0.32rem 0.52rem;
+    font-size: 0.76rem;
+  }
+}
+
+@media (max-width: 34rem) {
+  .experience-card {
+    border-radius: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-section {
+    padding: 4.5rem 0;
+  }
+
+  .experience-scroll-track {
+    min-height: auto;
+  }
+
+  .experience-sticky-viewport {
+    position: static;
+    top: auto;
+    min-height: auto;
+    padding: 0;
+  }
+
+  .experience-card-stage {
+    min-height: auto;
+    perspective: none;
+  }
+
+  .experience-list {
+    position: static;
+    min-height: auto;
+    gap: 1rem;
+  }
+
+  .experience-card {
+    position: relative;
+    inset: auto;
+    min-height: 0;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    filter: none;
+    will-change: auto;
+  }
+}
