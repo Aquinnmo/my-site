@@ -53,8 +53,8 @@ export const contactActions: FoundryAction[] = [
     variant: 'primary',
   },
   {
-    label: 'See current work',
-    href: '#foundry-case-study-heading',
+    label: 'Current work',
+    href: '#current-work',
     variant: 'secondary',
   },
   {
@@ -66,37 +66,37 @@ export const contactActions: FoundryAction[] = [
 
 export const caseStudy: FoundryCaseStudy = {
   eyebrow: 'Current work',
-  title: 'Modernizing Accessible Transit Operations',
+  title: 'Modernizing Fleet Maintenance',
   summary:
-    'We created fleet management software for a busing company to help them more accurately maintain their fleet, giving them insights into when engines need to be replaced.',
+    'We created fleet management software for a busing company to help them more accurately maintain their fleet, giving them insights into when vehicles need a check up.',
   problem:
-    'A wheelchair accessible transit company in the GTA relied on paper and Excel-based workflows that made records harder to protect and act on.',
+    'A transit company in the GTA relied on paper and Excel-based workflows that made records harder to protect and act on.',
   approach:
-    'The Foundry documented customer specifications and shaped them into a custom SaaS workflow for the way the business actually operates.',
+    'We documented customer specifications and shaped them into a custom application for the way the business actually operates.',
   outcome:
-    'The new online workflow is designed to reduce manual handling, prevent data loss, and make day-to-day operational information easier to manage.',
+    'The new digital workflow is reduces manual handling, prevents data loss, and makes everyday information easier to manage.',
 }
 
 export const services: FoundryService[] = [
   {
     title: 'Legacy System Modernization',
     description:
-      'Replace brittle tools with faster, safer systems that match how your business actually works.',
+      'Replace brittle tools with safer, faster systems that match how your business workflow.',
     problem: 'For teams depending on paper and spreadsheets or tools that only one person knows how to operate.',
     outcome: 'Less manual re-entry, clearer ownership, and a system that can grow with the business.',
   },
   {
     title: 'Custom-Built Web Applications',
     description:
-      'Design and build dependable internal tools, portals, and workflows around your exact needs.',
+      'Design and build dependable tools, portals, and workflows around your exact needs.',
     problem: 'For workflows where off-the-shelf software doesn\'t quite fit, and forces the business to work around the tool.',
     outcome: 'Purpose-built software for the operations that off-the-shelf tools do just can\'t do.',
   },
   {
     title: 'Operational Dashboards',
     description:
-      'Turn scattered business data into clear dashboards that make performance and priorities easier to track.',
-    problem: 'For owners and operators who need status, exceptions, and priorities visible without hunting through disconnected files.',
+      'Turn scattered business data into clear dashboards that make performance and priorities easy to track.',
+    problem: 'For owners and operators who need status, exceptions, and priorities visible without hunting through files.',
     outcome: 'A clearer operating picture for owners who need to scan status, priorities, and risk quickly.',
   },
 ]
@@ -105,17 +105,17 @@ export const differentiators: FoundryItem[] = [
   {
     title: 'Partnership Mindset',
     description:
-      'Work stays close to your goals, constraints, and day-to-day operations from the first conversation onward.',
+      'Work stays focused on your goals, constraints, and operations from the first conversation onward.',
   },
   {
     title: 'Full Stack Craftsmanship',
     description:
-      'The Foundry handles interface, backend, data, infrastructure, and deployment as one connected system.',
+      'We handle what you see and what you don\'t need to see, presented to you as one connected system.',
   },
   {
     title: 'Security First Delivery',
     description:
-      'Every build is grounded in secure coding practices, practical reviews, and release habits that support confident launches.',
+      'Every build is grounded in secure coding practices, reviews, and release habits that support confident launches.',
   },
 ]
 
@@ -130,7 +130,7 @@ export const engagementSteps: FoundryProcessStep[] = [
   },
   {
     title: 'Build',
-    description: 'We work our magic to delivering the tech without you touching any code.',
+    description: 'We work our magic to develop the product without you touching any code.',
   },
   {
     title: 'Launch',

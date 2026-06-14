@@ -16,7 +16,7 @@ export function FoundryFooter() {
             href={foundryContactHref}
           >
             <img src={emailIcon} alt="" aria-hidden="true" />
-            <span>Email the Foundry</span>
+            <span>Email Us</span>
           </a>
         </nav>
         <p className="footer-legal">
