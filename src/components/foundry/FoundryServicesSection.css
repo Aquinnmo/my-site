@@ -1,0 +1,18 @@
+.foundry-services-list {
+  display: grid;
+  width: min(100%, 68rem);
+  border-top: 1px solid color-mix(in srgb, var(--color-ice-edge) 72%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ice-edge) 52%, transparent);
+}
+
+@media (max-width: 68rem) {
+  .foundry-services-list {
+    width: min(100%, 42rem);
+  }
+}
+
+@media (max-width: 48rem) {
+  .foundry-services-list {
+    width: 100%;
+  }
+}

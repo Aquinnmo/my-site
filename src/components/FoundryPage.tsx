@@ -4,6 +4,8 @@ import { FoundryFounderSection } from './foundry/FoundryFounderSection'
 import { FoundryHeroSection } from './foundry/FoundryHeroSection'
 import { FoundryProcessSection } from './foundry/FoundryProcessSection'
 import { FoundryServicesSection } from './foundry/FoundryServicesSection'
+import './FoundryPage.css'
+import './_shared/layout.css'
 
 export function FoundryPage() {
   return (

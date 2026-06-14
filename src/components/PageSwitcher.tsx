@@ -1,4 +1,5 @@
 import type { MouseEvent } from 'react'
+import './PageSwitcher.css'
 
 type PageRoute = 'portfolio' | 'foundry'
 

@@ -1,6 +1,8 @@
 import { type CSSProperties } from 'react'
 
 import cIcon from '../assets/portfolio/skills/c_logo.svg'
+import './SkillsSection.css'
+import './_shared/layout.css'
 import claudeIcon from '../assets/portfolio/skills/claude_logo.svg'
 import cssIcon from '../assets/portfolio/skills/css_logo.svg'
 import dockerIcon from '../assets/portfolio/skills/docker_logo.svg'

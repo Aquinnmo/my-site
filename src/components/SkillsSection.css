@@ -1,0 +1,234 @@
+.skills-chart {
+  --skill-bubble-size: clamp(3.4rem, 6vw, 4.4rem);
+  --skill-icon-size: 1.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.1rem;
+  width: 100%;
+  min-height: auto;
+  padding: 0.2rem 0 1rem;
+  cursor: default;
+}
+
+.skills-chart-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.skills-chart-label {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0 0 1rem;
+  color: var(--color-text);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.skill-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 auto;
+  border: 1px solid color-mix(in srgb, var(--color-ice-edge) 82%, transparent);
+  border-radius: 0.72rem;
+  padding: 0.42rem;
+  color: var(--color-link);
+  background: color-mix(in srgb, var(--color-panel) 78%, transparent);
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.65;
+}
+
+.skills-chart-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.skill-bubble {
+  position: relative;
+  top: auto;
+  left: auto;
+  z-index: 2;
+  display: grid;
+  flex: 0 0 var(--skill-bubble-size);
+  width: var(--skill-bubble-size);
+  height: var(--skill-bubble-size);
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--skill-color) 48%, var(--color-ice-edge));
+  border-radius: 999px;
+  padding: 0;
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at 42% 30%, color-mix(in srgb, var(--skill-color) 14%, transparent), transparent 58%),
+    color-mix(in srgb, var(--color-panel-strong) 80%, transparent);
+  box-shadow:
+    0 0.7rem 1.4rem color-mix(in srgb, var(--color-shadow) 42%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-frost) 16%, transparent);
+  outline: none;
+  transform: none;
+  transform-origin: center;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease,
+    transform 180ms cubic-bezier(0.2, 0.86, 0.25, 1);
+  will-change: transform, filter;
+}
+
+.skill-bubble-icon {
+  display: block;
+  width: var(--skill-icon-size);
+  height: var(--skill-icon-size);
+  object-fit: contain;
+  filter: drop-shadow(0 0 0 color-mix(in srgb, var(--skill-color) 0%, transparent));
+  transition: filter 180ms ease;
+}
+
+:root:not([data-theme='light']) .skill-bubble[data-skill-invert-icon='true'] .skill-bubble-icon {
+  filter: invert(1) drop-shadow(0 0 0 color-mix(in srgb, var(--skill-color) 0%, transparent));
+}
+
+.skill-bubble-monogram {
+  display: grid;
+  place-items: center;
+  color: var(--skill-color);
+  font-size: 0.86rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.skill-tooltip {
+  position: absolute;
+  top: calc(100% + 0.48rem);
+  bottom: auto;
+  left: 50%;
+  width: max-content;
+  max-width: min(12rem, calc(100vw - 2rem));
+  border: 1px solid color-mix(in srgb, var(--skill-color) 54%, var(--color-ice-edge));
+  border-radius: 999px;
+  padding: 0.35rem 0.62rem;
+  color: var(--color-text);
+  background: var(--route-transition-base);
+  box-shadow: 0 0.55rem 1.2rem color-mix(in srgb, var(--color-shadow) 46%, transparent);
+  font-size: 0.82rem;
+  font-weight: 850;
+  line-height: 1.1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-0.18rem);
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+}
+
+.skill-bubble:hover,
+.skill-bubble:focus-visible {
+  z-index: 8;
+  border-color: color-mix(in srgb, var(--skill-color) 82%, var(--color-frost));
+  background:
+    radial-gradient(circle at 42% 30%, color-mix(in srgb, var(--skill-color) 24%, transparent), transparent 62%),
+    color-mix(in srgb, var(--color-panel-strong) 90%, transparent);
+  box-shadow:
+    0 0 1.6rem color-mix(in srgb, var(--skill-color) 52%, transparent),
+    0 1rem 2rem color-mix(in srgb, var(--color-shadow) 50%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-frost) 26%, transparent),
+    inset 0 0 1.15rem color-mix(in srgb, var(--skill-color) 18%, transparent);
+  filter: drop-shadow(0 0 0.9rem color-mix(in srgb, var(--skill-color) 46%, transparent));
+  transform: scale(1.16);
+}
+
+.skill-bubble:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--skill-color) 76%, var(--color-frost));
+  outline-offset: 0.28rem;
+}
+
+.skill-bubble:hover .skill-bubble-icon,
+.skill-bubble:focus-visible .skill-bubble-icon {
+  filter: drop-shadow(0 0 0.55rem color-mix(in srgb, var(--skill-color) 58%, transparent));
+}
+
+:root:not([data-theme='light']) .skill-bubble[data-skill-invert-icon='true']:hover .skill-bubble-icon,
+:root:not([data-theme='light']) .skill-bubble[data-skill-invert-icon='true']:focus-visible .skill-bubble-icon {
+  filter: invert(1) drop-shadow(0 0 0.55rem color-mix(in srgb, var(--skill-color) 58%, transparent));
+}
+
+.skill-bubble:hover .skill-tooltip,
+.skill-bubble:focus-visible .skill-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 68rem) {
+  .skills-chart {
+    --skill-bubble-size: clamp(3.2rem, 7vw, 4.05rem);
+    --skill-icon-size: 1.75rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .skills-chart {
+    --skill-bubble-size: 3.65rem;
+    --skill-icon-size: 1.7rem;
+  }
+}
+
+@media (max-width: 34rem) {
+  .skills-chart {
+    --skill-bubble-size: 3.25rem;
+    --skill-icon-size: 1.48rem;
+    gap: 2rem;
+  }
+
+  .skills-chart-row {
+    gap: 0.68rem;
+  }
+
+  .skills-chart-label {
+    gap: 0.55rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .skill-icon {
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: 0.62rem;
+    padding: 0.36rem;
+  }
+
+  .skill-tooltip {
+    font-size: 0.78rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-bubble,
+  .skill-bubble-icon,
+  .skill-tooltip {
+    transition: none;
+  }
+
+  .skill-bubble:hover,
+  .skill-bubble:focus-visible {
+    transform: none;
+  }
+
+  .skill-tooltip {
+    transform: translateX(-50%);
+  }
+
+  .skill-bubble:hover .skill-tooltip,
+  .skill-bubble:focus-visible .skill-tooltip {
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,20 @@
+.foundry-section {
+  padding-block: clamp(3.25rem, 7vw, 5rem);
+}
+
+.foundry-section-summary {
+  max-width: 39rem;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.55;
+}
+
+.foundry-section-eyebrow {
+  margin: 0 0 0.45rem;
+  color: var(--color-link);
+  font-size: 0.86rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

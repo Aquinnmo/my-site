@@ -1,4 +1,6 @@
 import { differentiators } from '../../foundry/foundryContent'
+import './FoundryDifferentiatorsSection.css'
+import '../_shared/layout.css'
 
 export function FoundryDifferentiatorsSection() {
   return (

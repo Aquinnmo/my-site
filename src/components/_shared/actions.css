@@ -1,0 +1,78 @@
+.hero-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  border: 1px solid var(--color-ice-edge);
+  border-radius: 999px;
+  padding: 0.7rem 1.15rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 1rem 2rem color-mix(in srgb, var(--color-shadow) 72%, transparent);
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.hero-action:hover {
+  transform: translateY(-2px);
+}
+
+.hero-action-primary {
+  color: var(--color-bg);
+  background: var(--color-link);
+}
+
+.hero-action-primary:hover {
+  color: var(--color-bg);
+  background: var(--color-link-hover);
+}
+
+.hero-action-secondary {
+  color: var(--color-text);
+  background: var(--color-panel-strong);
+}
+
+.action-icon {
+  width: 1.18rem;
+  height: 1.18rem;
+  flex: 0 0 auto;
+}
+
+svg.action-icon {
+  fill: currentColor;
+}
+
+.hero-action-primary .action-icon {
+  filter: brightness(0) invert(1);
+}
+
+.hero-action-secondary:hover {
+  border-color: var(--color-ice-strong);
+  color: var(--color-link-hover);
+}
+
+@media (max-width: 48rem) {
+  .hero-action {
+    flex: 1 1 13rem;
+  }
+}
+
+@media (max-width: 34rem) {
+  .hero-action {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-action {
+    transition: none;
+  }
+
+  .hero-action:hover {
+    transform: none;
+  }
+}

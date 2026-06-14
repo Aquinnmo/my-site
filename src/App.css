@@ -309,6 +309,17 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .route-transition-veil {
+    transition: none;
+  }
+
+  .route-content {
+    transition: none;
+    animation: none;
+  }
+}
+
 .page-switcher {
   --switcher-theme-duration: 160ms;
   --switcher-slide-duration: 320ms;

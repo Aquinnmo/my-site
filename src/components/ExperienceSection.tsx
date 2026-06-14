@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import './ExperienceSection.css'
+import './_shared/layout.css'
 
 const experiences = [
   {

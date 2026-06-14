@@ -5,6 +5,8 @@ import emailIcon from '../assets/portfolio/email_icon.svg'
 import githubIcon from '../assets/portfolio/github_logo.svg'
 import linkedInIcon from '../assets/portfolio/LinkedIn_icon.svg'
 import pdfIcon from '../assets/portfolio/pdf_icon.svg'
+import './HeroSection.css'
+import './_shared/actions.css'
 
 const heroRoles = [
   'Web Designer',

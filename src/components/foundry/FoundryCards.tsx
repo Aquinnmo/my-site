@@ -1,4 +1,5 @@
 import type { FoundryService } from '../../foundry/foundryContent'
+import './FoundryCards.css'
 
 export function FoundryServiceCard({ service }: { service: FoundryService }) {
   return (
