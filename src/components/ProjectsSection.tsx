@@ -295,6 +295,11 @@ function ProjectContent({ project }: { project: Project }) {
               href={link.href}
               target="_blank"
               rel="noreferrer"
+              className={
+                link.label === 'Web Preview' || link.label === 'View website'
+                  ? 'project-link-arrow-hover'
+                  : undefined
+              }
             >
               <ProjectLinkIcon link={link} />
               {link.label}
