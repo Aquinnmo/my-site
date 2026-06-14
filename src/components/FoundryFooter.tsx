@@ -6,7 +6,7 @@ export function FoundryFooter() {
   return (
     <footer className="site-footer foundry-footer" aria-label="Contact">
       <div className="footer-contact">
-        <h2>Start a project</h2>
+        <h2>Get In Touch</h2>
         <p className="footer-summary">
           If a workflow is slowing your business down, the first step is a conversation about what needs to change.
         </p>

@@ -4,45 +4,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3.1rem;
-  width: 100%;
-  min-height: auto;
-  padding: 0.2rem 0 1rem;
+  width: min(100%, 68rem);
+  padding: 0;
   cursor: default;
 }
 
 .skills-chart-group {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 0;
 }
 
 .skills-chart-label {
   z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
+  width: 100%;
   margin: 0 0 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ice-edge) 42%, transparent);
   color: var(--color-text);
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
   font-weight: 900;
   line-height: 1;
-}
-
-.skill-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  flex: 0 0 auto;
-  border: 1px solid color-mix(in srgb, var(--color-ice-edge) 82%, transparent);
-  border-radius: 0.72rem;
-  padding: 0.42rem;
-  color: var(--color-link);
-  background: color-mix(in srgb, var(--color-panel) 78%, transparent);
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.65;
+  text-align: center;
 }
 
 .skills-chart-row {
@@ -213,7 +199,10 @@
   .skills-chart {
     --skill-bubble-size: 3.25rem;
     --skill-icon-size: 1.48rem;
-    gap: 2rem;
+  }
+
+  .skills-chart-group {
+    padding: 1.6rem 0;
   }
 
   .skills-chart-row {
@@ -221,16 +210,9 @@
   }
 
   .skills-chart-label {
-    gap: 0.55rem;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-  }
-
-  .skill-icon {
-    width: 1.85rem;
-    height: 1.85rem;
-    border-radius: 0.62rem;
-    padding: 0.36rem;
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.85rem;
+    font-size: 1.05rem;
   }
 
   .skill-tooltip {

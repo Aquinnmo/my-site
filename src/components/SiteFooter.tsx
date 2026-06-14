@@ -51,7 +51,7 @@ export function SiteFooter() {
   return (
     <footer className="site-footer" aria-label="Contact">
       <div className="footer-contact">
-        <h2>Let&apos;s build</h2>
+        <h2>Let&apos;s Build</h2>
         <p className="footer-summary">
           I&apos;m searching for software engineering, data science, and GenAI roles for the Fall 2026 semester.
         </p>

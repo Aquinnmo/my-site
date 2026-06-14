@@ -6,7 +6,7 @@ export function FoundryDifferentiatorsSection() {
   return (
     <section className="content-section foundry-section" aria-labelledby="foundry-difference-heading">
       <div className="section-heading-row">
-        <h2 id="foundry-difference-heading">Why choose us?</h2>
+        <h2 id="foundry-difference-heading">Why Choose Us?</h2>
       </div>
       <div className="foundry-difference-band">
         {differentiators.map((item) => (
