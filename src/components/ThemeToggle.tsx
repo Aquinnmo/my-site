@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './ThemeToggle.css'
+import './styling/ThemeToggle.css'
 
 type Theme = 'light' | 'dark'
 

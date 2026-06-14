@@ -8,7 +8,7 @@ import { PortfolioPage } from './components/PortfolioPage'
 import { FoundryFooter } from './components/FoundryFooter'
 import { SiteFooter } from './components/SiteFooter'
 import { ThemeToggle } from './components/ThemeToggle'
-import './App.css'
+import './styling/App.css'
 
 type AppRoute = 'portfolio' | 'foundry'
 type RouteTransitionPhase = 'idle' | 'exiting' | 'entering'

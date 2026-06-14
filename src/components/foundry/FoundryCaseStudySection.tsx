@@ -1,7 +1,7 @@
 import { caseStudy } from '../../foundry/foundryContent'
-import './FoundryCaseStudySection.css'
-import './_shared.css'
-import '../_shared/layout.css'
+import './styling/FoundryCaseStudySection.css'
+import './styling/_shared.css'
+import '../styling/layout.css'
 
 export function FoundryCaseStudySection() {
   return (

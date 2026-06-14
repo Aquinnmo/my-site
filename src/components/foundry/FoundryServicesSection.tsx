@@ -1,8 +1,8 @@
 import { services } from '../../foundry/foundryContent'
 import { FoundryServiceCard } from './FoundryCards'
-import './FoundryServicesSection.css'
-import './_shared.css'
-import '../_shared/layout.css'
+import './styling/FoundryServicesSection.css'
+import './styling/_shared.css'
+import '../styling/layout.css'
 
 export function FoundryServicesSection() {
   return (

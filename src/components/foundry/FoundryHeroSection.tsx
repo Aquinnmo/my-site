@@ -1,7 +1,7 @@
 import { contactActions, heroContent } from '../../foundry/foundryContent'
 import { FoundryActionLink } from './FoundryActionLink'
-import './FoundryHeroSection.css'
-import '../_shared/actions.css'
+import './styling/FoundryHeroSection.css'
+import '../styling/actions.css'
 
 export function FoundryHeroSection() {
   return (

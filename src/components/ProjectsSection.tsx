@@ -1,8 +1,8 @@
 import { type CSSProperties, useCallback, useEffect, useRef, useState } from 'react'
 
 import githubIcon from '../assets/portfolio/github_logo.svg'
-import './ProjectsSection.css'
-import './_shared/layout.css'
+import './styling/ProjectsSection.css'
+import './styling/layout.css'
 import pdfIcon from '../assets/portfolio/pdf_icon.svg'
 
 const OUTGOING_CONTENT_FADE_MS = 160

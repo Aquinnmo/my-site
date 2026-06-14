@@ -1,7 +1,7 @@
 import { engagementSteps } from '../../foundry/foundryContent'
-import './FoundryProcessSection.css'
-import './_shared.css'
-import '../_shared/layout.css'
+import './styling/FoundryProcessSection.css'
+import './styling/_shared.css'
+import '../styling/layout.css'
 
 export function FoundryProcessSection() {
   return (

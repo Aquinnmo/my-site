@@ -1,5 +1,5 @@
 import resumePdf from '../assets/portfolio/adam_montgomery_resume.pdf'
-import './_shared/footer.css'
+import './styling/footer.css'
 import emailIcon from '../assets/portfolio/email_icon.svg'
 import githubIcon from '../assets/portfolio/github_logo.svg'
 import linkedInIcon from '../assets/portfolio/LinkedIn_icon.svg'

@@ -1,9 +1,9 @@
 import { contactActions, founderContent } from '../../foundry/foundryContent'
 import profilePhoto from '../../assets/portfolio/pfp.jpeg'
 import { FoundryActionLink } from './FoundryActionLink'
-import './FoundryFounderSection.css'
-import './_shared.css'
-import '../_shared/layout.css'
+import './styling/FoundryFounderSection.css'
+import './styling/_shared.css'
+import '../styling/layout.css'
 
 export function FoundryFounderSection() {
   return (

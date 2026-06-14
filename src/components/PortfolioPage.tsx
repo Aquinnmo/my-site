@@ -2,7 +2,7 @@ import { ExperienceSection } from './ExperienceSection'
 import { HeroSection } from './HeroSection'
 import { ProjectsSection } from './ProjectsSection'
 import { SkillsSection } from './SkillsSection'
-import './_shared/layout.css'
+import './styling/layout.css'
 
 export function PortfolioPage() {
   return (
