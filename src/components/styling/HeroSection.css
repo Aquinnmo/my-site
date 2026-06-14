@@ -3,7 +3,7 @@
   justify-items: center;
   gap: clamp(1.1rem, 3vw, 1.8rem);
   min-height: min(52rem, 92svh);
-  padding: clamp(3.25rem, 7vw, 4.75rem) 0 clamp(4rem, 7vw, 5.5rem);
+  padding: clamp(3.25rem, 7vw, 4.75rem) 0 clamp(2rem, 4vw, 2.5rem);
   text-align: center;
 }
 
@@ -20,8 +20,8 @@
   width: max-content;
   max-width: calc(100vw - 2rem);
   margin: 0;
-  font-size: clamp(3.8rem, 8vw, 8.25rem);
-  line-height: 0.94;
+  font-size: clamp(3.2rem, 7vw, 6.5rem);
+  line-height: 0.96;
   letter-spacing: -0.055em;
   text-align: center;
   white-space: nowrap;
@@ -257,7 +257,6 @@
 
   .hero-section h1 {
     max-width: calc(100vw - 1.5rem);
-    font-size: clamp(4.25rem, 10vw, 7rem);
   }
 
   .profile-portrait {
@@ -269,13 +268,12 @@
   .hero-section {
     gap: 1rem;
     min-height: auto;
-    padding: 2.5rem 0 3.5rem;
+    padding: 2.5rem 0 2rem;
   }
 
   .hero-section h1 {
     width: min(12ch, calc(100vw - 1.25rem));
     max-width: calc(100vw - 1.25rem);
-    font-size: clamp(3.35rem, 14vw, 5.5rem);
     white-space: normal;
   }
 
@@ -314,7 +312,6 @@
   .hero-section h1 {
     width: min(12ch, calc(100vw - 1rem));
     max-width: calc(100vw - 1rem);
-    font-size: clamp(3rem, 15vw, 4.2rem);
   }
 
   .profile-portrait {

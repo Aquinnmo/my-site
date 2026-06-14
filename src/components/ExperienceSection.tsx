@@ -278,7 +278,7 @@ export function ExperienceSection() {
   const experienceTrackStyle = {
     '--experience-active-index': scrollState.activeIndex,
     '--experience-card-count': experiences.length,
-    '--experience-track-height': `${(getExperienceTimelineUnits(experiences.length) + 1) * 100}svh`,
+    '--experience-track-height': `${(getExperienceTimelineUnits(experiences.length) + 1) * 50}svh`,
   } as ExperienceTrackStyle
 
   return (

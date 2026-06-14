@@ -6,7 +6,7 @@ import './styling/layout.css'
 
 export function PortfolioPage() {
   return (
-    <main className="page-flow" aria-labelledby="page-title">
+    <main className="page-flow portfolio-page-flow" aria-labelledby="page-title">
       <HeroSection />
       <ExperienceSection />
       <ProjectsSection />

@@ -6,7 +6,7 @@
 }
 
 .project-gallery {
-  --project-focus-card-height: clamp(24rem, 37vw, 26rem);
+  --project-focus-card-height: clamp(25rem, 38vw, 27rem);
   --project-focus-mark-size: clamp(9rem, 12.5vw, 11.5rem);
 
   display: grid;
@@ -88,7 +88,7 @@
 }
 
 .project-focus-card {
-  transition: opacity 104ms ease 104ms;
+  transition: opacity 78ms ease 78ms;
 }
 
 .project-focus-card[data-project-focus-morph-phase='initial'],
@@ -102,7 +102,7 @@
 
 .project-focus-card > * {
   opacity: 1;
-  transition: opacity 104ms ease 104ms;
+  transition: opacity 78ms ease 78ms;
 }
 
 .project-focus-card[data-project-focus-morph-phase='initial'] > *,
@@ -208,10 +208,10 @@
   pointer-events: none;
   transform: translate3d(var(--project-morph-x), var(--project-morph-y), 0);
   transition:
-    width 416ms cubic-bezier(0.2, 0.86, 0.25, 1) 48ms,
-    height 416ms cubic-bezier(0.2, 0.86, 0.25, 1) 48ms,
-    transform 416ms cubic-bezier(0.2, 0.86, 0.25, 1) 48ms,
-    border-radius 416ms ease 48ms;
+    width 312ms cubic-bezier(0.2, 0.86, 0.25, 1) 36ms,
+    height 312ms cubic-bezier(0.2, 0.86, 0.25, 1) 36ms,
+    transform 312ms cubic-bezier(0.2, 0.86, 0.25, 1) 36ms,
+    border-radius 312ms ease 36ms;
   backdrop-filter: blur(22px) saturate(1.16);
   will-change: width, height, transform, opacity, filter;
 }
@@ -226,11 +226,11 @@
   opacity: 1;
   filter: none;
   transition:
-    opacity 104ms ease 104ms,
-    width 416ms cubic-bezier(0.2, 0.86, 0.25, 1) 48ms,
-    height 416ms cubic-bezier(0.2, 0.86, 0.25, 1) 48ms,
-    transform 416ms cubic-bezier(0.2, 0.86, 0.25, 1) 48ms,
-    border-radius 416ms ease 48ms;
+    opacity 78ms ease 78ms,
+    width 312ms cubic-bezier(0.2, 0.86, 0.25, 1) 36ms,
+    height 312ms cubic-bezier(0.2, 0.86, 0.25, 1) 36ms,
+    transform 312ms cubic-bezier(0.2, 0.86, 0.25, 1) 36ms,
+    border-radius 312ms ease 36ms;
 }
 
 .project-morph-layer-incoming[data-project-morph-phase='incomingReveal'] {
@@ -238,7 +238,7 @@
 }
 
 .project-morph-layer-incoming .project-morph-surface-icon-only {
-  transition: opacity 104ms ease;
+  transition: opacity 78ms ease;
 }
 
 .project-morph-layer-incoming[data-project-morph-phase='incomingReveal'] .project-morph-surface-icon-only {
@@ -257,9 +257,9 @@
   transform: translate3d(var(--project-morph-x), var(--project-morph-y), 0) scale(1);
   transform-origin: center;
   transition:
-    opacity 240ms ease,
-    transform 240ms ease,
-    filter 240ms ease;
+    opacity 180ms ease,
+    transform 180ms ease,
+    filter 180ms ease;
 }
 
 .project-morph-layer-outgoing[data-project-morph-phase='outgoingCardExit'],
@@ -287,7 +287,7 @@
   padding: clamp(1rem, 2.3vw, 1.25rem);
   text-align: left;
   opacity: 1;
-  transition: opacity 208ms ease;
+  transition: opacity 156ms ease;
 }
 
 .project-morph-header {
@@ -309,7 +309,7 @@
 .project-morph-layer-outgoing .project-morph-mark,
 .project-morph-layer-outgoing .project-morph-content {
   opacity: 1;
-  transition: opacity 160ms ease;
+  transition: opacity 120ms ease;
 }
 
 .project-morph-layer-outgoing[data-project-morph-phase='outgoingContentFade'] .project-morph-header,
@@ -526,8 +526,8 @@
     filter 180ms ease;
 }
 
-.project-links a:hover .project-link-icon,
-.project-links a:focus-visible .project-link-icon {
+.project-links a.project-link-arrow-hover:hover .project-link-icon,
+.project-links a.project-link-arrow-hover:focus-visible .project-link-icon {
   transform: translate(0.18rem, -0.18rem);
   filter: drop-shadow(0 0 0.5rem color-mix(in srgb, var(--color-link) 52%, transparent));
 }
@@ -544,8 +544,8 @@ svg.project-link-icon {
   filter: drop-shadow(0 0 0.35rem color-mix(in srgb, var(--color-frost) 24%, transparent));
 }
 
-:root:not([data-theme='light']) .project-links a:hover .project-link-icon,
-:root:not([data-theme='light']) .project-links a:focus-visible .project-link-icon {
+:root:not([data-theme='light']) .project-links a.project-link-arrow-hover:hover .project-link-icon,
+:root:not([data-theme='light']) .project-links a.project-link-arrow-hover:focus-visible .project-link-icon {
   filter: drop-shadow(0 0 0.5rem color-mix(in srgb, var(--color-frost) 34%, transparent));
 }
 
@@ -574,7 +574,7 @@ svg.project-link-icon {
   }
 
   .project-gallery {
-    --project-focus-card-height: clamp(26rem, 49vw, 30rem);
+    --project-focus-card-height: clamp(27rem, 51vw, 31rem);
     --project-focus-mark-size: clamp(8.5rem, 12.5vw, 10.5rem);
 
     width: min(100%, 42rem);
@@ -601,7 +601,7 @@ svg.project-link-icon {
   }
 
   .project-gallery {
-    --project-focus-card-height: clamp(37rem, 102vw, 43rem);
+    --project-focus-card-height: clamp(38rem, 105vw, 45rem);
     --project-focus-mark-size: clamp(9.5rem, 45vw, 12.5rem);
 
     width: 100%;

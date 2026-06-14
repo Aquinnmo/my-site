@@ -66,7 +66,7 @@ export const contactActions: FoundryAction[] = [
 
 export const caseStudy: FoundryCaseStudy = {
   eyebrow: 'Current work',
-  title: 'Modernizing accessible transit operations',
+  title: 'Modernizing Accessible Transit Operations',
   summary:
     'We created fleet management software for a busing company to help them more accurately maintain their fleet, giving them insights into when engines need to be replaced.',
   problem:
