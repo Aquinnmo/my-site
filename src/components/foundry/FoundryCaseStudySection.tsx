@@ -5,7 +5,7 @@ import '../styling/layout.css'
 
 export function FoundryCaseStudySection() {
   return (
-    <section className="content-section foundry-section" aria-labelledby="foundry-case-study-heading">
+    <section className="content-section foundry-section" id="current-work" aria-labelledby="foundry-case-study-heading">
       <div className="foundry-case-study">
         <div className="foundry-case-study-header">
           <p className="foundry-section-eyebrow">{caseStudy.eyebrow}</p>

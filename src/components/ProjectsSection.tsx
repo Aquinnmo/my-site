@@ -172,7 +172,7 @@ const projects: Project[] = [
     icon: pumpPalIcon,
     visualType: 'dumbbell',
     summary:
-      'Mobile-first workout tracker focused on balanced training, injury reduction, and AI-powered training insights.',
+      'Mobile-first workout tracker focused on balanced training, injury reduction, and AI-powered analytics.',
     proof: [
       'Developed a workout tracker to minimize injuries and balance workouts using personalized workout metrics.',
       'Leveraged the Gemini API to analyze workout history and generate insights into the muscles you are working.',
