@@ -10,10 +10,10 @@ import './styling/layout.css'
 import pdfIcon from '../assets/portfolio/pdf_icon.svg'
 import { skillBubbleByName, type SkillBubble } from './skillData'
 
-const OUTGOING_CONTENT_FADE_MS = 160
-const OUTGOING_CARD_EXIT_MS = 240
-const INCOMING_MORPH_MS = 464
-const INCOMING_REVEAL_MS = 208
+const OUTGOING_CONTENT_FADE_MS = 120
+const OUTGOING_CARD_EXIT_MS = 180
+const INCOMING_MORPH_MS = 348
+const INCOMING_REVEAL_MS = 156
 
 type ProjectLink = {
   label: string
