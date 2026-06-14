@@ -28,10 +28,10 @@
   max-width: 48rem;
 }
 
-.foundry-case-study h2 {
+.content-section .foundry-case-study h2 {
   max-width: 16ch;
   margin: 0;
-  font-size: clamp(1.7rem, 4vw, 3.2rem);
+  font-size: clamp(1.4rem, 3vw, 3.2rem);
   line-height: 1.02;
 }
 

@@ -137,7 +137,7 @@ export function HeroSection() {
           {role}
         </p>
         <p className="hero-summary">
-          I build projects that are easy to digest and integrate into AI workflows with a focus on simple
+          I build projects that are easy to digest and integrate AI with a focus on simple
           interfaces, modular systems, and apps that drive impact.
         </p>
         <div className="hero-actions" aria-label="Primary actions">

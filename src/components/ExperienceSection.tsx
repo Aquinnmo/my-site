@@ -8,7 +8,7 @@ const experiences = [
     company: 'SPS Commerce',
     dates: 'May 2026 - Present',
     summary:
-      'Working on production software automation for the world\'s largest EDI network.',
+      'I work on production software automation for the world\'s largest EDI network, routing billions of documents a year.',
     proof: [
       'Working on production Kotlin/Spring Boot services that deliver 1 million+ documents daily.',
       'Leading development on an MCP server to help developers diagnose issues when using our services.',
@@ -21,7 +21,7 @@ const experiences = [
     company: 'Montgomery Software Foundry Inc.',
     dates: 'Aug 2025 - Present',
     summary:
-      'I own my own software corporation focused on modernizing legacy systems for business owners.',
+      'I own my own software corporation focused on modernizing legacy systems to enable business owners.',
     proof: [
       'Founded my company to sell a custom SaaS solution to a wheelchair accessible transit company in the GTA.',
       'Updated a paper and Excel-based system to an automated online workflow that will prevent data loss.',
