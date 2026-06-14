@@ -11,6 +11,8 @@ type FooterLink = {
   icon: string
   external: boolean
   emphasis?: 'primary'
+  invertInDarkMode?: boolean
+  invertInLightMode?: boolean
 }
 
 const footerLinks: FooterLink[] = [
@@ -33,12 +35,14 @@ const footerLinks: FooterLink[] = [
     href: resumePdf,
     icon: pdfIcon,
     external: true,
+    invertInDarkMode: true,
   },
   {
     label: 'Email',
     href: 'mailto:adammontcompany@gmail.com',
     icon: emailIcon,
     external: false,
+    invertInDarkMode: true,
   },
 ]
 
@@ -58,6 +62,8 @@ export function SiteFooter() {
               href={link.href}
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noreferrer' : undefined}
+              data-skill-invert-icon={link.invertInDarkMode ? 'true' : undefined}
+              data-skill-invert-icon-light={link.invertInLightMode ? 'true' : undefined}
             >
               <img src={link.icon} alt="" aria-hidden="true" />
               <span>{link.label}</span>

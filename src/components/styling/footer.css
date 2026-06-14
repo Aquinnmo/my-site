@@ -82,12 +82,12 @@
   object-fit: contain;
 }
 
-:root:not([data-theme='light']) .footer-link-primary img {
-  filter: brightness(0) invert(1);
+:root:not([data-theme='light']) .footer-link[data-skill-invert-icon='true'] img {
+  filter: brightness(0) invert(1) drop-shadow(0 0 0.35rem color-mix(in srgb, var(--color-frost) 24%, transparent));
 }
 
-:root:not([data-theme='light']) .footer-link:not(.footer-link-primary) img {
-  filter: drop-shadow(0 0 0.35rem color-mix(in srgb, var(--color-frost) 24%, transparent));
+:root[data-theme='light'] .footer-link[data-skill-invert-icon-light='true'] img {
+  filter: brightness(0) invert(1);
 }
 
 .footer-legal {

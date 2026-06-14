@@ -1,6 +1,10 @@
 import { type CSSProperties, useCallback, useEffect, useRef, useState } from 'react'
 
+import cookedIcon from '../assets/portfolio/project_icons/cooked.png'
 import githubIcon from '../assets/portfolio/github_logo.svg'
+import pumpPalIcon from '../assets/portfolio/project_icons/pump_pal.png'
+import rpsIcon from '../assets/portfolio/project_icons/rps.png'
+import watIcon from '../assets/portfolio/project_icons/wat.png'
 import './styling/ProjectsSection.css'
 import './styling/layout.css'
 import pdfIcon from '../assets/portfolio/pdf_icon.svg'
@@ -24,6 +28,7 @@ type Project = {
   proof: string[]
   stack: string[]
   links: ProjectLink[]
+  icon: string
   visualType: ProjectVisualType
 }
 
@@ -39,10 +44,6 @@ type ProjectMorphLayerStyle = CSSProperties & {
   '--project-morph-from-width': string
   '--project-morph-x': string
   '--project-morph-y': string
-}
-
-type ProjectFocusCardStyle = CSSProperties & {
-  '--project-focus-morph-height': string
 }
 
 type ProjectMorphLayer = {
@@ -73,10 +74,14 @@ function prefersReducedMotion() {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
-function ProjectVisualIcon({ type }: { type: ProjectVisualType }) {
+function ProjectPngMark({ icon }: { icon: string }) {
+  return <img className="project-png-mark" src={icon} alt="" aria-hidden="true" />
+}
+
+function ProjectGlyph({ type }: { type: ProjectVisualType }) {
   if (type === 'mobile') {
     return (
-      <svg className="project-visual-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <svg className="project-visual-icon project-visual-icon--svg" viewBox="0 0 64 64" aria-hidden="true">
         <rect x="19" y="6" width="26" height="52" rx="6" />
         <path d="M26 13h12" />
         <path d="M27 50h10" />
@@ -89,7 +94,7 @@ function ProjectVisualIcon({ type }: { type: ProjectVisualType }) {
 
   if (type === 'database') {
     return (
-      <svg className="project-visual-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <svg className="project-visual-icon project-visual-icon--svg" viewBox="0 0 64 64" aria-hidden="true">
         <ellipse cx="32" cy="14" rx="20" ry="8" />
         <path d="M12 14v24c0 4.4 9 8 20 8s20-3.6 20-8V14" />
         <path d="M12 26c0 4.4 9 8 20 8s20-3.6 20-8" />
@@ -101,7 +106,7 @@ function ProjectVisualIcon({ type }: { type: ProjectVisualType }) {
 
   if (type === 'strategy') {
     return (
-      <svg className="project-visual-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <svg className="project-visual-icon project-visual-icon--svg" viewBox="0 0 64 64" aria-hidden="true">
         <path d="M18 18h12v12H18z" />
         <path d="M34 18h12v12H34z" />
         <path d="M18 34h12v12H18z" />
@@ -115,7 +120,7 @@ function ProjectVisualIcon({ type }: { type: ProjectVisualType }) {
   }
 
   return (
-    <svg className="project-visual-icon" viewBox="0 0 64 64" aria-hidden="true">
+    <svg className="project-visual-icon project-visual-icon--svg" viewBox="0 0 64 64" aria-hidden="true">
       <path d="M16 18h32v22H24l-8 8V18z" />
       <path d="M24 27h16" />
       <path d="M24 34h10" />
@@ -143,13 +148,9 @@ function DownloadIcon() {
   )
 }
 
-function isWebPreviewLink(link: ProjectLink) {
-  return link.label.toLowerCase().includes('preview')
-}
-
 function ProjectLinkIcon({ link }: { link: ProjectLink }) {
   if (link.label.toLowerCase().includes('repository')) {
-    return <img className="project-link-icon" src={githubIcon} alt="" aria-hidden="true" />
+    return <img className="project-link-icon" src={githubIcon} alt="" aria-hidden="true" data-skill-invert-icon="true" />
   }
 
   if (link.label.toLowerCase().includes('resume')) {
@@ -166,6 +167,7 @@ function ProjectLinkIcon({ link }: { link: ProjectLink }) {
 const projects: Project[] = [
   {
     name: 'Pump Pal',
+    icon: pumpPalIcon,
     visualType: 'mobile',
     summary:
       'Mobile-first workout tracker focused on balanced training, injury reduction, and AI-powered training insights.',
@@ -187,6 +189,7 @@ const projects: Project[] = [
   },
   {
     name: 'Custom Enterprise Databasing System',
+    icon: watIcon,
     visualType: 'database',
     summary:
       'Custom maintenance, inventory, and tracking system for a York Region busing company operating hundreds of machines.',
@@ -201,6 +204,7 @@ const projects: Project[] = [
   },
   {
     name: 'Rock, Paper, Scissors',
+    icon: rpsIcon,
     visualType: 'strategy',
     summary:
       'Interactive exploration of strategy and prediction in Rock, Paper, Scissors, built around algorithms that beat human play.',
@@ -217,6 +221,7 @@ const projects: Project[] = [
   },
   {
     name: 'Am I Cooked?',
+    icon: cookedIcon,
     visualType: 'feedback',
     summary:
       'Resume and survey-based readiness tool that gives students Gemini-powered feedback for the job search.',
@@ -290,7 +295,6 @@ function ProjectContent({ project }: { project: Project }) {
               href={link.href}
               target="_blank"
               rel="noreferrer"
-              data-project-link-type={isWebPreviewLink(link) ? 'preview' : undefined}
             >
               <ProjectLinkIcon link={link} />
               {link.label}
@@ -308,8 +312,8 @@ function FullProjectSurface({ project }: { project: Project }) {
       <div className="project-card-header project-morph-header">
         <h3>{project.name}</h3>
       </div>
-      <div className="project-focus-visual project-morph-visual" aria-hidden="true">
-        <ProjectVisualIcon type={project.visualType} />
+      <div className="project-focus-mark project-morph-mark" aria-hidden="true">
+        <ProjectPngMark icon={project.icon} />
       </div>
       <div className="project-focus-content project-morph-content">
         <ProjectContent project={project} />
@@ -351,7 +355,7 @@ function ProjectMorphLayer({
           className="project-morph-surface project-morph-surface-icon-only"
           aria-hidden="true"
         >
-          <ProjectVisualIcon type={layer.project.visualType} />
+          <ProjectGlyph type={layer.project.visualType} />
         </div>
       ) : (
         <FullProjectSurface project={layer.project} />
@@ -370,7 +374,6 @@ export function ProjectsSection() {
   const morphFrameRef = useRef<number | null>(null)
   const activeProject = projects[activeProjectIndex]
   const isMorphing = morphPhase !== 'idle'
-  const focusMorphHeight = morphLayers.find((layer) => layer.type === 'outgoing')?.fromRect.height
 
   const clearMorphTimers = useCallback(() => {
     morphTimersRef.current.forEach((id) => window.clearTimeout(id))
@@ -491,7 +494,7 @@ export function ProjectsSection() {
               }}
               aria-label={`Feature ${project.name}`}
             >
-              <ProjectVisualIcon type={project.visualType} />
+              <ProjectGlyph type={project.visualType} />
             </button>
           ))}
         </div>
@@ -500,19 +503,12 @@ export function ProjectsSection() {
           data-project-focus-morph-phase={morphPhase}
           aria-labelledby="active-project-title"
           ref={focusCardRef}
-          style={
-            isMorphing && focusMorphHeight
-              ? ({
-                  '--project-focus-morph-height': `${focusMorphHeight}px`,
-                } as ProjectFocusCardStyle)
-              : undefined
-          }
         >
           <div className="project-card-header">
             <h3 id="active-project-title">{activeProject.name}</h3>
           </div>
-          <div className="project-focus-visual" aria-hidden="true">
-            <ProjectVisualIcon type={activeProject.visualType} />
+          <div className="project-focus-mark" aria-hidden="true">
+            <ProjectPngMark icon={activeProject.icon} />
           </div>
           <div className="project-focus-content">
             <ProjectContent project={activeProject} />
