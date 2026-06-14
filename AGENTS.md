@@ -39,6 +39,13 @@ Styles are split into co-located, plain CSS files. Do not reintroduce a single m
 - **Import rule**: components must import their own CSS and any shared CSS they rely on. Page components (`PortfolioPage`, `FoundryPage`) import `_shared/layout.css`. Footer components import `_shared/footer.css`. Components using action links import `_shared/actions.css`.
 - **No empty component CSS files**: if a component has no unique styles (e.g., `PortfolioPage`, `SiteFooter`, `FoundryFooter`), it imports only the shared file(s) it needs and does not create an empty `.css` file.
 
+## Asset Conventions
+
+- Single-colour SVG logos (black or white) must contrast the active theme.
+  - Black SVGs: set `invertInDarkMode: true` in `src/components/skillData.ts` so they render white in night mode and black in day mode.
+  - White SVGs: set `invertInLightMode: true` so they render black in day mode and white in night mode.
+  - Apply the same `data-skill-invert-icon` / `data-skill-invert-icon-light` attributes and CSS filters to quick links and project stack icons when they use single-colour SVGs.
+
 ## Current Product Rules
 
 - The site is finished as a one-page recruiter-facing portfolio.

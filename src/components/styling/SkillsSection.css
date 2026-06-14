@@ -98,6 +98,18 @@
   filter: invert(1) drop-shadow(0 0 0 color-mix(in srgb, var(--skill-color) 0%, transparent));
 }
 
+:root[data-theme='light'] .skill-bubble[data-skill-invert-icon-light='true'] .skill-bubble-icon {
+  filter: invert(1) drop-shadow(0 0 0 color-mix(in srgb, var(--skill-color) 0%, transparent));
+}
+
+:root:not([data-theme='light']) .skill-bubble[data-skill-monochrome='true'] .skill-bubble-icon {
+  filter: grayscale(1) brightness(0) invert(1) drop-shadow(0 0 0 color-mix(in srgb, var(--skill-color) 0%, transparent));
+}
+
+:root[data-theme='light'] .skill-bubble[data-skill-monochrome='true'] .skill-bubble-icon {
+  filter: grayscale(1) brightness(0) drop-shadow(0 0 0 color-mix(in srgb, var(--skill-color) 0%, transparent));
+}
+
 .skill-bubble-monogram {
   display: grid;
   place-items: center;
@@ -160,6 +172,21 @@
 :root:not([data-theme='light']) .skill-bubble[data-skill-invert-icon='true']:hover .skill-bubble-icon,
 :root:not([data-theme='light']) .skill-bubble[data-skill-invert-icon='true']:focus-visible .skill-bubble-icon {
   filter: invert(1) drop-shadow(0 0 0.55rem color-mix(in srgb, var(--skill-color) 58%, transparent));
+}
+
+:root[data-theme='light'] .skill-bubble[data-skill-invert-icon-light='true']:hover .skill-bubble-icon,
+:root[data-theme='light'] .skill-bubble[data-skill-invert-icon-light='true']:focus-visible .skill-bubble-icon {
+  filter: invert(1) drop-shadow(0 0 0.55rem color-mix(in srgb, var(--skill-color) 58%, transparent));
+}
+
+:root:not([data-theme='light']) .skill-bubble[data-skill-monochrome='true']:hover .skill-bubble-icon,
+:root:not([data-theme='light']) .skill-bubble[data-skill-monochrome='true']:focus-visible .skill-bubble-icon {
+  filter: grayscale(1) brightness(0) invert(1) drop-shadow(0 0 0.55rem color-mix(in srgb, var(--skill-color) 58%, transparent));
+}
+
+:root[data-theme='light'] .skill-bubble[data-skill-monochrome='true']:hover .skill-bubble-icon,
+:root[data-theme='light'] .skill-bubble[data-skill-monochrome='true']:focus-visible .skill-bubble-icon {
+  filter: grayscale(1) brightness(0) drop-shadow(0 0 0.55rem color-mix(in srgb, var(--skill-color) 58%, transparent));
 }
 
 .skill-bubble:hover .skill-tooltip,

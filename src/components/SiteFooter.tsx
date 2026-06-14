@@ -15,30 +15,30 @@ type FooterLink = {
 
 const footerLinks: FooterLink[] = [
   {
-    label: 'Download My Resume',
-    href: resumePdf,
-    icon: pdfIcon,
-    external: true,
-    emphasis: 'primary',
-  },
-  {
-    label: 'Email',
-    href: 'mailto:adammontcompany@gmail.com',
-    icon: emailIcon,
-    external: false,
-    emphasis: 'primary',
-  },
-  {
     label: 'GitHub',
     href: 'https://github.com/Aquinnmo',
     icon: githubIcon,
     external: true,
+    emphasis: 'primary',
   },
   {
     label: 'LinkedIn',
     href: 'https://linkedin.com/in/adam-montgomery-05a936315',
     icon: linkedInIcon,
     external: true,
+    emphasis: 'primary',
+  },
+  {
+    label: 'Download My Resume',
+    href: resumePdf,
+    icon: pdfIcon,
+    external: true,
+  },
+  {
+    label: 'Email',
+    href: 'mailto:adammontcompany@gmail.com',
+    icon: emailIcon,
+    external: false,
   },
 ]
 

@@ -82,7 +82,7 @@
   object-fit: contain;
 }
 
-.footer-link-primary img {
+:root:not([data-theme='light']) .footer-link-primary img {
   filter: brightness(0) invert(1);
 }
 

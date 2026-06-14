@@ -61,6 +61,14 @@ Use these as the base `:root` CSS custom property targets so the site defaults t
 | `--color-snow` | `rgba(242, 251, 255, 0.92)` | Snow particles |
 | `--color-shadow` | `rgba(0, 0, 0, 0.55)` | Night shadow |
 
+## Single-Colour SVG Logo Contrast
+
+Single-colour SVG logos that are black or white must invert to contrast the active theme so they remain visible on both day and night backgrounds.
+
+- Black SVGs: invert in dark mode so they render white at night and black by day.
+- White SVGs: invert in light mode so they render black by day and white at night.
+- Coloured brand logos should keep their native brand colours and are not inverted.
+
 ## Foundry Theme Variant
 
 The Foundry page should reuse the portfolio visual system structure with page-scoped ember tokens or equivalent CSS variables. It should not fork the site into a new design language.

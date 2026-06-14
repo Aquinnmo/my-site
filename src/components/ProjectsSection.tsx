@@ -4,6 +4,7 @@ import githubIcon from '../assets/portfolio/github_logo.svg'
 import './styling/ProjectsSection.css'
 import './styling/layout.css'
 import pdfIcon from '../assets/portfolio/pdf_icon.svg'
+import { skillBubbleByName, type SkillBubble } from './skillData'
 
 const OUTGOING_CONTENT_FADE_MS = 160
 const OUTGOING_CARD_EXIT_MS = 240
@@ -142,6 +143,10 @@ function DownloadIcon() {
   )
 }
 
+function isWebPreviewLink(link: ProjectLink) {
+  return link.label.toLowerCase().includes('preview')
+}
+
 function ProjectLinkIcon({ link }: { link: ProjectLink }) {
   if (link.label.toLowerCase().includes('repository')) {
     return <img className="project-link-icon" src={githubIcon} alt="" aria-hidden="true" />
@@ -228,6 +233,29 @@ const projects: Project[] = [
   },
 ]
 
+function ProjectStackItem({ skill }: { skill: SkillBubble }) {
+  return (
+    <li className="project-stack-item" key={skill.name}>
+      {skill.icon.kind === 'asset' ? (
+        <img
+          className="project-stack-icon"
+          src={skill.icon.src}
+          alt=""
+          aria-hidden="true"
+          data-skill-invert-icon={skill.invertInDarkMode ? 'true' : undefined}
+          data-skill-invert-icon-light={skill.invertInLightMode ? 'true' : undefined}
+          data-skill-monochrome={skill.monochrome ? 'true' : undefined}
+        />
+      ) : (
+        <span className="project-stack-icon project-stack-monogram" aria-hidden="true">
+          {skill.icon.label}
+        </span>
+      )}
+      <span className="project-stack-name">{skill.name}</span>
+    </li>
+  )
+}
+
 function ProjectContent({ project }: { project: Project }) {
   return (
     <>
@@ -240,14 +268,30 @@ function ProjectContent({ project }: { project: Project }) {
         </ul>
       )}
       <ul className="project-stack" aria-label={`${project.name} tech stack`}>
-        {project.stack.map((stackItem) => (
-          <li key={stackItem}>{stackItem}</li>
-        ))}
+        {project.stack.map((stackItem) => {
+          const skill = skillBubbleByName.get(stackItem)
+
+          if (!skill) {
+            return (
+              <li className="project-stack-item" key={stackItem}>
+                <span className="project-stack-name">{stackItem}</span>
+              </li>
+            )
+          }
+
+          return <ProjectStackItem key={skill.name} skill={skill} />
+        })}
       </ul>
       {project.links.length > 0 && (
         <div className="project-links" aria-label={`${project.name} links`}>
           {project.links.map((link) => (
-            <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              data-project-link-type={isWebPreviewLink(link) ? 'preview' : undefined}
+            >
               <ProjectLinkIcon link={link} />
               {link.label}
             </a>

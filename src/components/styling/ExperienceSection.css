@@ -117,11 +117,9 @@
 }
 
 .experience-dates {
-  border: 1px solid color-mix(in srgb, var(--color-ice-edge) 78%, transparent);
-  border-radius: 999px;
-  padding: 0.34rem 0.65rem;
+  padding: 0.1rem 0 0.1rem 0.65rem;
+  border-left: 1px solid color-mix(in srgb, var(--color-ice-edge) 78%, transparent);
   color: var(--color-text-muted);
-  background: color-mix(in srgb, var(--color-panel) 82%, transparent);
   font-size: 0.88rem;
   font-weight: 800;
   white-space: nowrap;
@@ -216,7 +214,7 @@
 
   .experience-dates {
     width: fit-content;
-    padding: 0.26rem 0.52rem;
+    padding: 0.1rem 0 0.1rem 0.52rem;
     font-size: 0.76rem;
   }
 
