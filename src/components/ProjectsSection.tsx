@@ -20,7 +20,7 @@ type ProjectLink = {
   href: string
 }
 
-type ProjectVisualType = 'mobile' | 'database' | 'strategy' | 'feedback'
+type ProjectVisualType = 'dumbbell' | 'bus' | 'chain' | 'fire'
 
 type Project = {
   name: string
@@ -79,52 +79,54 @@ function ProjectPngMark({ icon }: { icon: string }) {
 }
 
 function ProjectGlyph({ type }: { type: ProjectVisualType }) {
-  if (type === 'mobile') {
+  if (type === 'dumbbell') {
     return (
       <svg className="project-visual-icon project-visual-icon--svg" viewBox="0 0 64 64" aria-hidden="true">
-        <rect x="19" y="6" width="26" height="52" rx="6" />
-        <path d="M26 13h12" />
-        <path d="M27 50h10" />
-        <path d="M25 23h14" />
-        <path d="M25 30h14" />
-        <path d="M25 37h10" />
+        <g transform="scale(2)">
+          <path vectorEffect="non-scaling-stroke" d="M7,25c-1.7,0-3-1.3-3-3V10c0-1.7,1.3-3,3-3s3,1.3,3,3v12C10,23.7,8.7,25,7,25z" />
+          <path vectorEffect="non-scaling-stroke" d="M25,25c-1.7,0-3-1.3-3-3V10c0-1.7,1.3-3,3-3s3,1.3,3,3v12C28,23.7,26.7,25,25,25z" />
+          <path vectorEffect="non-scaling-stroke" d="M23,17H9c-0.6,0-1-0.4-1-1s0.4-1,1-1h14c0.6,0,1,0.4,1,1S23.6,17,23,17z" />
+          <path vectorEffect="non-scaling-stroke" d="M2,10.2c-1.2,0.4-2,1.5-2,2.8v6c0,1.3,0.8,2.4,2,2.8V10.2z" />
+          <path vectorEffect="non-scaling-stroke" d="M30,10.2v11.6c1.2-0.4,2-1.5,2-2.8v-6C32,11.7,31.2,10.6,30,10.2z" />
+        </g>
       </svg>
     )
   }
 
-  if (type === 'database') {
+  if (type === 'bus') {
     return (
       <svg className="project-visual-icon project-visual-icon--svg" viewBox="0 0 64 64" aria-hidden="true">
-        <ellipse cx="32" cy="14" rx="20" ry="8" />
-        <path d="M12 14v24c0 4.4 9 8 20 8s20-3.6 20-8V14" />
-        <path d="M12 26c0 4.4 9 8 20 8s20-3.6 20-8" />
-        <path d="M12 38c0 4.4 9 8 20 8s20-3.6 20-8" />
-        <path d="M25 53h14" />
+        <g transform="scale(2.6667)">
+          <path vectorEffect="non-scaling-stroke" d="M4.36,17.73H1.5V6.27A1.92,1.92,0,0,1,3.41,4.36h14a1.91,1.91,0,0,1,1.85,1.45l1.3,5.24L22.5,12.2v5.53H19.64" />
+          <line vectorEffect="non-scaling-stroke" x1="15.82" y1="17.73" x2="8.18" y2="17.73" />
+          <circle vectorEffect="non-scaling-stroke" cx="17.73" cy="17.73" r="1.91" />
+          <circle vectorEffect="non-scaling-stroke" cx="6.27" cy="17.73" r="1.91" />
+          <line vectorEffect="non-scaling-stroke" x1="4.36" y1="11.05" x2="20.59" y2="11.05" />
+          <line vectorEffect="non-scaling-stroke" x1="15.82" y1="7.23" x2="15.82" y2="12" />
+          <line vectorEffect="non-scaling-stroke" x1="11.05" y1="7.23" x2="11.05" y2="12" />
+          <line vectorEffect="non-scaling-stroke" x1="6.27" y1="7.23" x2="6.27" y2="12" />
+          <line vectorEffect="non-scaling-stroke" x1="20.59" y1="14.86" x2="22.5" y2="14.86" />
+        </g>
       </svg>
     )
   }
 
-  if (type === 'strategy') {
+  if (type === 'chain') {
     return (
       <svg className="project-visual-icon project-visual-icon--svg" viewBox="0 0 64 64" aria-hidden="true">
-        <path d="M18 18h12v12H18z" />
-        <path d="M34 18h12v12H34z" />
-        <path d="M18 34h12v12H18z" />
-        <path d="M34 34h12v12H34z" />
-        <path d="M24 30v4" />
-        <path d="M30 24h4" />
-        <path d="M40 30v4" />
-        <path d="M30 40h4" />
+        <g transform="scale(2.6667)">
+          <path vectorEffect="non-scaling-stroke" d="M9.14,7.23A4.76,4.76,0,0,1,13,5.32h4.78a4.77,4.77,0,1,1,0,9.54H13a4.77,4.77,0,0,1-4.67-3.81" />
+          <path vectorEffect="non-scaling-stroke" d="M15.72,13a4.77,4.77,0,0,0-4.67-3.81H6.27a4.77,4.77,0,0,0,0,9.54h4.78a4.76,4.76,0,0,0,3.37-1.39,3.57,3.57,0,0,0,.44-.52" />
+        </g>
       </svg>
     )
   }
 
   return (
     <svg className="project-visual-icon project-visual-icon--svg" viewBox="0 0 64 64" aria-hidden="true">
-      <path d="M16 18h32v22H24l-8 8V18z" />
-      <path d="M24 27h16" />
-      <path d="M24 34h10" />
-      <path d="M42 44l4 4 8-10" />
+      <g transform="scale(2.6667)">
+        <path style={{ fill: 'var(--color-ice-strong)', stroke: 'none' }} d="M5.926 20.574a7.26 7.26 0 0 0 3.039 1.511c.107.035.179-.105.107-.175-2.395-2.285-1.079-4.758-.107-5.873.693-.796 1.68-2.107 1.608-3.865 0-.176.18-.317.322-.211 1.359.703 2.288 2.25 2.538 3.515.394-.386.537-.984.537-1.511 0-.176.214-.317.393-.176 1.287 1.16 3.503 5.097-.072 8.19-.071.071 0 .212.072.177a8.761 8.761 0 0 0 3.003-1.442c5.827-4.5 2.037-12.48-.43-15.116-.321-.317-.893-.106-.893.351-.036.95-.322 2.004-1.072 2.707-.572-2.39-2.478-5.105-5.195-6.441-.357-.176-.786.105-.75.492.07 3.27-2.063 5.352-3.922 8.059-1.645 2.425-2.717 6.89.822 9.808z" />
+      </g>
     </svg>
   )
 }
@@ -168,7 +170,7 @@ const projects: Project[] = [
   {
     name: 'Pump Pal',
     icon: pumpPalIcon,
-    visualType: 'mobile',
+    visualType: 'dumbbell',
     summary:
       'Mobile-first workout tracker focused on balanced training, injury reduction, and AI-powered training insights.',
     proof: [
@@ -190,7 +192,7 @@ const projects: Project[] = [
   {
     name: 'Custom Enterprise Databasing System',
     icon: watIcon,
-    visualType: 'database',
+    visualType: 'bus',
     summary:
       'Custom maintenance, inventory, and tracking system for a York Region busing company operating hundreds of machines.',
     proof: [
@@ -205,7 +207,7 @@ const projects: Project[] = [
   {
     name: 'Rock, Paper, Scissors',
     icon: rpsIcon,
-    visualType: 'strategy',
+    visualType: 'chain',
     summary:
       'Interactive exploration of strategy and prediction in Rock, Paper, Scissors, built around algorithms that beat human play.',
     proof: [
@@ -222,7 +224,7 @@ const projects: Project[] = [
   {
     name: 'Am I Cooked?',
     icon: cookedIcon,
-    visualType: 'feedback',
+    visualType: 'fire',
     summary:
       'Resume and survey-based readiness tool that gives students Gemini-powered feedback for the job search.',
     proof: [

@@ -22,6 +22,7 @@ const footerLinks: FooterLink[] = [
     icon: githubIcon,
     external: true,
     emphasis: 'primary',
+    invertInLightMode: true,
   },
   {
     label: 'LinkedIn',

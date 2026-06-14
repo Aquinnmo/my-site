@@ -46,8 +46,12 @@ svg.action-icon {
   fill: currentColor;
 }
 
-.hero-action-primary .action-icon {
+:root[data-theme='light'] .hero-action-primary .action-icon {
   filter: brightness(0) invert(1);
+}
+
+:root:not([data-theme='light']) .hero-action-primary .action-icon {
+  filter: none;
 }
 
 .hero-action-secondary:hover {
