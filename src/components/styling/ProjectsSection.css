@@ -526,8 +526,8 @@
     filter 180ms ease;
 }
 
-.project-links a[data-project-link-type='preview']:hover .project-link-icon,
-.project-links a[data-project-link-type='preview']:focus-visible .project-link-icon {
+.project-links a:hover .project-link-icon,
+.project-links a:focus-visible .project-link-icon {
   transform: translate(0.18rem, -0.18rem);
   filter: drop-shadow(0 0 0.5rem color-mix(in srgb, var(--color-link) 52%, transparent));
 }
@@ -544,9 +544,18 @@ svg.project-link-icon {
   filter: drop-shadow(0 0 0.35rem color-mix(in srgb, var(--color-frost) 24%, transparent));
 }
 
-:root:not([data-theme='light']) .project-links a[data-project-link-type='preview']:hover .project-link-icon,
-:root:not([data-theme='light']) .project-links a[data-project-link-type='preview']:focus-visible .project-link-icon {
+:root:not([data-theme='light']) .project-links a:hover .project-link-icon,
+:root:not([data-theme='light']) .project-links a:focus-visible .project-link-icon {
   filter: drop-shadow(0 0 0.5rem color-mix(in srgb, var(--color-frost) 34%, transparent));
+}
+
+:root:not([data-theme='light']) .project-link-icon[data-skill-invert-icon='true'] {
+  filter: invert(1) drop-shadow(0 0 0.35rem color-mix(in srgb, var(--color-frost) 24%, transparent));
+}
+
+:root:not([data-theme='light']) .project-links a:hover .project-link-icon[data-skill-invert-icon='true'],
+:root:not([data-theme='light']) .project-links a:focus-visible .project-link-icon[data-skill-invert-icon='true'] {
+  filter: invert(1) drop-shadow(0 0 0.5rem color-mix(in srgb, var(--color-frost) 34%, transparent));
 }
 
 .project-links span {

@@ -148,13 +148,9 @@ function DownloadIcon() {
   )
 }
 
-function isWebPreviewLink(link: ProjectLink) {
-  return link.label.toLowerCase().includes('preview')
-}
-
 function ProjectLinkIcon({ link }: { link: ProjectLink }) {
   if (link.label.toLowerCase().includes('repository')) {
-    return <img className="project-link-icon" src={githubIcon} alt="" aria-hidden="true" />
+    return <img className="project-link-icon" src={githubIcon} alt="" aria-hidden="true" data-skill-invert-icon="true" />
   }
 
   if (link.label.toLowerCase().includes('resume')) {
@@ -299,7 +295,6 @@ function ProjectContent({ project }: { project: Project }) {
               href={link.href}
               target="_blank"
               rel="noreferrer"
-              data-project-link-type={isWebPreviewLink(link) ? 'preview' : undefined}
             >
               <ProjectLinkIcon link={link} />
               {link.label}
