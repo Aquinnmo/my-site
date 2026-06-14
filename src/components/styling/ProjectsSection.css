@@ -399,6 +399,7 @@
 .project-summary {
   margin-top: 0.85rem;
   color: var(--color-text-muted);
+  white-space: pre-line;
 }
 
 .project-proof-list {

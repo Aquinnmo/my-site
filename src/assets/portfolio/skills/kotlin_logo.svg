@@ -1,6 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg fill="#000000" width="800px" height="800px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-<title>kotlin</title>
-<path d="M30.996 30.996h-29.992v-29.992h29.992l-14.996 14.996 14.996 14.996z"></path>
+<svg width="800px" height="800px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <title>kotlin</title>
+  <defs>
+    <linearGradient id="kotlin-grad" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E24462" />
+      <stop offset="100%" stop-color="#7F52FF" />
+    </linearGradient>
+  </defs>
+  <path fill="url(#kotlin-grad)" d="M30.996 30.996h-29.992v-29.992h29.992l-14.996 14.996 14.996 14.996z" />
 </svg>
