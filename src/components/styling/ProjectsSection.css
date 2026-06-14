@@ -6,7 +6,7 @@
 }
 
 .project-gallery {
-  --project-focus-card-height: clamp(24rem, 37vw, 26rem);
+  --project-focus-card-height: clamp(25rem, 38vw, 27rem);
   --project-focus-mark-size: clamp(9rem, 12.5vw, 11.5rem);
 
   display: grid;
@@ -574,7 +574,7 @@ svg.project-link-icon {
   }
 
   .project-gallery {
-    --project-focus-card-height: clamp(26rem, 49vw, 30rem);
+    --project-focus-card-height: clamp(27rem, 51vw, 31rem);
     --project-focus-mark-size: clamp(8.5rem, 12.5vw, 10.5rem);
 
     width: min(100%, 42rem);
@@ -601,7 +601,7 @@ svg.project-link-icon {
   }
 
   .project-gallery {
-    --project-focus-card-height: clamp(37rem, 102vw, 43rem);
+    --project-focus-card-height: clamp(38rem, 105vw, 45rem);
     --project-focus-mark-size: clamp(9.5rem, 45vw, 12.5rem);
 
     width: 100%;
